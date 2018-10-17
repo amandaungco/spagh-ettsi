@@ -2,18 +2,17 @@ require 'faker'
 require 'date'
 require 'csv'
 
-CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
-  :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity"]) do |csv|
+CSV.open("db/addresses_seeds.csv", "w", :write_headers=> true,
+  :headers => ["user_id", "first_name", "last_name", "street", "street_2","city","state","zip"]) do |csv|
 
   20.times do
-    category = %w(long short shell sheet filled soup).sample
-    name = Faker::Superhero.name
     user_id = rand(1..20)
-    price_in_cents = rand(1000..5000)
-    description = Faker::Simpsons.quote
-    quantity = rand(1..100)
+    product_id = rand(1..200)
+    review = Faker::Cannabis.health_benefit
+    rating = rand(1..5)
 
-    csv << [category, name, user_id, price_in_cents, description, quantity]
+
+    csv << [user_id, product_id, review, rating]
   end
 end
 
