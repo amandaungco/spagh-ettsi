@@ -75,52 +75,59 @@ describe 'Relationships' do
   end
 end
 
-# describe 'validations' do
-#   it 'must have a title' do
-#     # Arrange
-#     work = works(:harrypotter)
-#     work.title = nil
-#     work.save
-#
-#
-#     # Act
-#     valid = work.valid?
-#
-#
-#     # Assert
-#     expect(valid).must_equal false
-#     expect(work.errors.messages).must_include :title
-#     expect(work.errors.messages[:title]).must_equal ["can't be blank"]
-#   end
-#
-#   it 'must have a publication_year with a 4 integers' do
-#     work.publication_year = 0
-#     # Arrange
-#     work.publication_year += 999
-#
-#     # Act
-#     valid = work.valid?
-#
-#     # Assert
-#     expect(valid).must_equal false
-#     expect(work.errors.messages).must_include :publication_year
-#
-#
-#     work.publication_year += 100
-#     valid = work.valid?
-#     expect(valid).must_equal true
-#   end
-#
-#   it 'requires a unique title and category' do
-#     #other_book = book.clone
-#     poodr = works(:poodrbook)
-#
-#
-#     valid = poodr.valid?
-#
-#     expect(valid).must_equal true
-#
-#     poodr.category = 'movie'
-#     valid = poodr.valid?
-#     expect(valid).must_equal false
-#     expect(poodr.errors.messages).must_include :title
+describe 'validations' do
+  it 'must have a first_name' do
+    user = users(:hannah)
+    user.first_name = nil
+    user.save
+
+    valid = user.valid?
+
+    expect(valid).must_equal false
+    expect(user.errors.messages).must_include first_name
+  end
+
+  it 'must have a last_name' do
+    user = users(:hannah)
+    user.last_name = nil
+    user.save
+
+    valid = user.valid?
+
+    expect(valid).must_equal false
+    expect(user.errors.messages).must_include last_name
+  end
+
+  it 'must have an email' do
+    user = users(:hannah)
+    user.email = nil
+    user.save
+
+    valid = user.valid?
+
+    expect(valid).must_equal false
+    expect(user.errors.messages).must_include email
+  end
+
+  it 'must have a uid' do
+    user = users(:hannah)
+    user.uid = nil
+    user.save
+
+    valid = user.valid?
+
+    expect(valid).must_equal false
+    expect(user.errors.messages).must_include uid
+  end
+
+  it 'must have a provider' do
+    user = users(:hannah)
+    user.provider = nil
+    user.save
+
+    valid = user.valid?
+
+    expect(valid).must_equal false
+    expect(user.errors.messages).must_include provider
+  end
+end
