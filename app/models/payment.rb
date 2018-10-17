@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :order
-  has_one :address
+  belongs_to :address
 end
