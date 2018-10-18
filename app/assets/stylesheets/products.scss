@@ -8,14 +8,17 @@
 .filterDiv {
     float: left;
     background-color: #white;
-    // color: #ffffff;
-    width: 18rem;
-    height: 20rem;
-    // line-height: 50px;
+    width: 20rem;
+    height: 27rem;
     text-align: center;
     margin: 2px;
     display: none; /* Hidden by default */
     border: 5px solid black;
+}
+
+.card-img-top {
+  width: 10rem;
+  height: 8rem;
 }
 
 /* The "show" class is added to the filtered elements */
