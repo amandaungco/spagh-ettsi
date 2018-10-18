@@ -1,0 +1,6 @@
+<% if @order %>
+  <%= @order.user %>
+  <%= @order.products.each do |product| %>
+    <%= product.name %>
+  <% end %>
+<% end %>

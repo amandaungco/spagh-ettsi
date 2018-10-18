@@ -130,6 +130,7 @@ CSV.foreach(ORDER_FILE, :headers => true) do |row|
 
   successful = order.save
 
+
   if !successful
     order_failures << user
     puts "Failed to save order: #{order.inspect}"
@@ -205,4 +206,12 @@ CSV.foreach(REVIEWS_FILE, :headers => true) do |row|
 
   puts "Added #{Review.count} review records"
   puts "#{review_failures.length} reviews failed to save."
+
+puts "Added #{Product.count} product records"
+puts "#{product_failures.length} products failed to save."
+
+puts "Manually resetting PK sequence on each table"
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+
 end

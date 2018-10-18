@@ -1,6 +1,7 @@
 class Address < ApplicationRecord
   belongs_to :user
   has_one :payment
+  has_many :orders
 
   validates :user_id, presence: true
   validates :first_name, presence: true

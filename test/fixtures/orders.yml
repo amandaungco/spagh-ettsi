@@ -13,8 +13,8 @@ order_one:
 # column: value
 #
 order_two:
-  user_id: buyer.id
+  user: buyer
   status: placed
-  payment_id: visa.id
-  address_id: home.id
+  payment: visa
+  address: home
 # column: value

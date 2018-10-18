@@ -1,1 +1,21 @@
 <h1>Individual Product</h1>
+
+<%= @product.name %>
+<%= @product.description %>
+
+
+<%= form_with model: @order_product do |f| %>
+
+<div class="form-group">
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity, value: 1, class: 'form-control'%>
+</div>
+
+<%= f.hidden_field :product_id, value: params[:id] %>
+<%= f.hidden_field :order_id, value: session[:order_id] %>
+
+<div class="form-group">
+  <%= f.submit "Add to Cart", class: 'btn btn-primary'%>
+</div>
+
+<% end %>
