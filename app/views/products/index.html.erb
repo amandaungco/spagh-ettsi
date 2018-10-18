@@ -16,7 +16,7 @@
   <% i = 1 %>
   <% @products.each do |product| %>
   <div class="filterDiv card <%= product.category %>">
-    <img class="card-img-top" src="/images/pasta<%="#{i}"%>.jpg" alt="Card image cap">
+    <%= link_to image_tag("/images/pasta#{i}.jpg", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
     <div class="card-body">
       <h5 class="card-title"><%= product.name %></h5>
       <p class="card-text">$<%= product.price_in_cents%></p>
