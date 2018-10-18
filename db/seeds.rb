@@ -7,29 +7,61 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-MEDIA_FILE = Rails.root.join('db', 'product_seeds.csv')
-puts "Loading raw product data from #{MEDIA_FILE}"
+USER_FILE = Rails.root.join('db', 'user_seeds.csv')
+puts "Loading raw user data from #{USER_FILE}"
+
+user_failures = []
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new(
+    id: row['id'],
+    first_name: row['first_name'],
+    last_name: row['last_name'],
+    email: row['email'],
+    is_a_seller: row['is_a_seller'],
+    uid: row['uid'],
+    provider: row['provider']
+  )
+
+  successful = user.save
+
+  if !successful
+    user_failures << user
+    puts "Failed to save user: #{user.inspect}"
+    puts "#{user.errors.full_messages}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+
+PRODUCT_FILE = Rails.root.join('db', 'product_seeds.csv')
+puts "Loading raw product data from #{PRODUCT_FILE}"
 
 product_failures = []
-CSV.foreach(MEDIA_FILE, :headers => true) do |row|
-  product = Product.new
+CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
+  product = Product.new(
 
-  product.category = row['category']
-  product.name = row['name']
-  product.user_id = row['user_id']
-  product.price_in_cents = row['price_in_cents']
-  product.description = row['description']
-  product.quantity = row['quantity']
+    category: row['category'],
+    name: row['name'],
+    user_id: row['user_id'],
+    price_in_cents: row['price_in_cents'],
+    description: row['description'],
+    quantity: row['quantity']
+  )
 
   successful = product.save
 
   if !successful
     product_failures << product
     puts "Failed to save product: #{product.inspect}"
+    puts "#{product.errors.full_messages}"
   else
     puts "Created product: #{product.inspect}"
   end
 end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
 
 puts "Added #{Product.count} product records"
 puts "#{product_failures.length} products failed to save"
