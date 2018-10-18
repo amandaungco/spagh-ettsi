@@ -61,7 +61,7 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
 end
 
 puts "Added #{User.count} user records"
-puts "#{user_failures.length} users failed to save"
+puts "#{user_failures.length} users failed to save."
 
 puts "Added #{Product.count} product records"
-puts "#{product_failures.length} products failed to save"
+puts "#{product_failures.length} products failed to save."
