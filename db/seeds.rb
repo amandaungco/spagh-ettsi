@@ -160,7 +160,7 @@ CSV.foreach(ORDER_PRODUCTS_FILE, :headers => true) do |row|
   else
     puts "Created order_products: #{order_product.inspect}"
   end
-
+end 
 
 REVIEWS_FILE = Rails.root.join('db', 'reviews.csv')
 puts "Loading raw user data from #{REVIEWS_FILE}"
