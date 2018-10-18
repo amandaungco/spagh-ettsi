@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-first_name,last_name,email,uid,is_a_seller,provider
-Josiah,Larkin,yamamoto@yamamotocorp.test,9,false,That does put a damper on our relationship.
-Arlen,Schulist,denholm.reynholm@reynholm.test,15,false,That does put a damper on our relationship.
-Cheryl,O'Kon,helen.buley@bhdr.test,15,false,It's not my fault being the biggest and the strongest. I don't even exercise.
-Marcus,Nader,douglas.reynholm@reynholm.test,3,false,Have fun storming the castle!
-Hermelinda,Johnston,roy.trenneman@reynholm.test,8,false,Hello. My name is Inigo Montoya. You killed my father. Prepare to die!
-Robena,Champlin,harry@royalmail.test,15,false,Hello. My name is Inigo Montoya. You killed my father. Prepare to die!
-Fae,Carroll,jessica@hotmail.test,16,false,"I've hired you to help me start a war. It's an prestigious line of work, with a long and glorious tradition."
-Dannie,Von,beth.gaga.shaggy@hotmail.test,14,false,You only think I guessed wrong! That's what's so funny! I switched glasses when your back was turned!
-Monroe,Farrell,denholm.reynholm@reynholm.test,11,false,"We'll never survive. Nonsense, you're only saying that because nobody ever has."
-Timmy,Johns,harry@royalmail.test,4,false,Do you have 6 fingers on your left hand?
-Joaquin,Collier,jessica@hotmail.test,5,false,"There is nothing better than true love in the whole world. Except a nice MLT. Mutton, lettuce, and tomato when the mutton is nice and lean and the lettuce is nice and crisp. Ohhh you can't beat it."
-Sixta,Goyette,nolan@reynholm.test,2,false,"Ha ha, you fool! You fell victim to one of the classic blunders! The most famous of which is never get involved in a land war in Asia, but only slightly less well-known is this: Never go in against a Sicilian when DEATH is on the line."
-Susanna,Skiles,friendlymargaret@hotmail.test,7,false,"You rush a miracle man, you get rotten miracles."
-Gavin,Marvin,maurice.moss@reynholm.test,13,false,Hello. My name is Inigo Montoya. You killed my father. Prepare to die!
-Sterling,Sawayn,april.shephard@richestmag.test,16,false,Hello. My name is Inigo Montoya. You killed my father. Prepare to die!
-Andres,Runte,nolan@reynholm.test,6,false,"We'll never survive. Nonsense, you're only saying that because nobody ever has."
-Jeremy,Koepp,april.shephard@richestmag.test,14,false,Do you have 6 fingers on your left hand?
-Dixie,Jenkins,daniel.carey@reynholm.test,18,false,That does put a damper on our relationship.
-Jaymie,Jacobi,small.paul@reynholm.test,14,false,Life is pain. Anyone who says different is trying to sell you something.
-Lettie,Collins,richmond.avenal@reynholm.test,12,false,"Ha ha, you fool! You fell victim to one of the classic blunders! The most famous of which is never get involved in a land war in Asia, but only slightly less well-known is this: Never go in against a Sicilian when DEATH is on the line."
-=======
 id,first_name,last_name,email,is_a_seller,uid,provider
 0,Tyree,Johns,tyree@aufderhar.net,true,77681260,google
 1,Teresia,Russel,teresia@dibbert.info,true,92295570,facebook
@@ -42,4 +19,3 @@ id,first_name,last_name,email,is_a_seller,uid,provider
 17,Marshall,Crooks,marshall@wiza.name,true,16080228,twitter
 18,Benedict,Rath,benedict@gerholddonnelly.info,true,94859300,twitter
 19,Royal,Lynch,royal@roob.co,true,72206298,twitter
->>>>>>> seeds
