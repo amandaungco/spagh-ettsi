@@ -1,0 +1,1 @@
+<h1>All the products</h1>
