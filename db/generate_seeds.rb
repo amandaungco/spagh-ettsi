@@ -6,13 +6,16 @@ CSV.open("db/addresses_seeds.csv", "w", :write_headers=> true,
   :headers => ["user_id", "first_name", "last_name", "street", "street_2","city","state","zip"]) do |csv|
 
   20.times do
-    user_id = rand(1..20)
-    product_id = rand(1..200)
-    review = Faker::Cannabis.health_benefit
-    rating = rand(1..5)
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    street = Faker::Address.street_address
+    street_2 = Faker::Address.secondary_address
+    city = Faker::Address.city
+    state = Faker::Address.state
+    zip = Faker::Address.zip
 
 
-    csv << [user_id, product_id, review, rating]
+    csv << [first_name, last_name, street, street_2, city, state, zip]
   end
 end
 
