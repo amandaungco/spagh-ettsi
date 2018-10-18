@@ -78,7 +78,7 @@ class UserTest < ActiveSupport::TestCase
 
   describe 'validations' do
     it 'must have a first_name' do
-      user = users(:hannah)
+      user = users(:seller)
       user.first_name = nil
       user.save
 
@@ -89,7 +89,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must have a last_name' do
-      user = users(:hannah)
+      user = users(:seller)
       user.last_name = nil
       user.save
 
@@ -100,7 +100,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must have an email' do
-      user = users(:hannah)
+      user = users(:seller)
       user.email = nil
       user.save
 
@@ -111,7 +111,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must have a uid' do
-      user = User.first
+      user = users(:seller)
       user.uid = nil
       user.save
 
@@ -122,7 +122,7 @@ class UserTest < ActiveSupport::TestCase
     end
 
     it 'must have a provider' do
-      user = users(:hannah)
+      user = users(:seller)
       user.provider = nil
       user.save
 
