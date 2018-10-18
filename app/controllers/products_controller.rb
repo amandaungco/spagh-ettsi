@@ -7,14 +7,33 @@ class ProductsController < ApplicationController
   def show; end
 
   def new
+    @product = Product.new()
   end
 
   def create
+    @product = Product.new(product_params)
+
+    if @product.save
+      flash[:success] = "Successfully created #{@product.name}"
+      redirect_to product_path(@product.id)
+    else
+      flash.now[:warning] = "A problem occurred: Could not create #{@product.name}"
+      flash.now[:validation_errors] = @product.errors.full_messages
+      render :new
+    end
   end
 
   def edit; end
 
   def update
+    if @product.update(product_params)
+        flash[:success] = "Successfully updated #{@product.name}"
+        redirect_to product_path(@product.id)
+    else
+        flash.now[:warning] = "A problem occurred: Could not update #{@product.name}"
+        flash.now[:validation_errors] = @product.errors.full_messages
+        render :edit
+    end
   end
 
   def destroy

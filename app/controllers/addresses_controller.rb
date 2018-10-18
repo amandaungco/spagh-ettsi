@@ -22,7 +22,7 @@ class AddressesController < ApplicationController
   end
 
   private
-    def address params
+    def address_params
       params.require(:address).permit(:user_id, :first_name, :last_name,
       :street, :street_2, :city, :state, :zip)
     end
