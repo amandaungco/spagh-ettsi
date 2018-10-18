@@ -1,6 +1,7 @@
 class OrderProductsController < ApplicationController
 
-  def create(quantity)
+  def create
+    params.require(:order_product).permit(:title, :category, :creator, :description, :publication_year)
 
     if !session[:user_id]
       flash[:warning] = "You are not logged in, continuing as guest."
@@ -9,8 +10,8 @@ class OrderProductsController < ApplicationController
         last_name: 'user',
         email: 'example@example.com',
         is_a_seller: false,
-        uid: rand(11111111..99999999)
-        provider: guest_login
+        uid: rand(11111111..99999999),
+        provider: 'guest_login'
       )
 
       session[:user_id] = user.id
@@ -20,18 +21,18 @@ class OrderProductsController < ApplicationController
 
     if !shopping_cart
       shopping_cart = Order.create(
-        user_id: session[:user_id]
-        status: :shopping_cart
-        payment_id: nil
+        user_id: session[:user_id],
+        status: :shopping_cart,
+        payment_id: nil,
         address_id: nil
       )
     end
 
     session[:shopping_cart_id] = shopping_cart.id
 
-    OrderProduct.create(user_id: session[:user_id], order_id: session[:shopping_cart_id], quantity: quantity)
+    OrderProduct.create(product_id: params[:order_product][:product_id], order_id: shopping_cart.id, quantity: params[:order_product][:quantity])
 
-
+    redirect_to product_path(params[:order_product][:product_id])
   end
 
 

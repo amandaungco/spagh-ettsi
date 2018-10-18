@@ -10,56 +10,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class ="navbar-nav mx-auto">
-          <li class="nav-item nav-word">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Products
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="products-dropdown">
-              <%=link_to "Long", products_path, class: "dropdown-item"%>
-              <%=link_to "Short", products_path, class: "dropdown-item"%>
-              <%=link_to "Shells", products_path, class: "dropdown-item"%>
-              <%=link_to "Sheets", products_path, class: "dropdown-item"%>
-              <%=link_to "Filled", products_path, class: "dropdown-item"%>
-              <%=link_to "Soup", products_path, class: "dropdown-item"%>
-            </div>
 
-          </li>
-          <li class="nav-item nav-word">
-            <!-- Change link path  -->
-            <%=link_to "Recipes", products_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item nav-word">
-            <!-- Change link path -->
-            <%=link_to "Meet the Team", products_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item">
-            <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", class: "spaghettsi-logo"), root_path %>
-          </li>
-          <li class="nav-item nav-word">
-            <!-- Change link path -->
-              <%=link_to "Become a seller", products_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item nav-word">
-            <!-- Change link path -->
-            <%=link_to "Cart", products_path, class: "nav-link"%>
-          </li>
-          <li class="nav-item nav-word">
-            <!-- Change link path  -->
-            <%=link_to "Log in", products_path, class: "nav-link"%>
-          </li>
-
-        </ul>
-      </div>
-
-
-
-    </nav>
 
     <%= yield %>
   </body>

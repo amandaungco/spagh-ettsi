@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def show; end
+  def show
+    @order_product = OrderProduct.new()
+  end
 
   def new
     @product = Product.new()

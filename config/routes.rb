@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get '/shopping_cart', to: 'orders#shopping_cart', as: 'shopping_cart'
+
   resources :products
   resources :user
   resources :address
   resources :payments
   resources :reviews
-  resources :orders
+
+  resources :order_products, only: [:create]
+  # resources :orders do
+  #   resources :products, only: [:create]
+  # end
 end
