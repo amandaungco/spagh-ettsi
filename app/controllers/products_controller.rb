@@ -37,6 +37,7 @@ class ProductsController < ApplicationController
     end
   end
 
+
   def destroy
   end
 

@@ -8,7 +8,11 @@ class OrdersController < ApplicationController
   def new
   end
 
-  def create
+  def create(order_params)
+    @order = Order.new(order_params)
+    if !@order.save
+      flash[:warning] = "There was an error.  Could not create shopping cart."
+    end
   end
 
   def edit
@@ -18,6 +22,6 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-  end 
+  end
 
 end
