@@ -20,7 +20,7 @@ end
 
 CSV.open('db/address_seeds.csv', "w", :write_headers=> true,
   :headers => ["user_id", "first_name", "last_name", "street", "street_2", "city","state", "zip"]) do |csv|
-
+  
   20.times do |i|
     id = i
     first_name = Faker::Name.first_name

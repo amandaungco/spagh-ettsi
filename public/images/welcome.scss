@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=K2D');
+
+.homepage {
+  font-family: 'K2D';
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-areas:
+  "h h h h h h"
+  "k k k k k k"
+  "d d d p p p"
+  "d d d p p p"
+  "d d d p p p"
+  "d d d p p p"
+  "d d d p p p"
+  "i i i i i i"
+  "i i i i i i"
+  "i i i i i i"
+  "f f f f f f"
+}
+
+.welcome-header {
+  height: 80px;
+  grid-area: h;
+  font-family: 'K2D';
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  // text-align: center;
+  border-bottom: 10px solid white;
+}
+.welcome-header h1, h2 {
+  text-align: center;
+}
+
+.tagline {
+  grid-area: k;
+  text-align: center;
+}
+
+.smurf {
+  width: 50px;
+  height: 50px;
+}
+
+.home-button {
+  margin-left: auto;
+}
+
+.home-button img{
+  width: 35px;
+  height: 35px;
+  padding-right: 50px;
+  padding-top: 20px;
+}
+
+.main-part {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.driver {
+  grid-area: d;
+  background-image: url('driver.jpg');
+  // margin: 10px;
+}
+
+.passenger {
+  grid-area: p;
+  background-image: url('passenger.jpg');
+  // margin: 10px;
+}
+
+.info {
+  grid-area: i;
+  text-align: center;
+  padding: 2em;
+}
+
+footer {
+  grid-area: f;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-top: 10px solid white;
+}
+
+ .welcome-button{
+   font-family: 'K2D';
+   background:white;
+   color: black;
+   border: 2px solid black;
+   border-radius: 8px;
+   position:relative;
+   height:60px;
+   font-size:1.6em;
+   padding:2em;
+   vertical-align: center;
+   margin-top: 30%;
+   cursor:pointer;
+   transition:800ms ease all;
+   outline:none;
+   background-image: linear-gradient(white,#F0FFFF);
+   text-decoration: none;
+
+ }
+ .welcome-button:hover{
+   background:#fff;
+   color:#1AAB8A;
+ }
+ .welcome-button:before,button:after{
+   content:'';
+   position:absolute;
+   top:0;
+   right:0;
+   height:5px;
+   width:0;
+   background: black;
+   transition:400ms ease all;
+ }
+ .welcome-button:after{
+   right:inherit;
+   top:inherit;
+   left:0;
+   bottom:0;
+ }
+ .welcome-button:hover:before,button:hover:after{
+   width:100%;
+   transition:800ms ease all;
+ }
+
+ /* Dropdown Button */
+.dropbtn {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 3px solid white;
+    margin: 10px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: 'K2D';
+}
+
+.driver-dropdown {
+  margin-left: 50%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #DEB887;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #5F9EA0;}
