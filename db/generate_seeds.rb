@@ -38,3 +38,17 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
 
   end
 end
+
+# CSV.open("db/order_products_seeds.csv", "w", :write_headers=> true,
+#   :headers => ["user_id", "status","payment_id", "address_id"]) do |csv|
+#
+#   20.times do
+#     user_id = rand(1..25)
+#     status = %w(pending paid complete cancelled).sample
+#     payment_id = rand(1..2000)
+#     address_id = rand(1..200)
+#
+#
+#     csv << [user_id, status, payment_id, address_id]
+#   end
+# end
