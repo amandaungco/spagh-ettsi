@@ -7,14 +7,14 @@
 order_one:
   user: buyer
   status: in_progress
-  payment: amex
-  address: school
+  payment: nil
+  address: nil
 
 # column: value
 #
 order_two:
   user: buyer
   status: placed
-  payment: visa
-  address: home
+  payment: nil
+  address: nil
 # column: value

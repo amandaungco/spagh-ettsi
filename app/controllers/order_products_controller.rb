@@ -30,7 +30,8 @@ class OrderProductsController < ApplicationController
 
     session[:shopping_cart_id] = shopping_cart.id
 
-    OrderProduct.create(product_id: params[:order_product][:product_id], order_id: shopping_cart.id, quantity: params[:order_product][:quantity])
+    if OrderProduct.create(product_id: params[:order_product][:product_id], order_id: shopping_cart.id, quantity: params[:order_product][:quantity])
+      flash[:success] = "Cart has been updated!"
 
     redirect_to product_path(params[:order_product][:product_id])
   end
