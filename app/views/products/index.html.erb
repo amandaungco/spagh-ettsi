@@ -1,1 +1,31 @@
 <h1>All the products</h1>
+<!-- Control buttons -->
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  <button class="btn" onclick="filterSelection('long')"> Long</button>
+  <button class="btn" onclick="filterSelection('short')"> Short</button>
+  <button class="btn" onclick="filterSelection('shell')"> Shell</button>
+  <button class="btn" onclick="filterSelection('sheet')"> Sheet</button>
+  <button class="btn" onclick="filterSelection('filled')"> Filled</button>
+  <button class="btn" onclick="filterSelection('soup')"> Soup</button>
+  <button class="btn" onclick="filterSelection('gluten_free')"> Gluten Free</button>
+
+
+</div>
+
+<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+<div class="container">
+  <div class="filterDiv long">Spaghetti</div>
+  <div class="filterDiv stuffed">Tortellini</div>
+  <div class="filterDiv short">Rigitoni</div>
+  <div class="filterDiv filled">Manacotti</div>
+  <div class="filterDiv filled">Ravioli</div>
+  <div class="filterDiv short">Ziti</div>
+  <div class="filterDiv short">Rotini</div>
+  <div class="filterDiv short">Mostaccioli</div>
+  <div class="filterDiv long">Cappalini</div>
+  <div class="filterDiv sheet">Lasagna</div>
+  <div class="filterDiv shell">Conchiglie</div>
+  <div class="filterDiv short">Gnocci</div>
+  <div class="filterDiv soup">Ditalini</div>
+</div>
