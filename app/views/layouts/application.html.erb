@@ -10,14 +10,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-light navbar-expand-lg fixed-top">
-      <%=link_to "Spagh-ettsi", root_path, class: "navbar-brand"%>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class ="navbar-nav ml-auto">
-          <li class="nav-item">
+        <ul class ="navbar-nav mx-auto">
+          <li class="nav-item nav-word">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Products
             </a>
@@ -31,25 +30,34 @@
             </div>
 
           </li>
-          <li class="nav-item">
+          <li class="nav-item nav-word">
             <!-- Change link path  -->
             <%=link_to "Recipes", products_path, class: "nav-link"%>
           </li>
-          <li class="nav-item">
+          <li class="nav-item nav-word">
             <!-- Change link path -->
             <%=link_to "Meet the Team", products_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
+            <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", class: "spaghettsi-logo"), root_path %>
+          </li>
+          <li class="nav-item nav-word">
+            <!-- Change link path -->
+              <%=link_to "Become a seller", products_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item nav-word">
             <!-- Change link path -->
             <%=link_to "Cart", products_path, class: "nav-link"%>
           </li>
-          <li class="nav-item">
+          <li class="nav-item nav-word">
             <!-- Change link path  -->
             <%=link_to "Log in", products_path, class: "nav-link"%>
           </li>
 
         </ul>
       </div>
+
+
 
     </nav>
 
