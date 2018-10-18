@@ -41,6 +41,7 @@ address_failures = []
 CSV.foreach(ADDRESSES_FILE, :headers => true) do |row|
   address = Address.new(
     user_id: row['user_id'],
+    id: row['id'],
     first_name: row['first_name'],
     street: row['street'],
     street_2: row['street_2'],
