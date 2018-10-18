@@ -125,8 +125,5 @@ describe Product do
       expect(valid).must_equal false
       expect(product.errors.messages[:description]).must_equal ["can't be blank"]
     end
-
-
-
   end
 end

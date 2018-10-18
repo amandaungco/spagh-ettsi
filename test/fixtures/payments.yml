@@ -7,7 +7,7 @@
 amex:
   user: buyer
   address: home
-  card_number: 378282246310005
+  card_number: 3782822463100050
   expiration_date: Date.parse(January 2, 2050)
   cvv: 1234
   card_type: AMEX
