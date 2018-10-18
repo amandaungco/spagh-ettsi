@@ -6,21 +6,37 @@ CSV.open("db/payments_seeds.csv", "w", :write_headers=> true,
   :headers => ["user_id", "address_id", "card_number", "expiration_date", "cvv", "card_type"]) do |csv|
 
   20.times do
-    user_id = rand(1..25)
-    address_id = rand(1..200)
-    card_number = rand.to_s[2..10]
-    expiration_date = %w(02/20 03/21 04/22 08/23 10/24 12/25).sample
-    cvv = rand(111..999)
-    card_type = %w(mastercard visa discover amex).sample
+
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    street = Faker::Address.street_address
+    street_2 = Faker::Address.secondary_address
+    city = Faker::Address.city
+    state = Faker::Address.state
+    zip = Faker::Address.zip
 
 
-    csv << [user_id, address_id, card_number, expiration_date, cvv, card_type]
+    csv << [first_name, last_name, street, street_2, city, state, zip]
+
   end
 end
 
 # CSV.open("db/order_products_seeds.csv", "w", :write_headers=> true,
 #   :headers => ["user_id", "status","payment_id", "address_id"]) do |csv|
 #
+# user_id = rand(1..25)
+# address_id = rand(1..200)
+# card_number = rand.to_s[2..10]
+# expiration_date = %w(02/20 03/21 04/22 08/23 10/24 12/25).sample
+# cvv = rand(111..999)
+# card_type = %w(mastercard visa discover amex).sample
+#
+#
+# csv << [user_id, address_id, card_number, expiration_date, cvv, card_type]
+#
+#
+#
+
 #   20.times do
 #     user_id = rand(1..25)
 #     status = %w(pending paid complete cancelled).sample
