@@ -1,133 +1,135 @@
 require "test_helper"
 
-describe User do
-  let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
+class UserTest < ActiveSupport::TestCase
+  describe User do
+    let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
 
-  it "must be valid" do
-    value(user).must_be :valid?
-  end
-
-  it 'has required fields' do
-    fields = [:first_name, :last_name, :email, :uid, :provider]
-
-    fields.each do |field|
-      expect(user).must_respond_to field
+    it "must be valid" do
+      value(user).must_be :valid?
     end
-  end
-end
 
-describe 'Relationships' do
-  let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
+    it 'has required fields' do
+      fields = [:first_name, :last_name, :email, :uid, :provider]
 
-  it 'can have many products' do
-
-    user.products << Product.first
-    products = user.products
-
-    expect(products.length).must_be :>=, 1
-    products.each do |product|
-      expect(product).must_be_instance_of Product
+      fields.each do |field|
+        expect(user).must_respond_to field
+      end
     end
   end
 
-  it 'can have many orders' do
+  describe 'Relationships' do
+    let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
 
-    user.orders << Order.first
-    orders = user.orders
+    it 'can have many products' do
 
-    expect(orders.length).must_be :>=, 1
-    orders.each do |order|
-      expect(order).must_be_instance_of Order
+      user.products << Product.first
+      products = user.products
+
+      expect(products.length).must_be :>=, 1
+      products.each do |product|
+        expect(product).must_be_instance_of Product
+      end
+    end
+
+    it 'can have many orders' do
+
+      user.orders << Order.first
+      orders = user.orders
+
+      expect(orders.length).must_be :>=, 1
+      orders.each do |order|
+        expect(order).must_be_instance_of Order
+      end
+    end
+
+    it 'can have many addresses' do
+
+      user.addresses << Address.first
+      addresses = user.addresses
+
+      expect(addresses.length).must_be :>=, 1
+      addresses.each do |address|
+        expect(address).must_be_instance_of Address
+      end
+    end
+
+    it 'can have many payments' do
+
+      user.payments << Payment.first
+      payments = user.payments
+
+      expect(payments.length).must_be :>=, 1
+      payments.each do |payment|
+        expect(payment).must_be_instance_of Payment
+      end
+    end
+
+    it 'can have many reviews' do
+
+      user.reviews << Review.first
+      reviews = user.reviews
+
+      expect(reviews.length).must_be :>=, 1
+      reviews.each do |review|
+        expect(review).must_be_instance_of Review
+      end
     end
   end
 
-  it 'can have many addresses' do
+  describe 'validations' do
+    it 'must have a first_name' do
+      user = users(:hannah)
+      user.first_name = nil
+      user.save
 
-    user.addresses << Address.first
-    addresses = user.addresses
+      valid = user.valid?
 
-    expect(addresses.length).must_be :>=, 1
-    addresses.each do |address|
-      expect(address).must_be_instance_of Address
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :first_name
     end
-  end
 
-  it 'can have many payments' do
+    it 'must have a last_name' do
+      user = users(:hannah)
+      user.last_name = nil
+      user.save
 
-    user.payments << Payment.first
-    payments = user.payments
+      valid = user.valid?
 
-    expect(payments.length).must_be :>=, 1
-    payments.each do |payment|
-      expect(payment).must_be_instance_of Payment
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :last_name
     end
-  end
 
-  it 'can have many reviews' do
+    it 'must have an email' do
+      user = users(:hannah)
+      user.email = nil
+      user.save
 
-    user.reviews << Review.first
-    reviews = user.reviews
+      valid = user.valid?
 
-    expect(reviews.length).must_be :>=, 1
-    reviews.each do |review|
-      expect(review).must_be_instance_of Review
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :email
     end
-  end
-end
 
-describe 'validations' do
-  it 'must have a first_name' do
-    user = users(:hannah)
-    user.first_name = nil
-    user.save
+    it 'must have a uid' do
+      user = User.first
+      user.uid = nil
+      user.save
 
-    valid = user.valid?
+      valid = user.valid?
 
-    expect(valid).must_equal false
-    expect(user.errors.messages).must_include first_name
-  end
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :uid
+    end
 
-  it 'must have a last_name' do
-    user = users(:hannah)
-    user.last_name = nil
-    user.save
+    it 'must have a provider' do
+      user = users(:hannah)
+      user.provider = nil
+      user.save
 
-    valid = user.valid?
+      valid = user.valid?
 
-    expect(valid).must_equal false
-    expect(user.errors.messages).must_include last_name
-  end
-
-  it 'must have an email' do
-    user = users(:hannah)
-    user.email = nil
-    user.save
-
-    valid = user.valid?
-
-    expect(valid).must_equal false
-    expect(user.errors.messages).must_include email
-  end
-
-  it 'must have a uid' do
-    user = users(:hannah)
-    user.uid = nil
-    user.save
-
-    valid = user.valid?
-
-    expect(valid).must_equal false
-    expect(user.errors.messages).must_include uid
-  end
-
-  it 'must have a provider' do
-    user = users(:hannah)
-    user.provider = nil
-    user.save
-
-    valid = user.valid?
-
-    expect(valid).must_equal false
-    expect(user.errors.messages).must_include provider
+      expect(valid).must_equal false
+      expect(user.errors.messages).must_include :provider
+    end
   end
 end
