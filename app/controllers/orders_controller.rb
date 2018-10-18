@@ -24,4 +24,8 @@ class OrdersController < ApplicationController
   def destroy
   end
 
+  def shopping_cart
+    @order = Order.find_by(id: session[:shopping_cart_id])
+  end
+
 end
