@@ -26,6 +26,7 @@ CSV.foreach(MEDIA_FILE, :headers => true) do |row|
   if !successful
     product_failures << product
     puts "Failed to save product: #{product.inspect}"
+    
   else
     puts "Created product: #{product.inspect}"
   end

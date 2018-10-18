@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 first_name,last_name,email,uid,is_a_seller,provider
 Josiah,Larkin,yamamoto@yamamotocorp.test,9,false,That does put a damper on our relationship.
 Arlen,Schulist,denholm.reynholm@reynholm.test,15,false,That does put a damper on our relationship.
@@ -19,3 +20,26 @@ Jeremy,Koepp,april.shephard@richestmag.test,14,false,Do you have 6 fingers on yo
 Dixie,Jenkins,daniel.carey@reynholm.test,18,false,That does put a damper on our relationship.
 Jaymie,Jacobi,small.paul@reynholm.test,14,false,Life is pain. Anyone who says different is trying to sell you something.
 Lettie,Collins,richmond.avenal@reynholm.test,12,false,"Ha ha, you fool! You fell victim to one of the classic blunders! The most famous of which is never get involved in a land war in Asia, but only slightly less well-known is this: Never go in against a Sicilian when DEATH is on the line."
+=======
+id,first_name,last_name,email,is_a_seller,uid,provider
+0,Tyree,Johns,tyree@aufderhar.net,true,77681260,google
+1,Teresia,Russel,teresia@dibbert.info,true,92295570,facebook
+2,Tobie,Moore,tobie@effertz.com,true,38910463,google
+3,Robyn,Miller,robyn@durgan.co,true,48538388,twitter
+4,Alysa,Brakus,alysa@schaden.co,true,94788465,facebook
+5,Lupe,Cremin,lupe@langworth.net,true,29103489,github
+6,Chery,Lang,chery@rolfson.io,true,50655096,facebook
+7,Raphael,Olson,raphael@macgyver.net,true,15488210,google
+8,Benton,Bartell,benton@mertzlubowitz.com,true,42409234,google
+9,Kris,Bode,kris@corwin.biz,true,88118133,facebook
+10,Sean,MacGyver,sean@romaguera.info,true,38630716,facebook
+11,Terrance,Corkery,terrance@ritchie.co,true,15914239,google
+12,Priscilla,Murray,priscilla@lindgren.org,true,51187689,github
+13,Hung,Lueilwitz,hung@rowe.name,true,41842335,twitter
+14,Jaquelyn,VonRueden,jaquelyn@wolfward.name,true,99730301,twitter
+15,Latisha,O'Keefe,latisha@windlerroberts.name,true,39726366,google
+16,Amos,Nader,amos@bechtelar.com,true,78294936,facebook
+17,Marshall,Crooks,marshall@wiza.name,true,16080228,twitter
+18,Benedict,Rath,benedict@gerholddonnelly.info,true,94859300,twitter
+19,Royal,Lynch,royal@roob.co,true,72206298,twitter
+>>>>>>> seeds
