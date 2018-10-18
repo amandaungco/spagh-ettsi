@@ -7,12 +7,14 @@ CSV.open("db/payments_seeds.csv", "w", :write_headers=> true,
 
   20.times do
     user_id = rand(1..25)
-    status = %w(pending paid complete cancelled).sample
-    payment_id = rand(1..2000)
     address_id = rand(1..200)
+    card_number = rand.to_s[2..10]
+    expiration_date = %w(02/20 03/21 04/22 08/23 10/24 12/25).sample
+    cvv = rand(111..999)
+    card_type = %w(mastercard visa discover amex).sample
 
 
-    csv << [user_id, status, payment_id, address_id]
+    csv << [user_id, address_id, card_number, expiration_date, cvv, card_type]
   end
 end
 
