@@ -155,12 +155,35 @@ CSV.foreach(ORDER_PRODUCTS_FILE, :headers => true) do |row|
 
   if !successful
     order_products_failures << order_products
-    puts "Failed to save order_products: #{order_products.inspect}"
-    puts "#{order_products.errors.full_messages}"
+    puts "Failed to save order_products: #{order_product.inspect}"
+    puts "#{order_product.errors.full_messages}"
   else
-    puts "Created order_products: #{order_products.inspect}"
+    puts "Created order_products: #{order_product.inspect}"
   end
 
+
+REVIEWS_FILE = Rails.root.join('db', 'reviews.csv')
+puts "Loading raw user data from #{REVIEWS_FILE}"
+
+reviews_failures = []
+CSV.foreach(REVIEWS_FILE, :headers => true) do |row|
+  review = Review.new(
+    user_id: row['user_id'],
+    product_id: row['product_id'],
+    review: row['review'],
+    rating: row['rating']
+  )
+
+  successful = review.save
+
+  if !successful
+    review_failures << review
+
+    puts "Failed to save review: #{review.inspect}"
+    puts "#{review.errors.full_messages}"
+  else
+    puts "Created reviews: #{review.inspect}"
+  end
 
 
   puts "Added #{User.count} user records"
@@ -168,4 +191,19 @@ CSV.foreach(ORDER_PRODUCTS_FILE, :headers => true) do |row|
 
   puts "Added #{Product.count} product records"
   puts "#{product_failures.length} products failed to save."
+
+  puts "Added #{Order_product.count} order_product records"
+  puts "#{order_product_failures.length} order_products failed to save."
+
+  puts "Added #{Order.count} order records"
+  puts "#{order_failures.length} orders failed to save."
+
+  puts "Added #{Address.count} address records"
+  puts "#{address_failures.length} address failed to save."
+
+  puts "Added #{Payment.count} payment records"
+  puts "#{payment_failures.length} payments failed to save."
+
+  puts "Added #{Review.count} review records"
+  puts "#{review_failures.length} reviews failed to save."
 end
