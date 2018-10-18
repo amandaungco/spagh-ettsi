@@ -25,16 +25,16 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
 
   20.times do
 
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    street = Faker::Address.street_address
-    street_2 = Faker::Address.secondary_address
-    city = Faker::Address.city
-    state = Faker::Address.state
-    zip = Faker::Address.zip
+    category = %w(sheet filled shell long short
+    soup gluten-free).sample
+    name = Faker::BreakingBad.character
+    price_in_cents = rand(100..5000)
+    description = Faker::Cannabis.health_benefit
+    quantity = rand(1..20)
 
 
-    csv << [first_name, last_name, street, street_2, city, state, zip]
+
+    csv << [category, name, price_in_cents, description, quantity]
 
   end
 end
