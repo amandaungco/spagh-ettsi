@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  user: buyer
+  user: buyer #shouldnt this be a user_id?
   product: spaghetti
   review: This spaghetti was not as long as I expected.
   rating: 3
