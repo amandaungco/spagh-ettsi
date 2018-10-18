@@ -16,3 +16,30 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+// Need to fix when screen gets smaller
+// Need to fix dropdown menu location to align even when screen size changes
+#products-dropdown {
+  margin-right: 80em;
+  margin-top: -85px;
+}
+
+.spaghettsi-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid red;
+}
+
+.nav-word {
+  margin-top: 50px;
+}
+
+.nav-item {
+  padding: 2em;
+  font-size: 20px;
+  font-family: Georgia;
+}
+
+.navbar {
+  border-bottom: 10px solid red;
+}

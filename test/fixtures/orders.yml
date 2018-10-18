@@ -4,8 +4,17 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+order_one:
+  user_id: buyer.id
+  status: in_progress
+  payment_id: amex.id
+  address_id: school.id
+
 # column: value
 #
-two: {}
+order_two:
+  user_id: buyer.id
+  status: placed
+  payment_id: visa.id
+  address_id: home.id
 # column: value

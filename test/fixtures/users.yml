@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  is_a_seller: false
-  uid: 1
-  provider: MyString
+seller:
+  first_name: Francesco
+  last_name: Rinaldi
+  email: francesco@rinaldi.com
+  is_a_seller: true
+  uid: 12345678
+  provider: github
 
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
+buyer:
+  first_name: Pasta
+  last_name: Eater
+  email: pasta@eater.com
   is_a_seller: false
-  uid: 1
-  provider: MyString
+  uid: 23456789
+  provider: github
