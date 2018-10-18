@@ -19,7 +19,8 @@ class ProductsController < ApplicationController
     else
       flash.now[:warning] = "A problem occurred: Could not create #{@product.name}"
       flash.now[:validation_errors] = @product.errors.full_messages
-      render :new
+
+      render :new, status: :bad_request
     end
   end
 

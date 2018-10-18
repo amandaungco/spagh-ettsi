@@ -5,16 +5,16 @@
 # below each fixture, per the syntax in the comments below
 #
 order_one:
-  user: buyer
+  user_id: buyer.id
   status: in_progress
-  payment: amex
-  address: school
+  payment_id: amex.id
+  address_id: school.id
 
 # column: value
 #
 order_two:
-  user: buyer
+  user_id: buyer.id
   status: placed
-  payment: visa
-  address: home
+  payment_id: visa.id
+  address_id: home.id
 # column: value
