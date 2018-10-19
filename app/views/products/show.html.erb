@@ -4,7 +4,7 @@
       <div class="wrapper row">
         <div class="preview col-md-6">
           <div class="preview-pic tab-content">
-            <div class="tab-pane active shadow bg-white rounded" id="pic-1"><img src=<%= Product.images(@product.id)%> /></div>
+            <div class="tab-pane active shadow bg-white rounded" id="pic-1"><img src=<%= @product.image_url %> /></div>
           </div>
             <button type="button" id="review-modal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
               <%= @product.reviews.count %> Product Reviews

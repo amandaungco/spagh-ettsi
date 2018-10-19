@@ -79,8 +79,6 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     quantity = rand(1..20)
     image_url = images[i]
 
-
-
     csv << [category, name, user_id, price_in_cents, description, quantity, image_url]
 
   end
