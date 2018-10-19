@@ -1,0 +1,43 @@
+
+
+<%= form_with model: @payment do |f| %>
+
+  <%= f.hidden_field :user_id, value: @login_user.id %>
+
+  <div class="form-group">
+    <%= f.label "Billing Address" %>
+
+    <%= f.select(:address_id) do %>
+      <% @login_user.addresses.each do |address| -%>
+        <%= content_tag(:option, address.street, value: address.id) %>
+      <% end %>
+    <% end %>
+
+    <%= link_to "Add an address", new_address_path %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :card_number %>
+    <%= f.text_field :card_number, class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :expiration_date %>
+    <%= f.text_field :expiration_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cvv %>
+    <%= f.text_field :cvv, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :card_type %>
+    <%= f.text_field :card_type, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Save Payment", class: 'btn btn-primary'%>
+  </div>
+
+<% end %>

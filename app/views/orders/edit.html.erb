@@ -7,7 +7,8 @@
 <%# should we change category to a select/dropdown with preset categories? %>
   <div class="form-group">
     <%= f.label :payment %>
-    <%= f.select :payment, class: 'form-control'%>
+    <%= f.collection_select(:payment, @login_user.payments.all, :id, :card_number) %>
+
     <%= link_to "Add a payment method", new_payment_path %>
   </div>
 
