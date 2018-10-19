@@ -32,10 +32,22 @@
   border: none;
   outline: none;
   padding: 12px 16px;
-  background-color: #f1f1f1;
+  // background-color: #green;
   cursor: pointer;
 }
 
+a .btn-primary {
+  color: white;
+}
+
+#review-modal {
+  margin-bottom: 3rem;
+  width: 15rem;
+}
+
+#exampleModalLong {
+  margin-top: 10rem;
+}
 /* Add a light grey background on mouse-over */
 .btn:hover {
   background-color: #ddd;

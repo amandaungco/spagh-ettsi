@@ -4,8 +4,37 @@
       <div class="wrapper row">
         <div class="preview col-md-6">
           <div class="preview-pic tab-content">
-            <div class="tab-pane active shadow bg-white rounded" id="pic-1"><img src="/images/pasta1.jpg" /></div>
+            <div class="tab-pane active shadow bg-white rounded" id="pic-1"><img src=<%= Product.images(@product.id)%> /></div>
           </div>
+            <button type="button" id="review-modal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+              <%= @product.reviews.count %> Product Reviews
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reviews</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <% @product.reviews.each do |review| %>
+                    <p><strong>Date: <%= review.created_at %></strong></p>
+                    <p><strong>Rating: <%= review.rating %></strong></p>
+                    <p><%= review.review.capitalize %></p>
+                    <hr>
+                    <%end%>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Write a Review</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
         <div class="details col-md-6">
           <h3 class="product-title"><%= @product.name %></h3>
@@ -38,8 +67,10 @@
               <%= f.submit "Add to Cart", class: 'add-to-cart btn btn-primary'%>
             </div>
 
+
             <% end %>
           </h5>
+          <%=link_to "Back to Products", products_path, class: 'btn btn-products' %>
 
         </div>
       </div>

@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-13,3,reduces risk of artery blockage,1
-15,8,prevents infection,2
-17,16,suppresses muscle spasms,3
-12,4,tranquilizing,5
-11,19,suppresses appetite,3
-1,9,reduces risk of artery blockage,3
-1,19,suppresses muscle spasms,1
-11,20,promotes bone growth,1
-2,9,reduces risk of artery blockage,4
-20,2,prevents infection,2
-20,16,suppresses appetite,1
-15,4,regulates function in the immune system,2
-4,6,treats viral infections,3
-15,11,treats viral infections,4
-14,3,promotes bone growth,3
-11,7,stimulates appetite,3
-19,14,treats allergy symptoms,3
-11,7,treats fungal infection,4
-2,20,treats psoriasis,2
-15,18,stimulates appetite,3
+13,5,regulates function in the immune system,5
+11,2,cell protectant,4
+18,8,cell protectant,3
+14,3,treats viral infections,5
+8,13,treats viral infections,1
+12,13,reduces blood sugar levels,2
+4,17,reduces risk of artery blockage,3
+11,20,stimulates appetite,4
+16,18,kills or slows bacteria growth,4
+9,16,suppresses muscle spasms,3
+1,14,reduces blood sugar levels,2
+4,4,reduces risk of artery blockage,4
+7,1,kills or slows bacteria growth,1
+15,4,reduces vomiting and nausea,5
+16,7,inhibits cell growth in tumors/cancer cells,4
+7,16,cell protectant,5
+9,18,kills or slows bacteria growth,4
+20,7,treats viral infections,2
+3,9,treats psoriasis,1
+15,18,treats allergy symptoms,4

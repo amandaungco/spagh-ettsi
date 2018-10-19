@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity
-filled,Gustavo Fring,18,3035,prevents stress,3
-short,Jesse Pinkman,9,3930,stimulates appetite,16
-long,Rival Dealers,1,2489,cell protectant,14
-sheet,Rival Dealers,3,1739,tranquilizing,18
-sheet,Ed,6,1378,treats psoriasis,14
-sheet,Declan,3,4157,relieves pain,2
-filled,Brandon 'Badger' Mayhew,17,2940,aids sleep,4
-shell,Hector 'Tio' Salamanca,15,507,relieves anxiety,14
-shell,Holly White,15,1272,reduces seizures and convulsion,19
-long,Steven Gomez,18,4594,inhibits cell growth in tumors/cancer cells,15
-gluten-free,Skyler White,11,416,does not affect mental activity,16
-soup,Andrea Cantillo,17,3241,relieves pain,20
-short,Gustavo Fring,6,4970,suppresses appetite,15
-gluten-free,Gale Boetticher,10,376,cell protectant,10
-filled,Emilio Koyama,5,2938,reduces contractions in the small intestines,5
-sheet,Kenny,1,3132,reduces seizures and convulsion,5
-shell,Brock Cantillo,2,1877,treats allergy symptoms,7
-sheet,Marie Schrader,2,2991,prevents infection,5
-sheet,Walter White Jr.,16,4513,treats viral infections,18
-shell,Gretchen Schwartz,1,4643,reduces blood sugar levels,1
+filled,Callentani,19,3187,relieves pain,8
+sheet,Cappalini,18,2738,cell protectant,17
+sheet,Ditalini,10,3485,prevents infection,4
+long,Elbow,2,1865,regulates function in the immune system,4
+filled,Farfalle,12,4636,protects against nervous system degeneration,1
+short,Fettuccine,20,2958,relieves anxiety,9
+long,Gemelli,2,1219,treats fungal infection,2
+gluten-free,Gluten-free Shells,18,1408,reduces blood sugar levels,16
+gluten-free,Jumbo Shells,19,4538,suppresses appetite,16
+filled,Lasagna,18,2046,promotes bone growth,7
+long,manicotti,12,2858,regulates function in the immune system,13
+gluten-free,medium_shells,9,3518,kills or slows bacteria growth,6
+sheet,orzo,1,2359,tranquilizing,17
+long,pappardelle,20,3350,reduces blood sugar levels,15
+short,pastina,10,1476,prevents stress,18
+soup,Penne,20,1199,relieves congestion,2
+sheet,Ravioli,16,2251,treats fungal infection,11
+long,Rotini,20,4500,prevents stress,8
+soup,Spaghetti,13,583,promotes bone growth,7
+short,Tortellini,2,650,does not affect mental activity,18
