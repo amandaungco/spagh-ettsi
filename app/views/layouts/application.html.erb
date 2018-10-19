@@ -57,7 +57,11 @@
           <% if session[:user_id] %>
           <%= link_to "Log out", logout_path, method: "delete"   %>
           <% else %>
+<<<<<<< HEAD
+          <%=link_to "Log in", login_path, class: "nav-link"%>
+=======
           <%=link_to "Log in", '/auth/github', class: "nav-link"%>
+>>>>>>> 432ac43d1c017b0408106c831e18d54e416a5ccf
           <% end %>
         </li>
       </ul>
