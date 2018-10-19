@@ -7,6 +7,8 @@
     <%= order_product.quantity %></tr>
   <% end %>
 </table>
+
+<%= link_to "Continue to checkout", edit_order_path(@order.id) %>
 <% else %>
   <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
 <% end %>

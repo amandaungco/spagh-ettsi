@@ -28,7 +28,7 @@
           <h5 class="colors">
             <div class="form-group">
               <%= f.label :quantity %>
-              <%= f.number_field :quantity, value: 1, class: 'form-control'%>
+              <%= f.number_field :quantity, value: 1, min: 1, max: @product.quantity, class: 'form-control'%>
             </div>
 
             <%= f.hidden_field :product_id, value: params[:id] %>

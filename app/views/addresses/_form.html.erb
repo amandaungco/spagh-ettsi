@@ -1,0 +1,44 @@
+<%= form_with model: @address do |f| %>
+
+  <%= f.hidden_field :user_id, value: @login_user.id %>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :street %>
+    <%= f.text_field :street, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :street_2 %>
+    <%= f.text_field :street_2, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :state %>
+    <%= f.text_field :state, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :zip %>
+    <%= f.text_field :zip, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Save Address", class: 'btn btn-primary'%>
+  </div>
+
+<% end %>

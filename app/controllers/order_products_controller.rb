@@ -36,10 +36,19 @@ class OrderProductsController < ApplicationController
     product = Product.find_by(id: params[:order_product][:product_id])
     quantity = params[:order_product][:quantity].to_i
 
-    if OrderProduct.create(product_id: product.id, order_id: shopping_cart.id, quantity: quantity)
+    existing_row = OrderProduct.find_by(product_id: product.id, order_id: shopping_cart.id)
+
+    if existing_row
+      existing_row.quantity += quantity
+      existing_row.save
       flash[:success] = "Cart has been updated!"
+
+      redirect_to shopping_cart_path
+
+    else OrderProduct.create(product_id: product.id, order_id: shopping_cart.id, quantity: quantity)
       product.quantity -= quantity
       product.save
+      flash[:success] = "Cart has been updated!"
 
       redirect_to shopping_cart_path
     end
