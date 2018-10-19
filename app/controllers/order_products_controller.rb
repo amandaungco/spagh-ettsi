@@ -19,6 +19,7 @@ class OrderProductsController < ApplicationController
 
     shopping_cart = Order.find_by(user_id: session[:user_id], status: :shopping_cart)
 
+
     if !shopping_cart
       shopping_cart = Order.create(
         user_id: session[:user_id],
@@ -29,11 +30,16 @@ class OrderProductsController < ApplicationController
     end
 
     session[:shopping_cart_id] = shopping_cart.id
+    product = Product.find_by(id: params[:order_product][:product_id])
+    quantity = params[:order_product][:quantity].to_i
 
-    if OrderProduct.create(product_id: params[:order_product][:product_id], order_id: shopping_cart.id, quantity: params[:order_product][:quantity])
+    if OrderProduct.create(product_id: product.id, order_id: shopping_cart.id, quantity: quantity)
       flash[:success] = "Cart has been updated!"
+      product.quantity -= quantity
 
-    redirect_to product_path(params[:order_product][:product_id])
+      redirect_to product_path(params[:order_product][:product_id])
+    end
+
   end
 
 

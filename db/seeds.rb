@@ -13,7 +13,6 @@ puts "Loading raw user data from #{USER_FILE}"
 user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new(
-    id: row['id'],
     first_name: row['first_name'],
     last_name: row['last_name'],
     email: row['email'],
@@ -34,15 +33,15 @@ CSV.foreach(USER_FILE, :headers => true) do |row|
 end
 
 
-ADDRESSES_FILE = Rails.root.join('db', 'addresses_seeds.csv')
+ADDRESSES_FILE = Rails.root.join('db', 'address_seeds.csv')
 puts "Loading raw user data from #{ADDRESSES_FILE}"
 
 address_failures = []
 CSV.foreach(ADDRESSES_FILE, :headers => true) do |row|
   address = Address.new(
     user_id: row['user_id'],
-    id: row['id'],
     first_name: row['first_name'],
+    last_name: row['last_name'],
     street: row['street'],
     street_2: row['street_2'],
     city: row['city'],
@@ -62,15 +61,15 @@ CSV.foreach(ADDRESSES_FILE, :headers => true) do |row|
 end
 
 
-PAYMENTS_FILE = Rails.root.join('db', 'payments_seeds.csv')
+PAYMENTS_FILE = Rails.root.join('db', 'payment_seeds.csv')
 puts "Loading raw user data from #{PAYMENTS_FILE}"
 
 payment_failures = []
 CSV.foreach(PAYMENTS_FILE, :headers => true) do |row|
   payment = Payment.new(
     user_id: row['user_id'],
-    address_id: row['card_number'],
-    card_number: row['last_name'],
+    address_id: row['address_id'],
+    card_number: row['card_number'],
     expiration_date: row['expiration_date'],
     cvv: row['cvv'],
     card_type: row['card_type']
@@ -140,21 +139,21 @@ CSV.foreach(ORDER_FILE, :headers => true) do |row|
   end
 end
 
-ORDER_PRODUCTS_FILE = Rails.root.join('db', 'order_products.csv')
+ORDER_PRODUCTS_FILE = Rails.root.join('db', 'order_products_seeds.csv')
 puts "Loading raw user data from #{ORDER_PRODUCTS_FILE}"
 
-order_products_failures = []
+order_product_failures = []
 CSV.foreach(ORDER_PRODUCTS_FILE, :headers => true) do |row|
-  order_products = Order_products.new(
+  order_product = OrderProduct.new(
     order_id: row['order_id'],
     product_id: row['product_id'],
     quantity: row['quantity']
   )
 
-  successful = order_products.save
+  successful = order_product.save
 
   if !successful
-    order_products_failures << order_products
+    order_product_failures << order_product
     puts "Failed to save order_products: #{order_product.inspect}"
     puts "#{order_product.errors.full_messages}"
   else
@@ -162,10 +161,10 @@ CSV.foreach(ORDER_PRODUCTS_FILE, :headers => true) do |row|
   end
 end
 
-REVIEWS_FILE = Rails.root.join('db', 'reviews.csv')
+REVIEWS_FILE = Rails.root.join('db', 'review_seeds.csv')
 puts "Loading raw user data from #{REVIEWS_FILE}"
 
-reviews_failures = []
+review_failures = []
 CSV.foreach(REVIEWS_FILE, :headers => true) do |row|
   review = Review.new(
     user_id: row['user_id'],
@@ -184,35 +183,33 @@ CSV.foreach(REVIEWS_FILE, :headers => true) do |row|
   else
     puts "Created reviews: #{review.inspect}"
   end
+end
 
-
-  puts "Added #{User.count} user records"
-  puts "#{user_failures.length} users failed to save."
-
-  puts "Added #{Product.count} product records"
-  puts "#{product_failures.length} products failed to save."
-
-  puts "Added #{Order_product.count} order_product records"
-  puts "#{order_product_failures.length} order_products failed to save."
-
-  puts "Added #{Order.count} order records"
-  puts "#{order_failures.length} orders failed to save."
-
-  puts "Added #{Address.count} address records"
-  puts "#{address_failures.length} address failed to save."
-
-  puts "Added #{Payment.count} payment records"
-  puts "#{payment_failures.length} payments failed to save."
-
-  puts "Added #{Review.count} review records"
-  puts "#{review_failures.length} reviews failed to save."
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save."
 
 puts "Added #{Product.count} product records"
 puts "#{product_failures.length} products failed to save."
+
+puts "Added #{OrderProduct.count} order_product records"
+puts "#{order_product_failures.length} order_products failed to save."
+
+puts "Added #{Order.count} order records"
+puts "#{order_failures.length} orders failed to save."
+
+puts "Added #{Address.count} address records"
+puts "#{address_failures.length} address failed to save."
+
+puts "Added #{Payment.count} payment records"
+puts "#{payment_failures.length} payments failed to save."
+
+puts "Added #{Review.count} review records"
+puts "#{review_failures.length} reviews failed to save."
+
 
 puts "Manually resetting PK sequence on each table"
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 
-  end
+
 end

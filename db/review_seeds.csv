@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-16,141,stimulates function in the immune system,4
-14,77,reduces inflammation,2
-7,18,prevents infection,4
-8,137,suppresses muscle spasms,4
-16,186,reduces blood sugar levels,3
-15,96,relieves pain,1
-10,39,treats depression,1
-7,67,treats allergy symptoms,3
-5,42,treats depression,1
-15,121,reduces seizures and convulsion,4
-15,57,reduces blood sugar levels,4
-1,25,treats fungal infection,1
-12,152,relieves congestion,2
-17,77,reduces contractions in the small intestines,4
-18,177,regulates function in the immune system,4
-19,97,suppresses muscle spasms,4
-7,8,suppresses appetite,5
-14,48,regulates function in the immune system,3
-1,135,inhibits cell growth in tumors/cancer cells,3
-10,79,treats depression,4
+13,3,reduces risk of artery blockage,1
+15,8,prevents infection,2
+17,16,suppresses muscle spasms,3
+12,4,tranquilizing,5
+11,19,suppresses appetite,3
+1,9,reduces risk of artery blockage,3
+1,19,suppresses muscle spasms,1
+11,20,promotes bone growth,1
+2,9,reduces risk of artery blockage,4
+20,2,prevents infection,2
+20,16,suppresses appetite,1
+15,4,regulates function in the immune system,2
+4,6,treats viral infections,3
+15,11,treats viral infections,4
+14,3,promotes bone growth,3
+11,7,stimulates appetite,3
+19,14,treats allergy symptoms,3
+11,7,treats fungal infection,4
+2,20,treats psoriasis,2
+15,18,stimulates appetite,3
