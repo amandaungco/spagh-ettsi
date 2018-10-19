@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-13,5,regulates function in the immune system,5
-11,2,cell protectant,4
-18,8,cell protectant,3
-14,3,treats viral infections,5
-8,13,treats viral infections,1
-12,13,reduces blood sugar levels,2
-4,17,reduces risk of artery blockage,3
-11,20,stimulates appetite,4
-16,18,kills or slows bacteria growth,4
-9,16,suppresses muscle spasms,3
-1,14,reduces blood sugar levels,2
-4,4,reduces risk of artery blockage,4
-7,1,kills or slows bacteria growth,1
-15,4,reduces vomiting and nausea,5
-16,7,inhibits cell growth in tumors/cancer cells,4
-7,16,cell protectant,5
-9,18,kills or slows bacteria growth,4
-20,7,treats viral infections,2
-3,9,treats psoriasis,1
-15,18,treats allergy symptoms,4
+2,11,relieves pain,4
+13,10,reduces risk of artery blockage,1
+16,12,stimulates function in the immune system,5
+4,9,suppresses appetite,5
+1,19,protects against nervous system degeneration,3
+13,17,reduces risk of artery blockage,2
+16,1,reduces inflammation,5
+20,5,relieves anxiety,5
+13,15,promotes bone growth,5
+3,12,affects mental activity,3
+5,2,reduces seizures and convulsion,3
+13,10,regulates function in the immune system,1
+2,1,relieves pain,4
+17,13,improves airflow to lungs,3
+11,8,treats fungal infection,1
+3,3,does not affect mental activity,1
+9,10,relieves congestion,2
+2,1,reduces vomiting and nausea,3
+18,17,relieves congestion,4
+9,11,tranquilizing,2
