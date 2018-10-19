@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <title>SpaghEttsi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -57,6 +59,26 @@
       </div>
   </nav>
 
+
     <%= yield %>
   </body>
+  <!-- Footer -->
+  <footer class="page-footer font-small special-color-light pt-4">
+      <div class="container">
+        <p class="margin-top-x8">
+        <div class="row">
+          <h5 class="text-center">Connect with us! Imagine the pastabilities!</h5>
+          <div>
+            <br />
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-pinterest"></a>
+      </div>
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a> Spagh-ettsi ™️ ®️</a>
+      </div>
+    </footer>
 </html>
