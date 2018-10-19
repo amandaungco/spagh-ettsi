@@ -55,11 +55,11 @@ end
 
 CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
   :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity"]) do |csv|
-  pasta = ["callentani", "cappalini", "ditalini", "elbow", "farfalle",
-    "fettuccine", "gemelli", "gluten free shells", "large shells", "lasagna",
+  pasta = ["Callentani", "Cappalini", "Ditalini", "Elbow", "Farfalle",
+    "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
     "manicotti", "medium_shells", "orzo", "pappardelle", "pastina",
-    "penne", "ravioli", "rotini", "spaghetti", "tortellini"]
-  
+    "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
+
   20.times do |i|
 
     category = %w(sheet filled shell long short
