@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :find_order, only: [:show, :edit, :update, :destroy, :shopping_cart]
   def index
   end
 
@@ -25,6 +26,12 @@ class OrdersController < ApplicationController
   end
 
   def shopping_cart
+
+  end
+
+private
+
+  def find_order
     @order = Order.find_by(id: session[:shopping_cart_id])
   end
 

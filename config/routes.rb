@@ -9,10 +9,11 @@ Rails.application.routes.draw do
 
 
   resources :products
-  resources :user
-  resources :address
+  resources :users
+  resources :addresses
   resources :payments
   resources :reviews
+  resources :orders
 
   resources :order_products, only: [:create]
   # resources :orders do

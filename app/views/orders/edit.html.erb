@@ -1,0 +1,25 @@
+<%= form_with model: @order do |f| %>
+
+
+  <%= f.hidden_field :status, value: :placed %>
+
+
+<%# should we change category to a select/dropdown with preset categories? %>
+  <div class="form-group">
+    <%= f.label :payment %>
+    <%= f.select :payment, class: 'form-control'%>
+    <%= link_to "Add a payment method", new_payment_path %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.collection_select(:address, @login_user.addresses.all, :id, :street) %>
+
+    <%= link_to "Add an address", new_address_path %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit Order", class: 'btn btn-primary'%>
+  </div>
+
+<% end %>
