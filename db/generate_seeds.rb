@@ -59,7 +59,7 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     "fettuccine", "gemelli", "gluten free shells", "large shells", "lasagna",
     "manicotti", "medium_shells", "orzo", "pappardelle", "pastina",
     "penne", "ravioli", "rotini", "spaghetti", "tortellini"]
-  ]
+  
   20.times do |i|
 
     category = %w(sheet filled shell long short
