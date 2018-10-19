@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity
-shell,callentani,3,391,reduces contractions in the small intestines,10
-filled,cappalini,16,2880,treats allergy symptoms,15
-short,ditalini,3,968,treats viral infections,12
-short,elbow,14,4389,reduces vomiting and nausea,9
-filled,farfalle,16,3087,treats psoriasis,3
-filled,fettuccine,13,4351,relieves anxiety,5
-soup,gemelli,5,1436,treats viral infections,13
-shell,gluten free shells,3,4937,protects against nervous system degeneration,6
-shell,large shells,10,2027,relieves congestion,6
-gluten-free,lasagna,13,3433,tranquilizing,16
-long,manicotti,12,4853,relieves pain,12
-short,medium_shells,17,4128,relieves anxiety,4
-long,orzo,7,194,reduces contractions in the small intestines,16
-sheet,pappardelle,9,1865,treats fungal infection,18
-short,pastina,1,4862,suppresses muscle spasms,15
-short,penne,18,112,does not affect mental activity,13
-sheet,ravioli,6,675,does not affect mental activity,9
-shell,rotini,9,1850,treats allergy symptoms,19
-soup,spaghetti,7,1916,suppresses appetite,8
-soup,tortellini,3,4723,prevents infection,12
+filled,Callentani,19,3187,relieves pain,8
+sheet,Cappalini,18,2738,cell protectant,17
+sheet,Ditalini,10,3485,prevents infection,4
+long,Elbow,2,1865,regulates function in the immune system,4
+filled,Farfalle,12,4636,protects against nervous system degeneration,1
+short,Fettuccine,20,2958,relieves anxiety,9
+long,Gemelli,2,1219,treats fungal infection,2
+gluten-free,Gluten-free Shells,18,1408,reduces blood sugar levels,16
+gluten-free,Jumbo Shells,19,4538,suppresses appetite,16
+filled,Lasagna,18,2046,promotes bone growth,7
+long,manicotti,12,2858,regulates function in the immune system,13
+gluten-free,medium_shells,9,3518,kills or slows bacteria growth,6
+sheet,orzo,1,2359,tranquilizing,17
+long,pappardelle,20,3350,reduces blood sugar levels,15
+short,pastina,10,1476,prevents stress,18
+soup,Penne,20,1199,relieves congestion,2
+sheet,Ravioli,16,2251,treats fungal infection,11
+long,Rotini,20,4500,prevents stress,8
+soup,Spaghetti,13,583,promotes bone growth,7
+short,Tortellini,2,650,does not affect mental activity,18

@@ -11,9 +11,11 @@ class Product < ApplicationRecord
   validates :category, presence: true
   validates :description, presence: true
 
-  def images(name)
-    @images = Dir.glob("public/images/*.jpg")
-    image_url = @images.select { |x| x.include? name }.first
-
+  def self.images(id)
+    # create regex to accurately get posts from data with single digit id
+    images = Dir.glob("public/images/*.jpg")
+    image_url = images.select { |x| x.include? id.to_s }.first
+    correct_path = image_url.gsub("public", "")
+    return correct_path
   end
 end

@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-17,7,reduces contractions in the small intestines,2
-11,4,treats viral infections,5
-5,8,relieves anxiety,3
-18,4,treats allergy symptoms,3
-5,20,prevents infection,1
-8,4,prevents infection,4
-4,3,prevents infection,1
-8,11,relieves congestion,1
-5,19,relieves anxiety,5
-9,6,reduces seizures and convulsion,2
-10,10,cell protectant,1
-12,17,stimulates appetite,2
-6,19,regulates function in the immune system,4
-5,5,reduces contractions in the small intestines,1
-3,14,reduces seizures and convulsion,2
-1,16,affects mental activity,4
-14,5,kills or slows bacteria growth,4
-5,3,treats fungal infection,3
-16,5,stimulates function in the immune system,5
-18,8,reduces contractions in the small intestines,3
+13,5,regulates function in the immune system,5
+11,2,cell protectant,4
+18,8,cell protectant,3
+14,3,treats viral infections,5
+8,13,treats viral infections,1
+12,13,reduces blood sugar levels,2
+4,17,reduces risk of artery blockage,3
+11,20,stimulates appetite,4
+16,18,kills or slows bacteria growth,4
+9,16,suppresses muscle spasms,3
+1,14,reduces blood sugar levels,2
+4,4,reduces risk of artery blockage,4
+7,1,kills or slows bacteria growth,1
+15,4,reduces vomiting and nausea,5
+16,7,inhibits cell growth in tumors/cancer cells,4
+7,16,cell protectant,5
+9,18,kills or slows bacteria growth,4
+20,7,treats viral infections,2
+3,9,treats psoriasis,1
+15,18,treats allergy symptoms,4
