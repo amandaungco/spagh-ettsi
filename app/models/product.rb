@@ -10,5 +10,8 @@ class Product < ApplicationRecord
   validates :quantity, presence: true, numericality: true
   validates :category, presence: true
   validates :description, presence: true
-  
+
+  def self.categories
+    return ['short', 'shell', 'sheet', 'filled', 'soup']
+  end
 end

@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new()
+    @product_categories = Product.categories
   end
 
   def create

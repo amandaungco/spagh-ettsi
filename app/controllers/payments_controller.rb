@@ -7,10 +7,12 @@ class PaymentsController < ApplicationController
 
   def new
     @payment = Payment.new()
+    @card_types = Payment.card_types
   end
 
   def create
     @payment = Payment.new(payment_params)
+
 
     if @payment.save
       flash[:success] = "Successfully created payment."

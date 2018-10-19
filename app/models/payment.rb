@@ -9,4 +9,8 @@ class Payment < ApplicationRecord
   validates :expiration_date, presence: true
   validates :cvv, presence: true, numericality: true
   validates :card_type, presence: true
+
+  def self.card_types
+    return ['AMEX', 'Visa', 'MasterCard', 'Discover', 'Spagh-Ettsi Gift Card']
+  end
 end

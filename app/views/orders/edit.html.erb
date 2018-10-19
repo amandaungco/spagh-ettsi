@@ -10,18 +10,6 @@
   <%= f.hidden_field :status, value: :placed %>
 
 
-<%# should we change category to a select/dropdown with preset categories? %>
-  <div class="form-group">
-    <%= f.label "Payment Method" %>
-    <% if @login_user.payments.any? %>
-      <%= f.select(:payment_id) do %>
-        <% @login_user.payments.each do |payment| -%>
-          <%= content_tag(:option, payment.card_number, value: payment.id) %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <%= link_to "Add a payment method", new_payment_path %>
-  </div>
 
   <div class="form-group">
     <%= f.label "Shipping Address" %>
@@ -34,6 +22,18 @@
     <% end %>
 
     <%= link_to "Add an address", new_address_path %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Payment Method" %>
+    <% if @login_user.payments.any? %>
+      <%= f.select(:payment_id) do %>
+        <% @login_user.payments.each do |payment| -%>
+          <%= content_tag(:option, payment.card_number, value: payment.id) %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= link_to "Add a payment method", new_payment_path %>
   </div>
 
   <div class="form-group">
