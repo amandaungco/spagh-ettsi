@@ -54,25 +54,32 @@ end
 
 
 CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
-  :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity"]) do |csv|
+  :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity", "image_url"]) do |csv|
   pasta = ["Callentani", "Cappalini", "Ditalini", "Elbow", "Farfalle",
     "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
     "manicotti", "medium_shells", "orzo", "pappardelle", "pastina",
     "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
+  images = ["/images/pasta1.jpg", "/images/pasta2.jpg", "/images/pasta3.jpg",
+    "/images/pasta4.jpg", "/images/pasta5.jpg", "/images/pasta6.jpg",
+  "/images/pasta7.jpg", "/images/pasta8.jpg", "/images/pasta9.jpg", "/images/pasta10.jpg",
+  "/images/pasta11.jpg", "/images/pasta12.jpg", "/images/pasta13.jpg", "/images/pasta14.jpg", "/images/pasta15.jpg",
+  "/images/pasta16.jpg", "/images/pasta17.jpg", "/images/pasta18.jpg",
+  "/images/pasta19.jpg", "/images/pasta20.jpg"]
+  categories = ["short", "long", "soup", "short", "short", "long", "short", "short",
+  "short", "sheet", "filled", "short", "soup", "long", "short", "short", "filled",
+  "short", "long", "filled"]
 
   20.times do |i|
 
-    category = %w(sheet filled shell long short
-    soup gluten-free).sample
+    category = categories[i]
     name = pasta[i]
     user_id = rand(1..20)
     price_in_cents = rand(100..5000)
     description = Faker::Cannabis.health_benefit
     quantity = rand(1..20)
+    image_url = images[i]
 
-
-
-    csv << [category, name, user_id, price_in_cents, description, quantity]
+    csv << [category, name, user_id, price_in_cents, description, quantity, image_url]
 
   end
 

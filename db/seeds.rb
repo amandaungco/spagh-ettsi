@@ -101,7 +101,8 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
     user_id: row['user_id'],
     price_in_cents: row['price_in_cents'],
     description: row['description'],
-    quantity: row['quantity']
+    quantity: row['quantity'],
+    image_url: row['image_url']
   )
 
   successful = product.save
