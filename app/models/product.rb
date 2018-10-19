@@ -11,4 +11,9 @@ class Product < ApplicationRecord
   validates :category, presence: true
   validates :description, presence: true
 
+  def images(name)
+    @images = Dir.glob("public/images/*.jpg")
+    image_url = @images.select { |x| x.include? name }.first
+
+  end
 end

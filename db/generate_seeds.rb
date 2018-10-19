@@ -55,12 +55,16 @@ end
 
 CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
   :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity"]) do |csv|
-
-  20.times do
+  pasta = ["callentani", "cappalini", "ditalini", "elbow", "farfalle",
+    "fettuccine", "gemelli", "gluten free shells", "large shells", "lasagna",
+    "manicotti", "medium_shells", "orzo", "pappardelle", "pastina",
+    "penne", "ravioli", "rotini", "spaghetti", "tortellini"]
+  ]
+  20.times do |i|
 
     category = %w(sheet filled shell long short
     soup gluten-free).sample
-    name = Faker::BreakingBad.character
+    name = pasta[i]
     user_id = rand(1..20)
     price_in_cents = rand(100..5000)
     description = Faker::Cannabis.health_benefit
