@@ -18,7 +18,6 @@ class PaymentsController < ApplicationController
     else
       flash.now[:warning] = "A problem occurred: Could not create payment."
       flash.now[:validation_errors] = @payment.errors.full_messages
-
       render :new, status: :bad_request
     end
   end
