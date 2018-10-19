@@ -1,0 +1,13 @@
+.col-xs-12{
+  display: flex;
+  flex-direction:column;
+
+}
+.topper{
+  border: 1px solid black;
+  display: grid;
+  align-content: center;
+}
+.col-sm-4{
+  display: inline-grid;
+}
