@@ -1,21 +1,21 @@
-category,name,user_id,price_in_cents,description,quantity
-filled,Callentani,19,3187,relieves pain,8
-sheet,Cappalini,18,2738,cell protectant,17
-sheet,Ditalini,10,3485,prevents infection,4
-long,Elbow,2,1865,regulates function in the immune system,4
-filled,Farfalle,12,4636,protects against nervous system degeneration,1
-short,Fettuccine,20,2958,relieves anxiety,9
-long,Gemelli,2,1219,treats fungal infection,2
-gluten-free,Gluten-free Shells,18,1408,reduces blood sugar levels,16
-gluten-free,Jumbo Shells,19,4538,suppresses appetite,16
-filled,Lasagna,18,2046,promotes bone growth,7
-long,manicotti,12,2858,regulates function in the immune system,13
-gluten-free,medium_shells,9,3518,kills or slows bacteria growth,6
-sheet,orzo,1,2359,tranquilizing,17
-long,pappardelle,20,3350,reduces blood sugar levels,15
-short,pastina,10,1476,prevents stress,18
-soup,Penne,20,1199,relieves congestion,2
-sheet,Ravioli,16,2251,treats fungal infection,11
-long,Rotini,20,4500,prevents stress,8
-soup,Spaghetti,13,583,promotes bone growth,7
-short,Tortellini,2,650,does not affect mental activity,18
+category,name,user_id,price_in_cents,description,quantity,image_url
+short,Callentani,10,3604,relieves anxiety,2,/images/pasta1.jpg
+long,Cappalini,11,1618,kills or slows bacteria growth,7,/images/pasta2.jpg
+soup,Ditalini,20,2376,cell protectant,6,/images/pasta3.jpg
+short,Elbow,3,3465,improves airflow to lungs,8,/images/pasta4.jpg
+short,Farfalle,10,4224,treats psoriasis,8,/images/pasta5.jpg
+long,Fettuccine,18,1035,regulates function in the immune system,16,/images/pasta6.jpg
+short,Gemelli,15,549,regulates function in the immune system,8,/images/pasta7.jpg
+short,Gluten-free Shells,3,618,stimulates appetite,15,/images/pasta8.jpg
+short,Jumbo Shells,5,1838,kills or slows bacteria growth,7,/images/pasta9.jpg
+sheet,Lasagna,11,1457,treats fungal infection,1,/images/pasta10.jpg
+filled,manicotti,18,3912,promotes bone growth,10,/images/pasta11.jpg
+short,medium_shells,17,4614,treats fungal infection,11,/images/pasta12.jpg
+soup,orzo,12,4398,promotes bone growth,15,/images/pasta13.jpg
+long,pappardelle,6,2278,treats depression,20,/images/pasta14.jpg
+short,pastina,18,1635,aids sleep,19,/images/pasta15.jpg
+short,Penne,13,2915,treats depression,13,/images/pasta16.jpg
+filled,Ravioli,10,1409,inhibits cell growth in tumors/cancer cells,20,/images/pasta17.jpg
+short,Rotini,6,2590,cell protectant,12,/images/pasta18.jpg
+long,Spaghetti,8,4709,reduces blood sugar levels,11,/images/pasta19.jpg
+filled,Tortellini,5,1308,stimulates function in the immune system,17,/images/pasta20.jpg

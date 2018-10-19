@@ -3,4 +3,3 @@ class ChangeCcToBigInt < ActiveRecord::Migration[5.2]
     change_column :payments, :card_number, :bigint
   end
 end
-s

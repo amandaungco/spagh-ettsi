@@ -1,4 +1,4 @@
-<%= form_with model: @address do |f| %>
+<%= form_with model: @address, local: true do |f| %>
 
   <%= f.hidden_field :user_id, value: @login_user.id %>
 

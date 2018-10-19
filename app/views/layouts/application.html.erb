@@ -1,111 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 
-    <title>SpaghEttsi</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title>SpaghEttsi</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-  <body>
+<body>
 
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item nav-word">
-                <%=link_to "Shop Pasta", products_path, class: "nav-link"%>
-                  <!-- <a class="nav-link dropdown-toggle nav-word" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Pasta Products</a> -->
-                  <!-- <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown"> -->
-                    <%#=link_to "Long", products_path, class: "dropdown-item"%>
-                    <%#=link_to "Short", products_path, class: "dropdown-item"%>
-                    <%#=link_to "Shells", products_path, class: "dropdown-item"%>
-                    <%#=link_to "Sheets", products_path, class: "dropdown-item"%>
-                    <%#=link_to "Filled", products_path, class: "dropdown-item"%>
-                    <%#=link_to "Soup", products_path, class: "dropdown-item"%>
-                  <!-- </div> -->
-              </li>
-              <li class="nav-item nav-word">
-                <%=link_to "Recipes", products_path, class: "nav-link"%>
-              </li>
-              <li class="nav-item nav-word">
-                <%=link_to "Sell a Product", new_product_path, class: "nav-link"%>
-              </li>
-          </ul>
-      </div>
-      <div class="mx-auto order-0">
-        <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item nav-word">
+          <%=link_to "Shop Pasta", products_path, class: "nav-link"%>
+          <!-- <a class="nav-link dropdown-toggle nav-word" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Pasta Products</a> -->
+          <!-- <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown"> -->
+          <%#=link_to "Long", products_path, class: "dropdown-item"%>
+          <%#=link_to "Short", products_path, class: "dropdown-item"%>
+          <%#=link_to "Shells", products_path, class: "dropdown-item"%>
+          <%#=link_to "Sheets", products_path, class: "dropdown-item"%>
+          <%#=link_to "Filled", products_path, class: "dropdown-item"%>
+          <%#=link_to "Soup", products_path, class: "dropdown-item"%>
+          <!-- </div> -->
+        </li>
+        <li class="nav-item nav-word">
+          <%=link_to "Recipes", products_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item nav-word">
+          <%=link_to "Sell a Product", new_product_path, class: "nav-link"%>
+        </li>
+      </ul>
+    </div>
+    <div class="mx-auto order-0">
+      <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
 
-          <!-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-      </div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item nav-word">
-              <%=link_to "Contact Us", contact_us_path, class: "nav-link"%>
-            </li>
-            <li class="nav-item nav-word">
-              <%=link_to "Cart", shopping_cart_path, class: "nav-link"%>
-            </li>
-            <li class="nav-item nav-word">
-              <%=link_to "Log in", products_path, class: "nav-link"%>
-            </li>
-          </ul>
-      </div>
+      <!-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item nav-word">
+          <%=link_to "Contact Us", contact_us_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item nav-word">
+          <%=link_to "Cart", shopping_cart_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item nav-word">
+          <% if session[:user_id] %>
+          <%= link_to "Log out", logout_path, method: "delete"   %>
+          <% else %>
+          <%=link_to "Log in", '/auth/github', class: "nav-link"%>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </nav>
 
 
 
-  <% if flash.any? %>
-        <section class='alert__container'>
-             <% flash.each do |name, message| %>
-              <% if name == 'warning' || name == 'success' %>
-                <div class="alert alert-<%= name %>">
-                  <span><%= message %></span>
-
-                     <% if flash[:validation_errors] %>
-                         <ul>
-                            <% flash[:validation_errors].each do |message|%>
-                             <li>
-                               <%= message %>
-                             </li>
-                            <%end%>
-                         </ul>
-                     <% end %>
-
-                 </div>
+  <% if flash[:result_text] or flash[:messages] %>
+    <section class="alert__container">
+      <div class="alert alert-<%= flash[:status].to_s == 'failure' ? 'warning' : flash[:status] %>">
+        <span><%= flash[:status].to_s == "failure" ? "A problem occurred: " : "" %><%= flash[:result_text] %></span>
+        <% if flash[:messages] %>
+          <ul>
+            <% flash[:messages].each do |name, problems| %>
+              <% problems.each do |problem| %>
+                <li><%= name %>: <%= problem %></li>
               <% end %>
-            <%end%>
-          </section>
-  <% end%>
-
-
-
-    <%= yield %>
-  </body>
-  <!-- Footer -->
-  <footer class="page-footer font-small special-color-light pt-4">
-      <div class="container">
-        <p class="margin-top-x8">
-        <div class="row">
-          <h5 class="text-center">Connect with us! Imagine the pastabilities!</h5>
-          <div>
-            <br />
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-google"></a>
-            <a href="#" class="fa fa-linkedin"></a>
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-pinterest"></a>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
-      <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a> Spagh-ettsi ™️ ®️</a>
-      </div>
-    </footer>
+    </section>
+  <% end %>
+
+
+
+  <%= yield %>
+</body>
+
+<h5 class="footer text-center w-100 ">Connect with us! Imagine the pastabilities!</h5>
+<div class="sm buttons text-center">
+  <a href="#" class="fa fa-facebook"></a>
+  <a href="#" class="fa fa-twitter"></a>
+  <a href="#" class="fa fa-google"></a>
+  <a href="#" class="fa fa-linkedin"></a>
+  <a href="#" class="fa fa-instagram"></a>
+  <a href="#" class="fa fa-pinterest"></a>
+</div>
+<div class="copyright text-center py-3">© 2018 Copyright:
+  <a> Spagh-ettsi ™️ ®️</a>
+</div>
+
 </html>

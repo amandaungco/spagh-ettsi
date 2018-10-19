@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:success] = "Successfully created #{@product.name}"
       redirect_to product_path(@product.id)
+
     else
       flash.now[:warning] = "A problem occurred: Could not create #{@product.name}"
       flash.now[:validation_errors] = @product.errors.full_messages

@@ -1,4 +1,7 @@
 <h1>All the products</h1>
+<script>
+  filterSelection('all');
+</script>
 <!-- Control buttons -->
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Show all</button>
@@ -16,7 +19,7 @@
   <% i = 1 %>
   <% @products.each do |product| %>
   <div class="filterDiv card <%= product.category %>">
-    <%= link_to image_tag("/images/pasta#{i}.jpg", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
+    <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
     <div class="card-body">
       <h5 class="card-title"><%= product.name %></h5>
       <p class="card-text">$<%= product.price_in_cents%></p>
