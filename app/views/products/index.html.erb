@@ -13,9 +13,10 @@
 
 <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
 <div class="container">
+  <% i = 1 %>
   <% @products.each do |product| %>
   <div class="filterDiv card <%= product.category %>">
-    <img class="card-img-top" src="/images/ditalini.jpg" alt="Card image cap">
+    <%= link_to image_tag("/images/pasta#{i}.jpg", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
     <div class="card-body">
       <h5 class="card-title"><%= product.name %></h5>
       <p class="card-text">$<%= product.price_in_cents%></p>
@@ -38,5 +39,6 @@
   <div class="filterDiv shell">Conchiglie</div>
   <div class="filterDiv short">Gnocci</div>
   <div class="filterDiv soup">Ditalini</div> -->
+    <% i += 1 %>
   <%end%>
 </div>
