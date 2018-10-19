@@ -9,7 +9,7 @@
     float: left;
     background-color: #white;
     width: 22rem;
-    height: 30rem;
+    height: 35rem;
     text-align: center;
     margin: 2px;
     display: none; /* Hidden by default */
@@ -20,6 +20,7 @@
   width: 10rem;
   height: 8rem;
 }
+
 
 /* The "show" class is added to the filtered elements */
 .show {
@@ -54,6 +55,11 @@
 }
 
 .add-to-cart .btn { border-radius: 0; }
+
+.btn-products {
+  background-color: green;
+  color: white;
+}
 
 // product page
 
