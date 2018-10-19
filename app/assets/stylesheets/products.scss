@@ -120,6 +120,11 @@ body {
   padding: 3em;
   line-height: 1.5em; }
 
+#pic-1 {
+  width: 25rem;
+
+}
+
 @media screen and (min-width: 997px) {
   .wrapper {
     display: -webkit-box;
@@ -172,6 +177,10 @@ body {
   .color:first-of-type {
     margin-left: 20px; }
 
+.form-control {
+  width: 19rem;
+}
+
 .add-to-cart {
   background: green;
   padding: 1.2em 1.5em;
@@ -193,17 +202,10 @@ body {
     content: "\f00d";
     color: #fff; }
 
-.orange {
-  background: #ff9f1a; }
-
-.green {
-  background: #85ad00; }
-
-.blue {
-  background: #0076ad; }
-
 .tooltip-inner {
   padding: 1.3em; }
+
+
 
 @-webkit-keyframes opacity {
   0% {
