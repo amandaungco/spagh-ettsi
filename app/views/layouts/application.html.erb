@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -15,27 +16,28 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  <a class="nav-link dropdown-toggle nav-word" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Pasta Products</a>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown">
-                    <%=link_to "Long", products_path, class: "dropdown-item"%>
-                    <%=link_to "Short", products_path, class: "dropdown-item"%>
-                    <%=link_to "Shells", products_path, class: "dropdown-item"%>
-                    <%=link_to "Sheets", products_path, class: "dropdown-item"%>
-                    <%=link_to "Filled", products_path, class: "dropdown-item"%>
-                    <%=link_to "Soup", products_path, class: "dropdown-item"%>
-                  </div>
+              <li class="nav-item nav-word">
+                <%=link_to "Shop Pasta", products_path, class: "nav-link"%>
+                  <!-- <a class="nav-link dropdown-toggle nav-word" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Pasta Products</a> -->
+                  <!-- <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown"> -->
+                    <%#=link_to "Long", products_path, class: "dropdown-item"%>
+                    <%#=link_to "Short", products_path, class: "dropdown-item"%>
+                    <%#=link_to "Shells", products_path, class: "dropdown-item"%>
+                    <%#=link_to "Sheets", products_path, class: "dropdown-item"%>
+                    <%#=link_to "Filled", products_path, class: "dropdown-item"%>
+                    <%#=link_to "Soup", products_path, class: "dropdown-item"%>
+                  <!-- </div> -->
               </li>
               <li class="nav-item nav-word">
                 <%=link_to "Recipes", products_path, class: "nav-link"%>
               </li>
               <li class="nav-item nav-word">
-                <%=link_to "Sell a Product", products_path, class: "nav-link"%>
+                <%=link_to "Sell a Product", new_product_path, class: "nav-link"%>
               </li>
           </ul>
       </div>
       <div class="mx-auto order-0">
-        <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", class: "spaghettsi-logo"), root_path %>
+        <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
 
           <!-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -48,7 +50,7 @@
               <%=link_to "Contact Us", contact_us_path, class: "nav-link"%>
             </li>
             <li class="nav-item nav-word">
-              <%=link_to "Cart", products_path, class: "nav-link"%>
+              <%=link_to "Cart", shopping_cart_path, class: "nav-link"%>
             </li>
             <li class="nav-item nav-word">
               <%=link_to "Log in", products_path, class: "nav-link"%>
