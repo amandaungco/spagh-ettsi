@@ -7,9 +7,11 @@
   <div class="form-group">
     <%= f.label "Billing Address" %>
 
-    <%= f.select(:address_id) do %>
-      <% @login_user.addresses.each do |address| -%>
-        <%= content_tag(:option, address.street, value: address.id) %>
+    <% if @login_user.addresses.any? %>
+      <%= f.select(:address_id) do %>
+        <% @login_user.addresses.each do |address| -%>
+          <%= content_tag(:option, address.street, value: address.id) %>
+        <% end %>
       <% end %>
     <% end %>
 

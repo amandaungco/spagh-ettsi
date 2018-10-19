@@ -20,6 +20,14 @@ class OrdersController < ApplicationController
   end
 
   def update
+    if @order.update(order_params)
+      flash[:success] = "Your order has been placed!"
+      redirect_to root_path #redirect to order # show page?
+    else
+      flash[:warning] = "Unable to place order"
+      flash[:validation_errors] = @order.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
@@ -33,6 +41,11 @@ private
 
   def find_order
     @order = Order.find_by(id: session[:shopping_cart_id])
+  end
+
+  def order_params
+    params.require(:order).permit(:payment_id, :address_id, :status)
+
   end
 
 end
