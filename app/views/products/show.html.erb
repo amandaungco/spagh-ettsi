@@ -1,21 +1,48 @@
-<h1>Individual Product</h1>
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img src="/images/pasta1.jpg" /></div>
+          </div>
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title"><%= @product.name %></h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+          <p class="product-description"><%= @product.description %></p>
+          <h4 class="price">current price: <span>$<%= @product.price_in_cents %></span></h4>
+          <p class="vote"><strong>Category: </strong><%= (@product.category).capitalize %></p>
+          <p class="vote"><strong>Stock: </strong><%= @product.quantity %></p>
 
-<%= @product.name %>
-<%= @product.description %>
-
-
-<%= form_with model: @order_product do |f| %>
-
-<div class="form-group">
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity, value: 1, class: 'form-control'%>
+          <h5 class="colors">Quantity:
+            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+            <span class="color green"></span>
+            <span class="color blue"></span>
+          </h5>
+          <div class="action">
+            <button class="add-to-cart btn btn-primary" type="button">add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= f.hidden_field :product_id, value: params[:id] %>
-<%= f.hidden_field :order_id, value: session[:order_id] %>
+<form method="post" action="">
+    <div>
+        <label for="name">French Hens</label>
+        <input type="text" name="french-hens" id="french-hens" value="3">
+    </div>
 
-<div class="form-group">
-  <%= f.submit "Add to Cart", class: 'btn btn-primary'%>
-</div>
-
-<% end %>
+    <input type="submit" value="Submit" id="submit">
+</form>
