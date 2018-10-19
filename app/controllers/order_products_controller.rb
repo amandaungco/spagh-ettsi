@@ -15,6 +15,8 @@ class OrderProductsController < ApplicationController
       )
 
       session[:user_id] = user.id
+
+
     end
 
     shopping_cart = Order.find_by(user_id: session[:user_id], status: :shopping_cart)
@@ -27,6 +29,7 @@ class OrderProductsController < ApplicationController
         payment_id: nil,
         address_id: nil
       )
+
     end
 
     session[:shopping_cart_id] = shopping_cart.id
@@ -36,8 +39,9 @@ class OrderProductsController < ApplicationController
     if OrderProduct.create(product_id: product.id, order_id: shopping_cart.id, quantity: quantity)
       flash[:success] = "Cart has been updated!"
       product.quantity -= quantity
+      product.save
 
-      redirect_to product_path(params[:order_product][:product_id])
+      redirect_to shopping_cart_path
     end
 
   end

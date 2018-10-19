@@ -1,6 +1,12 @@
 <% if @order %>
-  <%= @order.user %>
-  <%= @order.products.each do |product| %>
-    <%= product.name %>
+  <h3><%= @order.user.first_name %>
+  <%= @order.user.last_name %></h3>
+  <table>
+  <% @order.order_products.each do |order_product| %>
+    <tr><%= order_product.product.name %>
+    <%= order_product.quantity %></tr>
   <% end %>
+</table>
+<% else %>
+  <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
 <% end %>
