@@ -26,8 +26,31 @@
       <p class="card-text"><%= product.description %></p>
       <p class="card-text">Stock:<%= product.quantity %></p>
       <p class="card-text">Rating: </p>
-      <a href="#" class="btn btn-products">Reviews</a>
-      <%=link_to "Buy", product_path(product.id), class: "btn btn-products" %>
+
+      <div class="dropdown">
+        <button class="btn btn-products dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add to Cart
+        </button>
+        <div class="dropdown-menu">
+          <h2><%= product.name %></h2>
+          <div class="dropdown-divider"></div>
+          <%= form_with model: @order_product do |f| %>
+          <form class="px-4 py-3">
+            <div class="form-group">
+              <%= f.label :quantity %>
+              <%= f.number_field :quantity, value: 1, class: 'form-control'%>
+            </div>
+            <%= f.hidden_field :product_id, value: params[:id] %>
+            <%= f.hidden_field :order_id, value: session[:order_id] %>
+
+            <div class="form-group action">
+              <%= f.submit "Add to Cart", class: 'add-to-cart btn btn-primary'%>
+            </div>
+          </form>
+          <% end %>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
     <% i += 1 %>
