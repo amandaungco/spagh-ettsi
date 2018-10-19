@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
     user = User.find_by(uid: auth_hash[:uid], provider: 'github')
     if user
       # User was found in the database
-      flash[:success] = "Logged in as returning user #{user.name}"
+      flash[:success] = "Logged in as returning user #{user.first_name}"
     else
       user = User.build_from_github(auth_hash)
       if user.save
-        flash[:result_text] = "Logged in as new user #{user.name}"
+        flash[:result_text] = "Logged in as new user #{user.first_name}"
       else
         flash[:result_text] = "Could not create new user account: #{user.errors.messages}"
         flash[:messages] = user.errors.messages

@@ -57,7 +57,7 @@
           <% if session[:user_id] %>
           <%= link_to "Log out", logout_path, method: "delete"   %>
           <% else %>
-          <%=link_to "Log in", login_path, method: "post", class: "nav-link"%>
+          <%=link_to "Log in", "/auth/github", class: "nav-link"%>
           <% end %>
         </li>
       </ul>
@@ -67,28 +67,27 @@
 
 
   <% if flash.any? %>
-  <section class='alert__container'>
-    <% flash.each do |name, message| %>
-    <% if name == 'warning' || name == 'success' %>
-    <div class="alert alert-<%= name %>">
-      <span><%= message %></span>
+<section class='alert__container'>
+  <% flash.each do |name, message| %>
+  <% if name == 'warning' || name == 'success' %>
+  <div class="alert alert-<%= name %>">
+    <span><%= message %></span>
 
-      <% if flash[:validation_errors] %>
-      <ul>
-        <% flash[:validation_errors].each do |message|%>
-        <li>
-          <%= message %>
-        </li>
-        <%end%>
-      </ul>
-      <% end %>
-
-    </div>
+    <% if flash[:validation_errors] %>
+    <ul>
+      <% flash[:validation_errors].each do |message|%>
+      <li>
+        <%= message %>
+      </li>
+      <%end%>
+    </ul>
     <% end %>
-    <%end%>
-  </section>
-  <% end%>
 
+  </div>
+  <% end %>
+  <%end%>
+</section>
+<% end%>
 
 
   <%= yield %>

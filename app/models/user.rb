@@ -12,5 +12,17 @@ class User < ApplicationRecord
   validates :uid, presence: true
   validates :provider, presence: true
 
+  def self.build_from_github(auth_hash)
+   user = User.new
+   user.uid = auth_hash[:uid]
+   user.provider = 'github'
+   name = auth_hash['info']['name']
+   names = name.split(' ')
+   user.first_name = names[0]
+   user.last_name = names[1]
+   user.email = auth_hash['info']['email']
+   return user
+  end
+
 
 end
