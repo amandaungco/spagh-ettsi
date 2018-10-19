@@ -23,22 +23,10 @@
       <p class="card-text"><%= product.description %></p>
       <p class="card-text">Stock:<%= product.quantity %></p>
       <p class="card-text">Rating: </p>
-      <a href="#" class="btn btn-primary">Reviews</a>
-      <a href="#" class="btn btn-primary">Buy</a>
+      <a href="#" class="btn btn-products">Reviews</a>
+      <%=link_to "Buy", product_path(product.id), class: "btn btn-products" %>
     </div>
   </div>
-  <!-- <div class="filterDiv stuffed">Tortellini</div>
-  <div class="filterDiv short">Rigitoni</div>
-  <div class="filterDiv filled">Manacotti</div>
-  <div class="filterDiv filled">Ravioli</div>
-  <div class="filterDiv short">Ziti</div>
-  <div class="filterDiv short">Rotini</div>
-  <div class="filterDiv short">Mostaccioli</div>
-  <div class="filterDiv long">Cappalini</div>
-  <div class="filterDiv sheet">Lasagna</div>
-  <div class="filterDiv shell">Conchiglie</div>
-  <div class="filterDiv short">Gnocci</div>
-  <div class="filterDiv soup">Ditalini</div> -->
     <% i += 1 %>
   <%end%>
 </div>
