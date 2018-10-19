@@ -1,10 +1,10 @@
-<% @order.order_products.each do |orderproduct| %>
+<% @shopping_cart.order_products.each do |orderproduct| %>
   <%= orderproduct.product.name %>
   <%= orderproduct.quantity %>
 <% end %>
 
 
-<%= form_with model: @order do |f| %>
+<%= form_with model: @shopping_cart do |f| %>
 
 
   <%= f.hidden_field :status, value: :placed %>

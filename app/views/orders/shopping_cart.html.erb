@@ -1,14 +1,14 @@
-<% if @order %>
-  <h3><%= @order.user.first_name %>
-  <%= @order.user.last_name %></h3>
+<% if @shopping_cart %>
+  <h3><%= @shopping_cart.user.first_name %>
+  <%= @shopping_cart.user.last_name %></h3>
   <table>
-  <% @order.order_products.each do |order_product| %>
+  <% @shopping_cart.order_products.each do |order_product| %>
     <tr><%= order_product.product.name %>
     <%= order_product.quantity %></tr>
   <% end %>
 </table>
 
-<%= link_to "Continue to checkout", edit_order_path(@order.id) %>
+<%= link_to "Continue to checkout", edit_order_path(@shopping_cart.id) %>
 <% else %>
   <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
 <% end %>
