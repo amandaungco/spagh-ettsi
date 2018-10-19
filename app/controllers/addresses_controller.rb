@@ -16,7 +16,7 @@ class AddressesController < ApplicationController
 
     if @address.save
       flash[:success] = "Successfully created address."
-      redirect_to root_path #change this to redirect back
+      redirect_to edit_order_path(1) #change this to redirect back
     else
       flash.now[:warning] = "A problem occurred: Could not create address."
       flash.now[:validation_errors] = @address.errors.full_messages

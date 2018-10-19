@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
 
     if @payment.save
       flash[:success] = "Successfully created payment."
-      redirect_to root_path #change this to redirect back
+      redirect_to edit_order_path(1) #change this to redirect back
     else
       flash.now[:warning] = "A problem occurred: Could not create payment."
       flash.now[:validation_errors] = @payment.errors.full_messages
