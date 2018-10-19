@@ -1,6 +1,6 @@
 
 
-<%= form_with model: @payment do |f| %>
+<%= form_with model: @payment, local: true do |f| %>
 
   <%= f.hidden_field :user_id, value: @login_user.id %>
 
