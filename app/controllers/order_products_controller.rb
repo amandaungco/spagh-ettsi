@@ -5,7 +5,7 @@ class OrderProductsController < ApplicationController
     if !session[:user_id]
       flash[:warning] = "You are not logged in, continuing as guest."
       user = User.create(
-        full_name: 'guest user',
+        full_name: 'Guest user',
         email: 'example@example.com',
         is_a_seller: false,
         uid: rand(11111111..99999999),
