@@ -3,17 +3,16 @@ require 'date'
 require 'csv'
 
 CSV.open('db/user_seeds.csv', "w", :write_headers=> true,
-  :headers => ["first_name", "last_name", "email", "is_a_seller", "uid", "provider"]) do |csv|
+  :headers => ["full_name", "email", "is_a_seller", "uid", "provider"]) do |csv|
 
   20.times do
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    email = Faker::Internet.email("#{first_name}")
+    full_name = Faker::Name.name
+    email = Faker::Internet.email("#{full_name.split}")
     is_a_seller = true
     uid = rand(11111111..99999999)
     provider = %w(github twitter facebook google).sample
 
-    csv << [first_name, last_name, email, is_a_seller, uid, provider]
+    csv << [full_name, email, is_a_seller, uid, provider]
   end
 end
 
