@@ -1,20 +1,60 @@
 <% if @shopping_cart %>
-  <h3><%= @shopping_cart.user.first_name %>
-  <%= @shopping_cart.user.last_name %></h3>
-  <ul>
-  <% @shopping_cart.order_products.each do |order_product| %>
-      <li><%= order_product.product.name %>
-        <%= form_with model: order_product, local: true do |f| %>
-          <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
-          <%= f.hidden_field :id %>
-          <%= f.submit "Update Quantity" %>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+  <h3><%= @shopping_cart.user.name %></h3>
+  <h4>You have <%= @shopping_cart.order_products.count %> items in your cart.</h4>
 
-<%= link_to "Continue to Checkout", checkout_path %>
-<%= link_to "Keep Shopping", products_path %>
+
+<hr>
+
+<div class="card shopping-cart-constainer">
+  <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col" width="120">Quantity</th>
+        <th scope="col" width="120"></th>
+        <th scope="col" width="120">Price</th>
+        <!-- <th scope="col" width="200" class="text-right">Action</th> -->
+      </tr>
+    </thead>
+    <% @shopping_cart.order_products.each do |order_product| %>
+    <tbody>
+        <tr>
+        	<td>
+            <figure class="media">
+            	<div class="img-wrap"><img src=<%= order_product.product.image_url %> class="img-thumbnail img-sm"></div>
+            	<figcaption class="media-body">
+            		<h3 class="title text-truncate"><%= order_product.product.name %></h3>
+            	</figcaption>
+            </figure>
+        	</td>
+  	      <td class="quantity-field">
+            <%= form_with model: order_product, local: true do |f| %>
+              <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
+              <%= f.hidden_field :id %>
+
+  	      </td>
+          <td>
+            <%= f.submit "Update Quantity" %>
+          <% end %>
+          </td>
+  	      <td>
+        		<div class="price-wrap">
+        			<var class="price"><%= order_product.product.price_in_cents%></var>
+
+        		</div> <!-- price-wrap .// -->
+  	      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- card.// -->
+
+</div>
+<div class="col-md-4 text-center bottom-buttons">
+  <%= link_to "Continue to Checkout", checkout_path, class: "btn btn-primary" %>
+  <%= link_to "Keep Shopping", products_path, class: "btn btn-primary" %>
+</div>
 <% else %>
   <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
 <% end %>
+<!--container end.//-->
