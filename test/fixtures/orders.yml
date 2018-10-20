@@ -6,7 +6,7 @@
 #
 order_one:
   user: buyer
-  status: in_progress
+  status: shopping_cart
   payment: amex
   address: school
 

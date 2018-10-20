@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+before_action :find_card_types, only: [:new, :edit, :update, :create]
   def index
   end
 
@@ -6,14 +7,11 @@ class PaymentsController < ApplicationController
   end
 
   def new
-      @payment = Payment.new()
-      @card_types = Payment.card_types
+    @payment = Payment.new()
   end
 
   def create
     @payment = Payment.new(payment_params)
-
-
     if @payment.save
       flash[:success] = "Successfully created payment."
       redirect_to checkout_path
@@ -34,6 +32,10 @@ class PaymentsController < ApplicationController
   end
 
   private
+
+  def find_card_types
+    @card_types = Payment.card_types
+  end
 
   def payment_params
     params.require(:payment).permit(:user_id, :address_id, :card_number, :expiration_date, :cvv, :card_type)
