@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
+
     user = User.find_by(uid: auth_hash[:uid], provider: 'github')
     if user
       # User was found in the database
@@ -27,5 +28,9 @@ class SessionsController < ApplicationController
 
     redirect_to root_path
   end
+  protected
 
+  def auth_hash
+    request.env['omniauth.auth']
+  end
 end

@@ -16,7 +16,7 @@ Minitest::Reporters.use!(
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-# require "minitest/pride"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -30,11 +30,11 @@ class ActiveSupport::TestCase
 
   def mock_auth_hash(user)
     return {
-      provider: user.oauth_provider,
-      uid: user.oauth_uid,
+      provider: user.provider,
+      uid: user.uid,
       info: {
         email: user.email,
-        full_name: user.username
+        full_name: user.full_name
       }
     }
   end

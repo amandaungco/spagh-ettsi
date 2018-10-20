@@ -15,13 +15,13 @@ buyer:
   provider: github
 
 ada:
-  oauth_provider: github
-  oauth_uid: 12345
+  provider: github
+  uid: 12345
   email: ada@adadevelopersacademy.org
   full_name: countess_ada
 
 grace:
-  oauth_provider: github
-  oauth_uid: 13371337
+  provider: github
+  uid: 13371337
   email: grace@hooper.net
   full_name: graceful_hopps
