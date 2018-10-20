@@ -834,7 +834,10 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 5px solid red;
+  border: 5px double red;
+
+
+
 }
 
 .nav-word {
@@ -847,7 +850,7 @@
 }
 
 .navbar {
-  border-bottom: 10px solid red;
+  border-bottom: 10px double red;
 }
 .fa {
   padding: 20px;
@@ -900,9 +903,7 @@
 /************* GENERIC  *****************/
 a {color:#696969;}
 img {width:100%;}
-.card {
-  padding: 2em;
-}
+
 
 
 
