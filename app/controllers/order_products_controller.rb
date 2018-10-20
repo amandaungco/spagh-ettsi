@@ -1,7 +1,6 @@
 class OrderProductsController < ApplicationController
 
   def create
-    params.require(:order_product).permit(:title, :category, :creator, :description, :publication_year)
 
     if !session[:user_id]
       flash[:warning] = "You are not logged in, continuing as guest."
@@ -53,6 +52,29 @@ class OrderProductsController < ApplicationController
       redirect_to shopping_cart_path
     end
 
+  end
+
+  def update
+    order_product = OrderProduct.find_by(id: params[:order_product][:id])
+    old_quantity = order_product.quantity
+
+    order_product.update(quantity: params[:order_product][:quantity])
+    new_quantity = order_product.quantity
+
+    change_inventory = new_quantity - old_quantity
+
+    order_product.product.quantity -= change_inventory
+
+    order_product.product.save
+
+    if order_product.quantity == 0
+      order_product.destroy
+      flash[:success] = "#{order_product.product.name} removed from cart."
+    else
+      flash[:success] = "#{order_product.product.name} quantity updated."
+    end
+
+    redirect_to shopping_cart_path
   end
 
 

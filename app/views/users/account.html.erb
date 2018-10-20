@@ -1,0 +1,10 @@
+<h2> My Account <h2>
+
+<h3> Name: <%= @login_user.first_name %> <%= @login_user.last_name %> </h3>
+
+<h3> Orders: <h3>
+<ul>
+  <% @login_user_orders.each do |order| %>
+    <li> <%= order.updated_at %> <%= link_to "View Order", order_path(order.id) %> </li>
+  <% end %>
+</ul>
