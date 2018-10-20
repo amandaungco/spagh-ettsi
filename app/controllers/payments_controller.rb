@@ -8,7 +8,6 @@ before_action :find_card_types, only: [:new, :edit, :update, :create]
 
   def new
     @payment = Payment.new()
-
   end
 
   def create
