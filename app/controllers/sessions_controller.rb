@@ -1,3 +1,4 @@
+require 'pry'
 class SessionsController < ApplicationController
 
   def create
@@ -28,6 +29,7 @@ class SessionsController < ApplicationController
 
     redirect_to root_path
   end
+
   protected
 
   def auth_hash
