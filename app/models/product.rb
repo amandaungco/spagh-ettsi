@@ -12,6 +12,6 @@ class Product < ApplicationRecord
   validates :description, presence: true
 
   def self.categories
-    return ['short', 'shell', 'sheet', 'filled', 'soup']
+    return ['long', 'short', 'shell', 'sheet', 'filled', 'soup']
   end
 end
