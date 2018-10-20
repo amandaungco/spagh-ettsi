@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_categories, only: [:new, :edit, :update, :create]
   def index
     @products = Product.all
     @order_product = OrderProduct.new()
@@ -11,7 +12,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new()
-    @product_categories = Product.categories
+
   end
 
   def create
@@ -54,6 +55,10 @@ class ProductsController < ApplicationController
     if @product.nil?
       render :notfound, status: :not_found
     end
+  end
+
+  def find_categories
+    @product_categories = Product.categories
   end
 
   def product_params

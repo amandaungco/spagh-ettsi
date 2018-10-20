@@ -11,13 +11,20 @@ describe PaymentsController do
       card_number: 123456789012334,
       expiration_date: Date.today,
       cvv: 123,
-      card_type: AMEX
+      card_type: 'AMEX'
       }
     }
   }
 
   describe 'new' do
-    it "succeeds" do
+    it "succeeds when a user is logged in" do
+      @login_user = buyer
+      get new_payment_path
+      must_respond_with :success
+    end
+
+    it "succeeds if a user is not logged in" do
+      @login_user = nil
       get new_payment_path
       must_respond_with :success
     end
@@ -27,7 +34,7 @@ describe PaymentsController do
     it "creates a payment with valid data" do
       expect {
               post payments_path, params: mock_payment_params
-            }.must_change 'payment.count', 1
+            }.must_change 'Payment.count', 1
 
       payment = Payment.find_by(card_number: mock_payment_params[:payment][:card_number])
 
@@ -42,21 +49,12 @@ describe PaymentsController do
 
     end
 
-    it "renders bad_request and does not update the DB for bogus data" do
-      mock_params[:work][:title] = nil
+    it "renders bad_request and does not update the DB for missing data" do
+      mock_payment_params[:payment][:card_number] = nil
 
       expect {
-                post works_path, params: mock_params
-              }.wont_change 'Work.count'
-
-      must_respond_with :bad_request
-    end
-
-    it "renders 400 bad_request for bogus categories" do
-      mock_params[:work][:category] = 'podcast'
-      expect {
-                post works_path, params: mock_params
-              }.wont_change 'Work.count'
+                post payments_path, params: mock_payment_params
+              }.wont_change 'Payment.count'
 
       must_respond_with :bad_request
     end

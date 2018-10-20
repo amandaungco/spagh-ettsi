@@ -6,8 +6,8 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    @payment = Payment.new()
-    @card_types = Payment.card_types
+      @payment = Payment.new()
+      @card_types = Payment.card_types
   end
 
   def create
