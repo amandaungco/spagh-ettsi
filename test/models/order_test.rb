@@ -21,21 +21,18 @@ describe Order do
     describe 'Relationships' do
       it 'can have many products' do
 
-        order.order_products << order_products(:order_one_spaghetti)
-        # order.products << products(:spaghetti)
-        products = order.order_products
-        expect(order_products.length).must_be :>=, 1
-        order_products.each do |product|
-          expect(product).must_be_instance_of OrderProduct
+        products = order.products
+        expect(products.length).must_be :>=, 1
+        products.each do |product|
+          expect(product).must_be_instance_of Product
         end
       end
 
       it 'can have many order_products' do
+        OrderProduct.create(order: order, product: products(:lasagne), quantity: 5)
 
-        order.order_products << order_products(:order_one_spaghetti)
-        order_products =   order.order_products
-
-        expect(order_products.length).must_be :>=, 1
+        order_products = order.order_products
+        expect(order_products.length).must_be :>=, 2
         order_products.each do |order_product|
           expect(order_product).must_be_instance_of OrderProduct
         end
@@ -85,6 +82,10 @@ describe Order do
       end
 
     end
+    describe "custom validations" do
+      it "must have a payment if order status "do
+    end
+  end
 
     #change these tests to match custom validation
     # it 'must have an address' do
