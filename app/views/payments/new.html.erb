@@ -1,1 +1,5 @@
-<%= render partial: 'form' %>
+<% if @login_user %>
+  <%= render partial: 'form' %>
+<% else %>
+  <p> Please log in to add a payment </p>
+<% end %>
