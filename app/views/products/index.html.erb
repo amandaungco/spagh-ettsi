@@ -15,7 +15,7 @@
 
 
 <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-<div class="container">
+<div class="products-container">
   <% i = 1 %>
   <% @products.each do |product| %>
   <div class="filterDiv card <%= product.category %>">
@@ -38,9 +38,10 @@
           <form class="px-4 py-3">
             <div class="form-group">
               <%= f.label :quantity %>
-              <%= f.number_field :quantity, value: 1, min: 1, max: product.quantity, class: 'form-control'%>
+              <%= f.number_field :quantity, value: 1, class: 'form-control'%>
             </div>
-            <%= f.hidden_field :product_id, value: product.id %>
+            <%= f.hidden_field :product_id, value: params[:id] %>
+            <%= f.hidden_field :order_id, value: session[:order_id] %>
 
             <div class="form-group action">
               <%= f.submit "Submit", class: 'add-to-cart btn btn-primary'%>
