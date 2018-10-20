@@ -40,8 +40,7 @@
               <%= f.label :quantity %>
               <%= f.number_field :quantity, value: 1, class: 'form-control'%>
             </div>
-            <%= f.hidden_field :product_id, value: params[:id] %>
-            <%= f.hidden_field :order_id, value: session[:order_id] %>
+            <%= f.hidden_field :product_id, value: product.id %>
 
             <div class="form-group action">
               <%= f.submit "Submit", class: 'add-to-cart btn btn-primary'%>
