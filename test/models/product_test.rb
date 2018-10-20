@@ -19,9 +19,8 @@ describe Product do
   describe 'Relationships' do
 
     it 'can have many reviews' do
-
-      product.reviews << reviews(:one)
       reviews = product.reviews
+
 
       expect(reviews.length).must_be :>=, 1
       reviews.each do |review|
@@ -30,8 +29,6 @@ describe Product do
     end
 
     it 'can have many orders' do
-
-      product.orders << Order.first
       orders = product.orders
 
       expect(orders.length).must_be :>=, 1
@@ -41,11 +38,10 @@ describe Product do
     end
 
     it 'can have many order_products' do
+      OrderProduct.create(order: orders(:order_one), product: products(:spaghetti), quantity: 5)
+      order_products = product.order_products
 
-      product.order_products << order_products(:order_one_spaghetti)
-      order_products =   product.order_products
-
-      expect(order_products.length).must_be :>=, 1
+      expect(order_products.length).must_be :>=, 2
       order_products.each do |order_product|
         expect(order_product).must_be_instance_of OrderProduct
       end
