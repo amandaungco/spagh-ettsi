@@ -8,7 +8,7 @@ describe OrderProduct do
   it 'has required fields' do
    fields = [:order, :product, :quantity]
     fields.each do |field|
-     expect(order_products).must_respond_to field
+     expect(order_product).must_respond_to field
    end
  end
   describe 'Relationships' do
