@@ -54,11 +54,13 @@
           <%=link_to "Cart", shopping_cart_path, class: "nav-link"%>
         </li>
         <li class="nav-item nav-word">
-          <% if session[:user_id] %>
-          <%= link_to "Log out", logout_path, method: "delete"   %>
+          <% if @login_user && @login_user.provider != 'guest_login' %>
+            <%= link_to "Log Out", logout_path, method: "delete", class: "nav-link"  %>
+          <% elsif @login_user %>
+            <%= link_to "Guest Log Out", logout_path, method: "delete", class: "nav-link" %>
           <% else %>
 
-          <%=link_to "Log in", "/auth/github", class: "nav-link"%>
+          <%=link_to "Log In", "/auth/github", class: "nav-link"%>
 
           <% end %>
         </li>
