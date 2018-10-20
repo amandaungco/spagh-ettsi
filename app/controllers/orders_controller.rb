@@ -24,8 +24,9 @@ class OrdersController < ApplicationController
   def update
     if @shopping_cart.update(order_params)
       flash[:success] = "Your order has been placed!"
+      order_id = session[:shopping_cart_id]
       session[:shopping_cart_id] = nil
-      redirect_to root_path #redirect to order # show page?
+      redirect_to order_path(order_id)
     else
       flash[:warning] = "Unable to place order"
       flash[:validation_errors] = @shopping_cart.errors.full_messages

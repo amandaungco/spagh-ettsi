@@ -54,6 +54,24 @@ class OrderProductsController < ApplicationController
 
   end
 
+  def update
+    order_product = OrderProduct.find_by(id: params[:order_product][:id])
+    old_quantity = order_product.quantity
+
+    order_product.update(quantity: params[:order_product][:quantity])
+    new_quantity = order_product.quantity
+
+    change_inventory = new_quantity - old_quantity
+
+    order_product.product.quantity -= change_inventory
+
+    order_product.product.save
+
+    flash[:success] = "#{order_product.product.name} quantity updated."
+
+    redirect_to shopping_cart_path
+  end
+
 
 
 end
