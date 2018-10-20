@@ -6,12 +6,13 @@ class Order < ApplicationRecord
   belongs_to :user
 
   validates :user_id, presence: true
-  #validates :address_id, presence: true,
-  validates :payment_id, presence: true, if: :order_placed?#, message: 'Must enter a payment to submit order'
+  validates :address_id, presence: true, if: :order_placed?
+  validates :payment_id, presence: true, if: :order_placed?
   validates :status, presence: true
 
   def order_placed?
     self.status == "placed"
   end
+
 
 end

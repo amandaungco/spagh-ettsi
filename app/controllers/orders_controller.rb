@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find_by
+    @order = Order.find_by(id: params[:id])
     render :checkout
   end
 

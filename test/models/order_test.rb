@@ -105,7 +105,15 @@ describe Order do
 
         valid = placed_order.valid?
         expect(valid).must_equal false
-        expect(placed_order.errors.messages[:payment]).must_equal ["Must enter a payment to submit order"]
+  
+      end
+
+      it 'will not work if it does not have an address' do
+        placed_order.address = nil
+        placed_order.save
+
+        valid = placed_order.valid?
+        expect(valid).must_equal false
       end
 
     end
