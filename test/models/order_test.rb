@@ -21,13 +21,12 @@ describe Order do
     describe 'Relationships' do
       it 'can have many products' do
 
-        order.products << products(:lasagne)
-        order.products << products(:spaghetti)
-        products = order.products
-        binding.pry
-        expect(products.length).must_be :>=, 1
-        products.each do |product|
-          expect(product).must_be_instance_of Product
+        order.order_products << order_products(:order_one_spaghetti)
+        # order.products << products(:spaghetti)
+        products = order.order_products
+        expect(order_products.length).must_be :>=, 1
+        order_products.each do |product|
+          expect(product).must_be_instance_of OrderProduct
         end
       end
 
