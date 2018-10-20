@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/pages/contact_us', to: 'pages#contact_us', as: 'contact_us'
   delete "/logout", to: "sessions#destroy", as: "logout"
   get '/shopping_cart', to: 'orders#shopping_cart', as: 'shopping_cart'
-
+  get '/checkout', to: 'orders#edit', as: 'checkout'
+  post '/checkout', to: 'orders#update'
 
 
   resources :products

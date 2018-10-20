@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  
+
   def index
   end
 
@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    render :checkout
   end
 
   def update
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
     else
       flash[:warning] = "Unable to place order"
       flash[:validation_errors] = @shopping_cart.errors.full_messages
-      render :edit
+      render :checkout
     end
   end
 
