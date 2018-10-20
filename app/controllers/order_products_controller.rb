@@ -67,7 +67,12 @@ class OrderProductsController < ApplicationController
 
     order_product.product.save
 
-    flash[:success] = "#{order_product.product.name} quantity updated."
+    if order_product.quantity == 0
+      order_product.destroy
+      flash[:success] = "#{order_product.product.name} removed from cart."
+    else
+      flash[:success] = "#{order_product.product.name} quantity updated."
+    end
 
     redirect_to shopping_cart_path
   end

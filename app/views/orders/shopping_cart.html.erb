@@ -3,13 +3,13 @@
   <%= @shopping_cart.user.last_name %></h3>
   <ul>
   <% @shopping_cart.order_products.each do |order_product| %>
-    <li><%= order_product.product.name %>
-      <%= form_with model: order_product, local: true do |f| %>
-        <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
-        <%= f.hidden_field :id %>
-        <%= f.submit "Update Quantity" %>
-      <% end %>
-    </li>
+      <li><%= order_product.product.name %>
+        <%= form_with model: order_product, local: true do |f| %>
+          <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
+          <%= f.hidden_field :id %>
+          <%= f.submit "Update Quantity" %>
+        <% end %>
+      </li>
   <% end %>
 </ul>
 
