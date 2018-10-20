@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/checkout', to: 'orders#edit', as: 'checkout'
   post '/checkout', to: 'orders#update'
   get '/account', to: 'users#show', as: 'account'
+  post '/products', to: 'order_products#create'
 
   resources :products
   resources :users, only: [:create, :show]

@@ -1,7 +1,6 @@
 class OrderProductsController < ApplicationController
 
   def create
-    params.require(:order_product).permit(:title, :category, :creator, :description, :publication_year)
 
     if !session[:user_id]
       flash[:warning] = "You are not logged in, continuing as guest."
