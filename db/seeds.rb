@@ -12,14 +12,15 @@ puts "Loading raw user data from #{USER_FILE}"
 
 user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
+
   user = User.new(
-    first_name: row['first_name'],
-    last_name: row['last_name'],
+    full_name: row['full_name'],
     email: row['email'],
     is_a_seller: row['is_a_seller'],
     uid: row['uid'],
     provider: row['provider']
   )
+
 
   successful = user.save
 

@@ -5,8 +5,7 @@ class User < ApplicationRecord
   has_many :payments
   has_many :reviews
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :full_name, presence: true
   validates :email, presence: true
   validates_format_of :email,:with => /.+@.+\..+/
   validates :uid, presence: true
@@ -16,10 +15,7 @@ class User < ApplicationRecord
    user = User.new
    user.uid = auth_hash[:uid]
    user.provider = 'github'
-   name = auth_hash['info']['name']
-   names = name.split(' ')
-   user.first_name = names[0]
-   user.last_name = names[1]
+   user.full_name = auth_hash['info']['name']
    user.email = auth_hash['info']['email']
    return user
   end

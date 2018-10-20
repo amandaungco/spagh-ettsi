@@ -2,14 +2,14 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   describe User do
-    let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
+    let(:user) { User.new(full_name: 'Chris McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
 
     it "must be valid" do
       value(user).must_be :valid?
     end
 
     it 'has required fields' do
-      fields = [:first_name, :last_name, :email, :uid, :provider]
+      fields = [:full_name, :email, :uid, :provider]
 
       fields.each do |field|
         expect(user).must_respond_to field
@@ -18,7 +18,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   describe 'Relationships' do
-    let(:user) { User.new(first_name: 'Chris', last_name: 'McNally', email: 'chris@ada.com', uid:'12345', provider: 'github') }
+    let(:user) { users(:buyer)}
 
     it 'can have many products' do
 
@@ -77,26 +77,15 @@ class UserTest < ActiveSupport::TestCase
   end
 
   describe 'validations' do
-    it 'must have a first_name' do
+    it 'must have a full_name' do
       user = users(:seller)
-      user.first_name = nil
+      user.full_name = nil
       user.save
 
       valid = user.valid?
 
       expect(valid).must_equal false
-      expect(user.errors.messages).must_include :first_name
-    end
-
-    it 'must have a last_name' do
-      user = users(:seller)
-      user.last_name = nil
-      user.save
-
-      valid = user.valid?
-
-      expect(valid).must_equal false
-      expect(user.errors.messages).must_include :last_name
+      expect(user.errors.messages).must_include :full_name
     end
 
     it 'must have an email' do

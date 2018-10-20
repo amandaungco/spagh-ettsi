@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
     user = User.find_by(uid: auth_hash[:uid], provider: 'github')
     if user
       # User was found in the database
-      flash[:success] = "Logged in as returning user #{user.first_name}"
+      flash[:success] = "Logged in as returning user #{user.full_name}"
     else
       user = User.build_from_github(auth_hash)
       if user.save
-        flash[:result_text] = "Logged in as new user #{user.first_name}"
+        flash[:success] = "Logged in as new user #{user.full_name}"
       else
-        flash[:result_text] = "Could not create new user account: #{user.errors.messages}"
-        flash[:messages] = user.errors.messages
+        flash[:warning] = "Could not create new user account: #{user.errors.messages}"
+        flash[:validation_errors] = user.errors.messages
         redirect_to root_path
         return
       end
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:success] = "Successfully logged out!"
+    flash[:success] = "Logged out. Pasta la Vista, baby!"
 
     redirect_to root_path
   end
