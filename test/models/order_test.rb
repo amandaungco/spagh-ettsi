@@ -47,7 +47,6 @@ describe Order do
         expect(payment).must_be_instance_of Payment
       end
 
-
       it 'can have one address' do
         address = order.address
         expect(address).must_be_instance_of Address
@@ -74,28 +73,6 @@ describe Order do
         expect(order.errors.messages[:user]).must_equal ["must exist"]
       end
 
-      #change these tests to match custom validation
-      # it 'must have an address' do
-      #   order = orders(:order_one)
-      #   order.address = nil
-      #   order.save
-      #
-      #   valid = order.valid?
-      #
-      #   expect(valid).must_equal false
-      #   expect(order.errors.messages[:address]).must_equal ["must exist"]
-      # end
-
-      # it 'must have a payment' do
-      #   order = orders(:order_one)
-      #   order.payment = nil
-      #   order.save
-      #
-      #   valid = order.valid?
-      #
-      #   expect(valid).must_equal false
-      #   expect(order.errors.messages[:payment]).must_equal ["must exist"]
-      # end
 
       it 'must have a status' do
         order = orders(:order_one)
@@ -109,4 +86,27 @@ describe Order do
       end
 
     end
+
+    #change these tests to match custom validation
+    # it 'must have an address' do
+    #   order = orders(:order_one)
+    #   order.address = nil
+    #   order.save
+    #
+    #   valid = order.valid?
+    #
+    #   expect(valid).must_equal false
+    #   expect(order.errors.messages[:address]).must_equal ["must exist"]
+    # end
+
+    # it 'must have a payment' do
+    #   order = orders(:order_one)
+    #   order.payment = nil
+    #   order.save
+    #
+    #   valid = order.valid?
+    #
+    #   expect(valid).must_equal false
+    #   expect(order.errors.messages[:payment]).must_equal ["must exist"]
+    # end
   end
