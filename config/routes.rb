@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/shopping_cart', to: 'orders#shopping_cart', as: 'shopping_cart'
   get '/checkout', to: 'orders#edit', as: 'checkout'
   post '/checkout', to: 'orders#update'
-
+  get '/account', to: 'users#show', as: 'account'
 
   resources :products
   resources :users

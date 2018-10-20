@@ -1,0 +1,8 @@
+<!-- This is just a place to mess around right now, delete everything if you want to implement this view -->
+<!-- Users will need authorization to view orders -->
+<%= @order.updated_at %>
+<%= @order.payment.card_type %>
+<%= @order.address.street %>
+<% @order.products.each do |product| %>
+  <%= product.name %>  <%= product.quantity %>
+<% end %>
