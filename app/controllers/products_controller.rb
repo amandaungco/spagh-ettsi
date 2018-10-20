@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product_categories = Product.categories
 
     if @product.save
       flash[:success] = "Successfully created #{@product.name}"

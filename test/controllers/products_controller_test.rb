@@ -71,7 +71,7 @@ describe ProductsController do
     end
 
     it "renders bad_request and does not update the DB for bogus data" do
-      mock_params[:product][:user_id] = nil
+      mock_params[:product][:price_in_cents] = 'words'
 
       expect {
                 post products_path, params: mock_params
