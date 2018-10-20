@@ -19,6 +19,9 @@ class User < ApplicationRecord
    name = auth_hash['info']['name']
    names = name.split(' ')
    user.first_name = names[0]
+   if names[1]== nil
+     names[1] = ""
+   end
    user.last_name = names[1]
    user.email = auth_hash['info']['email']
    return user

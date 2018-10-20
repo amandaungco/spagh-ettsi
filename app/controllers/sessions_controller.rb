@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     else
       user = User.build_from_github(auth_hash)
       if user.save
-        flash[:result_text] = "Logged in as new user #{user.first_name}"
+        flash[:success] = "Logged in as new user #{user.first_name}"
       else
-        flash[:result_text] = "Could not create new user account: #{user.errors.messages}"
-        flash[:messages] = user.errors.messages
+        flash[:warning] = "Could not create new user account: #{user.errors.messages}"
+        flash[:validation_errors] = user.errors.messages
         redirect_to root_path
         return
       end
