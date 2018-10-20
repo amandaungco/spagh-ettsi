@@ -24,7 +24,7 @@ describe Order do
         order.products << products(:lasagne)
         order.products << products(:spaghetti)
         products = order.products
-
+        binding.pry
         expect(products.length).must_be :>=, 1
         products.each do |product|
           expect(product).must_be_instance_of Product

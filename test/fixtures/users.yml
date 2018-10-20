@@ -1,16 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 seller:
-  first_name: Francesco
-  last_name: Rinaldi
+  full_name: Francesco Rinaldi
   email: francesco@rinaldi.com
   is_a_seller: true
   uid: 12345678
   provider: github
 
 buyer:
-  first_name: Pasta
-  last_name: Eater
+  full_name: Pasta Eater
   email: pasta@eater.com
   is_a_seller: false
   uid: 23456789
