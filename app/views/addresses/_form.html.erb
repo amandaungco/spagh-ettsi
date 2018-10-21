@@ -1,78 +1,58 @@
-<%= form_with model: @address, local: true do |f| %>
-
-  <%= f.hidden_field :user_id, value: @login_user.id %>
-
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: 'form-control'%>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: 'form-control'%>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :street %>
-    <%= f.text_field :street, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :street_2 %>
-    <%= f.text_field :street_2, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.text_field :state, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :zip %>
-    <%= f.text_field :zip, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Save Address", class: 'btn btn-primary'%>
-  </div>
-
-<% end %>
-
-<div class="container" style="margin-top:20px;">
+<div class="text-center">
+  <h1>Address</h1>
+  <h3>Please fill out all appropriate fields</h3>
+</div>
+<div class="container address-container border" style="margin-top:20px;">
   <%= form_with model: @address, local: true do |f| %>
   <%= f.hidden_field :user_id, value: @login_user.id %>
   <form>
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label" for>Email Address</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="email">
-      </div>
-    </div>
-    <div class="form-group">
       <%= f.label :first_name, class: "col-sm-3 col-form-label"  %>
       <div class="col-sm-9">
-        <%= f.text_field :first_name, class: 'form-control'%>
+        <%= f.text_field :first_name, class: 'form-control', id:"name" %>
       </div>
     </div>
-
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label">Password</label>
+      <%= f.label :last_name, class: "col-sm-3 col-form-label"  %>
       <div class="col-sm-9">
-        <input type="password" class="form-control" id="password">
+        <%= f.text_field :last_name, class: 'form-control', id:"name" %>
       </div>
     </div>
-
+    <div class="form-group row">
+      <%= f.label :street, class: "col-sm-3 col-form-label"  %>
+      <div class="col-sm-9">
+        <%= f.text_field :street, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :street_2, class: "col-sm-3 col-form-label"  %>
+      <div class="col-sm-9">
+        <%= f.text_field :street_2, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :city, class: "col-sm-3 col-form-label"  %>
+      <div class="col-sm-9">
+        <%= f.text_field :city, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :state, class: "col-sm-3 col-form-label"  %>
+      <div class="col-sm-9">
+        <%= f.text_field :state, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :zip, class: "col-sm-3 col-form-label"  %>
+      <div class="col-sm-9">
+        <%= f.text_field :zip, class: 'form-control'%>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-9 offset-sm-3">
-        <button type="submit" class="btn btn-primary">Login Now</button>
+        <%= f.submit "Save Address", class: 'btn btn-primary'%>
       </div>
     </div>
-
   </form
   <% end %>
 

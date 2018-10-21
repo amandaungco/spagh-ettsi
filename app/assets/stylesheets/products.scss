@@ -7,18 +7,18 @@
 
 .filterDiv {
     float: left;
-    background-color: #white;
-    width: 22rem;
-    height: 35rem;
+    width: 18rem;
+    height: 28rem;
     text-align: center;
-    margin: 2px;
+    margin: 20px;
+    margin-left: 4rem;
     display: none; /* Hidden by default */
-    border: 5px solid black;
+    // border: 2px solid black;
 }
 
 .card-img-top {
-  width: 10rem;
-  height: 8rem;
+  width: 18rem;
+  height: 16rem;
 }
 
 
@@ -71,6 +71,11 @@ a .btn-primary {
 .btn-products {
   background-color: green;
   color: white;
+}
+
+.index-btn {
+  width: 100%;
+  margin: 0rem;
 }
 
 // product page
@@ -129,8 +134,12 @@ body {
 .card {
   margin-top: 50px;
   background: #eee;
-  padding: 3em;
+  // padding: 3em;
   line-height: 1.5em; }
+
+.show-card {
+  padding: 3rem;
+}
 
 #pic-1 {
   width: 25rem;
