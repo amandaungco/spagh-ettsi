@@ -6,107 +6,139 @@ describe ProductsController do
   let(:seller) {users(:seller)}
 
   let(:mock_params) {
+    {
+      product:
       {
-        product:
-          {
-            name: 'ziti',
-            user_id: seller.id,
-            price_in_cents: 349,
-            category: 'short',
-            quantity: 100,
-            description: 'these ones are ziti'
-          }
+        name: 'ziti',
+        user_id: seller.id,
+        price_in_cents: 349,
+        category: 'short',
+        quantity: 100,
+        description: 'these ones are ziti'
       }
     }
+  }
 
-  describe 'index' do
-    it 'succeeds' do
-      get products_path
+  describe 'guest users' do
+    describe 'index' do
+      it 'succeeds' do
+        get products_path
 
-      must_respond_with :success
+        must_respond_with :success
+      end
+
+    end
+
+    describe 'show' do
+      it 'succeeds given a valid ID' do
+        get product_path(spaghetti.id)
+
+        must_respond_with :success
+      end
+
+      it 'responds with not found given an invalid ID' do
+        get product_path(-1)
+
+        must_respond_with :not_found
+      end
+    end
+  end
+
+    describe 'guest restrictions'
+
+      it "cannot access new" do
+        get new_product_path
+        must_redirect_to root_path
+        flash[:message].must_equal "You must be a merchant to see that page!"
+      end
+
     end
 
   end
 
-  describe 'show' do
-    it 'succeeds given a valid ID' do
-      get product_path(spaghetti.id)
-
-      must_respond_with :success
+  describe 'authorized and logged in user functionality' do
+    #sign user in
+    #set user to seller
+    describe 'new' do
+      it 'succeeds' do
+        get new_product_path
+        must_respond_with :success
+      end
     end
 
-    it 'responds with not found given an invalid ID' do
-      get product_path(-1)
+    describe 'create' do
+      it 'creates a new product with valid data' do
 
-      must_respond_with :not_found
-    end
-  end
+        expect {
+          post products_path, params: mock_params
+        }.must_change 'Product.count', 1
 
-  describe 'new' do
-    it 'succeeds' do
-      get new_product_path
+        product = Product.last
 
-      must_respond_with :success
-    end
-  end
+        expect(product.name).must_equal mock_params[:product][:name]
+        expect(product.user_id).must_equal mock_params[:product][:user_id]
+        expect(product.price_in_cents).must_equal mock_params[:product][:price_in_cents]
+        expect(product.category).must_equal mock_params[:product][:category]
+        expect(product.quantity).must_equal mock_params[:product][:quantity]
+        expect(product.description).must_equal mock_params[:product][:description]
 
-  describe 'create' do
-    it 'creates a new product with valid data' do
+        must_redirect_to product_path(product.id)
 
-      expect {
-            post products_path, params: mock_params
-          }.must_change 'Product.count', 1
+      end
 
-      product = Product.last
+      it "renders bad_request and does not update the DB for bogus data" do
+        mock_params[:product][:price_in_cents] = 'words'
 
-      expect(product.name).must_equal mock_params[:product][:name]
-      expect(product.user_id).must_equal mock_params[:product][:user_id]
-      expect(product.price_in_cents).must_equal mock_params[:product][:price_in_cents]
-      expect(product.category).must_equal mock_params[:product][:category]
-      expect(product.quantity).must_equal mock_params[:product][:quantity]
-      expect(product.description).must_equal mock_params[:product][:description]
+        expect {
+          post products_path, params: mock_params
+        }.wont_change 'Product.count'
 
-      must_redirect_to product_path(product.id)
-
+        must_respond_with :bad_request
+      end
     end
 
-    it "renders bad_request and does not update the DB for bogus data" do
-      mock_params[:product][:price_in_cents] = 'words'
+    describe "show" do
+      it "succeeds with valid id" do
+        get product_path(spaghetti.id)
 
-      expect {
-                post products_path, params: mock_params
-              }.wont_change 'Product.count'
+        must_respond_with :success
+      end
 
-      must_respond_with :bad_request
-    end
-  end
+      it "renders 404 not_found for an invalid id" do
+        get product_path(-1)
 
-  describe "show" do
-    it "succeeds with valid id" do
-      get product_path(spaghetti.id)
-
-      must_respond_with :success
+        must_respond_with :not_found
+      end
     end
 
-    it "renders 404 not_found for an invalid id" do
-      get product_path(-1)
+    describe "edit for product created by user" do
+      #login user as seller
+      #user product that belongs to the seller
 
-      must_respond_with :not_found
-    end
-  end
+      it "succeeds with valid id that belongs to them" do
+        get edit_product_path(spaghetti.id)
 
-  describe "edit" do
-    it "succeeds with valid id" do
-      get edit_product_path(spaghetti.id)
+        must_respond_with :success
 
-      must_respond_with :success
+      end
 
-    end
+      it "renders 404 not_found for an invalid id" do
+        #create a product is theirs
+        #delete products, run this test
+        get edit_product_path(-1)
 
-    it "renders 404 not_found for an invalid id" do
-      get edit_product_path(-1)
+        must_respond_with :not_found
+      end
 
-      must_respond_with :not_found
+      it "fails with valid id that does not belong to them" do
+        #try editing a product that is not theirs and gives error messages
+        get edit_product_path(spaghetti.id)
+
+        must_respond_with :success
+
+      end
+
+
     end
   end
 end

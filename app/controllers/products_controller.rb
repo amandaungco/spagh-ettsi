@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:new, :edit, :update, :create]
+  #before_action :find_seller, only: [:new, :edit, :update, :create]
   def index
     @products = Product.all
     @order_product = OrderProduct.new()
@@ -64,4 +65,8 @@ class ProductsController < ApplicationController
   def product_params
     return params.require(:product).permit(:name, :user_id, :price_in_cents, :category, :quantity, :description)
   end
+
+  # def find_seller
+  #   return @login_user.is_seller?
+  # end
 end
