@@ -69,39 +69,43 @@
 
     <div class="card-deck">
       <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="" alt="Card image cap">
+        <% product = Product.all.find_by(id: 1) %>
+        <img class="card-img-top" src="<%= product.image_url %>" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">$<%= product.price_in_cents %></small>
         </div>
       </div>
       <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <% product2 = Product.all.find_by(id: 4) %>
+        <img class="card-img-top" src="<%= product2.image_url %>" alt="Card image cap">
+
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <h5 class="card-title"><%= product2.name %></h5>
+          <p class="card-text"><%= product2.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">$<%= product2.price_in_cents %></small>
         </div>
       </div>
       <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <% product3 = Product.all.find_by(id: 10) %>
+        <img class="card-img-top" src="<%= product3.image_url %>" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <h5 class="card-title"><%= product3.name %></h5>
+          <p class="card-text"><%= product3.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">$<%= product3.price_in_cents %></small>
         </div>
       </div>
     </div>
     <div class="row text-center pt-4">
         <div class="col-md-12">
-            <button type="button" class="btn btn-danger">View All Pasta</button>
+            <%=link_to "View All Pasta", products_path, class: "btn btn-danger"%>
         </div>
     </div>
   </div>
@@ -113,8 +117,12 @@
 		<div class="col-md-12">
 		    <i class="fa fa-headphones fa-3x"></i>
 		    <h3>How can we help you?</h3>
-		    <p>Fusce imper diet odio sit amet erat conse quat, eget eleme nmper diet odio sit amet erat atege tpurc surus lorem iandit vehi culas.</p>
+		    <p>
+          The pastabilities are endless! We want to hear from you so we can make
+          all your pasta dreams come true.
+        </p>
 		    <button type="button" class="btn btn-danger">Ask the Question</button>
+        <%link_to "Ask a Question", class: "btn btn-danger" %>
 		</div>
 	</div>
 </div>
