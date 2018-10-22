@@ -10,8 +10,8 @@
       <div class="col-sm-4"> Orders:
         <% i = 1 %>
         <p class="text success small">  <% @login_user_orders.each do |order| %>
-        link_to "View Order", order_path(order.id) %>
-        <%= puts "#{i}: #{order.id}"%>
+        <%= link_to "View Order #{i}", order_path(order.id) %>
+        
         <% i += 1 %></p>
         <% end %></div>
     </div>
