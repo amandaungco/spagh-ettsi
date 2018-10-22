@@ -12,6 +12,7 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
+    @card_types = Payment.card_types
 
 
     if @payment.save
