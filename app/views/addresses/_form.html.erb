@@ -1,44 +1,59 @@
-<%= form_with model: @address, local: true do |f| %>
-
+<div class="container address-container border col-lg-5">
+  <div class="text-center">
+    <h1>Address</h1>
+    <h3>Please fill out all appropriate fields</h3>
+  </div>
+  <%= form_with model: @address, local: true do |f| %>
   <%= f.hidden_field :user_id, value: @login_user.id %>
+  <form>
+    <div class="form-group row top-row">
+      <%= f.label :first_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :first_name, class: 'form-control', id:"name" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :last_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :last_name, class: 'form-control', id:"name" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :street, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :street, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :street_2, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :street_2, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :city, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :city, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :state, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :state, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :zip, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
+        <%= f.text_field :zip, class: 'form-control'%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 offset-sm-4">
+        <%= f.submit "Save Address", class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </form
+  <% end %>
 
-  <div class="form-group">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, class: 'form-control'%>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name, class: 'form-control'%>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :street %>
-    <%= f.text_field :street, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :street_2 %>
-    <%= f.text_field :street_2, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :city %>
-    <%= f.text_field :city, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.text_field :state, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :zip %>
-    <%= f.text_field :zip, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Save Address", class: 'btn btn-primary'%>
-  </div>
-
-<% end %>
+</div>
