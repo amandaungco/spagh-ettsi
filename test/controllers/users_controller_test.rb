@@ -7,7 +7,6 @@ describe UsersController do
     it "logs in an existing user" do
       start_count = User.count
       grace = users(:grace)
-      binding.pry
       perform_login(grace)
       must_redirect_to root_path
       session[:user_id].must_equal  user.id
