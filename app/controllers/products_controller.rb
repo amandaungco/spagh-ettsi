@@ -13,17 +13,18 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if @login_user.is_a_seller?
-      @product = Product.new()
-    else
-      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue"
+    if @login_user.nil?
+      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue!"
+      redirect_to root_path
+    elsif !@login_user.is_a_seller?
+      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue!"
       redirect_to user_path(@login_user.id)
     end
+      @product = Product.new()
   end
 
   def create
-      @product = Product.new(product_params)
-
+    @product = Product.new(product_params)
       if @product.save
         flash[:success] = "Successfully created #{@product.name}"
         redirect_to product_path(@product.id)

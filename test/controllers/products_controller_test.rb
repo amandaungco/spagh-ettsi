@@ -49,7 +49,7 @@ describe ProductsController do
       it "cannot access new" do
         get new_product_path
         must_redirect_to root_path
-        flash[:message].must_equal "You must be a merchant to sell a product. Sign up as a merchant to continue!"
+        expect(flash[:warning]).must_equal "You must be a merchant to sell a product. Sign up as a merchant to continue!"
       end
     end
   end
@@ -65,7 +65,7 @@ describe ProductsController do
         perform_login(buyer)
         get new_product_path
         must_redirect_to user_path(buyer.id)
-        must_respond_with :warning
+        expect(flash[:warning]).must_equal "You must be a merchant to sell a product. Sign up as a merchant to continue!"
       end
     end
 
@@ -77,7 +77,6 @@ describe ProductsController do
         it 'allows a seller user to create a new product' do
           perform_login(seller)
           get new_product_path
-          must_respond_with :success
 
           expect {
             post products_path, params: mock_params
