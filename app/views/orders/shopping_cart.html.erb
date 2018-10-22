@@ -46,7 +46,10 @@
         		</div> <!-- price-wrap .// -->
   	      </td>
           <td>
-            <%= readable_price(order_product.item_subtotal)%>
+            <div class="price-wrap">
+        			<var class="price"><%= readable_price(order_product.item_subtotal)%></var>
+
+        		</div>
           </td>
       </tr>
       <% end %>
