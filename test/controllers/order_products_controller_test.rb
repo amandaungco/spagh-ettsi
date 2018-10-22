@@ -5,6 +5,7 @@ describe OrderProductsController do
   let(:fusilli) {products(:fusilli)}
   let(:spaghetti) {products(:spaghetti)}
   let(:buyer) {users(:buyer)}
+  let(:seller) {users(:seller)}
   let(:order_one_spaghetti) {order_products(:order_one_spaghetti)}
   let(:mock_params) {
     {
@@ -152,9 +153,56 @@ describe OrderProductsController do
 
   describe 'check_shopping_cart' do
     it 'sets the session shopping cart id if the user has an order with shopping_cart status' do
+      perform_login(buyer)
+
+      #call create which uses check_shopping_cart as a helper method
+      expect{
+        post order_products_path, params: mock_params
+      }.wont_change 'Order.count'
+
+      #buyer has an open order called order_one
+      expect(session[:user_id]).must_equal buyer.id
+      expect(session[:shopping_cart_id]).must_equal order_one.id
+
     end
 
-    it 'creates a new shopping cart if the user does not have one and sets the session shopping cart id' do
+    it 'creates a new shopping cart attached to the logged-in user if the user does not have one and sets the session shopping cart id' do
+      perform_login(seller)
+
+      #call create which uses check_shopping_cart as a helper method
+      #seller has no orders yet
+      expect{
+        post order_products_path, params: mock_params
+      }.must_change 'Order.count', 1
+
+      new_order = Order.last
+
+      expect(new_order.user).must_equal seller
+
+      expect(session[:user_id]).must_equal seller.id
+      expect(session[:shopping_cart_id]).must_equal new_order.id
+
+    end
+
+    it 'creates a new shopping cart for the guest user' do
+
+      #nobody logged in, no orders yet
+      old_order_count = Order.count
+
+      expect{
+        post order_products_path, params: mock_params
+      }.must_change 'User.count', 1
+
+      new_order_count = Order.count
+
+      expect(new_order_count - old_order_count).must_equal 1
+
+      guest_user = User.last
+      guest_order = Order.last
+
+      expect(guest_order.user).must_equal guest_user
+      expect(session[:user_id]).must_equal guest_user.id
+      expect(session[:shopping_cart_id]).must_equal guest_order.id
     end
   end
 
