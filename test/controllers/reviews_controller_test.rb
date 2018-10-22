@@ -1,7 +1,9 @@
 require "test_helper"
 
 describe ReviewsController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  it 'succeeds' do
+    get reviews_path
+
+    must_respond_with :success
+  end
 end

@@ -1,0 +1,7 @@
+<div class="reviews-container">
+  <% i = 1 %>
+  <% @reviews.each do |review| %>
+  <%= "#{i}#{review}\n"  %>
+  <% i += 1 %>
+  <% end %>
+</div>
