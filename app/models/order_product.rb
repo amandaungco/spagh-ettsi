@@ -5,4 +5,8 @@ class OrderProduct < ApplicationRecord
   validates :order, presence: true
   validates :product, presence: true
   validates :quantity, presence: true, numericality: true
+
+  def item_subtotal
+    self.product.quantity * self.quantity
+  end
 end
