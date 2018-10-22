@@ -1,45 +1,72 @@
+<div class="container payment-container border col-lg-5">
+  <div class="text-center">
+    <h1>Payment</h1>
+    <h3>Please fill out all fields</h3>
+    <div class="panel panel-default credit-card-box offset-sm-4">
+        <div class="panel-heading display-table" >
+            <div class="row display-tr" >
+                <div class="display-td" >
+                    <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
 
-
-<%= form_with model: @payment, local: true do |f| %>
-
+  <%= form_with model: @payment, local: true do |f| %>
   <%= f.hidden_field :user_id, value: @login_user.id %>
+  <form>
+    <div class="form-group row top-row ">
+      <%= f.label "Billing Address", class: "col-sm-3 offset-sm-1 col-form-label" %>
 
-  <div class="form-group">
-    <%= f.label "Billing Address" %>
-
-    <% if @login_user.addresses.any? %>
-      <%= f.select(:address_id) do %>
-        <% @login_user.addresses.each do |address| -%>
-          <%= content_tag(:option, address.street, value: address.id) %>
+      <% if @login_user.addresses.any? %>
+        <div class="col-sm-7">
+          <%= f.select(:address_id) do %>
+          <% @login_user.addresses.each do |address| -%>
+            <%= content_tag(:option, address.street, value: address.id) %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+      </div>
+      <div class="offset-sm-8">
+        <%= link_to "Add an address", new_address_path %>
+      </div>
+    </div>
 
-    <%= link_to "Add an address", new_address_path %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :card_number, class:"col-sm-3 offset-sm-1 col-form-label"%>
+      <div class="col-sm-7">
+        <%= f.text_field :card_number, maxlength: 19, class: 'form-control'%>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :card_number %>
-    <%= f.text_field :card_number, maxlength: 19, class: 'form-control'%>
-  </div>
+    <div class="form-group row">
+      <%= f.label :expiration_date, class: "col-sm-3 offset-sm-1 col-form-label"%>
+      <div class="col-sm-8">
+        <%= f.date_field :expiration_date, min: Date.today, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :expiration_date %>
-    <%= f.date_field :expiration_date, min: Date.today, class: 'form-control' %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :cvv, class: "col-sm-3 offset-sm-1 col-form-label"%>
+      <div class="col-sm-7">
+        <%= f.text_field :cvv, maxlength: 4, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :cvv %>
-    <%= f.text_field :cvv, maxlength: 4, class: 'form-control' %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :card_type, class: "col-sm-3 offset-sm-1 col-form-label" %>
+      <div class="col-sm-7">
+        <%= f.select :card_type, @card_types, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :card_type %>
-    <%= f.select :card_type, @card_types, class: 'form-control' %>
-  </div>
+    <div class="row offset-sm-5">
+      <!-- <div class="col-sm-9 offset-sm-4" -->
+        <%= f.submit "Save Payment", class: 'btn btn-primary'%>
+      <!-- </div> -->
+    </div>
 
-  <div class="form-group">
-    <%= f.submit "Save Payment", class: 'btn btn-primary'%>
-  </div>
-
-<% end %>
+  <% end %>
+ </form>
+</div>
