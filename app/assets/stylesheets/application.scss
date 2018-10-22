@@ -904,7 +904,17 @@
 /************* GENERIC  *****************/
 a {color:#696969;}
 // img {width:100%;}
+.img-icon {
+  width: 50px;
+}
+.card {
+  background-color: white;
+}
 
+.card-footer {
+  background-color: #006400;
+  color: white;
+}
 /************* TOP-HEAD *****************/
 .top-head ul li {padding-right:8px;}
 /****************** Navigation **************/

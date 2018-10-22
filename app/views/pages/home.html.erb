@@ -62,13 +62,13 @@
   <div class="container">
     <div class="row pb-4 text-center">
         <div class="col-md-12">
-            <h2>Featured Pastas</h2>
-            <p>"Eat pasta to run fasta."</p>
+            <h1>Featured Pastas</h1>
+            <h4>"Eat pasta to run fasta."</h4>
         </div>
     </div>
 
     <div class="card-deck">
-      <div class="card col-md-4 box border py-4">
+      <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product = Product.all.find_by(id: 1) %>
         <img class="card-img-top" src="<%= product.image_url %>" alt="Card image cap">
         <div class="card-body">
@@ -76,10 +76,10 @@
           <p class="card-text"><%= product.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">$<%= product.price_in_cents %></small>
+          <small>$<%= product.price_in_cents %></small>
         </div>
       </div>
-      <div class="card col-md-4 box border py-4">
+      <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product2 = Product.all.find_by(id: 4) %>
         <img class="card-img-top" src="<%= product2.image_url %>" alt="Card image cap">
 
@@ -88,10 +88,10 @@
           <p class="card-text"><%= product2.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">$<%= product2.price_in_cents %></small>
+          <small>$<%= product2.price_in_cents %></small>
         </div>
       </div>
-      <div class="card col-md-4 box border py-4">
+      <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product3 = Product.all.find_by(id: 10) %>
         <img class="card-img-top" src="<%= product3.image_url %>" alt="Card image cap">
         <div class="card-body">
@@ -99,7 +99,7 @@
           <p class="card-text"><%= product3.description.capitalize %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">$<%= product3.price_in_cents %></small>
+          <small>$<%= product3.price_in_cents %></small>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
 	</div>
 </div>
 </div>
-<!-- 
+<!--
 <div class="brand-search py-5">
   <div class="container">
     <div class="row pb-4 text-center">
@@ -185,7 +185,7 @@
             <div class="col-md-4 py-3 border">
                 <div class="row">
                     <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/tablet.png">
+                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/tablet.png", class="img-icon">
                     </div>
                     <div class="col-md-9">
                         <h5>Shop with ease</h5>
@@ -196,7 +196,7 @@
             <div class="col-md-4 py-3 border">
                 <div class="row">
                     <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/online-shop-6.png">
+                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/online-shop-6.png", class="img-icon">
                     </div>
                     <div class="col-md-9">
                         <h5>Makes Great Gifts</h5>
@@ -207,7 +207,7 @@
             <div class="col-md-4 py-3 border">
                 <div class="row">
                     <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/money.png">
+                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/money.png", class="img-icon">
                     </div>
                     <div class="col-md-9">
                         <h5>Save Money</h5>
