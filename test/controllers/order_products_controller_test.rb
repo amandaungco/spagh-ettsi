@@ -1,13 +1,15 @@
 require "test_helper"
 
 describe OrderProductsController do
-  let(:order_two) {orders(:order_two)}
-  let(:lasagne) {products(:lasagne)}
+  let(:order_one) {orders(:order_one)}
+  let(:fusilli) {products(:fusilli)}
+  let(:spaghetti) {products(:spaghetti)}
   let(:buyer) {users(:buyer)}
+  let(:order_one_spaghetti) {order_products(:order_one_spaghetti)}
   let(:mock_params) {
     {
       order_product: {
-        product_id: lasagne.id,
+        product_id: fusilli.id,
         quantity: 5
       }
     }
@@ -18,18 +20,48 @@ describe OrderProductsController do
   describe 'create' do
     it 'creates a row in the OrderProducts table with valid unique data and logged in user' do
 
+      perform_login(buyer)
+
+      expect {
+            post order_products_path, params: mock_params
+          }.must_change 'OrderProduct.count', 1
+
+
+    end
+
+    it 'adds the product to the shopping cart of the logged-in user' do
+      perform_login(buyer)
+
       expect {
             post order_products_path, params: mock_params
           }.must_change 'OrderProduct.count', 1
 
       new_entry = OrderProduct.last
 
-      expect(new_entry.product).must_equal lasagne
+      #the order_one fixture has the status of shopping_cart and user = buyer
+      expect(new_entry.order).must_equal order_one
+      expect(new_entry.product).must_equal fusilli
       expect(new_entry.quantity).must_equal 5
-
     end
 
     it 'modifies an existing row if the product/order combo is already in the table' do
+
+
+      perform_login(buyer)
+
+      mock_params[:order_product][:product_id] = spaghetti.id
+
+      expect(order_one_spaghetti.quantity).must_equal 5
+
+      expect {
+            post order_products_path, params: mock_params
+          }.wont_change 'OrderProduct.count'
+
+      order_one_spaghetti.reload
+
+      expect(order_one_spaghetti.quantity).must_equal 10
+
+
 
     end
 

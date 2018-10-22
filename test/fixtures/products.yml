@@ -20,3 +20,11 @@ lasagne:
   quantity: 25
   category: sheet
   description: these are lasagne noodles
+
+fusilli:
+  name: fusilli
+  user: seller
+  price_in_cents: 400
+  quantity: 20
+  category: short
+  description: fusilli jerry, because you're silly
