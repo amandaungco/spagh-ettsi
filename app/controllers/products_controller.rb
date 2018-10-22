@@ -66,7 +66,8 @@ class ProductsController < ApplicationController
     return params.require(:product).permit(:name, :user_id, :price_in_cents, :category, :quantity, :description)
   end
 
-  # def find_seller
-  #   return @login_user.is_seller?
-  # end
+  def find_seller
+    if @login_user.is_seller?
+      return @seller = @login_user #this might nto be necessary but for explicitness rn
+  end
 end
