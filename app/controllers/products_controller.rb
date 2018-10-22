@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:new, :edit, :update, :create]
-  before_action :find_seller, only: [:new, :edit, :update, :create]
+#  before_action :find_seller, only: [:new, :edit, :update, :create]
 
   def index
     @products = Product.all
@@ -14,21 +14,26 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new()
-
   end
 
   def create
-    @product = Product.new(product_params)
+    if @login_user.is_a_seller?
+      raise
+      @product = Product.new(product_params)
 
-    if @product.save
-      flash[:success] = "Successfully created #{@product.name}"
-      redirect_to product_path(@product.id)
+      if @product.save
+        flash[:success] = "Successfully created #{@product.name}"
+        redirect_to product_path(@product.id)
 
+      else
+        flash.now[:warning] = "A problem occurred: Could not create #{@product.name}"
+        flash.now[:validation_errors] = @product.errors.full_messages
+
+        render :new, status: :bad_request
+      end
     else
-      flash.now[:warning] = "A problem occurred: Could not create #{@product.name}"
-      flash.now[:validation_errors] = @product.errors.full_messages
-
-      render :new, status: :bad_request
+      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue"
+      redirect_to user_path(@login_user.id)
     end
   end
 
@@ -67,9 +72,9 @@ class ProductsController < ApplicationController
     return params.require(:product).permit(:name, :user_id, :price_in_cents, :category, :quantity, :description)
   end
 
-  def find_seller
-    if @login_user.is_a_seller?
-      return @seller = @login_user #this might nto be necessary but for explicitness rn
-    end
-  end
+  # def find_seller
+  #   if @login_user.is_a_seller?
+  #     return @seller = @login_user #this might nto be necessary but for explicitness rn
+  #   end
+  # end
 end
