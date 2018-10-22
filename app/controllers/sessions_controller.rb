@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     else
       user = User.build_from_github(auth_hash)
-  
+
       if user.save
 
         flash[:success] = "Logged in as new user #{user.full_name}"
