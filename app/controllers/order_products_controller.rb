@@ -6,7 +6,9 @@ class OrderProductsController < ApplicationController
 
     check_shopping_cart
 
+
     product = Product.find_by(id: params[:order_product][:product_id])
+
     quantity = params[:order_product][:quantity].to_i
 
     existing_row = OrderProduct.find_by(product_id: product.id, order_id: session[:shopping_cart_id])
@@ -15,8 +17,8 @@ class OrderProductsController < ApplicationController
       existing_row.quantity += quantity
       existing_row.save
       flash[:success] = "Cart has been updated!"
-
       redirect_to shopping_cart_path
+
 
     else OrderProduct.create(product_id: product.id, order_id: session[:shopping_cart_id], quantity: quantity)
       product.quantity -= quantity
@@ -52,7 +54,8 @@ class OrderProductsController < ApplicationController
   end
 
   def check_login
-    if !session[:user_id]
+
+    if !@login_user
       flash[:warning] = "You are not logged in, continuing as guest."
       user = User.create(
         full_name: 'Guest user',
@@ -67,10 +70,9 @@ class OrderProductsController < ApplicationController
   end
 
   def check_shopping_cart
-    shopping_cart = Order.find_by(user_id: session[:user_id], status: :shopping_cart)
 
-    if !shopping_cart
-      shopping_cart = Order.create(
+    if !@shopping_cart
+      @shopping_cart = Order.create(
         user_id: session[:user_id],
         status: :shopping_cart,
         payment_id: nil,
@@ -79,7 +81,7 @@ class OrderProductsController < ApplicationController
 
     end
 
-    session[:shopping_cart_id] = shopping_cart.id
+    session[:shopping_cart_id] = @shopping_cart.id
   end
 
 

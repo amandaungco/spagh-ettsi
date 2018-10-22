@@ -1,20 +1,36 @@
 require "test_helper"
 
 describe OrderProductsController do
-  let(:order_one) {orders(:order_one)}
+  let(:order_two) {orders(:order_two)}
+  let(:lasagne) {products(:lasagne)}
+  let(:buyer) {users(:buyer)}
   let(:mock_params) {
-    order_product: {
-      order_id: order_one.id
-      product: spaghetti
+    {
+      order_product: {
+        product_id: lasagne.id,
         quantity: 5
+      }
     }
   }
+
+
+
   describe 'create' do
-    it 'creates a row in the OrderProducts table with valid unique data' do
+    it 'creates a row in the OrderProducts table with valid unique data and logged in user' do
+
+      expect {
+            post order_products_path, params: mock_params
+          }.must_change 'OrderProduct.count', 1
+
+      new_entry = OrderProduct.last
+
+      expect(new_entry.product).must_equal lasagne
+      expect(new_entry.quantity).must_equal 5
 
     end
 
     it 'modifies an existing row if the product/order combo is already in the table' do
+
     end
 
     it 'fails with invalid data' do
@@ -38,6 +54,8 @@ describe OrderProductsController do
 
   describe 'check_login' do
     it 'does nothing if a user is already logged in' do
+
+
     end
 
     it 'creates a new guest user instance and logs the guest user in' do
