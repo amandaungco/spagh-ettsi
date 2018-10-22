@@ -41,26 +41,31 @@ class OrderProductsController < ApplicationController
   end
 
   def update
-    order_product = OrderProduct.find_by(id: params[:order_product][:id])
-    old_quantity = order_product.quantity
+    if order_product = OrderProduct.find_by(id: params[:order_product][:id])
+      old_quantity = order_product.quantity
 
-    order_product.update(quantity: params[:order_product][:quantity])
-    new_quantity = order_product.quantity
+      order_product.update(quantity: params[:order_product][:quantity])
+      new_quantity = order_product.quantity
 
-    change_inventory = new_quantity - old_quantity
+      change_inventory = new_quantity - old_quantity
 
-    order_product.product.quantity -= change_inventory
+      order_product.product.quantity -= change_inventory
 
-    order_product.product.save
+      order_product.product.save
 
-    if order_product.quantity == 0
-      order_product.destroy
-      flash[:success] = "#{order_product.product.name} removed from cart."
+      if order_product.quantity == 0
+        order_product.destroy
+        flash[:success] = "#{order_product.product.name} removed from cart."
+      else
+        flash[:success] = "#{order_product.product.name} quantity updated."
+      end
+
+      redirect_to shopping_cart_path
     else
-      flash[:success] = "#{order_product.product.name} quantity updated."
+      flash[:warning] = "Could not find product to update.  Please try again."
+      redirect_to root_path
     end
 
-    redirect_to shopping_cart_path
   end
 
   def check_login

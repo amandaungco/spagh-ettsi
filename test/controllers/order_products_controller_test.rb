@@ -207,19 +207,123 @@ describe OrderProductsController do
   end
 
   describe 'update' do
+    let(:mock_update_params) {
+      {
+        order_product:
+        {
+          quantity: 3,
+          id: order_one_spaghetti.id
+        }
+      }
+    }
+
     it 'modifies an existing row given a valid id' do
+      #order_one_spaghetti = 5 in cart
+
+      perform_login(buyer)
+
+      expect(order_one_spaghetti.quantity).must_equal 5
+
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.wont_change 'OrderProduct.count'
+
+      order_one_spaghetti.reload
+      expect(order_one_spaghetti.quantity).must_equal 3
+
     end
 
     it 'fails with invalid id' do
+      perform_login(buyer)
+
+      mock_update_params[:order_product][:id] = -1
+
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.wont_change 'OrderProduct.count'
+
+      must_redirect_to root_path
+
     end
 
     it 'deletes row if quantity is set to zero' do
+      perform_login(buyer)
+
+      #no more spaghetti in order one
+      mock_update_params[:order_product][:quantity] = 0
+
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.must_change 'OrderProduct.count', -1
+
+      expect(OrderProduct.find_by(order: order_one, product: spaghetti)).must_equal nil
+
+    end
+
+    it 'updates the product inventory appropriately when buying more' do
+      # ----- increase order quantity by 10
+
+      perform_login(buyer)
+
+      #in cart
+      expect(order_one_spaghetti.quantity).must_equal 5
+
+      #inventory
+      expect(spaghetti.quantity).must_equal 50
+
+      mock_update_params[:order_product][:quantity] = 15
+
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.wont_change 'OrderProduct.count'
+
+      #in cart plus 10
+      order_one_spaghetti.reload
+      expect(order_one_spaghetti.quantity).must_equal 15
+
+      #inventory minus 10
+      spaghetti.reload
+      expect(spaghetti.quantity).must_equal 40
+    end
+
+    it 'updates the product inventory appropriately when buying fewer' do
+      # ------ decrease order quantity by 3
+
+      expect(order_one_spaghetti.quantity).must_equal 5
+
+      mock_update_params[:order_product][:quantity] = 2
+
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.wont_change 'OrderProduct.count'
+
+      #in cart minus 3
+      order_one_spaghetti.reload
+      expect(order_one_spaghetti.quantity).must_equal 2
+
+      #inventory plus 3
+      spaghetti.reload
+      expect(spaghetti.quantity).must_equal 53
+    end
+
+    it 'updates the product inventory appropriately when buying zero' do
+      # ------ decrease order quantity by 5
+
+      expect(order_one_spaghetti.quantity).must_equal 5
+
+      mock_update_params[:order_product][:quantity] = 0
+
+      #deletes row from order_products table
+      expect{
+        patch shopping_cart_path, params: mock_update_params
+      }.must_change 'OrderProduct.count', -1
+
+
+      #inventory plus 5
+      spaghetti.reload
+      expect(spaghetti.quantity).must_equal 55
     end
   end
 
 
-
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
 end
