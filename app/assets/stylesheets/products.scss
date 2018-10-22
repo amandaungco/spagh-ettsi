@@ -22,6 +22,9 @@
 }
 
 
+
+
+
 /* The "show" class is added to the filtered elements */
 .show {
     display: block;
@@ -59,7 +62,7 @@ a .btn-primary {
 
 /* Add a dark background to the active button */
 .btn.active {
-  background-color: #666;
+  background-color: darkgreen;
   color: white;
 }
 //
