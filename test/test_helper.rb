@@ -29,6 +29,7 @@ class ActiveSupport::TestCase
   end
 
   def mock_auth_hash(user)
+
     return {
       provider: user.provider,
       uid: user.uid,
@@ -38,6 +39,7 @@ class ActiveSupport::TestCase
       }
     }
   end
+
   def perform_login(user)
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
     get auth_callback_path(:github)
