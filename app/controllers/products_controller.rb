@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:new, :edit, :update, :create]
-  #before_action :find_seller, only: [:new, :edit, :update, :create]
+  before_action :find_seller, only: [:new, :edit, :update, :create]
+
   def index
     @products = Product.all
     @order_product = OrderProduct.new()
@@ -67,7 +68,8 @@ class ProductsController < ApplicationController
   end
 
   def find_seller
-    if @login_user.is_seller?
+    if @login_user.is_a_seller?
       return @seller = @login_user #this might nto be necessary but for explicitness rn
+    end
   end
 end

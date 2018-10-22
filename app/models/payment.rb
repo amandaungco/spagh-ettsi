@@ -5,7 +5,7 @@ class Payment < ApplicationRecord
 
   validates :user_id, presence: true
   validates :address_id, presence: true
-  validates :card_number, presence: true, numericality: true, length: { is: 16 }
+  validates :card_number, presence: true, numericality: true, length: { in: 14..17 }
   validates :expiration_date, presence: true
   validates :cvv, presence: true, numericality: true, length: { in: 3..6 }
   validates :card_type, presence: true

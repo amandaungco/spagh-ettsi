@@ -70,10 +70,10 @@ describe Payment do
       valid = payment.valid?
 
       expect(valid).must_equal false
-      expect(payment.errors.messages[:card_number]).must_equal ["can't be blank", "is not a number", "is the wrong length (should be 16 characters)"]
+      expect(payment.errors.messages[:card_number]).must_equal ["can't be blank", "is not a number", "is too short (minimum is 14 characters)"]
     end
 
-    it 'must have a card_number that is 16 integers' do
+    it 'must have a card_number that is between 14 and 17 integers' do
       payment = payments(:amex)
       payment.card_number = 12309845
       payment.save
@@ -81,7 +81,15 @@ describe Payment do
       valid = payment.valid?
 
       expect(valid).must_equal false
-      expect(payment.errors.messages[:card_number]).must_equal ["is the wrong length (should be 16 characters)"]
+      expect(payment.errors.messages[:card_number]).must_equal ["is too short (minimum is 14 characters)"]
+
+      payment.card_number = 12309845123454321233
+      payment.save
+
+      valid = payment.valid?
+
+      expect(valid).must_equal false
+      expect(payment.errors.messages[:card_number]).must_equal ["is too long (maximum is 17 characters)"]
     end
 
     it 'must have an expiration date' do
