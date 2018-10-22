@@ -70,7 +70,18 @@ describe Payment do
       valid = payment.valid?
 
       expect(valid).must_equal false
-      expect(payment.errors.messages[:card_number]).must_equal ["can't be blank", "is not a number"]
+      expect(payment.errors.messages[:card_number]).must_equal ["can't be blank", "is not a number", "is the wrong length (should be 16 characters)"]
+    end
+
+    it 'must have a card_number that is 16 integers' do
+      payment = payments(:amex)
+      payment.card_number = 12309845
+      payment.save
+
+      valid = payment.valid?
+
+      expect(valid).must_equal false
+      expect(payment.errors.messages[:card_number]).must_equal ["is the wrong length (should be 16 characters)"]
     end
 
     it 'must have an expiration date' do
@@ -92,7 +103,35 @@ describe Payment do
       valid = payment.valid?
 
       expect(valid).must_equal false
-      expect(payment.errors.messages[:cvv]).must_equal ["can't be blank", "is not a number"]
+      expect(payment.errors.messages[:cvv]).must_equal ["can't be blank", "is not a number","is too short (minimum is 3 characters)"]
+    end
+
+    it 'must have a cvv between 3-6 numbers long' do
+      payment = payments(:amex)
+      payment.cvv = 12
+      payment.save
+
+      valid = payment.valid?
+
+      expect(valid).must_equal false
+      expect(payment.errors.messages[:cvv]).must_equal ["is too short (minimum is 3 characters)"]
+
+      payment.cvv = 1234567
+      payment.save
+
+      valid = payment.valid?
+
+      expect(valid).must_equal false
+      expect(payment.errors.messages[:cvv]).must_equal ["is too long (maximum is 6 characters)"]
+
+      payment.cvv = 'abc'
+      payment.save
+
+      valid = payment.valid?
+
+      expect(valid).must_equal false
+      expect(payment.errors.messages[:cvv]).must_equal ["is not a number","is too short (minimum is 3 characters)"]
+
     end
 
     it 'must have a card_type' do

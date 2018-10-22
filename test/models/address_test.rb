@@ -108,5 +108,16 @@ describe Address do
       expect(valid).must_equal false
       expect(address.errors.messages[:zip]).must_equal ["can't be blank", "is not a number"]
     end
+
+    it 'must have a zip that is numerical' do
+      address = addresses(:home)
+      address.zip = 'abced'
+      address.save
+
+      valid = address.valid?
+
+      expect(valid).must_equal false
+      expect(address.errors.messages[:zip]).must_equal ["is not a number"]
+    end
   end
 end
