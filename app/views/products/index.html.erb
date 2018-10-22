@@ -26,7 +26,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= product.name %></h5>
         <hr>
-        <p class="card-text">$<%= product.price_in_cents%></p>
+        <p class="card-text">$<%= readable_price(product.price_in_cents)%></p>
         <!-- <p class="card-text"><%#= product.description %></p>
         <p class="card-text">Stock:<%#= product.quantity %></p>
         <p class="card-text">Rating: </p> -->
