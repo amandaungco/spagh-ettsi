@@ -54,9 +54,9 @@ end
 
 CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
   :headers => ["category", "name", "user_id", "price_in_cents", "description", "quantity", "image_url"]) do |csv|
-  pasta = ["Callentani", "Cappalini", "Ditalini", "Elbow", "Farfalle",
+  pasta = ["Callentani", "Capellini", "Ditalini", "Elbow", "Farfalle",
     "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
-    "manicotti", "medium_shells", "orzo", "pappardelle", "pastina",
+    "Manicotti", "Medium Shells", "Orzo", "Pappardelle", "Pastina",
     "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
   images = ["/images/pasta1.jpg", "/images/pasta2.jpg", "/images/pasta3.jpg",
     "/images/pasta4.jpg", "/images/pasta5.jpg", "/images/pasta6.jpg",

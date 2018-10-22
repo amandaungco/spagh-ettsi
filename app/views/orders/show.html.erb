@@ -1,9 +1,61 @@
-<!-- This is just a place to mess around right now, free to delete everything if you want to implement this view -->
 <!-- Users will need authorization to view orders -->
-<h2>Order Summary</h2>
-<%= @order.updated_at %>
-<%= @order.payment.card_type %>
-<%= @order.address.street %>
-<% @order.products.each do |product| %>
-  <%= product.name %>  <%= product.quantity %>
-<% end %>
+<div class="pull-right order-number">
+  <h1>Order Confirmation</h1>
+  <h4>Order # <%= rand(1000000000-9999999999) %></h4>
+</div>
+
+<div class="order-confirmation">
+  <h4><strong>You're order is complete!</strong></h4>
+  <p>Thank you for your order! We will let you know once your items have been shipped.
+    You're estimated delivery is 3-5 business days. Let us know if you encounter any issues
+    - you're satisfaction is our priority.
+  </p>
+</div>
+
+<div class="order-details">
+  <p><strong>Date Placed:</strong><%= @order.updated_at %></p>
+  <p><strong>Shipped to:</strong>
+    <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
+    <p><%= @order.address.street %></p>
+  </p>
+  <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+</div>
+
+<div class="card shopping-cart-container">
+  <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col" width="120">Quantity</th>
+        <th scope="col" width="120">Price</th>
+        <th scope="col" width="200">Back to Product</th>
+      </tr>
+    </thead>
+    <% @order.products.each do |product| %>
+    <tbody>
+        <tr>
+        	<td>
+            <figure class="media">
+            	<div class="img-wrap"><img src=<%= product.image_url %> class="img-thumbnail img-sm"></div>
+            	<figcaption class="media-body">
+            		<h3 class="title text-truncate"><%= product.name %></h3>
+            	</figcaption>
+            </figure>
+        	</td>
+  	      <td class="quantity-field">
+            <%=product.quantity %>
+  	      </td>
+  	      <td>
+        		<div class="price-wrap">
+        			<var class="price"><%= product.price_in_cents%></var>
+
+        		</div> <!-- price-wrap .// -->
+  	      </td>
+          <td>
+            <%= link_to "Back to Product", product_path(product.id), class: "btn btn-primary" %>
+          </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- card.// -->

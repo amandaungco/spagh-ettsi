@@ -55,6 +55,23 @@ var {
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
+
+.checkout-table {
+  margin-top: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.btn-space {
+  margin-right: 5px;
+}
+
+.btn-group {
+  margin-left: 3rem;
+  margin-right: 2rem;
+  margin-bottom: 3rem;
+}
+
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
 		width:20%;
@@ -85,4 +102,23 @@ var {
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
 
+}
+
+// =====================================
+// SHOW PAGE
+// =====================================
+
+.order-details {
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  margin: 3rem;
+}
+
+.order-confirmation {
+  margin-top: 8rem;
+  margin-left: 2rem;
+}
+
+.order-number {
+  padding: 2rem;
 }

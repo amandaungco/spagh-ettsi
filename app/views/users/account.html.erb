@@ -13,5 +13,9 @@
         <%= link_to "View Order #{i}", order_path(order.id) %>
         <% i += 1 %>
         <% end %></div></p>
+        <div class="col-sm-4"> Shipping address:
+
+          <p class="text success small col-sm-5">  <% @login_user.addresses  %>
+        </div></p>
     </div>
   </div>
