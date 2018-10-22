@@ -13,12 +13,15 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new()
+    if @login_user.is_a_seller?
+      @product = Product.new()
+    else
+      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue"
+      redirect_to user_path(@login_user.id)
+    end
   end
 
   def create
-    if @login_user.is_a_seller?
-      raise
       @product = Product.new(product_params)
 
       if @product.save
@@ -31,10 +34,6 @@ class ProductsController < ApplicationController
 
         render :new, status: :bad_request
       end
-    else
-      flash[:warning] = "You must be a merchant to sell a product. Sign up as a merchant to continue"
-      redirect_to user_path(@login_user.id)
-    end
   end
 
   def edit; end
