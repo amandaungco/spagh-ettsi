@@ -34,6 +34,16 @@ describe SessionsController do
   end
 
   it "redirects to the login route if given invalid user data" do
+
+    user = User.new(provider: "github", uid: 99999 , full_name: "test_user", email: "")
+
+      expect{ perform_login(user)}.wont_change('User.count')
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+    get auth_callback_path(:github)
+
+    must_redirect_to root_path
+
   end
 
 end
