@@ -1,68 +1,23 @@
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<body>
-   <div class="container">
-      <div class="col-md-6 mx-auto text-center">
-         <div class="header-title">
-            <h1 class="wv-heading--title">
-               Become a Merchant — it’s free!
-            </h1>
-            <h2 class="wv-heading--subtitle">
-               We are beyond excited about pasta lovers and makers!
-            </h2>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-md-4 mx-auto">
-            <div class="myform form">
-               <%= form_with model: @product, local: true do |f| %>
-                  <div class="form-group col-xs-4">
-                    <%= f.text_field :name, class: 'form-control my-input col-12', id: "name", placeholder: "Product Name"%>
-                  </div>
-                  <%= f.hidden_field :user_id, value: session[:user_id] %>
-                  <div class="form-group">
-                    <%= f.number_field :price_in_cents, step: 0.01, class: 'form-control my-input col-12', placeholder: "Price" %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.number_field :quantity, class: 'form-control my-input col-12', placeholder: "Quantity of Stock" %>
-                  </div>
 
-                  <div class="form-group">
-                    <%= f.select :category, @product_categories, class: 'form-control my-input', placeholder: "Category"%>
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_area :description, class: 'form-control my-input col-12', placeholder: "Description"%>
-                  </div>
-
-                  <div class="text-center">
-                    <%= f.submit class: 'btn btn-block send-button tx-tfm'%>
-                  </div>
-                  <div class="col-md-12 ">
-                     <div class="login-or">
-                        <hr class="hr-or">
-                        <span class="span-or">or</span>
-                     </div>
-                  </div>
-                  <div class="text-center">
-                    <%=link_to "Return to Products", products_path, class: 'btn btn-block send-button tx-tfm'%>
-                  </div>
-                  <p class="small mt-3">By adding a product and becoming a merchant, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
-                  </p>
-               </form>
-               <% end %>
-            </div>
-         </div>
-      </div>
+   <!-- <div class="container"> -->
+<div class="col-md-6 mx-auto text-center">
+   <div class="header-title">
+      <h1 class="wv-heading--title">
+         Become a Merchant — it’s free!
+      </h1>
+      <h2 class="wv-heading--subtitle">
+         We are beyond excited about pasta lovers and makers!
+      </h2>
    </div>
-</body>
-
+</div>
 
 <div class="container address-container border col-lg-5" style="margin-top:20px;">
   <%= form_with model: @product, local: true do |f| %>
   <%= f.hidden_field :user_id, value: session[:user_id] %>
   <form>
-    <div class="form-group row">
+    <div class="form-group row top-row">
       <%= f.label :name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
-      <div class="col-sm-6">
+      <div class="col-sm-7">
         <%= f.text_field :name, class: 'form-control', id:"name" %>
       </div>
     </div>
@@ -80,8 +35,8 @@
     </div>
     <div class="form-group row">
       <%= f.label :category, class: "col-sm-3 offset-sm-1 col-form-label"  %>
-      <div class="col-sm-6">
-        <%= f.select :category, @product_categories, class: 'form-control'%>
+      <div class="col-sm-7 input-lg">
+        <%= f.select :category, @product_categories, class: "form-control"%>
       </div>
     </div>
     <div class="form-group row">
@@ -102,9 +57,9 @@
        </div>
     </div>
     <div class="col-sm-9 offset-sm-4">
-      <%=link_to "Return to Products", products_path, class: 'btn btn-block send-button tx-tfm'%>
+      <%=link_to "Return to Products", products_path, class: 'btn btn-primary'%>
     </div>
-    <p class="small mt-3">By adding a product and becoming a merchant, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+    <p class="col-sm-7 text-center offset-sm-3 small mt-3">By adding a product and becoming a merchant, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
     </p>
   </form>
   <% end %>

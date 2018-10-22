@@ -1,12 +1,12 @@
-<div class="text-center">
-  <h1>Address</h1>
-  <h3>Please fill out all appropriate fields</h3>
-</div>
-<div class="container address-container border col-lg-5" style="margin-top:20px;">
+<div class="container address-container border col-lg-5">
+  <div class="text-center">
+    <h1>Address</h1>
+    <h3>Please fill out all appropriate fields</h3>
+  </div>
   <%= form_with model: @address, local: true do |f| %>
   <%= f.hidden_field :user_id, value: @login_user.id %>
   <form>
-    <div class="form-group row">
+    <div class="form-group row top-row">
       <%= f.label :first_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-6">
         <%= f.text_field :first_name, class: 'form-control', id:"name" %>
