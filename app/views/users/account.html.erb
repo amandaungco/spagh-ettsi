@@ -2,20 +2,22 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-4">Name:
-        <p class="text-success small "><%= @login_user.full_name %>
+      <div class="col-sm-4"> Guest info:
+        <p class="text-success small col-sm-5">
+          <%= @login_user.full_name %><br />
+
           <%= @login_user.email %>
         </p>
       </div>
       <div class="col-sm-4"> Orders:
         <% i = 1 %>
-        <p class="text success small col-sm-5">  <% @login_user_orders.each do |order| %>
-        <%= link_to "View Order #{i}", order_path(order.id) %>
-        <% i += 1 %>
-        <% end %></div></p>
-        <div class="col-sm-4"> Shipping address:
+        <p class="text-success small col-sm-5">  <% @login_user_orders.each do |order| %>
+          <%= link_to "View Order #{i}", order_path(order.id) %>
+          <% i += 1 %>
+          <% end %></div></p>
 
-          <p class="text success small col-sm-5">  <% @login_user.addresses  %>
-        </div></p>
-    </div>
-  </div>
+      <div class="col-sm-4"> Reviews:
+        <p class="text-success small col-sm-5">
+          <%= link_to "User reviews ",@reviews %></p>
+          </section>
+      </div>
