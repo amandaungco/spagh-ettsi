@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
   end
-  def about_us
+  def contact_us
   end
 end
