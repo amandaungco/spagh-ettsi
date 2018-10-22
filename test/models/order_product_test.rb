@@ -49,4 +49,15 @@ describe OrderProduct do
      expect(order_product.errors.messages[:quantity]).must_equal ["can't be blank", "is not a number"]
    end
  end
+
+ describe 'item_subtotal method' do
+   it 'returns the price of the item times the quantity in the cart' do
+     order_product = order_products(:order_one_spaghetti)
+     item = products(:spaghetti)
+
+     expect(order_product.item_subtotal).must_equal (5 * 299)
+
+   end
+
+ end
 end
