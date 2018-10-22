@@ -57,7 +57,19 @@ var {
 }
 
 .checkout-table {
-  margin: 3rem;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.btn-space {
+  margin-right: 5px;
+}
+
+.btn-group {
+  margin-left: 3rem;
+  margin-right: 2rem;
+  margin-bottom: 3rem;
 }
 
 @media screen and (max-width: 600px) {

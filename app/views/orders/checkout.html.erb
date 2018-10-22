@@ -86,7 +86,9 @@
     </tr>
   </tbody>
 </table>
-<div class="form-group">
+<div class="btn-group">
+  <%= link_to "Back to Shopping Cart", shopping_cart_path, class: "btn btn-primary btn-space"%>
+  <%= link_to "Keep Shopping", products_path, class: "btn btn-primary btn-space" %>
   <%= f.submit "Submit Order", class: 'btn btn-primary'%>
 </div>
 
