@@ -42,14 +42,14 @@
             <div class="dropdown-divider"></div>
             <%= form_with model: @order_product do |f| %>
             <form class="px-4 py-3">
-              <div class="form-group">
+              <div class="form-group quantity-field">
                 <%= f.label :quantity %>
                 <%= f.number_field :quantity, value: 1, class: 'form-control'%>
               </div>
               <%= f.hidden_field :product_id, value: product.id %>
 
               <div class="form-group action">
-                <%= f.submit "Submit", class: 'add-to-cart btn btn-primary'%>
+                <%= f.submit "Submit", class: 'add-to-cart btn btn-primary quantity-field'%>
               </div>
             </form>
             <% end %>
