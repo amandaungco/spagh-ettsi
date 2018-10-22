@@ -12,6 +12,9 @@ before_action :find_card_types, only: [:new, :edit, :update, :create]
 
   def create
     @payment = Payment.new(payment_params)
+    @card_types = Payment.card_types
+
+
     if @payment.save
       flash[:success] = "Successfully created payment."
       redirect_to checkout_path

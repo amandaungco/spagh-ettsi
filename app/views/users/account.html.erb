@@ -1,10 +1,18 @@
-<h2> My Account <h2>
+<h2 class="account title text-center"> My Account <h2>
 
-<h3> Name: <%= @login_user.first_name %> <%= @login_user.last_name %> </h3>
-
-<h3> Orders: <h3>
-<ul>
-  <% @login_user_orders.each do |order| %>
-    <li> <%= order.updated_at %> <%= link_to "View Order", order_path(order.id) %> </li>
-  <% end %>
-</ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">Name:
+        <p class="text-success small "><%= @login_user.full_name %>
+          <%= @login_user.email %>
+        </p>
+      </div>
+      <div class="col-sm-4"> Orders:
+        <% i = 1 %>
+        <p class="text success small">  <% @login_user_orders.each do |order| %>
+        link_to "View Order", order_path(order.id) %>
+        <%= puts "#{i}: #{order.id}"%>
+        <% i += 1 %></p>
+        <% end %></div>
+    </div>
+  </div>
