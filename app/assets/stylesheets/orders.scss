@@ -103,3 +103,22 @@ var {
 	table#cart tfoot td .btn{display:block;}
 
 }
+
+// =====================================
+// SHOW PAGE
+// =====================================
+
+.order-details {
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  margin: 3rem;
+}
+
+.order-confirmation {
+  margin-top: 8rem;
+  margin-left: 2rem;
+}
+
+.order-number {
+  padding: 2rem;
+}
