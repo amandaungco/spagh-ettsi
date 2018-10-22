@@ -2,54 +2,54 @@
   <h1>Address</h1>
   <h3>Please fill out all appropriate fields</h3>
 </div>
-<div class="container address-container border" style="margin-top:20px;">
+<div class="container address-container border col-lg-5" style="margin-top:20px;">
   <%= form_with model: @address, local: true do |f| %>
   <%= f.hidden_field :user_id, value: @login_user.id %>
   <form>
     <div class="form-group row">
-      <%= f.label :first_name, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :first_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :first_name, class: 'form-control', id:"name" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :last_name, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :last_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :last_name, class: 'form-control', id:"name" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :street, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :street, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :street, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :street_2, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :street_2, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :street_2, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :city, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :city, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :city, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :state, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :state, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :state, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :zip, class: "col-sm-3 col-form-label"  %>
-      <div class="col-sm-9">
+      <%= f.label :zip, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <div class="col-sm-6">
         <%= f.text_field :zip, class: 'form-control'%>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-9 offset-sm-3">
+      <div class="col-sm-9 offset-sm-4">
         <%= f.submit "Save Address", class: 'btn btn-primary'%>
       </div>
     </div>
