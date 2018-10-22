@@ -7,6 +7,6 @@ class OrderProduct < ApplicationRecord
   validates :quantity, presence: true, numericality: true
 
   def item_subtotal
-    self.product.quantity * self.quantity
+    self.product.price_in_cents * self.quantity
   end
 end

@@ -14,6 +14,7 @@
         <th scope="col" width="120">Quantity</th>
         <th scope="col" width="120"></th>
         <th scope="col" width="120">Price</th>
+        <th scope="col" width="120">Item Subtotal</th>
         <!-- <th scope="col" width="200" class="text-right">Action</th> -->
       </tr>
     </thead>
@@ -44,6 +45,9 @@
 
         		</div> <!-- price-wrap .// -->
   	      </td>
+          <td>
+            <%= readable_price(order_product.item_subtotal)%>
+          </td>
       </tr>
       <% end %>
     </tbody>
