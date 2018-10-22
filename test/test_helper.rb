@@ -16,7 +16,7 @@ Minitest::Reporters.use!(
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-# require "minitest/pride"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -27,14 +27,21 @@ class ActiveSupport::TestCase
     # A request to /auth/provider will redirect immediately to /auth/provider/callback.
     OmniAuth.config.test_mode = true
   end
+
   def mock_auth_hash(user)
-   return {
-     provider: user.oauth_provider,
-     uid: user.oauth_uid,
-     info: {
-       email: user.email,
-       nickname: user.username
-     }
-   }
- end
+
+    return {
+      provider: user.provider,
+      uid: user.uid,
+      info: {
+        email: user.email,
+        full_name: user.full_name
+      }
+    }
+  end
+
+  def perform_login(user)
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(user))
+    get auth_callback_path(:github)
+  end
 end
