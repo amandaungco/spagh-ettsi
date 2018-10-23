@@ -35,7 +35,6 @@ class User < ApplicationRecord
 
   def paid_orders_for_merchant
     all_orders_for_merchant.where(status: :paid)
-
   end
 
   def completed_orders_for_merchant
