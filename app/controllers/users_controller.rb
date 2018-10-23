@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
 
   end
-end
+
 
 def dashboard
   if @login_user.nil? || !@login_user.is_a_seller?
