@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def find_shopping_cart
     if @login_user
-      @shopping_cart = Order.find_by(user_id: @login_user.id, status: :shopping_cart)
+      @shopping_cart = Order.find_by(user_id: @login_user.id, status: :pending)
     end
   end
 end

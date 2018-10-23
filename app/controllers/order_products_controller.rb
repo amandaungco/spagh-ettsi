@@ -89,7 +89,7 @@ class OrderProductsController < ApplicationController
     if !@shopping_cart
       @shopping_cart = Order.create(
         user_id: session[:user_id],
-        status: :shopping_cart,
+        status: :pending,
         payment_id: nil,
         address_id: nil
       )
