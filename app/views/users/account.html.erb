@@ -22,4 +22,21 @@
         </section>
     </div>
   </div>
+
 </div>
+
+<section id='seller_status'>
+<% if @login_user.is_a_seller %>
+  <p>You are currently a Spagh-ettsi merchant. To change your status, click the button below.<p>
+  <%= form_with model: @login_user, local: true do |f| %>
+    <%= f.hidden_field :is_a_seller, value: false %>
+    <%= f.submit "I want to stop selling delicious pasta" %>
+  <% end %>
+<% else %>
+  <p>You are currently a Spagh-ettsi customer. To become a merchant, click the button below.<p>
+  <%= form_with model: @login_user, local: true do |f| %>
+    <%= f.hidden_field :is_a_seller, value: true %>
+    <%= f.submit "I want to share my handcrafted pasta with the world" %>
+  <% end %>
+<% end %>
+</section>
