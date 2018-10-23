@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-12,10,suppresses appetite,2
-16,15,reduces contractions in the small intestines,5
-19,15,reduces vomiting and nausea,2
-14,12,relieves pain,1
-7,13,inhibits cell growth in tumors/cancer cells,1
-4,6,relieves congestion,3
-11,19,suppresses appetite,2
-2,10,inhibits cell growth in tumors/cancer cells,2
-5,4,affects mental activity,4
-20,10,relieves congestion,2
-15,20,stimulates function in the immune system,4
-11,20,treats depression,3
-18,10,treats viral infections,1
-10,13,treats fungal infection,1
-14,3,protects against nervous system degeneration,1
-1,4,relieves anxiety,3
-13,4,suppresses appetite,5
-5,11,kills or slows bacteria growth,4
-3,1,protects against nervous system degeneration,4
-8,11,prevents infection,5
+10,14,affects mental activity,2
+2,13,cell protectant,2
+5,4,reduces vomiting and nausea,2
+10,4,regulates function in the immune system,2
+6,4,reduces inflammation,1
+20,3,reduces risk of artery blockage,5
+3,10,reduces vomiting and nausea,3
+6,1,regulates function in the immune system,2
+3,16,promotes bone growth,3
+14,1,inhibits cell growth in tumors/cancer cells,2
+2,6,kills or slows bacteria growth,5
+15,20,inhibits cell growth in tumors/cancer cells,5
+9,10,suppresses appetite,3
+9,11,tranquilizing,4
+1,8,relieves anxiety,2
+12,2,kills or slows bacteria growth,2
+3,16,reduces risk of artery blockage,3
+13,1,relieves anxiety,4
+8,3,inhibits cell growth in tumors/cancer cells,4
+20,20,aids sleep,1
