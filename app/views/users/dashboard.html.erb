@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> css
 <!-- Side navigation -->
 <div class="sidenav">
   <a href="#">About</a>
@@ -14,7 +11,6 @@
 <div class="main">
   ...Merchant Dashboard
 </div>
-<<<<<<< HEAD
 
 
 <!-- change these to link to new special MERCHANT ORDER VIEW PAGE-->
@@ -27,6 +23,8 @@
 </section>
 <section>
   <p> Total Revenue: <%= readable_price(@login_user.total_revenue) %></p>
+  <p> Total Revenue for paid orders: <%= readable_price(@login_user.total_revenue_by_paid) %></p>
+  <p> Total Revenue for completed orders: <%= readable_price(@login_user.total_revenue_by_completed) %></p>
 </section>
 
 <section>

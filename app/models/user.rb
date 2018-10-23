@@ -26,12 +26,57 @@ class User < ApplicationRecord
   end
 
   def total_revenue
-    #get all order for merchant
-    #get order_products associated with orders fr merchants
-    #select order_product specific to porduct sold by merchant
-    #get item item_subtota
-    #reduce thrugh to get total revenue
     all_orders = all_orders_for_merchant
+    all_merchant_order_products = []
+    specific_merchant_ops = []
+    total_revenue = 0
+    all_orders.each do |order|
+      all_merchant_order_products << order.order_products
+    end
+    all_merchant_order_products.flatten!
+    all_merchant_order_products.each do |order_product|
+      if order_product.product.user_id == self.id
+      #binding.pry
+        specific_merchant_ops << order_product
+      end
+    end
+
+    specific_merchant_ops.each do |op|
+      item_total = op.item_subtotal
+
+      total_revenue += item_total
+    end
+    return total_revenue
+
+  end
+
+  def total_revenue_by_paid
+    all_orders = paid_orders_for_merchant
+    all_merchant_order_products = []
+    specific_merchant_ops = []
+    total_revenue = 0
+    all_orders.each do |order|
+      all_merchant_order_products << order.order_products
+    end
+    all_merchant_order_products.flatten!
+    all_merchant_order_products.each do |order_product|
+      if order_product.product.user_id == self.id
+      #binding.pry
+        specific_merchant_ops << order_product
+      end
+    end
+
+    specific_merchant_ops.each do |op|
+      item_total = op.item_subtotal
+
+      total_revenue += item_total
+    end
+    return total_revenue
+
+  end
+
+  def total_revenue_by_completed
+    all_orders = completed_orders_for_merchant
     all_merchant_order_products = []
     specific_merchant_ops = []
     total_revenue = 0
