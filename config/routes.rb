@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/checkout', to: 'orders#update'
   get '/account', to: 'users#show', as: 'account'
   patch '/product/:id', to: 'products#deactivate', as: 'deactivate_product'
+  patch '/users/:id', to: 'users#update', as: 'update_user'
 
   resources :products
   resources :users, only: [:create, :show] #do

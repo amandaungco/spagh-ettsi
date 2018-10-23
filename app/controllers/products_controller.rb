@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   #before_action :find_seller, only: [:new, :edit, :update, :create]
 
   def index
-    @products = Product.all
+    @products = Product.active_products
     @order_product = OrderProduct.new()
   end
 

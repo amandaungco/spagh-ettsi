@@ -3,6 +3,24 @@ require "test_helper"
 describe Product do
   let(:product) { products(:spaghetti) }
 
+  it "knows its own categories" do
+    expect(Product.categories).must_equal ['long', 'short', 'shell', 'sheet', 'filled', 'soup']
+  end
+
+  it "can filter only active products" do
+    expect(Product.active_products.count).must_equal 3
+    expect(Product.active_products).wont_include products(:inactive_ravioli)
+  end
+
+  it "returns an empty set with no active products" do
+    Product.all.each do |product|
+      product.is_active = false
+      product.save
+    end
+
+    expect(Product.active_products.count).must_equal 0
+  end
+
   it "must be valid" do
     value(product).must_be :valid?
   end

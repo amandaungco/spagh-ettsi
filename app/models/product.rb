@@ -14,4 +14,8 @@ class Product < ApplicationRecord
   def self.categories
     return ['long', 'short', 'shell', 'sheet', 'filled', 'soup']
   end
+
+  def self.active_products
+    return Product.where(is_active: true)
+  end
 end
