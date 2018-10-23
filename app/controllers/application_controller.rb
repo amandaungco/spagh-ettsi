@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
       @shopping_cart = Order.find_by(user_id: @login_user.id, status: :pending)
     end
   end
+
+  private
+
+  def current_user
+    @login_user
+  end
 end
