@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+Merchant Dashboard
+<!-- view total order by merchant count %> -->
+total revenue
+quantity of listed products:
+count of paid orders
+count of complete orders
+=======
+<!-- Side navigation -->
+<div class="sidenav">
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<!-- Page content -->
+<div class="main">
+  ...Merchant Dashboard
+</div>
+
+
+<!-- change this to link to new special merchant order view -->
+<% @orders.each do |order| %>
+<%= link_to "Order ##{order.id}", order_path(order.id) %>
+<% end %>
