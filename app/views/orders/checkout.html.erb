@@ -54,6 +54,7 @@
                 <th scope="col" width="200">Product</th>
                 <th scope="col" width="120">Quantity</th>
                 <th scope="col" width="120">Price</th>
+                <th scope="col" width="120">Item Subtotal</th>
                 <!-- <th scope="col" width="200" class="text-right">Action</th> -->
               </tr>
             </thead>
@@ -76,9 +77,60 @@
                 			<var class="price"><%= readable_price(order_product.product.price_in_cents)%></var>
                 		</div>
           	      </td>
+                  <td>
+                    <div class="price-wrap">
+                			<var class="price"><%= readable_price(order_product.item_subtotal)%></var>
+                		</div>
+                  </td>
               </tr>
               <% end %>
             </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                  Subtotal
+                </td>
+                <td>
+                  <%= readable_price(@shopping_cart.order_subtotal) %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                  Seattle Sales Tax (10.1%)
+                </td>
+                <td>
+                  <%= readable_price(@shopping_cart.seattle_sales_tax) %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                  Flat Rate Shipping
+                </td>
+                <td>
+                  <%= readable_price(@shopping_cart.flat_rate_shipping) %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                  <strong>Order Total</strong>
+                </td>
+                <td>
+                  <strong><%= readable_price(@shopping_cart.order_total) %></strong>
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </td>
