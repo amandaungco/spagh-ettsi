@@ -37,8 +37,22 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
     end
-
+    @total_orders = @login_user.all_orders_for_merchant.count
     @orders = @login_user.all_orders_for_merchant
+
+    @total_paid_orders = @login_user.paid_orders_for_merchant.count
+    @paid_orders = @login_user.paid_orders_for_merchant
+
+    @total_completed_orders = @login_user.completed_orders_for_merchant.count
+    @completed_orders = @login_user.completed_orders_for_merchant
+
+    @total_active_products = @login_user.active_products.count
+    @active_products = @login_user.active_products
+
+    @total_inactive_products = @login_user.inactive_products.count
+    @inactive_products = @login_user.inactive_products
+
+    @total_products = @login_user.products.count
   end
 
   def merchant_orders

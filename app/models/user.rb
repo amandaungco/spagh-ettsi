@@ -29,20 +29,27 @@ class User < ApplicationRecord
 
   end
 
-  def products_by_seller
-    Product.where(user_id: self.id)
-  end
-
   def all_orders_for_merchant
     Order.joins(:products).where({products: {user: self}}).where().not(status: :pending)
   end
 
   def paid_orders_for_merchant
+    all_orders_for_merchant.where(status: :paid)
 
   end
 
   def completed_orders_for_merchant
+    all_orders_for_merchant.where(status: :complete)
   end
+
+  def active_products
+    self.products.where(is_active: true)
+  end
+
+  def inactive_products
+    self.products.where(is_active: false)
+  end
+
 
 
 
