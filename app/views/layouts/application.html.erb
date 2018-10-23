@@ -20,16 +20,12 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item nav-word">
-          <%=link_to "Shop Pasta", products_path, class: "nav-link"%>
-          <!-- <a class="nav-link dropdown-toggle nav-word" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Pasta Products</a> -->
-          <!-- <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown"> -->
-          <%#=link_to "Long", products_path, class: "dropdown-item"%>
-          <%#=link_to "Short", products_path, class: "dropdown-item"%>
-          <%#=link_to "Shells", products_path, class: "dropdown-item"%>
-          <%#=link_to "Sheets", products_path, class: "dropdown-item"%>
-          <%#=link_to "Filled", products_path, class: "dropdown-item"%>
-          <%#=link_to "Soup", products_path, class: "dropdown-item"%>
-          <!-- </div> -->
+          <%#=link_to "Shop Pasta", products_path, class: "nav-link"%>
+          <a class=" nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Shop Pasta</a>
+          <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" id="products-dropdown">
+            <%=link_to "Pasta by Category", products_path, class: "dropdown-item"%>
+            <%=link_to "Pasta by Merchant", products_path, class: "dropdown-item"%>
+        </div>
         </li>
         <li class="nav-item nav-word">
           <%=link_to "Recipes", products_path, class: "nav-link"%>

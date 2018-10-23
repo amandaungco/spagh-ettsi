@@ -1,42 +1,83 @@
-<h2 class="account title text-center"> My Account <h2>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"> Guest info:
-      <p class="text-success small col-sm-5">
-        <%= @login_user.full_name %><br />
-
-        <%= @login_user.email %>
-      </p>
-    </div>
-    <div class="col-sm-4"> Orders:
-      <% i = 1 %>
-      <p class="text-success small col-sm-5">  <% @login_user_orders.each do |order| %>
-        <%= link_to "View Order #{i}", order_path(order.id) %>
-        <% i += 1 %>
-        <% end %></div></p>
-
-    <div class="col-sm-4"> Reviews:
-      <p class="text-success small col-sm-5">
-        <%= link_to "User reviews ",@reviews %></p>
-        </section>
+<div class="card-deck user-card col-lg-10 mx-auto shadow p-3 mb-5 rounded">
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <h4>User:</h4>
+      <h6><%= @login_user.full_name %></h6>
+      <h4>Email:</h4>
+      <h6><%= @login_user.email %></h6>
     </div>
   </div>
-
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <section id='seller_status'>
+        <% if @login_user.is_a_seller %>
+          <p>You are currently a Spagh-ettsi merchant. To change your status, click the button below.<p>
+          <%= form_with model: @login_user, local: true do |f| %>
+            <%= f.hidden_field :is_a_seller, value: false %>
+            <%= f.submit "Stop selling delicious pasta" %>
+          <% end %>
+        <% else %>
+          <p>You are currently a Spagh-ettsi customer. To become a merchant, click the button below.<p>
+          <%= form_with model: @login_user, local: true do |f| %>
+            <%= f.hidden_field :is_a_seller, value: true %>
+            <%= f.submit "I want to share my handcrafted pasta with the world" %>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
+  <div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+      <%= link_to "Visit your Shop >", dashboard_path, class: "btn btn-products card-title"%>
+      <p class="card-text">Find all your seller info here!</p>
+    </div>
+  </div>
 </div>
 
-<section id='seller_status'>
-<% if @login_user.is_a_seller %>
-  <p>You are currently a Spagh-ettsi merchant. To change your status, click the button below.<p>
-  <%= form_with model: @login_user, local: true do |f| %>
-    <%= f.hidden_field :is_a_seller, value: false %>
-    <%= f.submit "I want to stop selling delicious pasta" %>
-  <% end %>
-<% else %>
-  <p>You are currently a Spagh-ettsi customer. To become a merchant, click the button below.<p>
-  <%= form_with model: @login_user, local: true do |f| %>
-    <%= f.hidden_field :is_a_seller, value: true %>
-    <%= f.submit "I want to share my handcrafted pasta with the world" %>
-  <% end %>
-<% end %>
-</section>
+
+<div class="card order-card border-0 col-lg-8 mx-auto">
+  <h2 class="text-le">Buyer Orders:</h2>
+  <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col" width="120">Order #</th>
+        <th scope="col" width="200">Date Placed</th>
+        <th scope="col" width="300">Ordered Items</th>
+        <th scope="col" width="120">Subtotal</th>
+        <th scope="col" width="120">Total Price</th>
+      </tr>
+    </thead>
+    <% @login_user_orders.each do |order| %>
+    <tbody>
+        <tr>
+        	<td>
+            <strong><%=order.id %></strong>
+        	</td>
+          <td>
+            <strong><%=readable_date(order.updated_at) %></strong>
+        	</td>
+
+
+          <td>
+            <% order.order_products.each do |op| %>
+            <ul>
+              <li>
+                <%= op.quantity %> <%= op.product.name %>
+              </li>
+            </ul>
+            <%end %>
+          </td>
+  	      <td>
+            <p><%=readable_price(order.order_subtotal) %></p>
+  	      </td>
+          <td>
+            <p><%=readable_price(order.order_total) %></p>
+          </td>
+
+      </tr>
+
+      <%end %>
+
+    </tbody>
+  </table>
+</div> <!-- card.// -->
