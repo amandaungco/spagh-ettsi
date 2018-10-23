@@ -13,4 +13,8 @@ class Payment < ApplicationRecord
   def self.card_types
     return ['AMEX', 'Visa', 'MasterCard', 'Discover', 'Spagh-Ettsi Gift Card']
   end
+
+  def last_four_digits
+    self.card_number.to_s.last(4)
+  end
 end

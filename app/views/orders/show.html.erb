@@ -1,24 +1,26 @@
 <!-- Users will need authorization to view orders -->
 <div class="pull-right order-number">
   <h1>Order Confirmation</h1>
-  <h4>Order # <%= rand(1000000000-9999999999) %></h4>
+  <h4>Order # <%= @order.id %></h4>
 </div>
 
 <div class="order-confirmation">
-  <h4><strong>You're order is complete!</strong></h4>
+  <h4><strong>Your order is complete!</strong></h4>
   <p>Thank you for your order! We will let you know once your items have been shipped.
-    You're estimated delivery is 3-5 business days. Let us know if you encounter any issues
-    - you're satisfaction is our priority.
+    Your estimated delivery time is 3-5 business days.</p>
+  <p>Let us know if you encounter any issues - your satisfaction is our priority.</p>
   </p>
 </div>
 
 <div class="order-details">
-  <p><strong>Date Placed:</strong><%= @order.updated_at %></p>
+  <p><strong>Date Placed: </strong><%= @order.updated_at %></p>
   <p><strong>Shipped to:</strong>
     <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
     <p><%= @order.address.street %></p>
+    <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
   </p>
-  <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+  <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
+  <p><strong>Payment: </strong> <%= @order.payment.card_type %> <%= @order.payment.last_four_digits %></p>
 </div>
 
 <div class="card shopping-cart-container">
