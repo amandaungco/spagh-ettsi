@@ -9,7 +9,6 @@
       <td>
         <strong>Shipping Address</strong>
         <div class="form-group">
-          <%= f.label "Shipping Address" %>
           <% if @login_user.addresses.any? %>
             <div class="col-sm-5">
             <%= f.select(:address_id) do %>
@@ -48,7 +47,7 @@
       <th scope="row">3</th>
       <td>
         <strong>Review Items</strong>
-        <div class="card shopping-cart-container col-lg-7">
+        <div class="card shopping-cart-container col-lg-8">
           <table class="table table-hover shopping-cart-wrap">
             <thead class="text-muted">
               <tr>

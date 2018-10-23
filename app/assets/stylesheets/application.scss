@@ -22,7 +22,9 @@
 //   margin-right: 80em;
 //   margin-top: -85px;
 // }
-
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 // navbar
 #spaghettsi-logo {
   width: 150px;
@@ -37,7 +39,6 @@
 
 .nav-item {
   font-size: 20px;
-  font-family: Georgia;
 }
 
 .navbar {

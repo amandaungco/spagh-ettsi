@@ -8,6 +8,7 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" type="image/png" href="https://png.icons8.com/metro/1600/spaghetti.png">
 </head>
@@ -52,7 +53,6 @@
           <%=link_to "Contact Us", contact_us_path, class: "nav-link"%>
         </li>
         <li class="nav-item nav-word">
-          <%=link_to "Cart", shopping_cart_path, class: "nav-link"%>
         </li>
         <% if @login_user && @login_user.provider != 'guest_login' %>
           <li class="nav-item nav-word">
