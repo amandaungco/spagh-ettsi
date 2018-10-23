@@ -1,21 +1,21 @@
 user_id,product_id,review,rating
-18,20,relieves anxiety,4
-15,6,reduces blood sugar levels,5
-6,18,relieves pain,5
-17,4,treats viral infections,1
-6,18,suppresses appetite,3
-10,20,promotes bone growth,4
-2,17,inhibits cell growth in tumors/cancer cells,5
-11,14,does not affect mental activity,4
-2,5,stimulates function in the immune system,1
-10,12,does not affect mental activity,3
-17,16,improves airflow to lungs,2
-10,18,reduces blood sugar levels,2
-9,2,stimulates function in the immune system,4
-12,20,suppresses appetite,5
-13,3,affects mental activity,2
-2,6,reduces blood sugar levels,5
-4,7,prevents stress,2
-12,3,treats viral infections,2
-10,14,relieves anxiety,1
-11,12,affects mental activity,1
+12,10,suppresses appetite,2
+16,15,reduces contractions in the small intestines,5
+19,15,reduces vomiting and nausea,2
+14,12,relieves pain,1
+7,13,inhibits cell growth in tumors/cancer cells,1
+4,6,relieves congestion,3
+11,19,suppresses appetite,2
+2,10,inhibits cell growth in tumors/cancer cells,2
+5,4,affects mental activity,4
+20,10,relieves congestion,2
+15,20,stimulates function in the immune system,4
+11,20,treats depression,3
+18,10,treats viral infections,1
+10,13,treats fungal infection,1
+14,3,protects against nervous system degeneration,1
+1,4,relieves anxiety,3
+13,4,suppresses appetite,5
+5,11,kills or slows bacteria growth,4
+3,1,protects against nervous system degeneration,4
+8,11,prevents infection,5

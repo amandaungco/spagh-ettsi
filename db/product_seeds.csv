@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity,image_url
-short,Callentani,4,210,treats viral infections,10,/images/pasta1.jpg
-long,Capellini,6,689,reduces seizures and convulsion,20,/images/pasta2.jpg
-soup,Ditalini,19,510,reduces risk of artery blockage,15,/images/pasta3.jpg
-short,Elbow,11,300,affects mental activity,1,/images/pasta4.jpg
-short,Farfalle,12,365,treats psoriasis,19,/images/pasta5.jpg
-long,Fettuccine,15,525,treats allergy symptoms,8,/images/pasta6.jpg
-short,Gemelli,6,525,reduces seizures and convulsion,6,/images/pasta7.jpg
-short,Gluten-free Shells,18,225,tranquilizing,14,/images/pasta8.jpg
-short,Jumbo Shells,19,187,regulates function in the immune system,20,/images/pasta9.jpg
-sheet,Lasagna,1,662,reduces blood sugar levels,7,/images/pasta10.jpg
-filled,Manicotti,3,360,treats viral infections,20,/images/pasta11.jpg
-short,Medium Shells,2,310,tranquilizing,12,/images/pasta12.jpg
-soup,Orzo,14,423,relieves congestion,16,/images/pasta13.jpg
-long,Pappardelle,3,682,suppresses muscle spasms,14,/images/pasta14.jpg
-short,Pastina,14,501,treats fungal infection,3,/images/pasta15.jpg
-short,Penne,18,528,inhibits cell growth in tumors/cancer cells,15,/images/pasta16.jpg
-filled,Ravioli,4,588,reduces inflammation,15,/images/pasta17.jpg
-short,Rotini,18,477,relieves anxiety,11,/images/pasta18.jpg
-long,Spaghetti,19,213,relieves anxiety,1,/images/pasta19.jpg
-filled,Tortellini,20,364,improves airflow to lungs,14,/images/pasta20.jpg
+short,Callentani,11,602,treats depression,14,/images/pasta1.jpg
+long,Capellini,14,534,inhibits cell growth in tumors/cancer cells,7,/images/pasta2.jpg
+soup,Ditalini,16,142,stimulates function in the immune system,7,/images/pasta3.jpg
+short,Elbow,11,254,relieves pain,12,/images/pasta4.jpg
+short,Farfalle,5,129,kills or slows bacteria growth,13,/images/pasta5.jpg
+long,Fettuccine,4,501,relieves congestion,7,/images/pasta6.jpg
+short,Gemelli,18,281,prevents infection,5,/images/pasta7.jpg
+shell,Gluten-free Shells,6,688,relieves anxiety,14,/images/pasta8.jpg
+shell,Jumbo Shells,4,555,reduces contractions in the small intestines,9,/images/pasta9.jpg
+sheet,Lasagna,1,126,treats viral infections,7,/images/pasta10.jpg
+filled,Manicotti,5,311,cell protectant,19,/images/pasta11.jpg
+shell,Medium Shells,18,145,tranquilizing,7,/images/pasta12.jpg
+soup,Orzo,16,688,reduces inflammation,18,/images/pasta13.jpg
+long,Pappardelle,3,407,treats psoriasis,13,/images/pasta14.jpg
+soup,Pastina,11,188,suppresses muscle spasms,14,/images/pasta15.jpg
+short,Penne,6,463,tranquilizing,11,/images/pasta16.jpg
+filled,Ravioli,17,695,relieves congestion,13,/images/pasta17.jpg
+short,Rotini,10,501,treats fungal infection,18,/images/pasta18.jpg
+long,Spaghetti,20,143,tranquilizing,8,/images/pasta19.jpg
+filled,Tortellini,3,396,aids sleep,18,/images/pasta20.jpg
