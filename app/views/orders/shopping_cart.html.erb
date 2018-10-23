@@ -36,7 +36,7 @@
 
   	      </td>
           <td>
-            <%= f.submit "Update Quantity" %>
+            <%= f.submit "Update Quantity", class: "btn btn-products" %>
           <% end %>
           </td>
   	      <td>
@@ -71,9 +71,10 @@
 </div> <!-- card.// -->
 
 </div>
-<div class="col-md-4 text-center bottom-buttons">
-  <%= link_to "Continue to Checkout", checkout_path, class: "btn btn-primary" %>
-  <%= link_to "Keep Shopping", products_path, class: "btn btn-primary" %>
+
+<div class="btn-group">
+  <%= link_to "Continue to Checkout", checkout_path, class: "btn btn-products btn-space" %>
+  <%= link_to "Keep Shopping", products_path, class: "btn btn-products" %>
 </div>
 <% else %>
   <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
