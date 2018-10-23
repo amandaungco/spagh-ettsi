@@ -34,9 +34,11 @@
         <li class="nav-item nav-word">
           <%=link_to "Recipes", products_path, class: "nav-link"%>
         </li>
-        <li class="nav-item nav-word">
-          <%=link_to "Sell a Product", new_product_path, class: "nav-link"%>
-        </li>
+        <% if @login_user && @login_user.is_a_seller %>
+          <li class="nav-item nav-word">
+            <%=link_to "Sell a Product", new_product_path, class: "nav-link"%>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="mx-auto order-0">
