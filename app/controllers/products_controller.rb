@@ -82,6 +82,8 @@ class ProductsController < ApplicationController
     end
   end
 
+
+
   private
 
   def find_product

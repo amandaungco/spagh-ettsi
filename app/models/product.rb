@@ -18,4 +18,9 @@ class Product < ApplicationRecord
   def self.active_products
     return Product.where(is_active: true)
   end
+
+  # def self.merchant_owners
+  #   return
+  # end
+
 end

@@ -25,6 +25,24 @@ class User < ApplicationRecord
     return self.provider == 'guest_login'
   end
 
+  def total_revenue
+
+  end
+
+  def products_by_seller
+    Product.where(user_id: self.id)
+  end
+
+  def all_orders_for_merchant
+    Order.joins(:products).where({products: {user: self}}).where().not(status: :pending)
+  end
+
+  def paid_orders_for_merchant
+
+  end
+
+  def completed_orders_for_merchant
+  end
 
 
 

@@ -32,6 +32,21 @@ class UsersController < ApplicationController
 
   end
 
+  def dashboard
+    if @login_user.nil? || !@login_user.is_a_seller?
+      redirect_to root_path
+      flash[:warning] = "You don't have permission to view that page"
+    end
+
+    @orders = @login_user.all_orders_for_merchant
+  end
+
+  def merchant_orders
+  end
+
+
+
+
   def deactivate_user_products
     @login_user.products.each do |product|
       product.is_active = false
@@ -45,5 +60,7 @@ class UsersController < ApplicationController
       product.save
     end
   end
+
+
 
 end
