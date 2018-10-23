@@ -1,8 +1,6 @@
-<div class="card-deck col-lg-10 mx-auto">
+<div class="card-deck user-card col-lg-10 mx-auto shadow p-3 mb-5 rounded">
   <div class="card shadow p-3 mb-5 bg-white rounded">
     <div class="card-body">
-      <!-- <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
       <h4>User:</h4>
       <h6><%= @login_user.full_name %></h6>
       <h4>Email:</h4>
@@ -11,8 +9,6 @@
   </div>
   <div class="card shadow p-3 mb-5 bg-white rounded">
     <div class="card-body">
-      <!-- <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p> -->
       <section id='seller_status'>
         <% if @login_user.is_a_seller %>
           <p>You are currently a Spagh-ettsi merchant. To change your status, click the button below.<p>
@@ -31,16 +27,15 @@
     </div>
   </div>
   <div class="card shadow p-3 mb-5 bg-white rounded">
-    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
     <div class="card-body">
-      <h5 class="card-title">Vist your Shop ></h5>
+      <%= link_to "Visit your Shop >", dashboard_path, class: "btn btn-products card-title"%>
       <p class="card-text">Find all your seller info here!</p>
     </div>
   </div>
 </div>
 
 
-<div class="card border-0 col-lg-8 mx-auto">
+<div class="card order-card border-0 col-lg-8 mx-auto">
   <h2 class="text-le">Buyer Orders:</h2>
   <table class="table table-hover shopping-cart-wrap">
     <thead class="text-muted">
