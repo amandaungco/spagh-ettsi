@@ -5,23 +5,25 @@
   </script>
 
 <!-- Control buttons -->
+
   <div id="myBtnContainer">
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn btn-show" onclick="filterSelection('long')"> Long</button>
-    <button class="btn btn-show" onclick="filterSelection('short')"> Short</button>
-    <button class="btn btn-show" onclick="filterSelection('shell')"> Shell</button>
-    <button class="btn btn-show" onclick="filterSelection('sheet')"> Sheet</button>
-    <button class="btn btn-show" onclick="filterSelection('filled')"> Filled</button>
-    <button class="btn btn-show" onclick="filterSelection('soup')"> Soup</button>
+    <% @merchants.each do |merchant| %>
+      <button class="btn btn-show" onclick="filterSelection(<%= merchant.id %>)"> <%= merchant.full_name %></button>
+    <% end %>
   </div>
 
+
+<!-- @products = Product.active_products
+@order_product = OrderProduct.new()
+@merchants = User.merchants -->
 
 
   <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
   <div class="products-container">
     <% i = 1 %>
     <% @products.each do |product| %>
-    <div class="filterDiv card product-card bg-white <%= product.category %>">
+    <div class="filterDiv card product-card bg-white <%= product.user_id %>">
       <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
       <div class="card-body">
         <h5 class="card-title"><%= product.name %></h5>
