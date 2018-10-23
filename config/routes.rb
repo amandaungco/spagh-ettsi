@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   patch '/product/:id', to: 'products#deactivate', as: 'deactivate_product'
   patch '/users/:id', to: 'users#update', as: 'update_user'
   get '/merchant/orders', to: 'users#orders_index', as: 'merchant_orders'
-  get '/merchant/order/:id', to: 'users#orders_show', as: 'merchant_order'
+  get '/merchant/orders/:id', to: 'users#order_show', as: 'merchant_order'
 
   resources :products
   resources :users, only: [:create, :show] #do

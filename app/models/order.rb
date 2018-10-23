@@ -29,4 +29,22 @@ class Order < ApplicationRecord
   def order_total
     return self.order_subtotal + self.flat_rate_shipping + self.seattle_sales_tax
   end
+
+  def order_products_by_merchant
+    rows = []
+    self.order_products.each do |op|
+      if op.product.user == @login_user
+        rows << op
+      end
+    end
+
+    #OrderProduct.where({products: {user_id: merchant_id}, order: self})
+
+  #  self.order_products.select{|op| op.product.user_id == merchant_id}
+  #  binding.pry
+  end
+
+  def order_subtotal_by_merchant
+    self.order_products_by_merchant.sum{|row| row.item_subtotal}
+  end
 end

@@ -1,0 +1,76 @@
+<!-- Users will need authorization to view orders -->
+<div class="pull-right order-number">
+  <h1>Merchant Order View Page</h1>
+  <h4>Order # <%= @order.id %></h4>
+</div>
+
+
+<div class="order-details">
+  <p><strong>Date Placed:</strong><%= readable_date(@order.updated_at) %></p>
+  <p><strong>Shipped to:</strong>
+    <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
+    <p><%= @order.address.street %></p>
+    <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
+  </p>
+  <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
+  <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
+</div>
+
+<div class="card shopping-cart-container">
+  <table class="table table-hover shopping-cart-wrap">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col" width="120">Quantity</th>
+        <th scope="col" width="120">Price</th>
+        <th scope="col" width="200">Back to Product</th>
+        <th scope="col" width="200">Product Subtotal</th>
+      </tr>
+    </thead>
+    <% @order_products.each do |op| %>
+    <tbody>
+        <tr>
+        	<td>
+            <figure class="media">
+            	<div class="img-wrap"><img src=<%= op.product.image_url %> class="img-thumbnail img-sm"></div>
+            	<figcaption class="media-body">
+            		<h3 class="title text-truncate"><%= op.product.name %></h3>
+            	</figcaption>
+            </figure>
+        	</td>
+  	      <td class="quantity-field">
+            <%=op.quantity %>
+  	      </td>
+  	      <td>
+        		<div class="price-wrap">
+        			<var class="price"><%= readable_price(op.product.price_in_cents)%></var>
+        		</div>
+  	      </td>
+          <td>
+            <%= link_to "Back to Product", product_path(op.product.id), class: "btn btn-primary" %>
+          </td>
+          <td>
+        		<div class="price-wrap">
+        			<var class="price"><%= readable_price(op.item_subtotal)%></var>
+        		</div>
+  	      </td>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          Subtotal
+        </td>
+        <td>
+          <%= readable_price(@order_subtotal) %>
+        </td>
+      
+      </tr>
+    </tfoot>
+  </table>
+</div> <!-- card.// -->
