@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :status, presence: true
 
   def order_placed?
-    return self.status == "placed"
+    return self.status == "paid"
   end
 
   def order_subtotal
