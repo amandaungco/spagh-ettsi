@@ -207,7 +207,7 @@ body {
 }
 
 .add-to-cart {
-  background: green;
+  background: darkgreen;
   padding: 1.2em 1.5em;
   border: none;
   text-transform: UPPERCASE;
@@ -216,7 +216,7 @@ body {
   -webkit-transition: background .3s ease;
           transition: background .3s ease; }
   .add-to-cart:hover, .like:hover {
-    background: #b36800;
+    background: darkgreen;
     color: #fff; }
 
 .not-available {
