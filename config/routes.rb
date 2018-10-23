@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#home'
   get "/auth/:provider/callback", to: "sessions#create", as: 'auth_callback'
-
+  get '/dashboard', to: "users#dashboard", as: 'dashboard'
   get '/pages/contact_us', to: 'pages#contact_us', as: 'contact_us'
   delete "/logout", to: "sessions#destroy", as: "logout"
   get '/shopping_cart', to: 'orders#shopping_cart', as: 'shopping_cart'
