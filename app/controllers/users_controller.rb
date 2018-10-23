@@ -37,13 +37,13 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
     end
+
+    @orders = @login_user.all_orders_for_merchant
   end
 
   def merchant_orders
   end
 
-
-  end
 
 
 

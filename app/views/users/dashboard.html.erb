@@ -19,3 +19,8 @@ count of complete orders
   ...Merchant Dashboard
 </div>
 >>>>>>> db803b963a3997d2fe60ec26ce9fb2e4d63b5400
+
+<!-- change this to link to new special merchant order view -->
+<% @orders.each do |order| %>
+<%= link_to "Order ##{order.id}", order_path(order.id) %>
+<% end %>
