@@ -1,19 +1,19 @@
 <!-- Users will need authorization to view orders -->
 <div class="pull-right order-number">
   <h1>Order Confirmation</h1>
-  <h4>Order # <%= rand(1000000000-9999999999) %></h4>
+  <h4>Order # <%= @order.id %></h4>
 </div>
 
 <div class="order-confirmation">
-  <h4><strong>You're order is complete!</strong></h4>
+  <h4><strong>Your order is complete!</strong></h4>
   <p>Thank you for your order! We will let you know once your items have been shipped.
-    You're estimated delivery is 3-5 business days. Let us know if you encounter any issues
-    - you're satisfaction is our priority.
+    Your estimated delivery is 3-5 business days. Let us know if you encounter any issues
+    - your satisfaction is our priority.
   </p>
 </div>
 
 <div class="order-details">
-  <p><strong>Date Placed:</strong><%= @order.updated_at %></p>
+  <p><strong>Date Placed:</strong><%= readable_date(@order.updated_at) %></p>
   <p><strong>Shipped to:</strong>
     <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
     <p><%= @order.address.street %></p>
@@ -29,33 +29,88 @@
         <th scope="col" width="120">Quantity</th>
         <th scope="col" width="120">Price</th>
         <th scope="col" width="200">Back to Product</th>
+        <th scope="col" width="200">Product Subtotal</th>
       </tr>
     </thead>
-    <% @order.products.each do |product| %>
+    <% @order.order_products.each do |op| %>
     <tbody>
         <tr>
         	<td>
             <figure class="media">
-            	<div class="img-wrap"><img src=<%= product.image_url %> class="img-thumbnail img-sm"></div>
+            	<div class="img-wrap"><img src=<%= op.product.image_url %> class="img-thumbnail img-sm"></div>
             	<figcaption class="media-body">
-            		<h3 class="title text-truncate"><%= product.name %></h3>
+            		<h3 class="title text-truncate"><%= op.product.name %></h3>
             	</figcaption>
             </figure>
         	</td>
   	      <td class="quantity-field">
-            <%=product.quantity %>
+            <%=op.quantity %>
   	      </td>
   	      <td>
         		<div class="price-wrap">
-        			<var class="price"><%= readable_price(product.price_in_cents)%></var>
-
-        		</div> <!-- price-wrap .// -->
+        			<var class="price"><%= readable_price(op.product.price_in_cents)%></var>
+        		</div>
   	      </td>
           <td>
-            <%= link_to "Back to Product", product_path(product.id), class: "btn btn-primary" %>
+            <%= link_to "Back to Product", product_path(op.product.id), class: "btn btn-primary" %>
           </td>
+          <td>
+        		<div class="price-wrap">
+        			<var class="price"><%= readable_price(op.item_subtotal)%></var>
+        		</div>
+  	      </td>
       </tr>
       <% end %>
     </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          Subtotal
+        </td>
+        <td>
+          <%= readable_price(@order.order_subtotal) %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          Seattle Sales Tax (10.1%)
+        </td>
+        <td>
+          <%= readable_price(@order.seattle_sales_tax) %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          Flat Rate Shipping
+        </td>
+        <td>
+          <%= readable_price(@order.flat_rate_shipping) %>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+          <strong>Order Total</strong>
+        </td>
+        <td>
+          <strong><%= readable_price(@order.order_total) %></strong>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div> <!-- card.// -->
