@@ -18,3 +18,45 @@
 .table {
   margin-bottom: 5rem;
 }
+
+// ========================================
+// DASHBOARD
+// ========================================
+
+.sidenav {
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background-color: firebrick;
+    overflow-x: hidden;
+    padding: 15px 10px;
+    margin-top: 9rem;
+
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+
+
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
