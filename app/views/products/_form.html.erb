@@ -12,19 +12,19 @@
   <%= f.hidden_field :user_id, value: session[:user_id] %>
   <form>
     <div class="form-group row top-row">
-      <%= f.label :name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <%= f.label "Product Name", class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-6">
         <%= f.text_field :name, class: 'form-control', id:"name" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :price_in_cents, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <%= f.label "Unit Price ($)", class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-7">
-        <%= f.number_field :price_in_cents, step: 0.01, class: 'form-control', id:"name" %>
+        <%= f.number_field :price_in_cents, step: 0.01, min: 0, value: form_price(@product.price_in_cents), class: 'form-control', id: 'form_price' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :quantity, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <%= f.label "Quantity in Stock", class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-7">
         <%= f.number_field :quantity, class: 'form-control'%>
       </div>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :description, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+      <%= f.label "Product Description", class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-7">
         <%= f.text_area :description, class: 'form-control'%>
       </div>

@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+
     @product = Product.new(product_params)
       if @product.save
         flash[:success] = "Successfully created #{@product.name}"
@@ -79,7 +80,9 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    return params.require(:product).permit(:name, :user_id, :price_in_cents, :category, :quantity, :description)
+    product_params = params.require(:product).permit(:name, :user_id, :price_in_cents, :category, :quantity, :description)
+    product_params[:price_in_cents] = product_params[:price_in_cents].to_f * 100
+    return product_params
   end
 
   # def find_seller
