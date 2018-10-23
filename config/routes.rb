@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   patch '/shopping_cart', to: 'order_products#update', as: 'order_product'
   get '/checkout', to: 'orders#edit', as: 'checkout'
   post '/checkout', to: 'orders#update'
+
   get '/account', to: 'users#show', as: 'account'
   patch '/product/:id', to: 'products#deactivate', as: 'deactivate_product'
   patch '/users/:id', to: 'users#update', as: 'update_user'
   get '/merchant/orders', to: 'users#orders_index', as: 'merchant_orders'
   get '/merchant/orders/:id', to: 'users#order_show', as: 'merchant_order'
+
+
+
 
   resources :products
   resources :users, only: [:create, :show] #do
