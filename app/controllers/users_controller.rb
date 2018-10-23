@@ -68,8 +68,8 @@ class UsersController < ApplicationController
 
   def order_show
     @order = Order.find_by(id: params[:id])
-    @order_products = @order.order_products_by_merchant
-    @order_subtotal = @order.order_subtotal_by_merchant
+    @order_products = @order.order_products_by_merchant(@login_user)
+    @order_subtotal = @order.order_subtotal_by_merchant(@login_user)
   end
 
 def merchant_orders
