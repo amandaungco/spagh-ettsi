@@ -41,6 +41,7 @@ describe ProductsController do
 
         must_respond_with :not_found
       end
+
     end
 
 
@@ -71,12 +72,11 @@ describe ProductsController do
 
     describe "logged in user that is a seller" do
 
-
       describe 'new and create' do
-
         it 'allows a seller user to create a new product' do
           perform_login(seller)
           get new_product_path
+          assert_response :success
 
           expect {
             post products_path, params: mock_params
@@ -85,7 +85,7 @@ describe ProductsController do
           product = Product.last
 
           expect(product.name).must_equal mock_params[:product][:name]
-          expect(product.user_id).must_equal mock_params[:product][:user_id]
+          expect(product.user_id).must_equal seller.id
           expect(product.price_in_cents).must_equal mock_params[:product][:price_in_cents]
           expect(product.category).must_equal mock_params[:product][:category]
           expect(product.quantity).must_equal mock_params[:product][:quantity]
@@ -107,25 +107,15 @@ describe ProductsController do
       end
 
     end
-    describe "show" do
-      it "succeeds with valid id" do
-        get product_path(spaghetti.id)
 
-        must_respond_with :success
-      end
 
-      it "renders 404 not_found for an invalid id" do
-        get product_path(-1)
-
-        must_respond_with :not_found
-      end
-    end
 
     describe "edit for product created by user" do
       #login user as seller
       #user product that belongs to the seller
 
       it "succeeds with valid id that belongs to them" do
+        perform_login(seller)
         get edit_product_path(spaghetti.id)
 
         must_respond_with :success
@@ -135,6 +125,7 @@ describe ProductsController do
       it "renders 404 not_found for an invalid id" do
         #create a product is theirs
         #delete products, run this test
+        perform_login(seller)
         get edit_product_path(-1)
 
         must_respond_with :not_found
@@ -142,8 +133,10 @@ describe ProductsController do
 
       it "fails with valid id that does not belong to them" do
         #try editing a product that is not theirs and gives error messages
+        perform_login(buyer)
         get edit_product_path(spaghetti.id)
-        must_respond_with :success
+        must_redirect_to root_path
+        expect(flash[:warning]).must_equal "You can only edit your own products."
       end
 
     end

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:new, :edit, :update, :create]
-#  before_action :find_seller, only: [:new, :edit, :update, :create]
+  #before_action :find_seller, only: [:new, :edit, :update, :create]
 
   def index
     @products = Product.all
@@ -37,7 +37,17 @@ class ProductsController < ApplicationController
       end
   end
 
-  def edit; end
+  def edit
+    if @login_user.is_a_seller?
+      if @login_user.id != @product.user_id
+        redirect_to root_path
+        flash[:warning] = "You can only edit your own products."
+      end
+    else
+      redirect_to root_path
+      flash[:warning] = "You can only edit your own products."
+    end
+  end
 
   def update
     if @product.update(product_params)
