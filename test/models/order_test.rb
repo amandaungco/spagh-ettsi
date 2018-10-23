@@ -105,7 +105,7 @@ describe Order do
 
         valid = placed_order.valid?
         expect(valid).must_equal false
-  
+
       end
 
       it 'will not work if it does not have an address' do
@@ -121,28 +121,3 @@ describe Order do
   end
 
 end
-
-
-
-#change these tests to match custom validation
-# it 'must have an address' do
-#   order = orders(:order_one)
-#   order.address = nil
-#   order.save
-#
-#   valid = order.valid?
-#
-#   expect(valid).must_equal false
-#   expect(order.errors.messages[:address]).must_equal ["must exist"]
-# end
-
-# it 'must have a payment' do
-#   order = orders(:order_one)
-#   order.payment = nil
-#   order.save
-#
-#   valid = order.valid?
-#
-#   expect(valid).must_equal false
-#   expect(order.errors.messages[:payment]).must_equal ["must exist"]
-# end

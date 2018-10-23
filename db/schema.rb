@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_192042) do
+ActiveRecord::Schema.define(version: 2018_10_23_010956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_10_20_192042) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
+    t.boolean "is_active", default: true
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -90,7 +91,7 @@ ActiveRecord::Schema.define(version: 2018_10_20_192042) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.boolean "is_a_seller"
+    t.boolean "is_a_seller", default: false
     t.integer "uid"
     t.string "provider"
     t.datetime "created_at", null: false

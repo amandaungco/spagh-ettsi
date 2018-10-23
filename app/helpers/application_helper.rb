@@ -5,7 +5,11 @@ module ApplicationHelper
 
   def readable_price(price_in_cents)
     dollars = price_in_cents.to_f / 100
-    return ("<span class='date'>" + ("%.2f" % dollars) + "</span>").html_safe
+    return ("<span class='date'>" + "$" + ("%.2f" % dollars) + "</span>").html_safe
   end
 
+  def form_price(price_in_cents)
+    dollars = price_in_cents.to_f / 100
+    return '%.2f' % dollars
+  end
 end

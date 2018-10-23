@@ -64,8 +64,8 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
   "/images/pasta11.jpg", "/images/pasta12.jpg", "/images/pasta13.jpg", "/images/pasta14.jpg", "/images/pasta15.jpg",
   "/images/pasta16.jpg", "/images/pasta17.jpg", "/images/pasta18.jpg",
   "/images/pasta19.jpg", "/images/pasta20.jpg"]
-  categories = ["short", "long", "soup", "short", "short", "long", "short", "short",
-  "short", "sheet", "filled", "short", "soup", "long", "short", "short", "filled",
+  categories = ["short", "long", "soup", "short", "short", "long", "short", "shell",
+  "shell", "sheet", "filled", "shell", "soup", "long", "soup", "short", "filled",
   "short", "long", "filled"]
 
   20.times do |i|
@@ -73,7 +73,7 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     category = categories[i]
     name = pasta[i]
     user_id = rand(1..20)
-    price_in_cents = rand(100..5000)
+    price_in_cents = rand(100..699)
     description = Faker::Cannabis.health_benefit
     quantity = rand(1..20)
     image_url = images[i]
