@@ -25,6 +25,19 @@ class User < ApplicationRecord
     return self.provider == 'guest_login'
   end
 
+  def total_revenue
+
+  end
+
+  def paid_orders_by_seller
+  end
+
+  def completed_orders_by_seller
+  end
+
+  def products_by_seller
+  end
+
 
 
 
