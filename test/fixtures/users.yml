@@ -25,3 +25,10 @@ grace:
   uid: 13371337
   email: grace@hooper.net
   full_name: graceful_hopps
+
+guest:
+  is_a_seller: false
+  provider: guest_login
+  uid: 98765432
+  email: example@example.com
+  full_name: Guest user
