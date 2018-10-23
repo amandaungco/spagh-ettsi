@@ -30,7 +30,7 @@
             </div>
             <!-- <span class="review-no">41 reviews</span> -->
           </div>
-          <h4 class="price">current price: <span>$<%= @product.price_in_cents %></span></h4>
+          <h4 class="price">current price: <span><%= readable_price(@product.price_in_cents) %></span></h4>
           <p class="vote"><strong>Category: </strong><%= (@product.category).capitalize %></p>
           <p class="product-description">Product Description: <%= @product.description %></p>
           <p class="vote"><strong>Stock: </strong><%= @product.quantity %></p>
