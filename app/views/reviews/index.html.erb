@@ -1,12 +1,14 @@
 <div class="reviews-outer-container p-5">
   <h3>Reviews: </h3>
-  <div class="reviews-inner-container">
+
+ <div class="reviews-inner-container">
     <% @reviews.each do |review| %>
-    <strong><%= "Product: #{review.product.name}:\n" %></div></strong>
-    <div>
+    <strong><%= "Product: #{review.product.name}:\n" %></strong>
+
       <%=  "#{review.review.capitalize}\n"  %></div>
       <p>Date: <%= review.created_at %></p>
       <p><strong>Rating: <%= review.rating %></strong></p>
+  </div>
   </div>
     <% end %>
 </div>
