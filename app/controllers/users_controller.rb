@@ -55,12 +55,20 @@ class UsersController < ApplicationController
     @total_products = @login_user.products.count
   end
 
-def dashboard
-  if @login_user.nil? || !@login_user.is_a_seller?
-    redirect_to root_path
-    flash[:warning] = "You don't have permission to view that page"
+  def orders_index
+    @total_orders = @login_user.all_orders_for_merchant.count
+    @orders = @login_user.all_orders_for_merchant
+
+    @total_paid_orders = @login_user.paid_orders_for_merchant.count
+    @paid_orders = @login_user.paid_orders_for_merchant
+
+    @total_completed_orders = @login_user.completed_orders_for_merchant.count
+    @completed_orders = @login_user.completed_orders_for_merchant
   end
-end
+
+  def order_show
+    @order = Order.find_by(id: params[:id])
+  end
 
 def merchant_orders
 end
