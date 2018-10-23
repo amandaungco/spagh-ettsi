@@ -11,6 +11,7 @@ spaghetti:
   quantity: 50
   category: long
   description: this is a box of spaghetti
+  is_active: true
 
 
 lasagne:
@@ -20,6 +21,7 @@ lasagne:
   quantity: 25
   category: sheet
   description: these are lasagne noodles
+  
 
 fusilli:
   name: fusilli
@@ -28,3 +30,12 @@ fusilli:
   quantity: 20
   category: short
   description: fusilli jerry, because you're silly
+
+inactive_ravioli:
+  name: ravioli
+  user: seller
+  price_in_cents: 399
+  quantity: 34
+  category: filled
+  description: roly poly ravioli
+  is_active: false
