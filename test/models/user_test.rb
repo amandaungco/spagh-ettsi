@@ -121,4 +121,30 @@ class UserTest < ActiveSupport::TestCase
       expect(user.errors.messages).must_include :provider
     end
   end
+
+  describe 'becoming a seller' do
+    let(:guest) {users(:guest)}
+    let(:buyer) {users(:buyer)}
+
+    it 'allows a user with an account to become a seller' do
+      expect(buyer.is_a_seller).must_equal false
+
+      buyer.is_a_seller = true
+      buyer.save
+      expect(buyer.is_a_seller).must_equal true
+    end
+
+    it 'does not allow a guest user to become a seller' do
+      expect(guest.is_a_seller).must_equal false
+      guest.is_a_seller = true
+      guest.save
+
+      valid = guest.valid?
+
+      expect(valid).must_equal false
+      expect(guest.errors.messages).must_include :is_a_seller
+      expect(guest.errors.messages[:is_a_seller]).must_equal ["Must be a registered user to become a seller"]
+    end
+
+  end
 end
