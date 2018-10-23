@@ -121,6 +121,9 @@ class User < ApplicationRecord
     self.products.where(is_active: false)
   end
 
+  def self.merchants
+    User.where(is_a_seller: true)
+  end
 
 
 
