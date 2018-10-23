@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity,image_url
-short,Callentani,11,602,treats depression,14,/images/pasta1.jpg
-long,Capellini,14,534,inhibits cell growth in tumors/cancer cells,7,/images/pasta2.jpg
-soup,Ditalini,16,142,stimulates function in the immune system,7,/images/pasta3.jpg
-short,Elbow,11,254,relieves pain,12,/images/pasta4.jpg
-short,Farfalle,5,129,kills or slows bacteria growth,13,/images/pasta5.jpg
-long,Fettuccine,4,501,relieves congestion,7,/images/pasta6.jpg
-short,Gemelli,18,281,prevents infection,5,/images/pasta7.jpg
-shell,Gluten-free Shells,6,688,relieves anxiety,14,/images/pasta8.jpg
-shell,Jumbo Shells,4,555,reduces contractions in the small intestines,9,/images/pasta9.jpg
-sheet,Lasagna,1,126,treats viral infections,7,/images/pasta10.jpg
-filled,Manicotti,5,311,cell protectant,19,/images/pasta11.jpg
-shell,Medium Shells,18,145,tranquilizing,7,/images/pasta12.jpg
-soup,Orzo,16,688,reduces inflammation,18,/images/pasta13.jpg
-long,Pappardelle,3,407,treats psoriasis,13,/images/pasta14.jpg
-soup,Pastina,11,188,suppresses muscle spasms,14,/images/pasta15.jpg
-short,Penne,6,463,tranquilizing,11,/images/pasta16.jpg
-filled,Ravioli,17,695,relieves congestion,13,/images/pasta17.jpg
-short,Rotini,10,501,treats fungal infection,18,/images/pasta18.jpg
-long,Spaghetti,20,143,tranquilizing,8,/images/pasta19.jpg
-filled,Tortellini,3,396,aids sleep,18,/images/pasta20.jpg
+short,Callentani,18,235,reduces blood sugar levels,17,/images/callentani.jpg
+long,Capellini,12,500,cell protectant,20,/images/capellini.jpg
+soup,Ditalini,20,538,reduces inflammation,7,/images/ditalini.jpg
+short,Elbow,9,254,reduces inflammation,8,/images/elbow.jpg
+short,Farfalle,9,400,tranquilizing,9,/images/farfalle.jpg
+long,Fettuccine,7,619,aids sleep,8,/images/fettuccine.jpg
+short,Gemelli,14,333,inhibits cell growth in tumors/cancer cells,16,/images/gemelli.jpg
+shell,Gluten-free Shells,4,198,relieves pain,3,/images/gluten-free.jpg
+shell,Jumbo Shells,11,150,tranquilizing,13,/images/large-shell.jpg
+sheet,Lasagna,4,169,regulates function in the immune system,10,/images/lasagna.jpg
+filled,Manicotti,18,551,stimulates appetite,10,/images/manicotti.jpg
+shell,Medium Shells,8,245,cell protectant,4,/images/medium-shell.jpg
+soup,Orzo,11,355,stimulates function in the immune system,5,/images/orzo.jpg
+long,Pappardelle,18,331,treats fungal infection,12,/images/pappardelle.jpg
+soup,Pastina,4,440,promotes bone growth,18,/images/pastina.jpg
+short,Penne,20,442,stimulates function in the immune system,2,/images/penne.jpg
+filled,Ravioli,8,622,treats depression,19,/images/ravioli.jpg
+short,Rotini,20,650,relieves anxiety,19,/images/rotini.jpg
+long,Spaghetti,11,417,treats viral infections,18,/images/spaghetti.jpg
+filled,Tortellini,18,440,treats fungal infection,13,/images/tortellini.jpg
