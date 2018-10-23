@@ -1,11 +1,7 @@
 <<<<<<< HEAD
-Merchant Dashboard
-<!-- view total order by merchant count %> -->
-total revenue
-quantity of listed products:
-count of paid orders
-count of complete orders
+
 =======
+>>>>>>> css
 <!-- Side navigation -->
 <div class="sidenav">
   <a href="#">About</a>
@@ -18,6 +14,7 @@ count of complete orders
 <div class="main">
   ...Merchant Dashboard
 </div>
+<<<<<<< HEAD
 
 
 <!-- change these to link to new special MERCHANT ORDER VIEW PAGE-->
@@ -27,6 +24,9 @@ count of complete orders
   <% @orders.each do |order| %>
     <%= link_to "Order ##{order.id}", order_path(order.id) %>
   <% end %>
+</section>
+<section>
+  <p> Total Revenue: <%= readable_price(@login_user.total_revenue) %></p>
 </section>
 
 <section>
@@ -66,3 +66,5 @@ count of complete orders
   <% end %>
 
 </section>
+=======
+>>>>>>> css
