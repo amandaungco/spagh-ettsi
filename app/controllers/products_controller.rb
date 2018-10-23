@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :deactivate]
   before_action :find_categories, only: [:new, :edit, :update, :create]
   #before_action :find_seller, only: [:new, :edit, :update, :create]
 
@@ -38,14 +38,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if @login_user.is_a_seller?
+    if !@login_user.nil? && @login_user.is_a_seller?
       if @login_user.id != @product.user_id
         redirect_to root_path
         flash[:warning] = "You can only edit your own products."
       end
     else
       redirect_to root_path
-      flash[:warning] = "You can only edit your own products."
+      flash[:warning] = "You don't have permission to see that."
     end
   end
 
@@ -61,7 +61,24 @@ class ProductsController < ApplicationController
   end
 
 
-  def destroy
+  def deactivate
+    if !@login_user.nil? && @login_user.is_a_seller?
+      if @login_user.id != @product.user_id
+        redirect_to root_path
+        flash[:warning] = "You can only remove your own products."
+      end
+    else
+      redirect_to root_path
+      flash[:warning] = "You don't have permission to see that."
+    end
+    @product.is_active = false
+    if @product.save
+      redirect_to user_path(@login_user.id)
+      flash[:warning] = "Product #{@product.name} was discontinued."
+    else
+      flash.now[:warning] = "Product #{@product.name} could not be discontinued."
+      render :edit
+    end
   end
 
   private
