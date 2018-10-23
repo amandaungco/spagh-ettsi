@@ -14,5 +14,8 @@ class Order < ApplicationRecord
     self.status == "placed"
   end
 
+  def order_subtotal
+    self.order_products.sum{|row| row.item_subtotal}
+  end
 
 end
