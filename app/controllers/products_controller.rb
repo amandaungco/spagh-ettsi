@@ -8,6 +8,11 @@ class ProductsController < ApplicationController
     @order_product = OrderProduct.new()
   end
 
+  def index_by_merchant
+    @products = Product.active_products
+    @order_product = OrderProduct.new()
+  end
+
   def show
     @order_product = OrderProduct.new()
   end

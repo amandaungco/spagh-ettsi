@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update', as: 'update_user'
   get '/merchant/orders', to: 'users#orders_index', as: 'merchant_orders'
   get '/merchant/orders/:id', to: 'users#order_show', as: 'merchant_order'
+  get '/products_by_merchant', to: 'products#index_by_merchant', as: 'index_by_merchant'
 
   resources :products
   resources :users, only: [:create, :show] #do
