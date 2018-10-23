@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity,image_url
-short,Callentani,9,280,treats allergy symptoms,6,/images/pasta1.jpg
-long,Cappalini,14,1860,cell protectant,3,/images/pasta2.jpg
-soup,Ditalini,4,3611,prevents infection,20,/images/pasta3.jpg
-short,Elbow,18,2951,treats fungal infection,9,/images/pasta4.jpg
-short,Farfalle,1,2871,stimulates function in the immune system,3,/images/pasta5.jpg
-long,Fettuccine,11,3785,treats viral infections,8,/images/pasta6.jpg
-short,Gemelli,12,3517,reduces risk of artery blockage,18,/images/pasta7.jpg
-short,Gluten-free Shells,16,1179,tranquilizing,12,/images/pasta8.jpg
-short,Jumbo Shells,15,3417,reduces risk of artery blockage,7,/images/pasta9.jpg
-sheet,Lasagna,17,3859,promotes bone growth,2,/images/pasta10.jpg
-filled,manicotti,10,1468,inhibits cell growth in tumors/cancer cells,16,/images/pasta11.jpg
-short,medium_shells,16,288,suppresses muscle spasms,6,/images/pasta12.jpg
-soup,orzo,6,2054,reduces inflammation,12,/images/pasta13.jpg
-long,pappardelle,12,4292,reduces blood sugar levels,7,/images/pasta14.jpg
-short,pastina,4,414,inhibits cell growth in tumors/cancer cells,9,/images/pasta15.jpg
-short,Penne,19,4635,reduces blood sugar levels,16,/images/pasta16.jpg
-filled,Ravioli,17,3129,does not affect mental activity,9,/images/pasta17.jpg
-short,Rotini,10,659,reduces inflammation,3,/images/pasta18.jpg
-long,Spaghetti,6,4578,reduces risk of artery blockage,20,/images/pasta19.jpg
-filled,Tortellini,19,3475,prevents infection,11,/images/pasta20.jpg
+short,Callentani,4,210,treats viral infections,10,/images/pasta1.jpg
+long,Capellini,6,689,reduces seizures and convulsion,20,/images/pasta2.jpg
+soup,Ditalini,19,510,reduces risk of artery blockage,15,/images/pasta3.jpg
+short,Elbow,11,300,affects mental activity,1,/images/pasta4.jpg
+short,Farfalle,12,365,treats psoriasis,19,/images/pasta5.jpg
+long,Fettuccine,15,525,treats allergy symptoms,8,/images/pasta6.jpg
+short,Gemelli,6,525,reduces seizures and convulsion,6,/images/pasta7.jpg
+short,Gluten-free Shells,18,225,tranquilizing,14,/images/pasta8.jpg
+short,Jumbo Shells,19,187,regulates function in the immune system,20,/images/pasta9.jpg
+sheet,Lasagna,1,662,reduces blood sugar levels,7,/images/pasta10.jpg
+filled,Manicotti,3,360,treats viral infections,20,/images/pasta11.jpg
+short,Medium Shells,2,310,tranquilizing,12,/images/pasta12.jpg
+soup,Orzo,14,423,relieves congestion,16,/images/pasta13.jpg
+long,Pappardelle,3,682,suppresses muscle spasms,14,/images/pasta14.jpg
+short,Pastina,14,501,treats fungal infection,3,/images/pasta15.jpg
+short,Penne,18,528,inhibits cell growth in tumors/cancer cells,15,/images/pasta16.jpg
+filled,Ravioli,4,588,reduces inflammation,15,/images/pasta17.jpg
+short,Rotini,18,477,relieves anxiety,11,/images/pasta18.jpg
+long,Spaghetti,19,213,relieves anxiety,1,/images/pasta19.jpg
+filled,Tortellini,20,364,improves airflow to lungs,14,/images/pasta20.jpg
