@@ -31,35 +31,36 @@ class UsersController < ApplicationController
     end
 
   end
+end
 
-  def dashboard
-    if @login_user.nil? || !@login_user.is_a_seller?
-      redirect_to root_path
-      flash[:warning] = "You don't have permission to view that page"
-    end
+def dashboard
+  if @login_user.nil? || !@login_user.is_a_seller?
+    redirect_to root_path
+    flash[:warning] = "You don't have permission to view that page"
   end
+end
 
-  def merchant_orders
+def merchant_orders
+end
+
+
+
+
+
+
+def deactivate_user_products
+  @login_user.products.each do |product|
+    product.is_active = false
+    product.save
   end
+end
 
-
+def activate_user_products
+  @login_user.products.each do |product|
+    product.is_active = true
+    product.save
   end
-
-
-
-  def deactivate_user_products
-    @login_user.products.each do |product|
-      product.is_active = false
-      product.save
-    end
-  end
-
-  def activate_user_products
-    @login_user.products.each do |product|
-      product.is_active = true
-      product.save
-    end
-  end
+end
 
 
 
