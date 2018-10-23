@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/account', to: 'users#show', as: 'account'
 
   resources :products
-  resources :users, only: [:create, :show]
+  resources :users, only: [:create, :show] do
+    resources :products, only: [:show, :edit]
+  end
   resources :addresses
   resources :payments
   resources :reviews

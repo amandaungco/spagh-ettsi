@@ -21,6 +21,7 @@ require "minitest/pride"
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+
   def setup
     # Once you have enabled test mode, all requests
     # to OmniAuth will be short circuited to use the mock authentication hash.
@@ -29,7 +30,6 @@ class ActiveSupport::TestCase
   end
 
   def mock_auth_hash(user)
-
     return {
       provider: user.provider,
       uid: user.uid,
