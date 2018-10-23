@@ -20,7 +20,7 @@
     <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
   </p>
   <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
-  <p><strong>Payment: </strong> <%= @order.payment.card_type %> <%= @order.payment.last_four_digits %></p>
+  <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
 </div>
 
 <div class="card shopping-cart-container">
