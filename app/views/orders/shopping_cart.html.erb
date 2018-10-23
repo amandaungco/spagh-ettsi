@@ -1,10 +1,10 @@
 
+<div class="top-info">
 <% if @shopping_cart %>
   <h3><%= @shopping_cart.user.full_name %></h3>
   <h4>You have <%= @shopping_cart.order_products.count %> item(s) in your cart.</h4>
+</div>
 
-
-<hr>
 
 <div class="card shopping-cart-container">
   <table class="table table-hover shopping-cart-wrap">
@@ -77,6 +77,8 @@
   <%= link_to "Keep Shopping", products_path, class: "btn btn-products" %>
 </div>
 <% else %>
-  <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
+  <div class="top-info">
+    <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
+  </div>
 <% end %>
 <!--container end.//-->
