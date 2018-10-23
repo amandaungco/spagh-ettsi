@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   patch '/shopping_cart', to: 'order_products#update', as: 'order_product'
   get '/checkout', to: 'orders#edit', as: 'checkout'
   post '/checkout', to: 'orders#update'
-  get '/account', to: 'users#show', as: 'account'
+
 
   resources :products
   resources :users, only: [:create, :show]
