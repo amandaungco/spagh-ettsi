@@ -87,7 +87,7 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
 
     20.times do
       user_id = rand(1..20)
-      status = "placed"
+      status = "paid"
       payment_id = rand(1..20)
       address_id = rand(1..20)
 

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     if @login_user
-      @login_user_orders = Order.where(user_id: @login_user.id, status: :placed)
+      @login_user_orders = Order.where(user_id: @login_user.id, status: :paid)
     end
     render :account
   end

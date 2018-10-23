@@ -6,7 +6,7 @@
 #
 order_one:
   user: buyer
-  status: shopping_cart
+  status: pending
   payment: amex
   address: school
 
@@ -14,7 +14,7 @@ order_one:
 #
 order_two:
   user: buyer
-  status: placed
+  status: paid
   payment: visa
   address: home
 # column: value

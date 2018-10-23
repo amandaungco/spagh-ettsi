@@ -40,7 +40,7 @@ describe OrderProductsController do
 
       new_entry = OrderProduct.last
 
-      #the order_one fixture has the status of shopping_cart and user = buyer
+      #the order_one fixture has the status of pending and user = buyer
       expect(new_entry.order).must_equal order_one
       expect(new_entry.product).must_equal fusilli
       expect(new_entry.quantity).must_equal 5
@@ -152,7 +152,7 @@ describe OrderProductsController do
   end
 
   describe 'check_shopping_cart' do
-    it 'sets the session shopping cart id if the user has an order with shopping_cart status' do
+    it 'sets the session shopping cart id if the user has an order with pending status' do
       perform_login(buyer)
 
       #call create which uses check_shopping_cart as a helper method
