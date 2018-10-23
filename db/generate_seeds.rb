@@ -116,7 +116,7 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
 
       user_id = rand(1..20)
       product_id = rand(1..20)
-      review = Faker::Cannabis.health_benefit
+      review = Faker::Buffy.quote
       rating = rand(1..5)
 
       csv << [user_id, product_id, review, rating]
