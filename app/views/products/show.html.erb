@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card show-card">
+  <div class="card show-card container shadow p-3 mb-5 bg-white rounded">
     <div class="container-fliud">
       <div class="wrapper row">
         <div class="preview col-md-6">
@@ -28,11 +28,11 @@
               <span class="fa fa-star"></span>
               <span class="fa fa-star"></span>
             </div>
-            <span class="review-no"><%= @product.reviews.count %> reviews</span>
+            <!-- <span class="review-no">41 reviews</span> -->
           </div>
-          <p class="product-description"><%= @product.description %></p>
-          <h4 class="price">current price: <span><%= readable_price(@product.price_in_cents) %></span></h4>
+          <h4 class="price">current price: <span>$<%= @product.price_in_cents %></span></h4>
           <p class="vote"><strong>Category: </strong><%= (@product.category).capitalize %></p>
+          <p class="product-description">Product Description: <%= @product.description %></p>
           <p class="vote"><strong>Stock: </strong><%= @product.quantity %></p>
 
           <%= form_with model: @order_product do |f| %>
@@ -46,7 +46,7 @@
             <%= f.hidden_field :order_id, value: session[:order_id] %>
 
             <div class="form-group action">
-              <%= f.submit "Add to Cart", class: 'add-to-cart btn btn-primary'%>
+              <%= f.submit "Add to Cart", class: 'add-to-cart btn btn-products'%>
             </div>
 
 
