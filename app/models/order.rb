@@ -11,11 +11,22 @@ class Order < ApplicationRecord
   validates :status, presence: true
 
   def order_placed?
-    self.status == "placed"
+    return self.status == "placed"
   end
 
   def order_subtotal
-    self.order_products.sum{|row| row.item_subtotal}
+    return self.order_products.sum{|row| row.item_subtotal}
   end
 
+  def seattle_sales_tax
+    return (0.101 * self.order_subtotal).round(0)
+  end
+
+  def flat_rate_shipping
+    return 1000
+  end
+
+  def order_total
+    return self.order_subtotal + self.flat_rate_shipping + self.seattle_sales_tax
+  end
 end
