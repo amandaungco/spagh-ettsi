@@ -13,14 +13,16 @@
 </div>
 
 
-<!-- change these to link to new special MERCHANT ORDER VIEW PAGE-->
+<!-- change/remove these however you like-->
+
+
 <section>
   <p> Total Orders: <%= @total_orders %></p>
 
-  <% @orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", order_path(order.id) %>
-  <% end %>
+  <%= link_to "My Order Page", merchant_orders_path %>
+
 </section>
+
 <section>
   <p> Total Revenue: <%= readable_price(@login_user.total_revenue) %></p>
   <p> Total Revenue for paid orders: <%= readable_price(@login_user.total_revenue_by_paid) %></p>
@@ -31,7 +33,7 @@
   <p> Orders Awaiting Fulfillment: <%= @total_paid_orders %> </p>
 
   <% @paid_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", order_path(order.id) %>
+    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
   <% end %>
 </section>
 
@@ -39,7 +41,7 @@
   <p> Completed Orders: <%= @total_completed_orders %> </p>
 
   <% @completed_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", order_path(order.id) %>
+    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
   <% end %>
 </section>
 
@@ -64,5 +66,3 @@
   <% end %>
 
 </section>
-=======
->>>>>>> css

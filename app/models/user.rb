@@ -101,15 +101,16 @@ class User < ApplicationRecord
   end
 
   def all_orders_for_merchant
-    Order.joins(:products).where({products: {user: self}}).where().not(status: :pending)
+    orders = Order.joins(:products).where({products: {user: self}}).where().not(status: :pending)
+    return orders.uniq
   end
 
   def paid_orders_for_merchant
-    all_orders_for_merchant.where(status: :paid)
+    all_orders_for_merchant.select{|o| o.status == 'paid'}
   end
 
   def completed_orders_for_merchant
-    all_orders_for_merchant.where(status: :complete)
+    all_orders_for_merchant.select{|o| o.status == 'complete'}
   end
 
   def active_products
