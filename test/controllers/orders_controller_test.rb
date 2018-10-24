@@ -111,8 +111,4 @@ describe OrdersController do
   end
 
 
-
-
-
-
 end
