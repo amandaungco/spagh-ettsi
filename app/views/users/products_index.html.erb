@@ -1,0 +1,38 @@
+<div class="text-center">
+  <!-- <h1>All my products</h1> -->
+  <script>
+    filterSelection('all');
+  </script>
+
+<!-- Control buttons -->
+  <div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> All Products</button>
+    <button class="btn btn-show" onclick="filterSelection('true')"> Active Products</button>
+    <button class="btn btn-show" onclick="filterSelection('false')"> Inactive Products</button>
+  </div>
+
+
+
+
+  <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+  <div class="products-container">
+    <% i = 1 %>
+    <% @products.each do |product| %>
+      <div class="filterDiv card product-card bg-white <%= product.is_active %>">
+        <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <hr>
+          <p class="card-text"><%= readable_price(product.price_in_cents)%></p>
+
+          <!-- <p class="card-text">Rating: </p> -->
+
+          <div class="dropdown">
+              <%= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
+          </div>
+        </div>
+      </div>
+      <% i += 1 %>
+    <%end%>
+  </div>
+</div>

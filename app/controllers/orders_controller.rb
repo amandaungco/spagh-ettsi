@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+before_action :find_order, only: [:mark_as_shipped]
   def index
   end
 
@@ -20,6 +20,16 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find_by(id: params[:id])
     render :checkout
+  end
+
+  def mark_as_shipped
+    if @order.status != 'complete'
+      @order.status = 'complete'
+      if @order.save
+        flash[:success] = "Order Shipped!"
+        redirect_back(fallback_location: merchant_orders_path)
+      end
+    end
   end
 
   def update
@@ -44,6 +54,9 @@ class OrdersController < ApplicationController
 
 private
 
+  def find_order
+    @order = Order.find_by(id: params[:id].to_i)
+  end
 
   def order_params
     params.require(:order).permit(:payment_id, :address_id, :status)

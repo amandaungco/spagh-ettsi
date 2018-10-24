@@ -72,26 +72,29 @@ class UsersController < ApplicationController
     @order_subtotal = @order.order_subtotal_by_merchant(@login_user)
   end
 
-def merchant_orders
-end
-
-
-
-
-
-def deactivate_user_products
-  @login_user.products.each do |product|
-    product.is_active = false
-    product.save
+  def products_index
+    @products = @login_user.products
+    @active_products = @login_user.active_products
+    @inactive_products = @login_user.inactive_products
   end
-end
 
-def activate_user_products
-  @login_user.products.each do |product|
-    product.is_active = true
-    product.save
+
+
+
+
+  def deactivate_user_products
+    @login_user.products.each do |product|
+      product.is_active = false
+      product.save
+    end
   end
-end
+
+  def activate_user_products
+    @login_user.products.each do |product|
+      product.is_active = true
+      product.save
+    end
+  end
 
 
 

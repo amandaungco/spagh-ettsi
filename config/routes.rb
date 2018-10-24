@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update', as: 'update_user'
   get '/merchant/orders', to: 'users#orders_index', as: 'merchant_orders'
   get '/merchant/orders/:id', to: 'users#order_show', as: 'merchant_order'
-  get '/products_by_merchant', to: 'products#index_by_merchant', as: 'index_by_merchant'
+  patch '/merchant/orders/:id', to: 'orders#mark_as_shipped', as: 'mark_as_shipped'
+  get '/products_by_merchant', to: 'products#index_by_merchant', as: 'products_by_merchant'  #should change this to products_index_by_merchant
+  get '/merchant/my_products', to: 'users#products_index', as: 'merchant_my_products'
 
 
 

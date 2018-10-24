@@ -14,13 +14,13 @@
           <p>You are currently a Spagh-ettsi merchant. To change your status, click the button below.<p>
           <%= form_with model: @login_user, local: true do |f| %>
             <%= f.hidden_field :is_a_seller, value: false %>
-            <%= f.submit "Stop selling delicious pasta" %>
+            <%= f.submit "Stop selling delicious pasta", class: "btn bg-dark" %>
           <% end %>
         <% else %>
           <p>You are currently a Spagh-ettsi customer. To become a merchant, click the button below.<p>
           <%= form_with model: @login_user, local: true do |f| %>
             <%= f.hidden_field :is_a_seller, value: true %>
-            <%= f.submit "I want to share my handcrafted pasta with the world" %>
+            <%= f.submit "Let me sell handcrafted pasta with the world", class: "btn bg-dark" %>
           <% end %>
         <% end %>
       </section>
@@ -28,7 +28,7 @@
   </div>
   <div class="card shadow p-3 mb-5 bg-white rounded">
     <div class="card-body">
-      <%= link_to "Visit your Shop >", dashboard_path, class: "btn btn-products card-title"%>
+      <%= link_to "Visit your Shop >", dashboard_path, class: "btn btn-user bg-dark card-title"%>
       <p class="card-text">Find all your seller info here!</p>
     </div>
   </div>

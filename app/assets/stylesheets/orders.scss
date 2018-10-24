@@ -45,6 +45,7 @@ var {
 
 .shopping-cart-container {
   margin: 4rem;
+  border: none;
 }
 
 
@@ -104,6 +105,9 @@ var {
 
 }
 
+.order-total {
+  height: 10px;
+}
 // =====================================
 // SHOW PAGE
 // =====================================
