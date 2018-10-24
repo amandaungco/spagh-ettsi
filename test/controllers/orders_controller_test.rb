@@ -106,10 +106,11 @@ describe OrdersController do
       patch order_path(order_one.id), params: order_params
 
       must_redirect_to root_path
-
     end
 
   end
+
+
 
 
 
