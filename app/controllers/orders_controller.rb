@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 before_action :find_order, only: [:show, :edit, :mark_as_shipped]
+before_action :check_login_user
   # def index
   # end
 
@@ -39,13 +40,13 @@ before_action :find_order, only: [:show, :edit, :mark_as_shipped]
   def update
     if @shopping_cart.update(order_params)
       flash[:success] = "Your order has been placed!"
-      order_id = session[:shopping_cart_id]
+      order_id = @shopping_cart.id
       session[:shopping_cart_id] = nil
       redirect_to order_path(order_id)
     else
       flash[:warning] = "Unable to place order"
       flash[:validation_errors] = @shopping_cart.errors.full_messages
-      render :checkout
+      render :checkout, status: :bad_request
     end
   end
 
@@ -62,6 +63,13 @@ private
 
   def order_params
     params.require(:order).permit(:payment_id, :address_id, :status)
+  end
+
+  def check_login_user
+    if !@login_user
+      flash[:warning] = "You must be logged in to see an order."
+      redirect_to root_path
+    end
   end
 
 end
