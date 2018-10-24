@@ -3,6 +3,7 @@ require "test_helper"
 describe OrdersController do
   let(:order_one) {orders(:order_one)}
   let(:order_two) {orders(:order_two)}
+  let(:order_three) {orders(:order_three)}
   let(:buyer) {users(:buyer)}
 
   let(:order_params) {
@@ -25,6 +26,13 @@ describe OrdersController do
     it 'responds with not found with a logged-in user trying to view a pending order given a valid ID' do
       perform_login(buyer)
       get order_path(order_one.id)
+
+      must_respond_with :not_found
+    end
+
+    it 'responds with not found with a logged-in user trying to view someone elses order with valid ID' do
+      perform_login(buyer)
+      get order_path(order_three.id)
 
       must_respond_with :not_found
     end
@@ -57,9 +65,15 @@ describe OrdersController do
       must_respond_with :not_found
     end
 
-    it 'responds with not found with a logged-in user with invalid ID' do
+    it 'responds with not found with a logged-in user with someone elses valid order ID' do
       perform_login(buyer)
-      get edit_order_path(-1)
+      get edit_order_path(order_three.id)
+
+      must_respond_with :not_found
+    end
+
+    it 'responds with not found with no user logged in (guest user is technically a login)' do
+      get edit_order_path(order_three.id)
 
       must_respond_with :not_found
     end
