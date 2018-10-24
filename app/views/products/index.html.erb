@@ -41,7 +41,7 @@
             <form class="px-4 py-3">
               <div class="form-group quantity-field">
                 <%= f.label :quantity %>
-                <%= f.number_field :quantity, value: 1, class: 'form-control'%>
+                <%= f.number_field :quantity, min: 1,value: 1, class: 'form-control'%>
               </div>
               <%= f.hidden_field :product_id, value: product.id %>
 
