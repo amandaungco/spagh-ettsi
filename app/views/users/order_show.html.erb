@@ -13,6 +13,13 @@
     <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
   </p>
   <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
+  <section id='order_item_status'>
+    <% if @order.status != 'complete' %>
+      <%= link_to "Ship these items!", mark_as_shipped_path, method: :patch, class: "btn btn-primary"  %>
+      <%else%>
+      <p> Items have been shipped</p>
+      <% end %>
+  </section>
   <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
 </div>
 
@@ -54,6 +61,7 @@
         			<var class="price"><%= readable_price(op.item_subtotal)%></var>
         		</div>
   	      </td>
+
       </tr>
       <% end %>
     </tbody>
@@ -69,7 +77,7 @@
         <td>
           <%= readable_price(@order_subtotal) %>
         </td>
-      
+
       </tr>
     </tfoot>
   </table>
