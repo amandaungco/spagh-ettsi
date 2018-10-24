@@ -57,14 +57,16 @@ describe ReviewsController do
     end
 
     it "renders bad_request when invalid data is provided" do
-      # Arranges
-      review_hash[:review][:id] = nil
 
+      perform_login(users(:buyer))
+      # Arranges
+      review_hash[:review][:product_id] = nil
+binding.pry
       # Act-Assert
       expect {
-        post review_path, params: review_hash
+        post reviews_path, params: review_hash
       }.wont_change 'Review.count'
-
+binding.pry
       must_respond_with :bad_request
     end
 
