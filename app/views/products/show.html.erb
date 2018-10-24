@@ -22,12 +22,16 @@
           <h3 class="product-title"><%= @product.name %></h3>
           <div class="rating">
             <div class="stars">
-          <!-- <# @product.average_rating.times do %>
-                <span class="fa fa-star checked"></span>
-              <# end %>
-              <# (5 - @product.average_rating).times do %>
-                <span class="fa fa-star"></span>
-              <# end %> -->
+              <% if @product.average_rating == 'Not yet rated' %>
+                <p>Not yet rated</p>
+              <% else %>
+                <% @product.average_rating.times do %>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+                <% (5 - @product.average_rating).times do %>
+                  <span class="fa fa-star"></span>
+                <% end %>
+              <% end %>
             </div>
             <!-- <span class="review-no">41 reviews</span> -->
           </div>

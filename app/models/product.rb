@@ -19,6 +19,18 @@ class Product < ApplicationRecord
     return Product.where(is_active: true)
   end
 
+  def average_rating
+    ratings = 0
+    self.reviews.each do |review|
+      ratings += review.rating if review.rating
+    end
+    if ratings == 0
+      return "Not yet rated"
+    else
+      return (ratings.to_i / self.reviews.length).round(2)
+    end
+  end
+
   # def self.merchant_owners
   #   return
   # end
