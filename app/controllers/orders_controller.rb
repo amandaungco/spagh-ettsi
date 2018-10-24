@@ -32,15 +32,20 @@ before_action :find_order, only: [:mark_as_shipped]
   end
 
   def update
-    if @shopping_cart.update(order_params)
-      flash[:success] = "Your order has been placed!"
-      order_id = session[:shopping_cart_id]
-      session[:shopping_cart_id] = nil
-      redirect_to order_path(order_id)
+    if @shopping_cart.products ==[]
+      redirect_to products_path
+      flash[:warning] = "Error: Cannot checkout, cart is empty."
     else
-      flash[:warning] = "Unable to place order"
-      flash[:validation_errors] = @shopping_cart.errors.full_messages
-      render :checkout
+      if @shopping_cart.update(order_params)
+        flash[:success] = "Your order has been placed!"
+        order_id = session[:shopping_cart_id]
+        session[:shopping_cart_id] = nil
+        redirect_to order_path(order_id)
+      else
+        flash[:warning] = "Unable to place order"
+        flash[:validation_errors] = @shopping_cart.errors.full_messages
+        render :checkout
+      end
     end
   end
 

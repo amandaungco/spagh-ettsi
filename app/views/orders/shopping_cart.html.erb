@@ -1,6 +1,10 @@
 
 <div class="top-info">
-<% if @shopping_cart %>
+<% if @shopping_cart.nil? || @shopping_cart.products ==[] %>
+  <div class="top-info">
+    <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
+  </div>
+<% else @shopping_cart %>
   <h3><%= @shopping_cart.user.full_name %></h3>
   <h4>You have <%= @shopping_cart.order_products.count %> item(s) in your cart.</h4>
 </div>
@@ -74,9 +78,5 @@
   <%= link_to "Continue to Checkout", checkout_path, class: "btn btn-products btn-space" %>
   <%= link_to "Keep Shopping", products_path, class: "btn btn-products" %>
 </div>
-<% else %>
-  <div class="top-info">
-    <h2> Your shopping cart is empty!  Add some fusilli, silly! </h2>
-  </div>
 <% end %>
 <!--container end.//-->
