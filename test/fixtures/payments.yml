@@ -21,3 +21,11 @@ visa:
   cvv: 123
   card_type: VISA
 # column: value
+
+discover:
+  user: seller
+  address: work
+  card_number: 378282246310005
+  expiration_date: Date.parse(January 2, 2050)
+  cvv: 1234
+  card_type: Discover

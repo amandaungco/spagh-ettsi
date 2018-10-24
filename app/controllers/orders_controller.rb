@@ -1,25 +1,30 @@
 class OrdersController < ApplicationController
-before_action :find_order, only: [:mark_as_shipped]
-  def index
-  end
+before_action :find_order, only: [:show, :edit, :mark_as_shipped]
+before_action :check_login_user
+  # def index
+  # end
 
   def show
-    @order = Order.find_by(id: params[:id])
-  end
-
-  def new
-  end
-
-  def create(order_params)
-    @shopping_cart = Order.new(order_params)
-    if !@shopping_cart.save
-      flash[:warning] = "There was an error.  Could not create shopping cart."
+    if !@order || @order.status == 'pending' || @order.user != @login_user
+      render 'layouts/not_found', status: :not_found
     end
   end
 
+  # def new; end
+
+  # def create
+  #   # @shopping_cart = Order.new
+  #   # if !@shopping_cart.save
+  #   #   flash[:warning] = "There was an error.  Could not create shopping cart."
+  #   # end
+  # end
+
   def edit
-    @order = Order.find_by(id: params[:id])
-    render :checkout
+    if !@shopping_cart || @shopping_cart.user != @login_user
+      render 'layouts/not_found', status: :not_found
+    else
+      render :checkout
+    end
   end
 
   def mark_as_shipped
@@ -32,24 +37,27 @@ before_action :find_order, only: [:mark_as_shipped]
   end
 
   def update
-    if @shopping_cart.update(order_params)
-      flash[:success] = "Your order has been placed!"
-      order_id = session[:shopping_cart_id]
-      session[:shopping_cart_id] = nil
-      redirect_to order_path(order_id)
+    if @shopping_cart.products ==[]
+      redirect_to products_path
+      flash[:warning] = "Error: Cannot checkout, cart is empty."
     else
-      flash[:warning] = "Unable to place order"
-      flash[:validation_errors] = @shopping_cart.errors.full_messages
-      render :checkout
+      if @shopping_cart.update(order_params)
+        flash[:success] = "Your order has been placed!"
+        order_id = session[:shopping_cart_id]
+        session[:shopping_cart_id] = nil
+        redirect_to order_path(order_id)
+      else
+        flash[:warning] = "Unable to place order"
+        flash[:validation_errors] = @shopping_cart.errors.full_messages
+        render :checkout, status: :bad_request
+      end
     end
   end
 
-  def destroy
-  end
+  # def destroy
+  # end
 
-  def shopping_cart
-
-  end
+  def shopping_cart; end
 
 private
 
@@ -59,7 +67,13 @@ private
 
   def order_params
     params.require(:order).permit(:payment_id, :address_id, :status)
+  end
 
+  def check_login_user
+    if !@login_user
+      flash[:warning] = "You must be logged in to see an order."
+      redirect_to root_path
+    end
   end
 
 end

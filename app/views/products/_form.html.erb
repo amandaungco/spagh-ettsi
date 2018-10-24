@@ -5,9 +5,9 @@
         </h1>
         <br></br>
         <h2 class="wv-heading--subtitle">
-           "Spaghetti can be eaten most successfully if you inhale it like a vacuum cleaner."
+           <%= quote %>
         </h2>
-        <h6> ---  Sophia Loren</h6>
+        <h6><%= quoteauthor %></h6>
   </div>
 
   <%= form_with model: @product, local: true do |f| %>
@@ -21,25 +21,25 @@
     </div>
     <div class="form-group row">
       <%= f.label "Unit Price ($)", class: "col-sm-3 offset-sm-1 col-form-label"  %>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <%= f.number_field :price_in_cents, step: 0.01, min: 0, value: form_price(@product.price_in_cents), class: 'form-control', id: 'form_price' %>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label "Quantity in Stock", class: "col-sm-3 offset-sm-1 col-form-label"  %>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <%= f.number_field :quantity, min: 1, class: 'form-control'%>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label :category, class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-6 input-lg">
-        <%= f.select :category, @product_categories, class: "form-control"%>
+        <%= f.select :category, @product_categories, {}, class: "form-control"%>
       </div>
     </div>
     <div class="form-group row">
       <%= f.label "Product Description", class: "col-sm-3 offset-sm-1 col-form-label"  %>
-      <div class="col-sm-8">
+      <div class="col-sm-6">
         <%= f.text_area :description, class: 'form-control'%>
       </div>
     </div>

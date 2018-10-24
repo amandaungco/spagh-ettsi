@@ -18,3 +18,9 @@ order_two:
   payment: visa
   address: home
 # column: value
+
+order_three:
+  user: seller
+  status: paid
+  payment: discover
+  address: work

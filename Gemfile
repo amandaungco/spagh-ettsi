@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'simplecov'
 gem 'faker'
 gem "omniauth"
 gem "omniauth-github"

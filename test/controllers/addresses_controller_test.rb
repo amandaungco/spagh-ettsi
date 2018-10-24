@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe AddressesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  let(:home) {addresses(:home)}
+  let(:school) {addresses(:school)}
+  let(:work) {addresses(:work)}
 end
