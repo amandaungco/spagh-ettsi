@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 before_action :find_order, only: [:mark_as_shipped]
-  def index
-  end
+  # def index
+  # end
 
   def show
     @order = Order.find_by(id: params[:id])
