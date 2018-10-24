@@ -69,3 +69,12 @@
   <% end %>
 
 </div>
+<div class="sidenav">
+  <h6 class="text-center"><strong>Welcome</h6></strong>
+  <h6 class="text-center"><strong><%= @login_user.full_name %></strong></h6>
+  <hr>
+  <%= link_to "Dashboard", dashboard_path %>
+  <%= link_to "Add a Product", new_product_path %>
+  <%= link_to "My Products", new_product_path %>
+  <%= link_to "My Orders", merchant_orders_path %>
+</div>
