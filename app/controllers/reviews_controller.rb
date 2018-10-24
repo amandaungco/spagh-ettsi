@@ -1,3 +1,6 @@
+# before(:all) do
+#   @product = Product.find_by(id: params[:id])
+# end
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
@@ -9,33 +12,21 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-
-    if @review.save
-      flash[:success] = "Successfully created a new review"
-      redirect_to root_path
-
-    else
-      flash.now[:warning] = "An error occurred: could not create review"
-      flash.now[:validation_errors] =
-      @review.errors.full_messages
-
-      render :new, status: :bad_request
-    end
   end
 
   def create
-    @review = Review.new
+    @review = Review.new(review_params)
+    @review.user = current_user
 
     if @review.save
       flash[:success] = "Thanks for creating a review!"
 
-      redirect_to root_path
-
+      redirect_to reviews_path
     else
       flash.now[:warning] = "An error occurred, could not create the review"
       flash.now[:validation_errors] = @review.errors.full_messages
 
-      render :new, status: :bad_request
+      redirect_to product_path(@review.product)
     end
   end
 
@@ -46,5 +37,11 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:review, :rating, :product_id)
   end
 end
