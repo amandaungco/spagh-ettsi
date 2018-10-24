@@ -4,7 +4,7 @@ before_action :find_order, only: [:show, :edit, :mark_as_shipped]
   # end
 
   def show
-    if !@order || @order.status == :pending || @order.user != @login_user
+    if !@order || @order.status == 'pending' || @order.user != @login_user
       render 'layouts/not_found', status: :not_found
     end
   end

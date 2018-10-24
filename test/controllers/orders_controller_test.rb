@@ -2,6 +2,8 @@ require "test_helper"
 
 describe OrdersController do
   let(:order_one) {orders(:order_one)}
+  let(:order_two) {orders(:order_two)}
+  let(:buyer) {users(:buyer)}
 
   let(:order_params) {
     {
@@ -13,10 +15,18 @@ describe OrdersController do
   }
 
   describe 'show' do
-    it 'succeeds given a valid ID' do
-      get order_path(order_one.id)
+    it 'succeeds with a logged-in user viewing their own non-pending order given a valid ID' do
+      perform_login(buyer)
+      get order_path(order_two.id)
 
       must_respond_with :success
+    end
+
+    it 'responds with not found with a logged-in user trying to view a pending order given a valid ID' do
+      perform_login(buyer)
+      get order_path(order_one.id)
+
+      must_respond_with :not_found
     end
 
     it 'responds with not found given an invalid ID' do
@@ -24,10 +34,18 @@ describe OrdersController do
 
       must_respond_with :not_found
     end
+
+    it 'responds with not found if a user is not logged in given a valid ID' do
+      get order_path(order_two.id)
+
+      must_respond_with :not_found
+    end
   end
 
   describe 'edit' do
     it 'succeeds with a logged-in user given a pending order with valid ID' do
+
+
       get edit_order_path(order_one.id)
 
       must_respond_with :success
