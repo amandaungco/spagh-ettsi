@@ -4,7 +4,7 @@ class OrderProduct < ApplicationRecord
 
   validates :order, presence: true
   validates :product, presence: true
-  validates :quantity, presence: true, numericality: true
+  validates :quantity, presence: true, numericality: { greater_than: 0, message: "Must add atleast a quantity of one."}
 
   def item_subtotal
     self.product.price_in_cents * self.quantity
