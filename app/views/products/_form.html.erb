@@ -51,7 +51,7 @@
     </div>
     <div class="row">
       <div class="col-sm-9 offset-sm-4">
-        <%= f.submit "Submit Product", class: 'btn btn-primary'%>
+        <%= f.submit "Submit Product", class: 'btn btn-products'%>
       </div>
     </div>
     <div class="col-md-12 ">
@@ -61,7 +61,7 @@
        </div>
     </div>
     <div class="col-sm-9 offset-sm-4">
-      <%=link_to "Return to Products", products_path, class: 'btn btn-primary'%>
+      <%=link_to "Return to Products", products_path, class: 'btn btn-products'%>
     </div>
     <p class="col-sm-7 text-center offset-sm-3 small mt-3">By adding a product and becoming a merchant, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
     </p>
@@ -75,6 +75,6 @@
   <hr>
   <%= link_to "Dashboard", dashboard_path %>
   <%= link_to "Add a Product", new_product_path %>
-  <%= link_to "My Products", new_product_path %>
+  <%= link_to "My Products", merchant_my_products_path %>
   <%= link_to "My Orders", merchant_orders_path %>
 </div>

@@ -11,20 +11,18 @@
     <button class="btn btn-show" onclick="filterSelection('false')"> Inactive Products</button>
   </div>
 
-
-
-
   <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-  <div class="products-container">
+  <div class="products-container offset-lg-3">
     <% i = 1 %>
     <% @products.each do |product| %>
-      <div class="filterDiv card product-card bg-white <%= product.is_active %>">
+      <div class="filterDiv card product-card bg-white <%= product.is_active %> ">
         <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
         <div class="card-body">
           <h5 class="card-title"><%= product.name %></h5>
           <hr>
           <p class="card-text"><%= readable_price(product.price_in_cents)%></p>
 
+<<<<<<< HEAD
       <!-- STARS NEED TO BE SMALLER / CLOSER TOGETHER TO FIT ON A CARD
           <p class="card-text stars">
             <% if product.average_rating == 'Not yet rated' %>
@@ -39,13 +37,41 @@
             <% end %>
           </p>
                 -->
+=======
+          <!-- <p class="card-text stars">
+                  <# @product.average_rating.times do %>
+                    <span class="fa fa-star checked"></span>
+                  <# end %>
+                  <# (5 - @product.average_rating).times do %>
+                    <span class="fa fa-star"></span>
+                  <# end %>
+                </p> -->
+>>>>>>> css
 
-          <div class="dropdown">
-              <%= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
+          <!-- <div class="dropdown">
+              <span class="fa fa-search-plus"></span>
+              <span class="fa fa-pencil"></span>
+              <span class="fa fa-times"></span>
+              <%#= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
+          </div> -->
+          <div class="card-footer align-text-top">
+            <%= link_to "", product_path(product.id), class: "fa fa-search-plus"%>
+            <%= link_to "", edit_product_path(product.id), class: "fa fa-pencil"%>
+            <%= link_to "", deactivate_product_path(product.id), class: "fa fa-times"%>
           </div>
         </div>
       </div>
       <% i += 1 %>
     <%end%>
   </div>
+</div>
+
+<div class="sidenav">
+  <h6 class="text-center">Welcome</h6>
+  <h6 class="text-center"><%= @login_user.full_name %></h6>
+  <hr>
+  <%= link_to "Dashboard", dashboard_path %>
+  <%= link_to "Add a Product", new_product_path %>
+  <%= link_to "My Products", merchant_my_products_path %>
+  <%= link_to "My Orders", merchant_orders_path %>
 </div>
