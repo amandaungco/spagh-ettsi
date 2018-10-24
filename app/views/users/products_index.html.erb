@@ -25,7 +25,14 @@
           <hr>
           <p class="card-text"><%= readable_price(product.price_in_cents)%></p>
 
-          <!-- <p class="card-text">Rating: </p> -->
+          <!-- <p class="card-text stars">
+                  <# @product.average_rating.times do %>
+                    <span class="fa fa-star checked"></span>
+                  <# end %>
+                  <# (5 - @product.average_rating).times do %>
+                    <span class="fa fa-star"></span>
+                  <# end %> 
+                </p> -->
 
           <div class="dropdown">
               <%= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
