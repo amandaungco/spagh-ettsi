@@ -1,26 +1,29 @@
 class OrdersController < ApplicationController
-before_action :find_order, only: [:show, :mark_as_shipped]
+before_action :find_order, only: [:show, :edit, :mark_as_shipped]
   # def index
   # end
 
   def show
-    if !@order || @order.status == :pending
+    if !@order || @order.status == :pending || @order.user != @login_user
       render 'layouts/not_found', status: :not_found
     end
   end
 
   # def new; end
 
-  def create(order_params)
-    @shopping_cart = Order.new(order_params)
-    if !@shopping_cart.save
-      flash[:warning] = "There was an error.  Could not create shopping cart."
-    end
-  end
+  # def create
+  #   # @shopping_cart = Order.new
+  #   # if !@shopping_cart.save
+  #   #   flash[:warning] = "There was an error.  Could not create shopping cart."
+  #   # end
+  # end
 
   def edit
-    @order = Order.find_by(id: params[:id])
-    render :checkout
+    if !@order
+      render 'layouts/not_found', status: :not_found
+    else
+      render :checkout
+    end
   end
 
   def mark_as_shipped
