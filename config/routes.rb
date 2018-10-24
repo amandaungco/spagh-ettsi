@@ -19,8 +19,7 @@ Rails.application.routes.draw do
   get '/products_by_merchant', to: 'products#index_by_merchant', as: 'products_by_merchant'  #should change this to products_index_by_merchant
   get '/merchant/my_products', to: 'users#products_index', as: 'merchant_my_products'
 
-
-
+  get '/reviews/:id/new', to: 'reviews#new', as: 'new_review'
 
   resources :products
   resources :users, only: [:create, :show] #do
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
   # end
   resources :addresses
   resources :payments
-  resources :reviews
+  resources :reviews, only:[:index, :create, :new]
   resources :orders
   resources :sessions, only: [:create, :destroy]
   resources :order_products, only: [:create]
