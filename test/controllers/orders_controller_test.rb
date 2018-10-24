@@ -5,6 +5,7 @@ describe OrdersController do
   let(:order_two) {orders(:order_two)}
   let(:order_three) {orders(:order_three)}
   let(:buyer) {users(:buyer)}
+  let(:seller) {users(:seller)}
 
   let(:order_params) {
     {
@@ -83,6 +84,16 @@ describe OrdersController do
   end
 
   describe 'mark_as_shipped' do
+    it 'changes order status from paid to shipped with logged in user and valid ID' do
+      perform_login(seller)
+
+      expect(order_two.status).must_equal 'paid'
+
+      patch mark_as_shipped_path(order_two.id)
+
+      expect(order_two.status).must_equal 'complete'
+    end
+
   end
 
   describe 'update'  do
