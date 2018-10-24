@@ -29,8 +29,10 @@
         <div class="col-md-7">
             <h1 class="pb-2"><strong>Made with the freshest ingredients. </strong> </h1>
             <h4>Our pasta is hand-picked from only the best producers in the world.</h4>
-            <button type="button" class="btn btn-success mt-4">See our Products</button>
-            <button type="button" class="btn btn-dark mt-4">Get More Details</button>
+            <div class="btn-group">
+              <%= link_to "See our products", products_path, class: "btn btn-products mt-4 btn-space" %>
+              <%= link_to "Become a Seller", account_path, class: "btn btn-dark mt-4" %>
+            </div>
         </div>
       </div>
     </div>
@@ -40,8 +42,12 @@
         <div class="col-md-7">
             <h1 class="pb-2"><strong>Your tummy is rumbling. </strong> </h1>
             <h4>Pick the perfect gift for you loved ones.</h4>
-            <button type="button" class="btn btn-success mt-4">See our products</button>
-            <button type="button" class="btn btn-dark mt-4">Get More Details</button>
+            <div class="btn-group">
+              <%= link_to "See our products", products_path, class: "btn btn-products mt-4 btn-space" %>
+              <%= link_to "Become a Seller", account_path, class: "btn btn-dark mt-4" %>
+            </div>
+            <!-- <button type="button" class="btn btn-success mt-4">See our products</button>
+            <button type="button" class="btn btn-dark mt-4">Get More Details</button> -->
         </div>
       </div>
     </div>

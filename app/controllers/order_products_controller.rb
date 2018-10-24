@@ -11,30 +11,34 @@ class OrderProductsController < ApplicationController
 
 
     quantity = params[:order_product][:quantity]
-
-
-    existing_row = OrderProduct.find_by(product_id: product.id, order_id: session[:shopping_cart_id])
-
-    if existing_row
-      decrease_inventory(product, quantity)
-      existing_row.quantity += quantity.to_i
-      if existing_row.save
-        flash[:success] = "Cart has been updated!"
-        redirect_to shopping_cart_path
-      else
-        product_not_added
-      end
-
-
+    if product.user_id == session[:user_id]
+      redirect_back(fallback_location: products_path)
+      flash[:warning] = "We're fettucine alfredo, you can't purchase your own products!"
     else
-      new_row = OrderProduct.new(product_id: product.id, order_id: session[:shopping_cart_id], quantity: quantity)
 
-      if new_row.save
+      existing_row = OrderProduct.find_by(product_id: product.id, order_id: session[:shopping_cart_id])
+
+      if existing_row
         decrease_inventory(product, quantity)
-        flash[:success] = "Cart has been updated!"
-        redirect_to shopping_cart_path
+        existing_row.quantity += quantity.to_i
+        if existing_row.save
+          flash[:success] = "Cart has been updated!"
+          redirect_to shopping_cart_path
+        else
+          product_not_added
+        end
+
+
       else
-        product_not_added
+        new_row = OrderProduct.new(product_id: product.id, order_id: session[:shopping_cart_id], quantity: quantity)
+
+        if new_row.save
+          decrease_inventory(product, quantity)
+          flash[:success] = "Cart has been updated!"
+          redirect_to shopping_cart_path
+        else
+          product_not_added
+        end
       end
     end
 

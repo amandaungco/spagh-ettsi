@@ -5,10 +5,9 @@
     <h4>Order # <%= @order.id %></h4>
   </div>
 
-
-<<<<<<< HEAD
-<div class="order-details">
+<div class="order-details merchant-order-details">
   <p><strong>Date Placed:</strong><%= readable_date(@order.updated_at) %></p>
+  <p><strong>Email:</strong> <%= @login_user.email %></p>
   <p><strong>Shipped to:</strong>
     <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
     <p><%= @order.address.street %></p>
@@ -24,18 +23,6 @@
   </section>
   <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
 </div>
-=======
-  <div class="order-details">
-    <p><strong>Date Placed: </strong><%= readable_date(@order.updated_at) %></p>
-    <p><strong>Shipped to:</strong>
-      <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
-      <p><%= @order.address.street %></p>
-      <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
-    </p>
-    <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
-    <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
-  </div>
->>>>>>> css
 
   <div class="card border-0 offset-lg-2">
     <table class="table table-hover shopping-cart-wrap">
@@ -88,33 +75,6 @@
             Subtotal
           </td>
           <td>
-<<<<<<< HEAD
-        		<div class="price-wrap">
-        			<var class="price"><%= readable_price(op.item_subtotal)%></var>
-        		</div>
-  	      </td>
-
-      </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-
-        <td>
-          Subtotal
-        </td>
-        <td>
-          <%= readable_price(@order_subtotal) %>
-        </td>
-
-      </tr>
-    </tfoot>
-  </table>
-</div> <!-- card.// -->
-=======
             <%= readable_price(@order_subtotal) %>
           </td>
 
@@ -132,4 +92,3 @@
   <%= link_to "My Products", merchant_my_products_path %>
   <%= link_to "My Orders", merchant_orders_path %>
 </div>
->>>>>>> css

@@ -31,7 +31,6 @@ before_action :check_login_user
     if @order.status != 'complete'
       @order.status = 'complete'
       if @order.save
-        flash[:success] = "Order Shipped!"
         redirect_back(fallback_location: merchant_orders_path)
       end
     end
