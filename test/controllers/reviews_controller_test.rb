@@ -1,5 +1,5 @@
 require "test_helper"
-require "pry"
+
 
 describe ReviewsController do
   it 'succeeds' do
@@ -86,7 +86,7 @@ describe ReviewsController do
     it "renders 404 not_found for a non-existing review" do
     let(:product) { products(:spaghetti) }
       let(:review_hash) do
-        binding.pry 
+        binding.pry
         {
           review: {
             review: 'relieves anxiety',
