@@ -109,7 +109,7 @@ class OrderProductsController < ApplicationController
   end
 
   def product_not_added
-    flash[:warning] = "There was a problem adding this product to your cart.  Please try again."
+    flash[:warning] = "Must add a quantity of atleast one.  Please try again."
     redirect_to root_path
   end
 
