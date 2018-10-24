@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :find_order, only: [:mark_as_shipped]
+before_action :find_order, only: [:show, :mark_as_shipped]
   # def index
   # end
 
@@ -7,8 +7,7 @@ before_action :find_order, only: [:mark_as_shipped]
     @order = Order.find_by(id: params[:id])
   end
 
-  def new
-  end
+  # def new; end
 
   def create(order_params)
     @shopping_cart = Order.new(order_params)
@@ -45,12 +44,10 @@ before_action :find_order, only: [:mark_as_shipped]
     end
   end
 
-  def destroy
-  end
+  # def destroy
+  # end
 
-  def shopping_cart
-
-  end
+  def shopping_cart; end
 
 private
 
@@ -60,7 +57,6 @@ private
 
   def order_params
     params.require(:order).permit(:payment_id, :address_id, :status)
-
   end
 
 end
