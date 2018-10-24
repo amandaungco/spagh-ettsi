@@ -56,7 +56,7 @@
           <div class="card-footer align-text-top">
             <%= link_to "", product_path(product.id), class: "fa fa-search-plus"%>
             <%= link_to "", edit_product_path(product.id), class: "fa fa-pencil"%>
-            <%= link_to "", deactivate_product_path(product.id), class: "fa fa-times"%>
+            <%= link_to "", deactivate_product_path(product.id), class: "fa fa-times", method: :patch%>
           </div>
         </div>
       </div>
