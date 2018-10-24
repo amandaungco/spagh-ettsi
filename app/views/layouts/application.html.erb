@@ -80,7 +80,7 @@
 <section class='alert__container'>
   <% flash.each do |name, message| %>
   <% if name == 'warning' || name == 'success' %>
-  <div class="alert alert-<%= name %>">
+  <div class="alert alert-<%= name %> text-center">
     <span><%= message %></span>
 
     <% if flash[:validation_errors] %>
@@ -145,11 +145,11 @@
   	  </div>
   	</div>
     <div class="sm buttons text-center">
-      <a href="#" class="fa fa-facebook"></a>
-      <a href="#" class="fa fa-twitter"></a>
+      <a href="#link" class="fa fa-facebook" value="Input Button" onclick="location.href = 'https://www.facebook.com/Spagh-ettsi-326258068155647';" ></a>
+      <a href="#link" class="fa fa-twitter" value="Input Button" onclick="location.href ='https://twitter.com/EttsiSpagh';" ></a>
       <a href="#" class="fa fa-google"></a>
       <a href="#" class="fa fa-linkedin"></a>
-      <a href="#" class="fa fa-instagram"></a>
+      <a href="#link" class="fa fa-instagram" value="Input Button" onclick="location.href ='https://www.instagram.com/spaghettsi/';" ></a>
       <a href="#" class="fa fa-pinterest"></a>
     </div>
     <div class="copyright bglight1 border pt-2">
