@@ -27,9 +27,9 @@ describe AddressesController do
       must_respond_with :success
     end
 
-    it 'responds with bad request and redirects with no user logged in' do
+    it 'responds with bad request with no user logged in' do
       get new_address_path
-      must_redirect_to 'layouts/not_found'
+
       must_respond_with :bad_request
 
     end
@@ -59,18 +59,29 @@ describe AddressesController do
 
       end
 
-      it "responds with bad request if address user is not logged in user" do
+      it "responds with bad request and won't change DB if address user is not logged in user" do
         perform_login(seller)
 
         expect {
                   post addresses_path, params: mock_params
                 }.wont_change 'Address.count'
 
-    
+
         must_respond_with :bad_request
 
       end
 
+      it "responds with bad request and won't change DB if no user logged in" do
+
+
+        expect {
+                  post addresses_path, params: mock_params
+                }.wont_change 'Address.count'
+
+
+        must_respond_with :bad_request
+
+      end
 
       it "renders bad_request and does not update the DB for bogus data" do
         perform_login(buyer)
@@ -84,14 +95,6 @@ describe AddressesController do
         must_respond_with :bad_request
       end
 
-      it "renders bad_request and does not update the DB if no user is logged in" do
-
-        expect {
-                  post addresses_path, params: mock_params
-                }.wont_change 'Address.count'
-
-        must_respond_with :bad_request
-      end
 
     end
 
