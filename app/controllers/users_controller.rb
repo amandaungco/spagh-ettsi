@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def products_index
-    @products = @login_user.all_orders_for_merchant
+    @products = @login_user.products
     @active_products = @login_user.active_products
     @inactive_products = @login_user.inactive_products
   end
