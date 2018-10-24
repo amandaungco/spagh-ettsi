@@ -80,7 +80,7 @@
 <section class='alert__container'>
   <% flash.each do |name, message| %>
   <% if name == 'warning' || name == 'success' %>
-  <div class="alert alert-<%= name %>">
+  <div class="alert alert-<%= name %> text-center">
     <span><%= message %></span>
 
     <% if flash[:validation_errors] %>
