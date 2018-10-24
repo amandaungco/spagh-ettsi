@@ -1,6 +1,4 @@
-# before(:all) do
-#   @product = Product.find_by(id: params[:id])
-# end
+
 class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
@@ -26,7 +24,7 @@ class ReviewsController < ApplicationController
       flash.now[:warning] = "An error occurred, could not create the review"
       flash.now[:validation_errors] = @review.errors.full_messages
 
-      redirect_to product_path(@review.product)
+      redirect_to product_path(@review.product),status: :bad_request 
     end
   end
 
