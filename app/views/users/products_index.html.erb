@@ -15,7 +15,7 @@
   <div class="products-container offset-lg-3">
     <% i = 1 %>
     <% @products.each do |product| %>
-      <div class="filterDiv card product-card bg-white <%= product.is_active %>">
+      <div class="filterDiv card product-card bg-white <%= product.is_active %> ">
         <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
         <div class="card-body">
           <h5 class="card-title"><%= product.name %></h5>
@@ -31,8 +31,16 @@
                   <# end %>
                 </p> -->
 
-          <div class="dropdown">
-              <%= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
+          <!-- <div class="dropdown">
+              <span class="fa fa-search-plus"></span>
+              <span class="fa fa-pencil"></span>
+              <span class="fa fa-times"></span>
+              <%#= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
+          </div> -->
+          <div class="card-footer align-text-top">
+            <%= link_to "", product_path(product.id), class: "fa fa-search-plus"%>
+            <%= link_to "", edit_product_path(product.id), class: "fa fa-pencil"%>
+            <%= link_to "", deactivate_product_path(product.id), class: "fa fa-times"%>
           </div>
         </div>
       </div>
