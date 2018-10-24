@@ -106,7 +106,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id].to_i)
 
     if @product.nil?
-      render :notfound, status: :not_found
+      render 'layouts/not_found', status: :not_found
     end
   end
 

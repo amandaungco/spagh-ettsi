@@ -80,10 +80,18 @@
   margin-right: 3rem;
 }
 
+.card-dashboard {
+  background-image: url("https://cdnimg.webstaurantstore.com/images/products/extra_large/71597/384105.jpg");
+  border: 3px solid black;
+}
+
+.large-print {
+  font-size: 40px;
+}
 // ===========================
 // SHOW
 // ===========================
-.order-details {
+.merchant-order-details {
   margin-left: 15rem;
   margin-top: 10rem;
 }

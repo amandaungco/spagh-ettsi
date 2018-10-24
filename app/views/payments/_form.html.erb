@@ -21,14 +21,14 @@
 
       <% if @login_user.addresses.any? %>
         <div class="col-sm-7">
-          <%= f.select(:address_id) do %>
+          <%= f.select(:address_id, [], {}, class: "form-control") do %>
           <% @login_user.addresses.each do |address| -%>
             <%= content_tag(:option, address.street, value: address.id) %>
           <% end %>
         <% end %>
       <% end %>
       </div>
-      <div class="offset-sm-8">
+      <div class="offset-sm-7">
         <%= link_to "Add an address", new_address_path %>
       </div>
     </div>
@@ -42,7 +42,7 @@
 
     <div class="form-group row">
       <%= f.label :expiration_date, class: "col-sm-3 offset-sm-1 col-form-label"%>
-      <div class="col-sm-8">
+      <div class="col-sm-7">
         <%= f.date_field :expiration_date, min: Date.today, class: 'form-control' %>
       </div>
     </div>
@@ -57,13 +57,13 @@
     <div class="form-group row">
       <%= f.label :card_type, class: "col-sm-3 offset-sm-1 col-form-label" %>
       <div class="col-sm-7">
-        <%= f.select :card_type, @card_types, class: 'form-control' %>
+        <%= f.select :card_type, @card_types, {}, class: 'form-control' %>
       </div>
     </div>
 
     <div class="row offset-sm-5">
       <!-- <div class="col-sm-9 offset-sm-4" -->
-        <%= f.submit "Save Payment", class: 'btn btn-primary'%>
+        <%= f.submit "Save Payment", class: 'btn btn-products'%>
       <!-- </div> -->
     </div>
 

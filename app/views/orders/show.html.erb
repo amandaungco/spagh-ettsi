@@ -13,7 +13,8 @@
 </div>
 
 <div class="order-details">
-  <p><strong>Date Placed:</strong><%= readable_date(@order.updated_at) %></p>
+  <p><strong>Date Placed: </strong><%= readable_date(@order.updated_at) %></p>
+  <p><strong>Email:</strong> <%= @login_user.email %></p>
   <p><strong>Shipped to:</strong>
     <p><%= @order.address.first_name %> <%= @order.address.last_name %></p>
     <p><%= @order.address.street %></p>

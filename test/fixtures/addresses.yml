@@ -23,3 +23,13 @@ school:
   city: Seattle
   state: WA
   zip: 98161
+
+work:
+  user: seller
+  first_name: Francesco
+  last_name: Rinaldi
+  street: 1215 4th Ave
+  street_2: Suite 1050
+  city: Seattle
+  state: WA
+  zip: 98161

@@ -231,6 +231,8 @@ describe OrderProductsController do
       order_one_spaghetti.reload
       expect(order_one_spaghetti.quantity).must_equal 3
 
+      must_redirect_to shopping_cart_path
+
     end
 
     it 'fails with invalid id' do
