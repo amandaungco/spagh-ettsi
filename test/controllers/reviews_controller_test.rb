@@ -83,25 +83,26 @@ describe ReviewsController do
       must_respond_with :success
     end
 
-    it "renders 404 not_found for a non-existing review" do
-
-      let(:review_hash) do
-        {
-          review: {
-            review: 'relieves anxiety',
-            rating: 5,
-            product_id: product.id
-          }
-        }
-      end
-      # Arrange - invalid id
-      id = review_hash[:review][:product_id] = nil
-
-      # Act
-      get review_path(id)
-
-      # Assert
-      must_respond_with :not_found
-    end
+  #   it "renders 404 not_found for a non-existing review" do
+  #   let(:product) { products(:spaghetti) }
+  #     let(:review_hash) do
+  #       {
+  #         review: {
+  #           review: 'relieves anxiety',
+  #           rating: 5,
+  #           product_id: product.id
+  #         }
+  #       }
+  #     end
+  #     # Arrange - invalid id
+  #     id = review_hash[:review][:rating] = nil
+  #
+  #     # Act
+  #     get review_path(id)
+  #
+  #     # Assert
+  #     must_respond_with :not_found
+  #     # end
+  #   end
   end
 end
