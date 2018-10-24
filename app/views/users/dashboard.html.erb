@@ -4,6 +4,7 @@
   <h6 class="text-center">Welcome</h6>
   <h6 class="text-center"><%= @login_user.full_name %></h6>
   <hr>
+  <%= link_to "Dashboard", dashboard_path %>
   <%= link_to "Add a Product", new_product_path %>
   <%= link_to "My Products", new_product_path %>
   <%= link_to "My Orders", merchant_orders_path %>
