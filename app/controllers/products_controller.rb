@@ -88,12 +88,12 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to merchant_my_products_path
       if !@product.is_active
-        flash[:warning] = "Product #{@product.name} was discontinued."
+        flash[:warning] = "Product: #{@product.name.capitalize} was discontinued."
       else
-        flash[:warning] = "Product #{@product.name} is available again for purchase."
+        flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
       end
     else
-      flash.now[:warning] = "Product #{@product.name} could not be updated."
+      flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
       render :edit
     end
   end
