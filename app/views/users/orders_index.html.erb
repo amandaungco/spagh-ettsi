@@ -1,23 +1,104 @@
-<section>
+<section class="text-center">
+  <h1>Orders</h1>
   <p> Total Orders: <%= @total_orders %></p>
-
-  <% @orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <% end %>
 </section>
 
-<section>
-  <p> Orders Awaiting Fulfillment: <%= @total_paid_orders %> </p>
+<div class="card border-0 order-table col-lg-9 offset-lg-2">
+  <h2>Orders to Complete:</h2>
+  <table class="table table-hover ">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col" width="120">Order #</th>
+        <th scope="col" width="120">Date Placed</th>
+        <th scope="col" width="250">Products</th>
+        <th scope="col" width="120">Order Total</th>
+        <th scope="col" width="120">Shipping Status</th>
+        <!-- <th scope="col" width="200" class="text-right">Action</th> -->
+      </tr>
+    </thead>
+    <%# @shopping_cart.order_products.each do |order_product| %>
+    <tbody>
+      <% @paid_orders.each do |order| %>
+      <tr>
+        <td>
+          <p><%= link_to "#{order.id}", merchant_order_path(order.id) %></p>
+        </td>
+        <td>
+          <p><%= readable_date(order.updated_at) %></p>
+        </td>
+        <td>
+          <% order.order_products.each do |product| %>
+          <ul>
+            <li>
+              <%= product.quantity %> <%= product.product.name %>
+            </li>
+          </ul>
+          <% end %>
+        </td>
+        <td>
+          <p><%=readable_price(order.order_subtotal) %></p>
+        </td>
+        <td>
+          <!-- To be changed -->
+          <p class="btn btn-products">Order Shipped</p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- card.// -->
 
-  <% @paid_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <% end %>
-</section>
+<div class="card border-0 order-table col-lg-9 offset-lg-2">
+  <h2>Completed Orders:</h2>
+  <table class="table table-hover ">
+    <thead class="text-muted">
+      <tr>
+        <th scope="col" width="120">Order #</th>
+        <th scope="col" width="120">Date Placed</th>
+        <th scope="col" width="250">Products</th>
+        <th scope="col" width="120">Total Revenue</th>
+        <th scope="col" width="120">Shipping Status</th>
+        <!-- <th scope="col" width="200" class="text-right">Action</th> -->
+      </tr>
+    </thead>
+    <%# @shopping_cart.order_products.each do |order_product| %>
+    <tbody>
+      <% @completed_orders.each do |order| %>
+      <tr>
+        <td>
+          <p><%= link_to "#{order.id}", merchant_order_path(order.id) %></p>
+        </td>
+        <td>
+          <p><%= readable_date(order.updated_at) %></p>
+        </td>
+        <td>
+          <% order.order_products.each do |product| %>
+          <ul>
+            <li>
+              <%= product.quantity %> <%= product.product.name %>
+            </li>
+          </ul>
+          <% end %>
+        </td>
+        <td>
+          <p><%=readable_price(order.order_subtotal) %></p>
+        </td>
+        <td>
+          <!-- To be changed -->
+          <p class="btn btn-products">Order Shipped</p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div> <!-- card.// -->
 
-<section>
-  <p> Completed Orders: <%= @total_completed_orders %> </p>
-
-  <% @completed_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <% end %>
-</section>
+<div class="sidenav">
+  <h6 class="text-center">Welcome</h6>
+  <h6 class="text-center"><%= @login_user.full_name %></h6>
+  <hr>
+  <%= link_to "Dashboard", dashboard_path %>
+  <%= link_to "Add a Product", new_product_path %>
+  <%= link_to "My Products", new_product_path %>
+  <%= link_to "My Orders", merchant_orders_path %>
+</div>

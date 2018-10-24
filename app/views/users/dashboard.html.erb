@@ -1,68 +1,151 @@
 
 <!-- Side navigation -->
 <div class="sidenav">
+  <h6 class="text-center">Welcome</h6>
+  <h6 class="text-center"><%= @login_user.full_name %></h6>
+  <hr>
+  <%= link_to "Dashboard", dashboard_path %>
   <%= link_to "Add a Product", new_product_path %>
   <%= link_to "My Products", merchant_my_products_path %>
   <%= link_to "My Orders", merchant_orders_path %>
 </div>
 
+<main>
+  <h1 class="text-center top-info">Merchant Dashboard</h1>
+  <div class="card-deck dashboard-cards col-md-9 ml-auto col-md-offset-5">
+    <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Total Orders</strong></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @total_completed_orders %></h6>
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        <!-- <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a> -->
+      </div>
+    </div>
+    <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Total Revenue</strong></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= readable_price(@login_user.total_revenue_by_paid) %></h6>
+      </div>
+    </div>
+    <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Listed Products</strong></h5>
+        <p class="card-text">Active: <%= @total_active_products %></p>
+        <p class="card-text">Inactive: <%= @total_inactive_products %></p>
+      </div>
+    </div>
+    <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Order Status</h5></strong>
+        <p class="card-text">Orders to Fulfill: <%= @total_paid_orders %></p>
+        <p class="card-text">Complete Orders: <%= @total_completed_orders %></p>
+      </div>
+    </div>
+  </div>
 
-<!-- Page content -->
-<div class="main">
-  ...Merchant Dashboard
-</div>
+  <div class="card border-0 order-table col-lg-9 offset-lg-2">
+    <h2>Orders to Complete:</h2>
+    <table class="table table-hover ">
+      <thead class="text-muted">
+        <tr>
+          <th scope="col" width="120">Order #</th>
+          <th scope="col" width="120">Date Placed</th>
+          <th scope="col" width="120">Products</th>
+          <th scope="col" width="120">Order Total</th>
+          <th scope="col" width="120">Shipping Status</th>
+          <!-- <th scope="col" width="200" class="text-right">Action</th> -->
+        </tr>
+      </thead>
+      <%# @shopping_cart.order_products.each do |order_product| %>
+      <tbody>
+        <% @paid_orders.each do |order| %>
+        <tr>
+          <td>
+            <p><%= link_to "#{order.id}", merchant_order_path(order.id) %></p>
+          </td>
+          <td>
+            <p><%= readable_date(order.updated_at) %></p>
+          </td>
+          <td>
+            <% order.order_products.each do |product| %>
+            <ul>
+              <li>
+                <%= product.quantity %> <%= product.product.name %>
+              </li>
+            </ul>
+            <% end %>
+          </td>
+          <td>
+            <p><%=readable_price(order.order_subtotal) %></p>
+          </td>
+          <td>
+            <!-- To be changed -->
+            <p class="btn btn-products">Order Shipped</p>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> <!-- card.// -->
+
+</main>
+
+
+
+
 
 
 <!-- change/remove these however you like-->
 
 
-<section>
-  <p> Total Orders: <%= @total_orders %></p>
+<!-- <section>
+  <p> Total Orders: <%#= @total_orders %></p>
 
-  <%= link_to "My Order Page", merchant_orders_path %>
-
-</section>
-
-<section>
-  <p> Total Revenue: <%= readable_price(@login_user.total_revenue) %></p>
-  <p> Total Revenue for paid orders: <%= readable_price(@login_user.total_revenue_by_paid) %></p>
-  <p> Total Revenue for completed orders: <%= readable_price(@login_user.total_revenue_by_completed) %></p>
-</section>
-
-<section>
-  <p> Orders Awaiting Fulfillment: <%= @total_paid_orders %> </p>
-
-  <% @paid_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <% end %>
-</section>
-
-<section>
-  <p> Completed Orders: <%= @total_completed_orders %> </p>
-
-  <% @completed_orders.each do |order| %>
-    <%= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <% end %>
-</section>
-
-<section>
-  <p> Total: <%= @total_products %> Products </p>
-</section>
-
-<section>
-  <p> <%= @total_active_products %> Active Products </p>
-
-  <% @active_products.each do |product| %>
-    <%= link_to "#{product.name}", product_path(product.id) %>
-  <% end %>
+  <%#= link_to "My Order Page", merchant_orders_path %>
 
 </section>
 
 <section>
-  <p> <%= @total_inactive_products %> Inactive Products </p>
+  <p> Total Revenue: <%#= readable_price(@login_user.total_revenue) %></p>
+  <p> Total Revenue for paid orders: <%#= readable_price(@login_user.total_revenue_by_paid) %></p>
+  <p> Total Revenue for completed orders: <%#= readable_price(@login_user.total_revenue_by_completed) %></p>
+</section>
 
-  <% @inactive_products.each do |product| %>
-    <%= link_to "#{product.name}", product_path(product.id) %>
-  <% end %>
+<section>
+  <p> Orders Awaiting Fulfillment: <%#= @total_paid_orders %> </p>
+
+  <%# @paid_orders.each do |order| %>
+    <%#= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
+  <%# end %>
+</section>
+
+<section>
+  <p> Completed Orders: <%#= @total_completed_orders %> </p>
+
+  <#% @completed_orders.each do |order| %>
+    <%#= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
+  <#% end %>
+</section>
+
+<section>
+  <p> Total: <%#= @total_products %> Products </p>
+</section>
+
+<section>
+  <p> <%#= @total_active_products %> Active Products </p>
+
+  <%# @active_products.each do |product| %>
+    <%#= link_to "#{product.name}", product_path(product.id) %>
+  <%# end %>
 
 </section>
+
+<section>
+  <p> <%#= @total_inactive_products %> Inactive Products </p>
+
+  <%# @inactive_products.each do |product| %>
+    <%#= link_to "#{product.name}", product_path(product.id) %>
+  <%# end %>
+
+</section> -->

@@ -56,8 +56,6 @@
           <td>
             <strong><%=readable_date(order.updated_at) %></strong>
         	</td>
-
-
           <td>
             <% order.order_products.each do |op| %>
             <ul>
@@ -73,11 +71,8 @@
           <td>
             <p><%=readable_price(order.order_total) %></p>
           </td>
-
       </tr>
-
       <%end %>
-
     </tbody>
   </table>
 </div> <!-- card.// -->
