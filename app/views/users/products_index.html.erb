@@ -25,14 +25,20 @@
           <hr>
           <p class="card-text"><%= readable_price(product.price_in_cents)%></p>
 
-          <!-- <p class="card-text stars">
-                  <# @product.average_rating.times do %>
-                    <span class="fa fa-star checked"></span>
-                  <# end %>
-                  <# (5 - @product.average_rating).times do %>
-                    <span class="fa fa-star"></span>
-                  <# end %> 
-                </p> -->
+      <!-- STARS NEED TO BE SMALLER / CLOSER TOGETHER TO FIT ON A CARD
+          <p class="card-text stars">
+            <% if product.average_rating == 'Not yet rated' %>
+              <p>Not yet rated<p>
+            <% else %>
+              <% product.average_rating.times do %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
+              <% (5 - product.average_rating).times do %>
+                <span class="fa fa-star"></span>
+              <% end %>
+            <% end %>
+          </p>
+                -->
 
           <div class="dropdown">
               <%= link_to "Edit #{product.name}", edit_product_path(product.id), class: "btn btn-products inline"  %>
