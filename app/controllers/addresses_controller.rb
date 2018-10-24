@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
 
     if @address.user != @login_user
       flash[:warning] = "You must be logged in to add an address"
-      redirect_to root_path, status: :bad_request
+      render 'layouts/not_found', status: :bad_request
     else
       if @address.save
         flash[:success] = "Successfully created address."

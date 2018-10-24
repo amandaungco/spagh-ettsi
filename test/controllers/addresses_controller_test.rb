@@ -2,6 +2,7 @@ require "test_helper"
 
 describe AddressesController do
   let(:buyer) {users(:buyer)}
+  let(:seller) {users(:seller)}
   let(:mock_params) {
     {
       address: {
@@ -65,7 +66,7 @@ describe AddressesController do
                   post addresses_path, params: mock_params
                 }.wont_change 'Address.count'
 
-        must_redirect_to root_path
+    
         must_respond_with :bad_request
 
       end
