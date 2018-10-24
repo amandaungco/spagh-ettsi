@@ -11,11 +11,8 @@
     <button class="btn btn-show" onclick="filterSelection('false')"> Inactive Products</button>
   </div>
 
-
-
-
   <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
-  <div class="products-container">
+  <div class="products-container offset-lg-3">
     <% i = 1 %>
     <% @products.each do |product| %>
       <div class="filterDiv card product-card bg-white <%= product.is_active %>">
@@ -31,7 +28,7 @@
                   <# end %>
                   <# (5 - @product.average_rating).times do %>
                     <span class="fa fa-star"></span>
-                  <# end %> 
+                  <# end %>
                 </p> -->
 
           <div class="dropdown">
@@ -42,4 +39,14 @@
       <% i += 1 %>
     <%end%>
   </div>
+</div>
+
+<div class="sidenav">
+  <h6 class="text-center">Welcome</h6>
+  <h6 class="text-center"><%= @login_user.full_name %></h6>
+  <hr>
+  <%= link_to "Dashboard", dashboard_path %>
+  <%= link_to "Add a Product", new_product_path %>
+  <%= link_to "My Products", merchant_my_products_path %>
+  <%= link_to "My Orders", merchant_orders_path %>
 </div>
