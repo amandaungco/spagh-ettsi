@@ -42,16 +42,23 @@ describe OrdersController do
     end
   end
 
-  describe 'edit' do
+  describe 'edit, which is actually checkout' do
     it 'succeeds with a logged-in user given a pending order with valid ID' do
-
-
+      perform_login(buyer)
       get edit_order_path(order_one.id)
 
       must_respond_with :success
     end
 
-    it 'responds with not found given an invalid ID' do
+    it 'responds with not found with a logged-in user given a non-pending order with valid ID' do
+      perform_login(buyer)
+      get edit_order_path(order_two.id)
+
+      must_respond_with :not_found
+    end
+
+    it 'responds with not found with a logged-in user with invalid ID' do
+      perform_login(buyer)
       get edit_order_path(-1)
 
       must_respond_with :not_found
