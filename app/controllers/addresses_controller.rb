@@ -44,7 +44,7 @@ class AddressesController < ApplicationController
       @address = Address.find_by(id: params[:id].to_i)
 
       if @address.nil?
-        render :notfound, status: :not_found
+        render 'layouts/not_found', status: :not_found
       end
     end
 

@@ -68,6 +68,9 @@ class UsersController < ApplicationController
 
   def order_show
     @order = Order.find_by(id: params[:id])
+    if !@order || @order.status == :pending
+      render 'layouts/not_found', status: :not_found
+    end
     @order_products = @order.order_products_by_merchant(@login_user)
     @order_subtotal = @order.order_subtotal_by_merchant(@login_user)
   end

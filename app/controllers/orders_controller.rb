@@ -4,7 +4,9 @@ before_action :find_order, only: [:show, :mark_as_shipped]
   # end
 
   def show
-    @order = Order.find_by(id: params[:id])
+    if !@order || @order.status == :pending
+      render 'layouts/not_found', status: :not_found
+    end
   end
 
   # def new; end
