@@ -20,46 +20,44 @@
     </thead>
     <% @shopping_cart.order_products.each do |order_product| %>
     <tbody>
-        <tr>
-        	<td>
-            <figure class="media">
-            	<div class="img-wrap"><img src=<%= order_product.product.image_url %> class="img-thumbnail img-sm"></div>
-            	<figcaption class="media-body">
-            		<h3 class="title text-truncate"><%= order_product.product.name %></h3>
-            	</figcaption>
-            </figure>
-        	</td>
-  	      <td class="quantity-field">
-            <%= form_with model: order_product, local: true do |f| %>
-              <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
-              <%= f.hidden_field :id %>
+      <tr>
+        <td>
+          <figure class="media">
+            <div class="img-wrap"><img src=<%= order_product.product.image_url %> class="img-thumbnail img-sm"></div>
+            <figcaption class="media-body">
+              <h3 class="title text-truncate"><%= order_product.product.name %></h3>
+            </figcaption>
+          </figure>
+        </td>
+        <td class="quantity-field">
+          <%= form_with model: order_product, local: true do |f| %>
+          <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
+          <%= f.hidden_field :id %>
 
-  	      </td>
-          <td>
-            <%= f.submit "Update Quantity", class: "btn btn-products" %>
+        </td>
+        <td>
+          <%= f.submit "Update Quantity", class: "btn btn-products" %>
           <% end %>
-          </td>
-  	      <td>
-        		<div class="price-wrap">
-        			<var class="price"><%= readable_price(order_product.product.price_in_cents)%></var>
+        </td>
+        <td>
+          <div class="price-wrap">
+            <var class="price"><%= readable_price(order_product.product.price_in_cents)%></var>
 
-        		</div> <!-- price-wrap .// -->
-  	      </td>
-          <td>
-            <div class="price-wrap">
-        			<var class="price"><%= readable_price(order_product.item_subtotal)%></var>
+          </div> <!-- price-wrap .// -->
+        </td>
+        <td>
+          <div class="price-wrap">
+            <var class="price"><%= readable_price(order_product.item_subtotal)%></var>
 
-        		</div>
-          </td>
+          </div>
+        </td>
       </tr>
       <% end %>
-
     </tbody>
     <tfoot>
       <td></td>
       <td></td>
       <td></td>
-
       <td>
         Order Subtotal
       </td>
