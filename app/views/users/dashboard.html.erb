@@ -12,11 +12,11 @@
 
 <main>
   <h1 class="text-center top-info">Merchant Dashboard</h1>
-  <div class="card-deck dashboard-cards col-md-9 ml-auto col-md-offset-5">
+  <div class="card-deck dashboard-cards bg-dark col-md-9 ml-auto col-md-offset-5">
     <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><strong>Total Orders</strong></h5>
-        <h6 class="large-print card-subtitle mb-2 text-center"><%= @total_completed_orders %></h6>
+        <h6 class="large-print card-subtitle mb-2 text-center"><%= @total_orders %></h6>
         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
         <!-- <a href="#" class="card-link">Card link</a>
         <a href="#" class="card-link">Another link</a> -->
@@ -26,11 +26,13 @@
       <div class="card-body">
         <h5 class="card-title"><strong>Total Revenue</strong></h5>
         <h6 class="large-print card-subtitle mb-2 text-center"><%= readable_price(@login_user.total_revenue) %></h6>
+        <p class="card-text">Unfulfilled: <%= readable_price(@login_user.total_revenue_by_paid) %></p>
+        <p class="card-text">Fulfilled: <%= readable_price(@login_user.total_revenue_by_completed) %></p>
       </div>
     </div>
     <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title"><strong>Listed Products</strong></h5>
+        <h5 class="card-title"><strong>Products</strong></h5>
         <p class="card-text">Active: <%= @total_active_products %></p>
         <p class="card-text">Inactive: <%= @total_inactive_products %></p>
       </div>
@@ -38,8 +40,8 @@
     <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><strong>Order Status</h5></strong>
-        <p class="card-text">Orders to Fulfill: <%= @total_paid_orders %></p>
-        <p class="card-text">Complete Orders: <%= @total_completed_orders %></p>
+        <p class="card-text">Unfulfilled: <%= @total_paid_orders %></p>
+        <p class="card-text">Fulfilled: <%= @total_completed_orders %></p>
       </div>
     </div>
   </div>
@@ -68,7 +70,7 @@
             <p><%= readable_date(order.updated_at) %></p>
           </td>
           <td>
-            <% order.order_products.each do |product| %>
+            <% order.order_products_by_merchant(@login_user).each do |product| %>
             <ul>
               <li>
                 <%= product.quantity %> <%= product.product.name %>
@@ -82,10 +84,10 @@
           <td>
             <section id='order_item_status'>
               <% if order.status != 'complete' %>
-                <%= link_to "Ship these items!", mark_as_shipped_path(order.id), method: :patch, class: "btn btn-products"  %>
-                <%else%>
+                <%= link_to "Not Yet Shipped - View Order", merchant_order_path(order.id), class: "btn btn-products"  %>
+              <%else%>
                 <p class="shipped"><strong>*Items have been shipped</strong></p>
-                <% end %>
+              <% end %>
             </section>
           </td>
         </tr>

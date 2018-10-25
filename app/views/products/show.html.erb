@@ -10,7 +10,7 @@
             <section>
               <hr>
               <% @product.reviews.each do |review| %>
-              <p><strong>Date: <%= review.created_at %></strong></p>
+              <p><strong>Date: <%= readable_date(review.created_at) %></strong></p>
               <p><strong>Rating: <%= review.rating %></strong></p>
               <p><%= review.review.capitalize %></p>
               <hr>

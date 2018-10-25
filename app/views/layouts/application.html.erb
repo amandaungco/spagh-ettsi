@@ -28,7 +28,7 @@
         </div>
         </li>
         <li class="nav-item nav-word">
-          <%=link_to "Recipes", products_path, class: "nav-link"%>
+          <%=link_to "Recipes", 'https://www.allrecipes.com/recipes/95/pasta-and-noodles/', class: "nav-link"%>
         </li>
         <% if @login_user && @login_user.is_a_seller %>
           <li class="nav-item nav-word">
@@ -38,7 +38,7 @@
       </ul>
     </div>
     <div class="mx-auto order-0">
-      <%= link_to image_tag("/assets/spaghettsi-logo.png", alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
+      <%= link_to image_tag(asset_path("/assets/spaghettsi-logo.png"), alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
 
       <!-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
