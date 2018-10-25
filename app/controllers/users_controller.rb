@@ -15,22 +15,35 @@ class UsersController < ApplicationController
   end
 
   def update
-    @login_user.is_a_seller = params[:user][:is_a_seller]
-    if @login_user.save
 
-      if @login_user.products.any?
-        if @login_user.is_a_seller
-          activate_user_products
-        else
-          deactivate_user_products
-        end
+    if params[:commit] == "Update Personal Info"
+      @login_user.full_name = params[:user][:full_name]
+      @login_user.email = params[:user][:email]
+      if @login_user.save
+        flash[:success] = "User updated."
+      else
+        flash[:warning] = "There was an error."
+        flash[:validation_errors] = @login_user.errors.full_messages
       end
-
-      flash[:success] = "Account settings updated!"
-      redirect_to account_path
+      redirect_to checkout_path
     else
-      flash[:warning] = "Oops, there was a problem updating your account."
-      flash[:validation_errors] = @login_user.errors.full_messages
+      @login_user.is_a_seller = params[:user][:is_a_seller]
+      if @login_user.save
+
+        if @login_user.products.any?
+          if @login_user.is_a_seller
+            activate_user_products
+          else
+            deactivate_user_products
+          end
+        end
+
+        flash[:success] = "Account settings updated!"
+        redirect_to account_path
+      else
+        flash[:warning] = "Oops, there was a problem updating your account."
+        flash[:validation_errors] = @login_user.errors.full_messages
+      end
     end
 
   end
@@ -43,17 +56,17 @@ class UsersController < ApplicationController
       @total_orders = @login_user.all_orders_for_merchant.count
       @orders = @login_user.all_orders_for_merchant
 
-      @total_paid_orders = @login_user.paid_orders_for_merchant.count
-      @paid_orders = @login_user.paid_orders_for_merchant
+      @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+      @paid_orders = @login_user.sort_orders_by_status('paid')
 
-      @total_completed_orders = @login_user.completed_orders_for_merchant.count
-      @completed_orders = @login_user.completed_orders_for_merchant
+      @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+      @completed_orders = @login_user.sort_orders_by_status('complete')
 
-      @total_active_products = @login_user.active_products.count
-      @active_products = @login_user.active_products
+      @total_active_products = @login_user.product_status(true).count
+      @active_products = @login_user.product_status(true)
 
-      @total_inactive_products = @login_user.inactive_products.count
-      @inactive_products = @login_user.inactive_products
+      @total_inactive_products = @login_user.product_status(false).count
+      @inactive_products = @login_user.product_status(false)
 
       @total_products = @login_user.products.count
     end
@@ -63,11 +76,11 @@ class UsersController < ApplicationController
     @total_orders = @login_user.all_orders_for_merchant.count
     @orders = @login_user.all_orders_for_merchant
 
-    @total_paid_orders = @login_user.paid_orders_for_merchant.count
-    @paid_orders = @login_user.paid_orders_for_merchant
+    @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+    @paid_orders = @login_user.sort_orders_by_status('paid')
 
-    @total_completed_orders = @login_user.completed_orders_for_merchant.count
-    @completed_orders = @login_user.completed_orders_for_merchant
+    @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+    @completed_orders = @login_user.sort_orders_by_status('complete')
   end
 
   def order_show
@@ -81,8 +94,8 @@ class UsersController < ApplicationController
 
   def products_index
     @products = @login_user.products
-    @active_products = @login_user.active_products
-    @inactive_products = @login_user.inactive_products
+    @active_products = @login_user.product_status(true)
+    @inactive_products = @login_user.product_status(false)
   end
 
 

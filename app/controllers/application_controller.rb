@@ -12,9 +12,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-
-  def current_user
-    @login_user
-  end
 end
