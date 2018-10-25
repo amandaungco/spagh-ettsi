@@ -155,6 +155,16 @@ describe OrdersController do
       must_redirect_to root_path
     end
 
+    it 'prevents checkout with an empty cart' do
+      perform_login(buyer)
+      order_one.order_products.each do |op|
+        op.delete
+      end
+      post checkout_path, params: order_params
+
+      must_redirect_to products_path
+    end
+
   end
 
 

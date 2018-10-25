@@ -47,7 +47,8 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
 
   def update
 
-      if @shopping_cart.products ==[]
+      if @shopping_cart.products == []
+
         redirect_to products_path
         flash[:warning] = "Error: Cannot checkout, cart is empty."
       else
