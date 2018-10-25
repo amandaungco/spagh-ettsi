@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :order_products
   has_many :orders, through: :order_products
 
-  validates :user_id, presence: true
+  #validates :user_id, presence: true
   validates :name, presence: true, uniqueness: true
   validates :price_in_cents, presence: true, numericality: { greater_than: 0, message: "Price must be greater than 0"}
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0, message: "Stock cannot go below 0"}
