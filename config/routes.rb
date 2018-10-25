@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/account', to: 'users#show', as: 'account'
   patch '/product/:id', to: 'products#deactivate', as: 'deactivate_product'
   patch '/users/:id', to: 'users#update', as: 'update_user'
+  post '/users/:id', to: 'users#update'
   get '/merchant/orders', to: 'users#orders_index', as: 'merchant_orders'
   get '/merchant/orders/:id', to: 'users#order_show', as: 'merchant_order'
   patch '/merchant/orders/:id', to: 'orders#mark_as_shipped', as: 'mark_as_shipped'

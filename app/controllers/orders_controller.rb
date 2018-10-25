@@ -8,6 +8,9 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
     if !@order || @order.status == 'pending' || @order.user != @login_user
       render 'layouts/not_found', status: :not_found
     end
+    if @login_user.provider == 'guest_login'
+      session[:user_id] = nil
+    end
   end
 
   # def new; end
@@ -40,7 +43,7 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
   end
 
   def update
-    
+
       if @shopping_cart.products ==[]
         redirect_to products_path
         flash[:warning] = "Error: Cannot checkout, cart is empty."
@@ -49,7 +52,9 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
           flash[:success] = "Your order has been placed!"
           order_id = session[:shopping_cart_id]
           session[:shopping_cart_id] = nil
+
           redirect_to order_path(@shopping_cart.id)
+
         else
           flash[:warning] = "Unable to place order"
           flash[:validation_errors] = @shopping_cart.errors.full_messages
