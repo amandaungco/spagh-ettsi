@@ -1,8 +1,8 @@
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 <h1>New review</h1>
 <section>
-  <%= form_with model: @review, url: new_product_review_path(@product.id), method: :post, class: "review-form" do |f|%>
-
+  <%= form_with model: @review, url: create_review_path(@product.id), method: :post, class: "review-form" do |f|%>
+<%= f.hidden_field :product_id, value: @product.id %>
   <p>A penne for your thoughts: </p>
   <!-- <p>How many </p><i class="em em-spaghetti"></i><p>do you give this product?
     1 is bad, 5 is excellent!  </p> -->

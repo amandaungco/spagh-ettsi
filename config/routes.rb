@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   get '/products_by_merchant', to: 'products#index_by_merchant', as: 'products_by_merchant'  #should change this to products_index_by_merchant
   get '/merchant/my_products', to: 'users#products_index', as: 'merchant_my_products'
 
-  # get '/product/:id/reviews/new', to: 'reviews#new', as: 'new_product_review'
-  post '/products/:product_id/review/new', to: 'reviews#create', as: 'create_review'
+  get '/product/:id/reviews/new', to: 'reviews#new', as: 'new_product_review'
+  post '/product/:id/reviews/', to: 'reviews#create', as: 'create_review'
   resources :products do
-    resources :reviews, only: [:index, :new]
+    resources :reviews, only: [:index, :create]
   end
 
 
