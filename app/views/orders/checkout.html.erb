@@ -4,7 +4,6 @@
 <h1 class="top-info">Checkout</h1>
 <table class="table col-lg-9 checkout-table">
   <tbody>
-
       <tr>
         <th scope="row">1</th>
         <td>
@@ -13,8 +12,6 @@
         </td>
         <td></td>
       </tr>
-
-
     <tr>
       <th scope="row">2</th>
       <td>
@@ -74,7 +71,7 @@
                 <tr>
                 	<td>
                     <figure class="media">
-                    	<div class="img-wrap"><%= image_tag(order_product.product.image_url alt: "small product icon" class: "img-thumbnail img-sm"%></div>
+                    	<div class="img-wrap"><%= image_tag(order_product.product.image_url, alt: "small product icon", class: "img-thumbnail img-sm"%></div>
                     	<figcaption class="media-body">
                     		<h3 class="title text-truncate"><%= order_product.product.name %></h3>
                     	</figcaption>
