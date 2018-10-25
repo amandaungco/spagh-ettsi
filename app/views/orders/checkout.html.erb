@@ -4,25 +4,6 @@
 <h1 class="top-info">Checkout</h1>
 <table class="table col-lg-9 checkout-table">
   <tbody>
-    
-    <% if @login_user.provider == 'guest_login' %>
-      <tr>
-        <th scope="row">1</th>
-        <td>
-          <%= form_with model: @login_user, id: 'guest_checkout', local: true do |f| %>
-            <%= f.label :full_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
-            <%= f.text_field :full_name, class: 'form-control', form: 'guest_checkout'%>
-
-            <%= f.label :email, class: "col-sm-3 offset-sm-1 col-form-label", form: 'guest_checkout'  %>
-            <%= f.text_field :email, class: 'form-control', form: 'guest_checkout'%>
-
-            <%= f.submit "Save Personal Info", class: 'btn btn-primary'%>
-          <% end %>
-        </td>
-        <td></td>
-      </tr>
-
-    <% else %>
 
       <tr>
         <th scope="row">1</th>
@@ -33,7 +14,6 @@
         <td></td>
       </tr>
 
-    <% end %>
 
     <tr>
       <th scope="row">2</th>
