@@ -58,12 +58,12 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
     "Manicotti", "Medium Shells", "Orzo", "Pappardelle", "Pastina",
     "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
-  images = ["/images/callentani.jpg", "/images/capellini.jpg", "/images/ditalini.jpg",
-    "/images/elbow.jpg", "/images/farfalle.jpg", "/images/fettuccine.jpg",
-  "/images/gemelli.jpg", "/images/gluten-free.jpg", "/images/large-shell.jpg", "/images/lasagna.jpg",
-  "/images/manicotti.jpg", "/images/medium-shell.jpg", "/images/orzo.jpg", "/images/pappardelle.jpg", "/images/pastina.jpg",
-  "/images/penne.jpg", "/images/ravioli.jpg", "/images/rotini.jpg",
-  "/images/spaghetti.jpg", "/images/tortellini.jpg"]
+  images = ["/assets/callentani.jpg", "/assets/capellini.jpg", "/assets/ditalini.jpg",
+    "/assets/elbow.jpg", "/assets/farfalle.jpg", "/assets/fettuccine.jpg",
+  "/assets/gemelli.jpg", "/assets/gluten-free.jpg", "/assets/large-shell.jpg", "/assets/lasagna.jpg",
+  "/assets/manicotti.jpg", "/assets/medium-shell.jpg", "/assets/orzo.jpg", "/assets/pappardelle.jpg", "/assets/pastina.jpg",
+  "/assets/penne.jpg", "/assets/ravioli.jpg", "/assets/rotini.jpg",
+  "/assets/spaghetti.jpg", "/assets/tortellini.jpg"]
   categories = ["short", "long", "soup", "short", "short", "long", "short", "shell",
   "shell", "sheet", "filled", "shell", "soup", "long", "soup", "short", "filled",
   "short", "long", "filled"]

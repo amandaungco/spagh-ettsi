@@ -13,7 +13,7 @@ class OrderProductsController < ApplicationController
     quantity = params[:order_product][:quantity]
     if product.user_id == session[:user_id]
       redirect_back(fallback_location: products_path)
-      flash[:warning] = "We're fettucine alfredo, you can't purchase your own products!"
+      flash[:warning] = "Mamma Mia! You can't purchase your own products.  Just steal some from the supply closet!"
     else
 
       existing_row = OrderProduct.find_by(product_id: product.id, order_id: session[:shopping_cart_id])
