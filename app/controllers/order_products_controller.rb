@@ -39,6 +39,7 @@ class OrderProductsController < ApplicationController
             redirect_to shopping_cart_path
           else
             product_not_added
+          end
         else
           product_not_added
         end
