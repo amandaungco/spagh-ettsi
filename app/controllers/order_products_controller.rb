@@ -33,10 +33,12 @@ class OrderProductsController < ApplicationController
       else
         new_row = OrderProduct.new(product_id: product.id, order_id: session[:shopping_cart_id], quantity: quantity)
 
-        product_not_added if !decrease_inventory(product, quantity)
-        if new_row.save
-          flash[:success] = "Cart has been updated!"
-          redirect_to shopping_cart_path
+        if decrease_inventory(product, quantity)
+          if new_row.save
+            flash[:success] = "Cart has been updated!"
+            redirect_to shopping_cart_path
+          else
+            product_not_added
         else
           product_not_added
         end
