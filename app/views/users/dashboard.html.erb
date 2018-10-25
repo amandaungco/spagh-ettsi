@@ -26,8 +26,8 @@
       <div class="card-body">
         <h5 class="card-title"><strong>Total Revenue</strong></h5>
         <h6 class="large-print card-subtitle mb-2 text-center"><%= readable_price(@login_user.total_revenue) %></h6>
-        <p class="card-text">Unfulfilled: <%= readable_price(@login_user.total_revenue_by_paid) %></p>
-        <p class="card-text">Fulfilled: <%= readable_price(@login_user.total_revenue_by_completed) %></p>
+        <p class="card-text">Unfulfilled: <%= readable_price(@login_user.total_revenue_by_status('paid')) %></p>
+        <p class="card-text">Fulfilled: <%= readable_price(@login_user.total_revenue_by_status('complete')) %></p>
       </div>
     </div>
     <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
