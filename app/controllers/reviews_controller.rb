@@ -9,7 +9,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+      @product = Product.find_by(id: params[:product_id])
+      @review = @product.reviews.new
   end
 
   def create
@@ -24,7 +25,7 @@ class ReviewsController < ApplicationController
       flash.now[:warning] = "An error occurred, could not create the review"
       flash.now[:validation_errors] = @review.errors.full_messages
 
-      redirect_to product_path(@review.product),status: :bad_request 
+      redirect_to product_path(@review.product),status: :bad_request
     end
   end
 
