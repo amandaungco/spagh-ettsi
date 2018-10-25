@@ -1,20 +1,29 @@
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<h1>New review</h1>
-<section>
+<div class="container address-container border col-lg-6">
   <%= form_with model: @review, url: create_review_path(@product.id), method: :post, class: "review-form" do |f|%>
-<%= f.hidden_field :product_id, value: @product.id %>
-  <p>A penne for your thoughts: </p>
-  <!-- <p>How many </p><i class="em em-spaghetti"></i><p>do you give this product?
-    1 is bad, 5 is excellent!  </p> -->
-
-  <%= f.label :rating %>
-  <%= f.select :rating, [1,2,3,4,5] %>
-
-  <section class="description-section">
-    <%= f.label :review %>
-    <%= f.text_area :review %>
-  </section>
-
-  <%= f.submit "Save review", class: "review-button btn btn-products" %>
-
-  <% end %>
+  <div class="col-sm-9 mx-auto text-center top-info">
+    <h1 class="wv-heading--title">New <%= @product.name %> Review</h1>
+    <h2 class="wv-heading--subtitle">A penne for your thoughts:</h2>
+  </div>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <!-- <p>How many </p><i class="em em-spaghetti"></i><p>do you give this product?
+      1 is bad, 5 is excellent!  </p> -->
+    <form>
+      <div class="form-group row">
+        <%= f.label :rating, class: "col-sm-3 offset-sm-1 col-form-label" %>
+        <div class="col-sm-6">
+          <%= f.select :rating, [1,2,3,4,5], {}, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :review, class: "col-sm-3 offset-sm-1 col-form-label" %>
+        <div class="col-sm-6">
+          <%= f.text_area :review, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-9 offset-sm-4">
+        <%= f.submit "Save review", class: "review-button btn btn-products" %>
+      </div>
+    <% end %>
+    </form>
+  </div>
+</div>

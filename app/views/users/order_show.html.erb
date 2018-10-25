@@ -14,14 +14,14 @@
     <p><%= @order.address.city %> <%= @order.address.state %> <%= @order.address.zip %></p>
   </p>
   <p><strong>Status: </strong> <%= @order.status.capitalize %></p>
+  <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
   <section id='order_item_status'>
     <% if @order.status != 'complete' %>
-      <%= link_to "Ship these items!", mark_as_shipped_path, method: :patch, class: "btn btn-primary"  %>
+      <%= link_to "Ship these items!", mark_as_shipped_path, method: :patch, class: "btn btn-products"  %>
       <%else%>
-      <p> Items have been shipped</p>
+      <p class="shipped"><strong>*Items have been shipped</strong></p>
       <% end %>
   </section>
-  <p><strong>Payment: </strong> <%= @order.payment.card_type %> ending in <%= @order.payment.last_four_digits %></p>
 </div>
 
   <div class="card border-0 offset-lg-2">
@@ -40,7 +40,7 @@
           <tr>
           	<td>
               <figure class="media">
-              	<div class="img-wrap"><img src=<%= op.product.image_url %> class="img-thumbnail img-sm"></div>
+              	<div class="img-wrap"><img src="<%= op.product.image_url %>", class="img-thumbnail img-sm"></div>
               	<figcaption class="media-body">
               		<h3 class="title text-truncate"><%= op.product.name %></h3>
               	</figcaption>
@@ -55,7 +55,7 @@
           		</div>
     	      </td>
             <td>
-              <%= link_to "Back to Product", product_path(op.product.id), class: "btn btn-primary" %>
+              <%= link_to "Back to Product", product_path(op.product.id), class: "btn btn-products" %>
             </td>
             <td>
           		<div class="price-wrap">
