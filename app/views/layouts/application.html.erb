@@ -87,7 +87,7 @@
     <% if flash[:validation_errors] %>
     <ul>
       <% flash[:validation_errors].each do |message|%>
-      <li>
+      <li class="error-list text-center">
         <%= message %>
       </li>
       <%end%>
