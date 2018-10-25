@@ -19,16 +19,23 @@ Rails.application.routes.draw do
   get '/products_by_merchant', to: 'products#index_by_merchant', as: 'products_by_merchant'  #should change this to products_index_by_merchant
   get '/merchant/my_products', to: 'users#products_index', as: 'merchant_my_products'
 
+  get '/product/:id/reviews/new', to: 'reviews#new', as: 'new_product_review'
+  post '/product/:id/reviews/', to: 'reviews#create', as: 'create_review'
+  resources :products do
+    resources :reviews, only: [:index, :create]
+  end
+
+
+  resources :reviews, only: [:index, :new, :create]
 
 
 
-  resources :products
   resources :users, only: [:create, :show] #do
   #   resources :products, only: [:show, :edit]
   # end
   resources :addresses
   resources :payments
-  resources :reviews
+
   resources :orders
   resources :sessions, only: [:create, :destroy]
   resources :order_products, only: [:create]

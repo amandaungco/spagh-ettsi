@@ -1,5 +1,6 @@
 
 class ReviewsController < ApplicationController
+    before_action :find_product, only: [:new, :create]
   def index
     @reviews = Review.all
   end
@@ -9,7 +10,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+      #@product = Product.find_by(id: params[:id])
+      @review = @product.reviews.new
   end
 
   def create
@@ -19,12 +21,12 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:success] = "Thanks for creating a review!"
 
-      redirect_to reviews_path
+      redirect_to product_path(@product.id)
     else
-      flash.now[:warning] = "An error occurred, could not create the review"
-      flash.now[:validation_errors] = @review.errors.full_messages
+      flash[:warning] = "An error occurred, could not create the review"
+      flash[:validation_errors] = @review.errors.full_messages
 
-      redirect_to product_path(@review.product),status: :bad_request 
+       redirect_to product_path(@product.id), status: :bad_request
     end
   end
 
@@ -41,5 +43,13 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:review, :rating, :product_id)
+  end
+
+  def find_product
+    @product = Product.find_by(id: params[:id].to_i)
+
+    if @product.nil?
+      render 'layouts/not_found', status: :not_found
+    end
   end
 end

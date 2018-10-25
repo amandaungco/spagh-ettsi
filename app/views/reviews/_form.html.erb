@@ -1,21 +1,33 @@
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<h1>New review</h1>
 <section>
 
-<h1> <%= action_name %> </h1>
+  <h1> <%= action_name %> </h1>
 
+  <%= form_with model: @review, url: new_product_review_path(@product.id), class: "review-form" do |f|%>
 
-<%= form_with model: @review, class: "review-form"  do |f|%>
-  <p>A penne for your thoughts:</p>
+  <p>A penne for your thoughts: </p>
+  <p>How many bowls</p><i class="em em-spaghetti"></i><p>do you give this product?
+    1 is bad, 5 is excellent!  </p>
 
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
-
-  <!-- <%= f.label :product_id, "Review" %>
-  <%= f.select :product_id, Review.all %> -->
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="ratings" data-toggle="dropdown">Ratings
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="ratings"
+      <%=link_to "Ratings", reviews_path, class: "nav-link"%>>
+      <li role="presentation"><a value="1" href="#">1 bowl</a></li>
+      <li role="presentation"><a value="2" href="#">2 bowl</a></li>
+      <li role="presentation"><a value="3" href="#">3 bowl</a></li>
+      <li role="presentation"><a value="4" href="#">4 bowl</a></li>
+      <li role="presentation"><a value="5" href="#">5 bowl</a></li>
+    </ul>
+  </div>
+<br />
   <section class="description-section">
     <%= f.label :review %>
     <%= f.text_area :review %>
   </section>
 
-  <%= f.submit "Save review", class: "book-button", class: "review-button btn btn-primary" %>
-<% end %>
-</section>
+  <%= f.submit "Save review", class: "review-button", class: "review-button btn btn-primary" %>
+
+  <% end %>

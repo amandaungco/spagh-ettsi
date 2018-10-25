@@ -1,22 +1,20 @@
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 <h1>New review</h1>
 <section>
-
-<h1> <%= action_name %> </h1>
-
-
-<%= form_with model: @review, class: "review-form"  do |f|%>
-  <p>A penne for your thoughts:</p>
+  <%= form_with model: @review, url: create_review_path(@product.id), method: :post, class: "review-form" do |f|%>
+<%= f.hidden_field :product_id, value: @product.id %>
+  <p>A penne for your thoughts: </p>
+  <!-- <p>How many </p><i class="em em-spaghetti"></i><p>do you give this product?
+    1 is bad, 5 is excellent!  </p> -->
 
   <%= f.label :rating %>
-  <%= f.text_field :rating %>
+  <%= f.select :rating, [1,2,3,4,5] %>
 
-  <!-- <%= f.label :product_id, "Review" %>
-  <%= f.select :product_id, Review.all %> -->
   <section class="description-section">
     <%= f.label :review %>
     <%= f.text_area :review %>
   </section>
 
-  <%= f.submit "Save review", class: "book-button", class: "review-button btn btn-primary" %>
-<% end %>
-</section>
+  <%= f.submit "Save review", class: "review-button btn btn-products" %>
+
+  <% end %>
