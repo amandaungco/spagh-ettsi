@@ -22,6 +22,8 @@ before_action :check_login_user  # repeated in ApplicationController??
   def edit
     if !@shopping_cart || @shopping_cart.user != @login_user
       render 'layouts/not_found', status: :not_found
+    elsif @order.user !=@login_user
+      render 'layouts/not_found', status: :not_found
     else
       render :checkout
     end
@@ -45,7 +47,7 @@ before_action :check_login_user  # repeated in ApplicationController??
         flash[:success] = "Your order has been placed!"
         order_id = session[:shopping_cart_id]
         session[:shopping_cart_id] = nil
-        redirect_to order_path(order_id)
+        redirect_to order_path(@shopping_cart.id)
       else
         flash[:warning] = "Unable to place order"
         flash[:validation_errors] = @shopping_cart.errors.full_messages

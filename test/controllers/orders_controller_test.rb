@@ -61,12 +61,13 @@ describe OrdersController do
       must_respond_with :success
     end
 
-    it 'responds with not found with a logged-in user given a non-pending order with valid ID' do
-      perform_login(buyer)
-      get edit_order_path(order_two.id)
-
-      must_respond_with :not_found
-    end
+    # it 'responds with not found with a logged-in user given a non-pending order with valid ID' do
+    #   perform_login(buyer)
+    #   get edit_order_path(order_two.id)
+    #
+    #   must_respond_with :not_found
+    # end
+    #changed edit path to checkout so overrides this capability
 
     it 'responds with not found with a logged-in user with someone elses valid order ID' do
       perform_login(buyer)
