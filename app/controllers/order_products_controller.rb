@@ -19,7 +19,8 @@ class OrderProductsController < ApplicationController
       existing_row = OrderProduct.find_by(product_id: product.id, order_id: session[:shopping_cart_id])
 
       if existing_row
-        decrease_inventory(product, quantity)
+
+        product_not_added if !decrease_inventory(product, quantity)
         existing_row.quantity += quantity.to_i
         if existing_row.save
           flash[:success] = "Cart has been updated!"
@@ -32,8 +33,8 @@ class OrderProductsController < ApplicationController
       else
         new_row = OrderProduct.new(product_id: product.id, order_id: session[:shopping_cart_id], quantity: quantity)
 
+        product_not_added if !decrease_inventory(product, quantity)
         if new_row.save
-          decrease_inventory(product, quantity)
           flash[:success] = "Cart has been updated!"
           redirect_to shopping_cart_path
         else
@@ -109,7 +110,7 @@ class OrderProductsController < ApplicationController
   end
 
   def product_not_added
-    flash[:warning] = "Must add a quantity of atleast one.  Please try again."
+    flash[:warning] = "Sorry, that quantity is not available.  Please try again."
     redirect_to root_path
   end
 
