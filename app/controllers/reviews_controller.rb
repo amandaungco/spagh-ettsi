@@ -1,6 +1,7 @@
 
 class ReviewsController < ApplicationController
-    before_action :find_product, only: [:new, :create]
+  before_action :find_product, only: [:new, :create]
+
   def index
     @reviews = Review.all
   end
@@ -10,24 +11,28 @@ class ReviewsController < ApplicationController
   end
 
   def new
-      #@product = Product.find_by(id: params[:id])
+    if item_ownership?
+      redirect_to product_path(@product.id)
+      flash[:warning] = "You cannot review your own products."
+    else
       @review = @product.reviews.new
+    end
   end
 
   def create
     @review = Review.new(review_params)
     @review.user = current_user
+      if @review.save
+        flash[:success] = "Thanks for creating a review!"
 
-    if @review.save
-      flash[:success] = "Thanks for creating a review!"
+        redirect_to product_path(@product.id)
+      else
+        flash[:warning] = "An error occurred, could not create the review"
+        flash[:validation_errors] = @review.errors.full_messages
 
-      redirect_to product_path(@product.id)
-    else
-      flash[:warning] = "An error occurred, could not create the review"
-      flash[:validation_errors] = @review.errors.full_messages
+         redirect_to product_path(@product.id), status: :bad_request
+      end
 
-       redirect_to product_path(@product.id), status: :bad_request
-    end
   end
 
   def edit
@@ -43,6 +48,10 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:review, :rating, :product_id)
+  end
+
+  def item_ownership?
+    return @product.user_id == session[:user_id]
   end
 
   def find_product
