@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :find_order, only: [:show, :edit, :mark_as_shipped]
+before_action :find_order, only: [:show, :edit, :mark_as_shipped, :dashboard]
 before_action :check_login_user  # repeated in ApplicationController??
   # def index
   # end
@@ -22,8 +22,8 @@ before_action :check_login_user  # repeated in ApplicationController??
   def edit
     if !@shopping_cart || @shopping_cart.user != @login_user
       render 'layouts/not_found', status: :not_found
-    elsif @order.user !=@login_user
-      render 'layouts/not_found', status: :not_found
+    # elsif @order.user !=@login_user
+    #   render 'layouts/not_found', status: :not_found
     else
       render :checkout
     end
@@ -56,7 +56,7 @@ before_action :check_login_user  # repeated in ApplicationController??
     end
   end
 
-  # def destroy
+  # def dashboard
   # end
 
   def shopping_cart; end

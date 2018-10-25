@@ -80,8 +80,13 @@
             <p><%=readable_price(order.order_subtotal) %></p>
           </td>
           <td>
-            <!-- To be changed -->
-            <p class="btn btn-products">Order Shipped</p>
+            <!-- <section id='order_item_status'>
+              <#% if order.status != 'complete' %>
+                <%#= link_to "Ship these items!", mark_as_shipped_path, method: :patch, class: "btn btn-products"  %>
+                <%#else%>
+                <p class="shipped"><strong>*Items have been shipped</strong></p>
+                <%# end %>
+            </section> -->
           </td>
         </tr>
         <% end %>
