@@ -27,7 +27,7 @@
           <p><%= readable_date(order.updated_at) %></p>
         </td>
         <td>
-          <% order.order_products.each do |product| %>
+          <% order.order_products_by_merchant(@login_user).each do |product| %>
           <ul>
             <li>
               <%= product.quantity %> <%= product.product.name %>
@@ -36,12 +36,12 @@
           <% end %>
         </td>
         <td>
-          <p><%=readable_price(order.order_subtotal) %></p>
+          <p><%=readable_price(order.order_subtotal_by_merchant(@login_user)) %></p>
         </td>
         <td>
           <section id='order_item_status'>
             <% if order.status != 'complete' %>
-              <%= link_to "Ship these items!", mark_as_shipped_path(order.id), method: :patch, class: "btn btn-products"  %>
+              <%= link_to "View Order to Complete", merchant_order_path(order.id), class: "btn btn-products"  %>
               <%else%>
               <p class="shipped"><strong>*Items have been shipped</strong></p>
               <% end %>
@@ -76,7 +76,7 @@
           <p><%= readable_date(order.updated_at) %></p>
         </td>
         <td>
-          <% order.order_products.each do |product| %>
+          <% order.order_products_by_merchant(@login_user).each do |product| %>
           <ul>
             <li>
               <%= product.quantity %> <%= product.product.name %>
@@ -85,7 +85,7 @@
           <% end %>
         </td>
         <td>
-          <p><%=readable_price(order.order_subtotal) %></p>
+          <p><%=readable_price(order.order_subtotal_by_merchant(@login_user)) %></p>
         </td>
       </tr>
       <% end %>

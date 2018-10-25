@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 before_action :find_order, only: [:show, :edit, :mark_as_shipped, :dashboard]
-before_action :check_login_user  # repeated in ApplicationController??
+before_action :check_login_user, except: [:shopping_cart]  # repeated in ApplicationController??
   # def index
   # end
 

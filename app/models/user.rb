@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :reviews
 
   validates :is_a_seller, inclusion: {in: [false], message: "Must be a registered user to become a seller"}, if: :guest?
-  validates :full_name, presence: true
+  validates :full_name, presence: true 
   validates :email, presence: true
   validates_format_of :email,:with => /.+@.+\..+/
   validates :uid, presence: true
