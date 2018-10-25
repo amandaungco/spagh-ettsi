@@ -4,8 +4,39 @@
 <h1 class="top-info">Checkout</h1>
 <table class="table col-lg-9 checkout-table">
   <tbody>
+    
+    <% if @login_user.provider == 'guest_login' %>
+      <tr>
+        <th scope="row">1</th>
+        <td>
+          <%= form_with model: @login_user, id: 'guest_checkout', local: true do |f| %>
+            <%= f.label :full_name, class: "col-sm-3 offset-sm-1 col-form-label"  %>
+            <%= f.text_field :full_name, class: 'form-control', form: 'guest_checkout'%>
+
+            <%= f.label :email, class: "col-sm-3 offset-sm-1 col-form-label", form: 'guest_checkout'  %>
+            <%= f.text_field :email, class: 'form-control', form: 'guest_checkout'%>
+
+            <%= f.submit "Save Personal Info", class: 'btn btn-primary'%>
+          <% end %>
+        </td>
+        <td></td>
+      </tr>
+
+    <% else %>
+
+      <tr>
+        <th scope="row">1</th>
+        <td>
+          <div><strong>Name:</strong> <%= @login_user.full_name %></div>
+          <div><strong>Email:</strong> <%= @login_user.email %></div>
+        </td>
+        <td></td>
+      </tr>
+
+    <% end %>
+
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">2</th>
       <td>
         <strong>Shipping Address</strong>
         <div class="form-group">
@@ -25,7 +56,7 @@
       <td></td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="row">3</th>
       <td>
         <strong>Payment Method</strong>
         <div class="form-group">
@@ -44,7 +75,7 @@
 
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row">4</th>
       <td>
         <strong>Review Items</strong>
         <div class="card checkout-container col-lg-9 offset-sm-1">
