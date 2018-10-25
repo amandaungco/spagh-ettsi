@@ -76,7 +76,7 @@
     <div class="card-deck">
       <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product = Product.all.find_by(id: 1) %>
-        <%= link_to image_tag(asset_path("#{product.image_url}"), alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
+        <%= link_to image_tag(product.image_url, alt: "Card image cap", class: "card-img-top"), product_path(product.id) %>
         <div class="card-body">
           <h5 class="card-title"><%= product.name %></h5>
           <p class="card-text"><%= product.description.capitalize %></p>
@@ -87,7 +87,7 @@
       </div>
       <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product2 = Product.all.find_by(id: 4) %>
-        <%= link_to image_tag(asset_path("#{product2.image_url}"), alt: "Card image cap", class: "card-img-top"), product_path(product2.id) %>
+        <%= link_to image_tag(product2.image_url, alt: "Card image cap", class: "card-img-top"), product_path(product2.id) %>
 
 
         <div class="card-body">
@@ -100,7 +100,7 @@
       </div>
       <div class="card col-md-4 box border py-4 shadow p-3 mb-5 bg-white rounded">
         <% product3 = Product.all.find_by(id: 10) %>
-        <%= link_to image_tag(asset_path("#{product3.image_url}"), alt: "Card image cap", class: "card-img-top"), product_path(product3.id) %>
+        <%= link_to image_tag(product3.image_url, alt: "Card image cap", class: "card-img-top"), product_path(product3.id) %>
 
         <div class="card-body">
           <h5 class="card-title"><%= product3.name %></h5>
