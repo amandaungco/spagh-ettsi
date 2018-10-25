@@ -34,13 +34,13 @@
           </figure>
         </td>
         <td class="quantity-field">
-          <%= form_with model: order_product, local: true do |f| %>
+          <%= form_with model: order_product, id: "update_inventory_#{order_product.id}", local: true do |f| %>
           <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
           <%= f.hidden_field :id %>
 
-        </td>
+        </td>  <!-- look into this -->
         <td>
-          <%= f.submit "Update Quantity", class: "btn btn-products" %>
+          <%= f.submit "Update Quantity", class: "btn btn-products", form: "update_inventory_#{order_product.id}" %>
           <% end %>
         </td>
         <td>
