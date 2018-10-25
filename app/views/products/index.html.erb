@@ -21,7 +21,7 @@
   <div class=" index-container">
     <% @products.each do |product| %>
     <div class="filterDiv card product-card bg-white <%= product.category %> shadow p-3 mb-5 bg-white rounded">
-      <%= link_to image_tag("#{product.image_url}", alt: "Card image cap", class: "card-img-top  "), product_path(product.id) %>
+      <%= link_to image_tag(product.image_url, alt: "Card image cap", class: "card-img-top  "), product_path(product.id) %>
       <div class="card-body">
         <h5 class="card-title"><%= product.name %></h5>
         <hr>

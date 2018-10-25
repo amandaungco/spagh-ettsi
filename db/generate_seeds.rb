@@ -58,12 +58,12 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
     "Manicotti", "Medium Shells", "Orzo", "Pappardelle", "Pastina",
     "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
-  images = ["/assets/callentani.jpg", "/assets/capellini.jpg", "/assets/ditalini.jpg",
-    "/assets/elbow.jpg", "/assets/farfalle.jpg", "/assets/fettuccine.jpg",
-  "/assets/gemelli.jpg", "/assets/gluten-free.jpg", "/assets/large-shell.jpg", "/assets/lasagna.jpg",
-  "/assets/manicotti.jpg", "/assets/medium-shell.jpg", "/assets/orzo.jpg", "/assets/pappardelle.jpg", "/assets/pastina.jpg",
-  "/assets/penne.jpg", "/assets/ravioli.jpg", "/assets/rotini.jpg",
-  "/assets/spaghetti.jpg", "/assets/tortellini.jpg"]
+  images = ["callentani.jpg", "capellini.jpg", "ditalini.jpg",
+    "elbow.jpg", "farfalle.jpg", "fettuccine.jpg",
+  "gemelli.jpg", "gluten-free.jpg", "large-shell.jpg", "lasagna.jpg",
+  "manicotti.jpg", "medium-shell.jpg", "orzo.jpg", "pappardelle.jpg", "pastina.jpg",
+  "penne.jpg", "ravioli.jpg", "rotini.jpg",
+  "spaghetti.jpg", "tortellini.jpg"]
   categories = ["short", "long", "soup", "short", "short", "long", "short", "shell",
   "shell", "sheet", "filled", "shell", "soup", "long", "soup", "short", "filled",
   "short", "long", "filled"]
@@ -116,7 +116,7 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
 
       user_id = rand(1..20)
       product_id = rand(1..20)
-      review = Faker::Buffy.quote
+      review = Faker::Lorem.paragraph(3)
       rating = rand(1..5)
 
       csv << [user_id, product_id, review, rating]

@@ -1,21 +1,21 @@
 category,name,user_id,price_in_cents,description,quantity,image_url
-short,Callentani,5,118,reduces inflammation,1,/assets/callentani.jpg
-long,Capellini,12,479,aids sleep,14,/assets/capellini.jpg
-soup,Ditalini,8,309,improves airflow to lungs,1,/assets/ditalini.jpg
-short,Elbow,18,136,promotes bone growth,17,/assets/elbow.jpg
-short,Farfalle,6,178,relieves pain,16,/assets/farfalle.jpg
-long,Fettuccine,6,241,reduces risk of artery blockage,13,/assets/fettuccine.jpg
-short,Gemelli,17,233,reduces blood sugar levels,8,/assets/gemelli.jpg
-shell,Gluten-free Shells,7,344,suppresses appetite,20,/assets/gluten-free.jpg
-shell,Jumbo Shells,8,521,relieves pain,3,/assets/large-shell.jpg
-sheet,Lasagna,6,505,promotes bone growth,3,/assets/lasagna.jpg
-filled,Manicotti,18,454,suppresses appetite,11,/assets/manicotti.jpg
-shell,Medium Shells,11,438,suppresses muscle spasms,17,/assets/medium-shell.jpg
-soup,Orzo,7,392,prevents infection,18,/assets/orzo.jpg
-long,Pappardelle,14,159,treats fungal infection,14,/assets/pappardelle.jpg
-soup,Pastina,9,301,reduces seizures and convulsion,16,/assets/pastina.jpg
-short,Penne,12,251,reduces vomiting and nausea,7,/assets/penne.jpg
-filled,Ravioli,2,554,improves airflow to lungs,14,/assets/ravioli.jpg
-short,Rotini,12,552,reduces seizures and convulsion,15,/assets/rotini.jpg
-long,Spaghetti,16,309,stimulates appetite,7,/assets/spaghetti.jpg
-filled,Tortellini,9,626,suppresses muscle spasms,19,/assets/tortellini.jpg
+short,Callentani,17,170,tranquilizing,18,callentani.jpg
+long,Capellini,17,236,reduces blood sugar levels,8,capellini.jpg
+soup,Ditalini,11,106,treats fungal infection,1,ditalini.jpg
+short,Elbow,4,576,relieves pain,14,elbow.jpg
+short,Farfalle,9,640,inhibits cell growth in tumors/cancer cells,19,farfalle.jpg
+long,Fettuccine,16,472,treats fungal infection,11,fettuccine.jpg
+short,Gemelli,2,644,relieves congestion,1,gemelli.jpg
+shell,Gluten-free Shells,6,341,reduces inflammation,13,gluten-free.jpg
+shell,Jumbo Shells,7,160,stimulates function in the immune system,4,large-shell.jpg
+sheet,Lasagna,11,159,protects against nervous system degeneration,10,lasagna.jpg
+filled,Manicotti,8,376,aids sleep,2,manicotti.jpg
+shell,Medium Shells,11,518,relieves pain,3,medium-shell.jpg
+soup,Orzo,15,532,treats depression,15,orzo.jpg
+long,Pappardelle,5,416,reduces blood sugar levels,3,pappardelle.jpg
+soup,Pastina,14,591,improves airflow to lungs,9,pastina.jpg
+short,Penne,4,439,tranquilizing,14,penne.jpg
+filled,Ravioli,8,641,treats fungal infection,17,ravioli.jpg
+short,Rotini,14,439,stimulates function in the immune system,20,rotini.jpg
+long,Spaghetti,8,699,kills or slows bacteria growth,13,spaghetti.jpg
+filled,Tortellini,5,381,treats allergy symptoms,20,tortellini.jpg
