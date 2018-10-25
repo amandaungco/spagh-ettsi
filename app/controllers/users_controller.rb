@@ -5,10 +5,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @login_user
+    if @login_user.nil? || @login_user.provider == 'guest_login'
+      redirect_to root_path
+      flash[:warning] = "Oops, you must create an account to view this page!"
+    else
       @login_user_orders = Order.where(user_id: @login_user.id).where().not(status: :pending)
+      render :account
     end
-    render :account
   end
 
   def update
@@ -36,23 +39,24 @@ class UsersController < ApplicationController
     if @login_user.nil? || !@login_user.is_a_seller?
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
+    else
+      @total_orders = @login_user.all_orders_for_merchant.count
+      @orders = @login_user.all_orders_for_merchant
+
+      @total_paid_orders = @login_user.paid_orders_for_merchant.count
+      @paid_orders = @login_user.paid_orders_for_merchant
+
+      @total_completed_orders = @login_user.completed_orders_for_merchant.count
+      @completed_orders = @login_user.completed_orders_for_merchant
+
+      @total_active_products = @login_user.active_products.count
+      @active_products = @login_user.active_products
+
+      @total_inactive_products = @login_user.inactive_products.count
+      @inactive_products = @login_user.inactive_products
+
+      @total_products = @login_user.products.count
     end
-    @total_orders = @login_user.all_orders_for_merchant.count
-    @orders = @login_user.all_orders_for_merchant
-
-    @total_paid_orders = @login_user.paid_orders_for_merchant.count
-    @paid_orders = @login_user.paid_orders_for_merchant
-
-    @total_completed_orders = @login_user.completed_orders_for_merchant.count
-    @completed_orders = @login_user.completed_orders_for_merchant
-
-    @total_active_products = @login_user.active_products.count
-    @active_products = @login_user.active_products
-
-    @total_inactive_products = @login_user.inactive_products.count
-    @inactive_products = @login_user.inactive_products
-
-    @total_products = @login_user.products.count
   end
 
   def orders_index
