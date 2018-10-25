@@ -60,9 +60,9 @@
           <li class="nav-item nav-word">
             <%= link_to "Log Out", logout_path, method: "delete", class: "nav-link"  %>
           </li>
-        <% elsif @login_user %>
+        <% elsif @login_user && @shopping_cart %>
           <li class="nav-item nav-word">
-            <%= link_to "Guest Log Out", logout_path, method: "delete", class: "nav-link" %>
+            <%=link_to "Log In", "/auth/github", class: "nav-link", data: {confirm: "Your cart won't follow you when you log in.  Please add all of your desired products again after login!"}%>
           </li>
         <% else %>
           <li class="nav-item nav-word">
