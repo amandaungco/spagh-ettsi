@@ -1,6 +1,10 @@
 module ApplicationHelper
   def readable_date(date)
-    ("<span class='date'>" + date.strftime("%A, %b, %d") + "</span>").html_safe
+    ("<span class='date'>" + date.strftime("%B %d, %Y") + "</span>").html_safe
+  end
+
+  def cc_date(date)
+    ("<span class='date'>" + date.strftime("%b %Y") + "</span>").html_safe
   end
 
   def readable_price(price_in_cents)

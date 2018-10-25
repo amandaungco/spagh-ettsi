@@ -22,6 +22,7 @@ before_action :check_login_user  # repeated in ApplicationController??
   def edit
     if !@shopping_cart || @shopping_cart.user != @login_user
       render 'layouts/not_found', status: :not_found
+
     # elsif @order.user !=@login_user
     #   render 'layouts/not_found', status: :not_found
     else
