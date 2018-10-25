@@ -47,7 +47,7 @@ describe ReviewsController do
     end
 
     it "creates a review if valid data is provided" do
-    binding.pry
+  
       expect {
         post reviews_path, params: review_hash
       }.must_change 'Review.count', 1
