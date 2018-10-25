@@ -127,6 +127,7 @@ describe OrdersController do
 
       patch mark_as_shipped_path(order_two.id)
 
+      order_two.reload
       expect(order_two.status).must_equal 'complete'
     end
 
