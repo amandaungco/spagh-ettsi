@@ -20,11 +20,14 @@ class OrderProductsController < ApplicationController
 
       if existing_row
 
-        product_not_added if !decrease_inventory(product, quantity)
-        existing_row.quantity += quantity.to_i
-        if existing_row.save
-          flash[:success] = "Cart has been updated!"
-          redirect_to shopping_cart_path
+        if decrease_inventory(product, quantity)
+          existing_row.quantity += quantity.to_i
+          if existing_row.save
+            flash[:success] = "Cart has been updated!"
+            redirect_to shopping_cart_path
+          else
+            product_not_added
+          end
         else
           product_not_added
         end
