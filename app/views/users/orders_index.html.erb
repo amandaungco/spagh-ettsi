@@ -52,7 +52,7 @@
     </tbody>
   </table>
 </div> <!-- card.// -->
-
+<hr />
 <div class="card border-0 order-table col-lg-9 offset-lg-2">
   <h2>Completed Orders:</h2>
   <table class="table table-hover ">
@@ -62,7 +62,6 @@
         <th scope="col" width="120">Date Placed</th>
         <th scope="col" width="250">Products</th>
         <th scope="col" width="120">Total Revenue</th>
-        <th scope="col" width="120">Shipping Status</th>
         <!-- <th scope="col" width="200" class="text-right">Action</th> -->
       </tr>
     </thead>
@@ -87,10 +86,6 @@
         </td>
         <td>
           <p><%=readable_price(order.order_subtotal) %></p>
-        </td>
-        <td>
-          <!-- To be changed -->
-          <p class="btn btn-products">Order Shipped</p>
         </td>
       </tr>
       <% end %>
