@@ -36,8 +36,8 @@
       </tr>
     <% end %>
 
-    <%= form_with model: @shopping_cart do |f| %>
-      <%= f.hidden_field :status, value: :paid %>
+    <%= form_with model: @shopping_cart, id: 'checkout_form' do |f| %>
+      <%= f.hidden_field :status, value: :paid, form: 'checkout_form' %>
 
     <tr>
       <th scope="row">2</th>
@@ -174,7 +174,7 @@
 <div class="btn-group">
   <%= link_to "Back to Shopping Cart", shopping_cart_path, class: "btn btn-products btn-space"%>
   <%= link_to "Keep Shopping", products_path, class: "btn btn-products btn-space" %>
-  <%= f.submit "Submit Order", class: 'btn btn-products'%>
+  <%= f.submit "Submit Order", form: 'checkout_form', class: 'btn btn-products'%>
 </div>
 
 <% end %>
