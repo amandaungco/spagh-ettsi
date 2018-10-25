@@ -68,7 +68,7 @@
             <p><%= readable_date(order.updated_at) %></p>
           </td>
           <td>
-            <% order.order_products.each do |product| %>
+            <% order.order_products_by_merchant(@login_user).each do |product| %>
             <ul>
               <li>
                 <%= product.quantity %> <%= product.product.name %>
