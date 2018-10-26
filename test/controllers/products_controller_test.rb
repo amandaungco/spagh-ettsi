@@ -4,6 +4,7 @@ describe ProductsController do
   let(:spaghetti) {products(:spaghetti)}
   let(:lasagne) {products(:lasagne)}
   let(:seller) {users(:seller)}
+  let(:buyer) {users(:buyer)}
 
   let(:mock_params) {
     {
@@ -204,6 +205,21 @@ describe ProductsController do
 
         must_redirect_to root_path
         expect(flash[:warning]).must_equal "You don't have permission to see that."
+      end
+
+      it 'allows a logged-in user to deactivate their own product' do
+        perform_login(seller)
+
+        expect(lasagne.is_active).must_equal true
+
+        patch deactivate_product_path(lasagne.id)
+
+        lasagne.reload
+
+        expect(lasagne.is_active).must_equal false
+
+        must_redirect_to merchant_my_products_path
+
       end
     end
 
