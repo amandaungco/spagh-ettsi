@@ -207,6 +207,12 @@ describe ProductsController do
       end
     end
 
+    describe 'index by merchant' do
+      it 'successfully renders the index by merchant view' do
+        get products_by_merchant_path
 
+        must_respond_with :success
+      end
+    end
   end
 end
