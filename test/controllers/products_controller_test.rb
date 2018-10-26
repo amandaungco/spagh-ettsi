@@ -196,5 +196,16 @@ describe ProductsController do
       end
     end
 
+    describe 'deactivate products' do
+      it 'prevents a guest user from deactivating a product' do
+
+        patch deactivate_product_path(lasagne.id)
+
+        must_redirect_to root_path
+        expect(flash[:warning]).must_equal "You don't have permission to see that."
+      end
+    end
+
+
   end
 end
