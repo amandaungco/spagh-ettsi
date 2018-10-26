@@ -49,12 +49,12 @@ class AddressesController < ApplicationController
       :street, :street_2, :city, :state, :zip)
     end
 
-    def find_address
-      @address = Address.find_by(id: params[:id].to_i)
-
-      if @address.nil?
-        render 'layouts/not_found', status: :not_found
-      end
-    end
+    # def find_address
+    #   @address = Address.find_by(id: params[:id].to_i)
+    #
+    #   if @address.nil?
+    #     render 'layouts/not_found', status: :not_found
+    #   end
+    # end
 
 end
