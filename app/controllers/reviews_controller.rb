@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
 
         redirect_to product_path(@product.id)
       else
+binding.pry 
         flash[:warning] = "An error occurred, could not create the review"
         flash[:validation_errors] = @review.errors.full_messages
 
