@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+  before_action :find_orders_info, only: [:dashboard, :orders_index]
+  before_action :find_products, only: [:dashboard, :products_index]
 
   def create(guest_params)
     return guest_user = User.new(guest_params)
   end
+#what is this doing
 
   def show
     if @login_user.nil? || @login_user.provider == 'guest_login'
@@ -53,34 +56,34 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
     else
-      @total_orders = @login_user.all_orders_for_merchant.count
-      @orders = @login_user.all_orders_for_merchant
+      # @total_orders = @login_user.all_orders_for_merchant.count
+      # @orders = @login_user.all_orders_for_merchant
 
-      @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-      @paid_orders = @login_user.sort_orders_by_status('paid')
+      # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+      # @paid_orders = @login_user.sort_orders_by_status('paid')
 
-      @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-      @completed_orders = @login_user.sort_orders_by_status('complete')
+      # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+      # @completed_orders = @login_user.sort_orders_by_status('complete')
 
-      @total_active_products = @login_user.product_status(true).count
-      @active_products = @login_user.product_status(true)
+      @total_active_products = @active_products.count
+      #@active_products = @login_user.product_status(true)
 
-      @total_inactive_products = @login_user.product_status(false).count
-      @inactive_products = @login_user.product_status(false)
+      @total_inactive_products = @inactive_products.count
+      # @inactive_products = @login_user.product_status(false)
 
       @total_products = @login_user.products.count
     end
   end
 
   def orders_index
-    @total_orders = @login_user.all_orders_for_merchant.count
-    @orders = @login_user.all_orders_for_merchant
-
-    @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-    @paid_orders = @login_user.sort_orders_by_status('paid')
-
-    @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-    @completed_orders = @login_user.sort_orders_by_status('complete')
+    # @total_orders = @login_user.all_orders_for_merchant.count
+    # @orders = @login_user.all_orders_for_merchant
+    #
+    # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+    # @paid_orders = @login_user.sort_orders_by_status('paid')
+    #
+    # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+    # # @completed_orders = @login_user.sort_orders_by_status('complete')
   end
 
   def order_show
@@ -94,8 +97,8 @@ class UsersController < ApplicationController
 
   def products_index
     @products = @login_user.products
-    @active_products = @login_user.product_status(true)
-    @inactive_products = @login_user.product_status(false)
+    # @active_products = @login_user.product_status(true)
+    # @inactive_products = @login_user.product_status(false)
   end
 
 
@@ -113,6 +116,26 @@ class UsersController < ApplicationController
     @login_user.products.each do |product|
       product.is_active = true
       product.save
+    end
+  end
+
+  private
+
+  def find_orders_info
+    if @login_user
+      @orders = @login_user.all_orders_for_merchant
+      @total_orders = @orders.count
+      @paid_orders = @login_user.sort_orders_by_status('paid')
+      @total_paid_orders = @paid_orders.count
+      @completed_orders = @login_user.sort_orders_by_status('complete')
+      @total_completed_orders = @completed_orders.count
+    end
+  end
+
+  def find_products
+    if @login_user
+      @active_products = @login_user.product_status(true)
+      @inactive_products = @login_user.product_status(false)
     end
   end
 

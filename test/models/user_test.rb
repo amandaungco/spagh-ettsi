@@ -147,4 +147,47 @@ class UserTest < ActiveSupport::TestCase
     end
 
   end
+
+  describe "custom methods" do
+    let(:seller) {users(:seller)}
+    describe ' total_revenue' do
+      it 'should return the total revenue for all products sold by a given merchant' do
+        expect(seller.total_revenue).must_equal 699
+      end
+
+      it 'should return the total revenue by order status for all products sold by a given merchant' do
+        expect(seller.total_revenue_by_status('paid')).must_equal 299
+
+        expect(seller.total_revenue_by_status('complete')).must_equal 400
+      end
+    end
+
+    describe 'product status' do
+      it 'sorts a merchants prodcuts by their status'do
+
+        expect(seller.product_status(true)[0]).must_be_instance_of Product
+        expect(seller.product_status(true)[0].name).must_equal 'spaghetti'
+
+      end
+    end
+
+    describe "Create user using oauth" do
+      it 'creates an instance of a user using github auth_hash' do
+        mock_hash = {
+          provider: 'github',
+          uid: 12345,
+          info: {
+            email: 'test@test.com',
+            name: 'Please pass this test'
+          }
+        }
+
+        expect(User.build_from_github(mock_hash)).must_be_instance_of User
+
+      end
+
+    end
+
+  end
+
 end
