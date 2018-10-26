@@ -51,6 +51,12 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
 
         redirect_to products_path
         flash[:warning] = "Error: Cannot checkout, cart is empty."
+
+      elsif !@login_user.update(user_params)
+        flash[:warning] = "An error occurred.  Please try again."
+        flash[:validation_errors] = @login_user.errors.full_messages
+        redirect_back(fallback_location: checkout_path)
+
       else
         if @shopping_cart.update(order_params)
           flash[:success] = "Your order has been placed!"
@@ -80,7 +86,11 @@ private
   end
 
   def order_params
-    params.require(:order).permit(:payment_id, :address_id, :status)
+    params.permit(:payment_id, :address_id, :status)
+  end
+
+  def user_params
+    params.permit(:full_name, :email)
   end
 
   def check_login_user
