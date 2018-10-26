@@ -71,38 +71,40 @@ class ProductsController < ApplicationController
 
 
   def deactivate
-    if !@login_user.nil? && @login_user.is_a_seller?
+    if @login_user && @login_user.is_a_seller?
       if @login_user.id != @product.user_id
-        redirect_to root_path
         flash[:warning] = "You can only remove your own products."
+        redirect_to root_path
+      end
+
+
+      if @product.is_active
+        @product.is_active = false
+      elsif !@product.is_active
+        @product.is_active = true
+      end
+
+      if @product.save
+        redirect_to merchant_my_products_path
+        if !@product.is_active
+          flash[:warning] = "Product: #{@product.name.capitalize} was discontinued."
+        else
+          flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
+        end
+      else
+        flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
+        render :edit
       end
     else
       redirect_to root_path
       flash[:warning] = "You don't have permission to see that."
-    end
-
-    if @product.is_active
-      @product.is_active = false
-    elsif !@product.is_active
-      @product.is_active = true
-    end
-
-    if @product.save
-      redirect_to merchant_my_products_path
-      if !@product.is_active
-        flash[:warning] = "Product: #{@product.name.capitalize} was discontinued."
-      else
-        flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
-      end
-    else
-      flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
-      render :edit
     end
   end
 
 
 
   private
+
 
   def find_product
     @product = Product.find_by(id: params[:id].to_i)
