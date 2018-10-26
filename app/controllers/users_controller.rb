@@ -42,35 +42,14 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
     else
-      # @total_orders = @login_user.all_orders_for_merchant.count
-      # @orders = @login_user.all_orders_for_merchant
-
-      # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-      # @paid_orders = @login_user.sort_orders_by_status('paid')
-
-      # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-      # @completed_orders = @login_user.sort_orders_by_status('complete')
-
       @total_active_products = @active_products.count
-      #@active_products = @login_user.product_status(true)
-
       @total_inactive_products = @inactive_products.count
-      # @inactive_products = @login_user.product_status(false)
-
       @total_products = @login_user.products.count
+
     end
   end
 
-  def orders_index
-    # @total_orders = @login_user.all_orders_for_merchant.count
-    # @orders = @login_user.all_orders_for_merchant
-    #
-    # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-    # @paid_orders = @login_user.sort_orders_by_status('paid')
-    #
-    # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-    # # @completed_orders = @login_user.sort_orders_by_status('complete')
-  end
+  def orders_index; end
 
   def order_show
     @order = Order.find_by(id: params[:id])
@@ -83,8 +62,6 @@ class UsersController < ApplicationController
 
   def products_index
     @products = @login_user.products
-    # @active_products = @login_user.product_status(true)
-    # @inactive_products = @login_user.product_status(false)
   end
 
 

@@ -15,3 +15,21 @@ two:
   product: lasagne
   review: It was pretty sheety lasagne.
   rating: 5
+
+three:
+  user: buyer
+  product: spaghetti
+  review: It was pretty sheety lasagne.
+  rating: 4
+
+four:
+  user: buyer
+  product: spaghetti
+  review: It was pretty sheety lasagne.
+  rating: 3
+
+five:
+  user: buyer
+  product: spaghetti
+  review: It was pretty sheety lasagne.
+  rating: 2
