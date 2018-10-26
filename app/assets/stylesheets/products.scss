@@ -14,7 +14,6 @@
     margin: 20px;
     margin-left: 4rem;
     display: none; /* Hidden by default */
-    // border: 2px solid black;
 }
 
 /* The "show" class is added to the filtered elements */
@@ -83,9 +82,6 @@ body {
   font-family: 'open sans';
   overflow-x: hidden; }
 
-// img {
-//   max-width: 100%; }
-
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -133,7 +129,6 @@ body {
 .card {
   margin-top: 50px;
   background: #eee;
-  // padding: 3em;
   line-height: 1.5em; }
 
 .show-card {
@@ -224,8 +219,6 @@ body {
   padding: 1.3em;
 }
 
-
-
 @-webkit-keyframes opacity {
   0% {
     opacity: 0;
@@ -297,15 +290,16 @@ h2{
   width: 50px;
   text-align: center;
 }
+
 .hr-or {
 height: 1px;
-// margin-top: 0px
-// margin-bottom: 0px
 }
+
 @media screen and (max-width:480px){
   h1 {
     font-size: 26px;
   }
+  
   h2 {
     font-size: 20px;
   }

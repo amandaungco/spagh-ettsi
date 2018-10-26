@@ -1,4 +1,3 @@
-
 <div class="top-info">
 <% if @shopping_cart.nil? || @shopping_cart.products ==[] %>
   <div class="top-info">
@@ -38,7 +37,7 @@
           <%= f.number_field :quantity, min: 0, max: (order_product.product.quantity + order_product.quantity), class: 'form-control'%>
           <%= f.hidden_field :id %>
 
-        </td>  <!-- look into this -->
+        </td>  
         <td>
           <%= f.submit "Update Quantity", class: "btn btn-products", form: "update_inventory_#{order_product.id}" %>
           <% end %>

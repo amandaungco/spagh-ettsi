@@ -1,6 +1,4 @@
-
 <div class="text-center">
-  <!-- <h1>All our products</h1> -->
   <script>
   filterSelection('all');
   </script>
@@ -26,33 +24,30 @@
         <h5 class="card-title"><%= product.name %></h5>
         <hr>
         <p class="card-text"><%= readable_price(product.price_in_cents)%></p>
-        <!-- <p class="card-text"><%#= product.description %></p>
-        <p class="card-text">Stock:<%#= product.quantity %></p>
-        <p class="card-text">Rating: </p> -->
         <%if product.quantity == 0 %>
-          <p> <strong> Out of Stock</strong> </p>
+        <p> <strong> Out of Stock</strong> </p>
         <%else%>
-          <div class="dropdown">
-            <button class="btn btn-products inline dropdown-toggle index-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Add to Cart
-            </button>
-            <div class="dropdown-menu">
-              <h2><%= product.name %></h2>
-              <div class="dropdown-divider"></div>
-              <%= form_with model: @order_product do |f| %>
-              <form class="px-4 py-3">
-                <div class="form-group quantity-field">
-                  <%= f.label :quantity %>
-                  <%= f.number_field :quantity, min: 1,value: 1, class: 'form-control'%>
-                </div>
-                <%= f.hidden_field :product_id, value: product.id %>
+        <div class="dropdown">
+          <button class="btn btn-products inline dropdown-toggle index-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Add to Cart
+          </button>
+          <div class="dropdown-menu">
+            <h2><%= product.name %></h2>
+            <div class="dropdown-divider"></div>
+            <%= form_with model: @order_product do |f| %>
+            <form class="px-4 py-3">
+              <div class="form-group quantity-field">
+                <%= f.label :quantity %>
+                <%= f.number_field :quantity, min: 1,value: 1, class: 'form-control'%>
+              </div>
+              <%= f.hidden_field :product_id, value: product.id %>
 
-                <div class="form-group action">
-                  <%= f.submit "Submit", class: 'add-to-cart btn btn-primary quantity-field'%>
-                </div>
-              </form>
-              <% end %>
-            </div>
+              <div class="form-group action">
+                <%= f.submit "Submit", class: 'add-to-cart btn btn-primary quantity-field'%>
+              </div>
+            </form>
+            <% end %>
+          </div>
           <%end%>
 
         </div>
