@@ -36,15 +36,6 @@ describe ReviewsController do
     end
   end
 
-  describe "show" do
-    it "can find a review" do
-
-      @review = Review.find_by(id: @product_id)
-
-      get reviews_url
-      value(response).must_be :successful?
-    end
-  end
 
   describe "new" do
 
@@ -57,7 +48,7 @@ describe ReviewsController do
 
     it "checks the owner cannot review their own product" do
       perform_login(seller)
-      expect{  post create_review_path(spaghetti.id), params: review_hash}.wont_change 'Review.count'
+      get new_product_review_path(spaghetti.id)
 
       must_redirect_to product_path(spaghetti.id)
     end
