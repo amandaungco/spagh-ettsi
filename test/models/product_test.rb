@@ -21,6 +21,10 @@ describe Product do
     expect(Product.active_products.count).must_equal 0
   end
 
+  it "knows its average_rating " do
+    expect(product.average_rating).must_equal 3
+  end
+
   it "must be valid" do
     value(product).must_be :valid?
   end
@@ -104,7 +108,7 @@ describe Product do
       valid = product.valid?
 
       expect(valid).must_equal false
-     expect(product.errors.messages[:price_in_cents]).must_equal ["can't be blank", "is not a number"]
+     expect(product.errors.messages[:price_in_cents]).must_equal ["can't be blank", "Price must be greater than 0"]
     end
 
     it 'must have a quantity' do
@@ -115,7 +119,7 @@ describe Product do
       valid = product.valid?
 
       expect(valid).must_equal false
-      expect(product.errors.messages[:quantity]).must_equal ["can't be blank", "is not a number"]
+      expect(product.errors.messages[:quantity]).must_equal ["can't be blank", "Stock cannot go below 0"]
     end
 
     it 'must have a category' do
