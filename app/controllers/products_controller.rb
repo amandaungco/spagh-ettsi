@@ -75,25 +75,25 @@ class ProductsController < ApplicationController
       if @login_user.id != @product.user_id
         flash[:warning] = "You can only remove your own products."
         redirect_to root_path
-      end
-
-
-      if @product.is_active
-        @product.is_active = false
-      elsif !@product.is_active
-        @product.is_active = true
-      end
-
-      if @product.save
-        redirect_to merchant_my_products_path
-        if !@product.is_active
-          flash[:warning] = "Product: #{@product.name.capitalize} was discontinued."
-        else
-          flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
-        end
       else
-        flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
-        render :edit
+
+        if @product.is_active
+          @product.is_active = false
+        elsif !@product.is_active
+          @product.is_active = true
+        end
+
+        if @product.save
+          if !@product.is_active
+            flash[:warning] = "Product: #{@product.name.capitalize} was discontinued."
+          else
+            flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
+          end
+          redirect_to merchant_my_products_path
+        else
+          flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
+          render :edit
+        end
       end
     else
       redirect_to root_path
