@@ -24,7 +24,6 @@ class ReviewsController < ApplicationController
 
     @review = Review.new(review_params)
     @review.user = @login_user
-
       if @review.save
         flash[:success] = "Thanks for creating a review!"
 

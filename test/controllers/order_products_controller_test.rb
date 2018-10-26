@@ -146,6 +146,17 @@ describe OrderProductsController do
       must_respond_with :redirect
       expect(flash[:warning]).must_equal "Mamma Mia! You can't purchase your own products.  Just steal some from the supply closet!"
     end
+
+    it 'redirects to root path with a warning if invalid data is given' do
+      perform_login(buyer)
+      mock_params[:order_product][:product_id] = nil
+
+      expect {
+            post order_products_path, params: mock_params
+          }.wont_change 'OrderProduct.count'
+
+      must_redirect_to root_path
+    end
   end
 
 

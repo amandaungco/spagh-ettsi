@@ -14,7 +14,8 @@ describe ProductsController do
         price_in_cents: 3.49,
         category: 'short',
         quantity: 100,
-        description: 'these ones are ziti'
+        description: 'these ones are ziti',
+        image_url: http
       }
     }
   }
@@ -133,7 +134,7 @@ describe ProductsController do
         must_respond_with :not_found
       end
 
-      it "fails with valid id that does not belong to them" do
+      it "doesn't allow a user that is not a seller to edit a valid item" do
         #try editing a product that is not theirs and gives error messages
         perform_login(buyer)
         get edit_product_path(spaghetti.id)
@@ -141,6 +142,71 @@ describe ProductsController do
         expect(flash[:warning]).must_equal "You don't have permission to see that."
       end
 
+      it "fails with valid id that does not belong to them" do
+        ada = users(:ada)#try editing a product that is not theirs and gives error messages
+        perform_login(ada)
+        get edit_product_path(spaghetti.id)
+        must_redirect_to root_path
+        expect(flash[:warning]).must_equal "You can only edit your own products."
+      end
     end
+
+    describe "update product" do
+      it 'can update a product' do
+        mock_product_params = {
+          product: {
+            quantity: 30,
+            price_in_cents: 5.99
+          }
+        }
+
+        lasagne = products(:lasagne)
+        expect(lasagne.quantity).must_equal 25
+        perform_login(seller)
+
+        expect{
+          patch product_path(lasagne.id), params: mock_product_params
+          #binding.pry
+        }.must_change 'lasagne.reload.quantity', 5
+
+        must_redirect_to product_path(lasagne.id)
+        expect(flash[:success]).must_equal "Successfully updated lasagne"
+        expect(lasagne.quantity).must_equal 30
+        expect(lasagne.price_in_cents).must_equal 599
+      end
+
+      it 'can flashes an error for invalid params for updating a product' do
+        mock_product_params = {
+          product: {
+            quantity: -2,
+            price_in_cents: 5.99
+          }
+        }
+
+        lasagne = products(:lasagne)
+        expect(lasagne.quantity).must_equal 25
+        perform_login(seller)
+
+        expect{
+          patch product_path(lasagne.id), params: mock_product_params
+        }.wont_change 'lasagne.reload.quantity'
+
+        expect(flash[:warning]).must_equal "A problem occurred: Could not update lasagne"
+        expect(lasagne.quantity).must_equal 25
+        expect(lasagne.price_in_cents).must_equal 499
+      end
+    end
+
+    describe 'deactivate products' do
+      it 'prevents a guest user from deactivating a product' do
+
+        patch deactivate_product_path(lasagne.id)
+
+        must_redirect_to root_path
+        expect(flash[:warning]).must_equal "You don't have permission to see that."
+      end
+    end
+
+
   end
 end

@@ -19,6 +19,7 @@ ada:
   uid: 12345
   email: ada@adadevelopersacademy.org
   full_name: countess_ada
+  is_a_seller: true
 
 grace:
   provider: github
