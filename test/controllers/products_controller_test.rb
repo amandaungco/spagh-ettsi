@@ -14,7 +14,8 @@ describe ProductsController do
         price_in_cents: 3.49,
         category: 'short',
         quantity: 100,
-        description: 'these ones are ziti'
+        description: 'these ones are ziti',
+        image_url: http
       }
     }
   }
