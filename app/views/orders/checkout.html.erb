@@ -4,21 +4,22 @@
   <tbody>
 
     <% if @login_user.full_name == 'Guest user' || @login_user.email == 'example@example.com' %>
-    <p class="guest-checkout-1"><strong>1</strong></p>
-
-    <div class="guest-checkout col-lg-5">
-
-      <%= form_with model: @login_user, method: :patch, id: 'guest_checkout', local: true do |f| %>
-        <%= f.label :full_name, form: 'guest_checkout' %>
-        <%= f.text_field :full_name, form: 'guest_checkout' %>
-        <%= f.label :email, form: 'guest_checkout' %>
-        <%= f.text_field :email, form: 'guest_checkout' %>
-        <%= f.submit "Update Personal Info", form: 'guest_checkout', class: "btn bg-dark text-center" %>
-      <% end %>
-    </div>
-
+      <tr>
+        <th scope="row">1</th>
+        <td>
+          <%= form_with model: @login_user, method: :patch, id: 'guest_checkout', local: true do |f| %>
+            <%= f.label :full_name, form: 'guest_checkout' %>
+            <%= f.text_field :full_name, form: 'guest_checkout' %>
+            <%= f.label :email, form: 'guest_checkout' %>
+            <%= f.text_field :email, form: 'guest_checkout' %>
+            <%= f.submit "Update Personal Info", form: 'guest_checkout', class: "btn bg-dark text-center" %>
+          <% end %>
+        </td>
+        <td></td>
+      </tr>
 
     <% else %>
+
       <tr>
         <th scope="row">1</th>
         <td>
@@ -27,10 +28,11 @@
         </td>
         <td></td>
       </tr>
+
     <% end %>
 
     <%= form_with model: @shopping_cart, id: 'checkout_form' do |f| %>
-      <%= f.hidden_field :status, value: :paid, form: 'checkout_form' %>
+    <%= f.hidden_field :status, value: :paid, form: 'checkout_form' %>
 
     <tr>
       <th scope="row">2</th>
