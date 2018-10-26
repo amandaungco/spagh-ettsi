@@ -1,14 +1,13 @@
-<%= form_tag checkout_path, remote: false, id: 'checkout_form' %>
-<%= hidden_field_tag 'status', 'paid', form: 'checkout_form' %>
 
 <h1 class="top-info">Checkout</h1>
 <table class="table col-lg-9 checkout-table">
   <tbody>
+
     <tr>
       <th scope="row">1</th>
       <td>
         <strong>Review Items</strong>
-        <div class="card checkout-container col-lg-9 offset-sm-1">
+        <div class="card checkout-container col-lg-10 offset-sm-1">
           <table class="table table-hover shopping-cart-wrap">
             <thead class="text-muted">
               <tr>
@@ -19,8 +18,8 @@
                 <!-- <th scope="col" width="200" class="text-right">Action</th> -->
               </tr>
             </thead>
-            <% @shopping_cart.order_products.each do |order_product| %>
             <tbody>
+            <% @shopping_cart.order_products.each do |order_product| %>
                 <tr>
                   <td>
                     <figure class="media">
@@ -96,15 +95,18 @@
       </td>
     </tr>
 
+    <%= form_tag checkout_path, remote: false, id: 'checkout_form' %>
+
+    <%= hidden_field_tag 'status', 'paid', form: 'checkout_form' %>
+
+    <tr>
       <th scope="row">2</th>
       <td>
         <strong>Shipping Address</strong>
         <div class="form-group">
           <% if @login_user.addresses.any? %>
-            <div class="col-sm-5">
-              <%= select_tag 'address_id', options_from_collection_for_select(@login_user.addresses, "id", "street"), form: 'checkout_form' %>
 
-            </div>
+            <%= select_tag 'address_id', options_from_collection_for_select(@login_user.addresses, "id", "street"), form: 'checkout_form' %>
 
           <% end %>
 
@@ -119,43 +121,44 @@
         <strong>Payment Method</strong>
         <div class="form-group">
           <% if @login_user.payments.any? %>
-          <div class="col-sm-5">
-            <%= select_tag 'payment_id', options_from_collection_for_select(@login_user.payments, "id", "card_type"), form: 'checkout_form' %>
 
-          </div>
+          <%= select_tag 'payment_id', options_from_collection_for_select(@login_user.payments, "id", "card_type"), form: 'checkout_form' %>
+
+
           <% end %>
           <%= link_to "Add a payment method", new_payment_path %>
         </div>
       </td>
 
-      <% if @login_user.full_name == 'Guest user' || @login_user.email == 'example@example.com' %>
-            <tr>
-              <th scope="row">4</th>
-              <td>
-                  <%= label_tag 'full_name', 'Full Name', form: 'checkout_form' %>
-                  <%= text_field_tag 'full_name', @login_user.full_name, form: 'checkout_form' %>
-                  <%= label_tag 'email', 'Email Address', form: 'checkout_form' %>
-                  <%= text_field_tag 'email', @login_user.email, form: 'checkout_form' %>
-              </td>
-              <td></td>
-            </tr>
-
-      <% else %>
-
-      <tr>
-        <th scope="row">4</th>
-        <td>
-          <div><strong>Name:</strong> <%= @login_user.full_name %></div>
-          <div><strong>Email:</strong> <%= @login_user.email %></div>
-        </td>
-        <td></td>
-      </tr>
-      <% end %>
-    <tr>
-
     </tr>
 
-  </tbody>
+    <% if @login_user.full_name == 'Guest user' || @login_user.email == 'example@example.com' %>
+          <tr>
+            <th scope="row">4</th>
+            <td>
+                <%= label_tag 'full_name', 'Full Name', form: 'checkout_form' %>
+                <%= text_field_tag 'full_name', @login_user.full_name, form: 'checkout_form' %>
+                <%= label_tag 'email', 'Email Address', form: 'checkout_form' %>
+                <%= text_field_tag 'email', @login_user.email, form: 'checkout_form' %>
+            </td>
+            <td></td>
+          </tr>
+
+    <% else %>
+
+    <tr>
+      <th scope="row">4</th>
+      <td>
+        <div><strong>Name:</strong> <%= @login_user.full_name %></div>
+        <div><strong>Email:</strong> <%= @login_user.email %></div>
+      </td>
+      <td></td>
+    </tr>
+
+    <% end %>
+
+
+
 </table>
 <div class="btn-group">
   <%= link_to "Back to Shopping Cart", shopping_cart_path, class: "btn btn-products btn-space"%>
