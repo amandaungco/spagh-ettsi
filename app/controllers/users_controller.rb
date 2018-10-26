@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def create(guest_params)
     return guest_user = User.new(guest_params)
   end
+#what is this doing
 
   def show
     if @login_user.nil? || @login_user.provider == 'guest_login'
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
   def update
     @login_user.is_a_seller = params[:user][:is_a_seller]
     if @login_user.save
-
       if @login_user.products.any?
         if @login_user.is_a_seller
           activate_user_products
@@ -104,20 +104,25 @@ class UsersController < ApplicationController
       product.save
     end
   end
+
   private
 
   def find_orders_info
-    @orders = @login_user.all_orders_for_merchant
-    @total_orders = @orders.count
-    @paid_orders = @login_user.sort_orders_by_status('paid')
-    @total_paid_orders = @paid_orders.count
-    @completed_orders = @login_user.sort_orders_by_status('complete')
-    @total_completed_orders = @completed_orders.count
+    if @login_user
+      @orders = @login_user.all_orders_for_merchant
+      @total_orders = @orders.count
+      @paid_orders = @login_user.sort_orders_by_status('paid')
+      @total_paid_orders = @paid_orders.count
+      @completed_orders = @login_user.sort_orders_by_status('complete')
+      @total_completed_orders = @completed_orders.count
+    end
   end
 
   def find_products
-    @active_products = @login_user.product_status(true)
-    @inactive_products = @login_user.product_status(false)
+    if @login_user
+      @active_products = @login_user.product_status(true)
+      @inactive_products = @login_user.product_status(false)
+    end
   end
 
 
