@@ -58,12 +58,11 @@ CSV.open("db/product_seeds.csv", "w", :write_headers=> true,
     "Fettuccine", "Gemelli", "Gluten-free Shells", "Jumbo Shells", "Lasagna",
     "Manicotti", "Medium Shells", "Orzo", "Pappardelle", "Pastina",
     "Penne", "Ravioli", "Rotini", "Spaghetti", "Tortellini"]
-  images = ["callentani.jpg", "capellini.jpg", "ditalini.jpg",
-    "elbow.jpg", "farfalle.jpg", "fettuccine.jpg",
-  "gemelli.jpg", "gluten-free.jpg", "large-shell.jpg", "lasagna.jpg",
-  "manicotti.jpg", "medium-shell.jpg", "orzo.jpg", "pappardelle.jpg", "pastina.jpg",
-  "penne.jpg", "ravioli.jpg", "rotini.jpg",
-  "spaghetti.jpg", "tortellini.jpg"]
+  images = ["callentani.jpg", "capellini.jpg", "ditalini.jpg", "elbow.jpg",
+    "farfalle.jpg", "fettuccine.jpg", "gemelli.jpg", "gluten-free.jpg",
+    "large-shell.jpg", "lasagna.jpg", "manicotti.jpg", "medium-shell.jpg",
+    "orzo.jpg", "pappardelle.jpg", "pastina.jpg", "penne.jpg", "ravioli.jpg",
+    "rotini.jpg", "spaghetti.jpg", "tortellini.jpg"]
   categories = ["short", "long", "soup", "short", "short", "long", "short", "shell",
   "shell", "sheet", "filled", "shell", "soup", "long", "soup", "short", "filled",
   "short", "long", "filled"]
