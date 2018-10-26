@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0, message: "Stock cannot go below 0"}
   validates :category, presence: true
   validates :description, presence: true
-  validates_format_of :image_url,:with => /\A[http]/
+  # validates_format_of :image_url,:with => /\A[http]/
 
   def self.categories
     return ['long', 'short', 'shell', 'sheet', 'filled', 'soup']
