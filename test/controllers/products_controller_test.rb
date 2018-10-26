@@ -136,7 +136,7 @@ describe ProductsController do
         perform_login(buyer)
         get edit_product_path(spaghetti.id)
         must_redirect_to root_path
-        expect(flash[:warning]).must_equal "You can only edit your own products."
+        expect(flash[:warning]).must_equal "You don't have permission to see that."
       end
 
     end

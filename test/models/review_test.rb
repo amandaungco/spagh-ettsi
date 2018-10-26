@@ -64,7 +64,8 @@ describe Review do
       valid = review.valid?
 
       expect(valid).must_equal false
-      expect(review.errors.messages[:rating]).must_equal ["can't be blank", "is not a number"]
+      expect(review.errors.messages[:rating]).must_equal "can't be blank", "Rating must be greater than 0", "We're flattered but this product can
+ only be rated out of 5."
     end
   end
 end
