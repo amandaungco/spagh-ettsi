@@ -25,9 +25,6 @@ describe UsersController do
       session[:user_id].must_equal User.last.id
     end
 
-    it 'creates a guest user' do
-
-    end
   end
 
   describe 'logging in' do
@@ -39,6 +36,17 @@ describe UsersController do
       session[:user_id].must_equal  grace.id
 
       User.count.must_equal start_count
+    end
+
+    it "logs out a user, clearing the session user id" do
+      grace = users(:grace)
+      perform_login(grace)
+
+      expect(session[:user_id]).must_equal grace.id
+
+      delete logout_path
+
+      expect(session[:user_id]).must_equal nil
     end
 
   end

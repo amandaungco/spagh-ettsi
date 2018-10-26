@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :find_orders_info, only: [:dashboard, :orders_index]
   before_action :find_products, only: [:dashboard, :products_index]
 
-  def create(guest_params)
-    return guest_user = User.new(guest_params)
-  end
+  # def create(guest_params)
+  #   return guest_user = User.new(guest_params)
+  # end
 #what is this doing
 
   def show
