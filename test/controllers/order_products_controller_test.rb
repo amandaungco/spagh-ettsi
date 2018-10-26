@@ -68,6 +68,26 @@ describe OrderProductsController do
 
     end
 
+    it 'will not add to cart if there is not enough stock' do
+      perform_login(buyer)
+
+      expect(fusilli.quantity).must_equal 20
+
+      mock_params[:order_product][:quantity] = 21
+
+      expect {
+            post order_products_path, params: mock_params
+          }.wont_change 'OrderProduct.count'
+
+      fusilli.reload
+
+      expect(fusilli.quantity).must_equal 20
+
+      must_redirect_to root_path
+
+
+    end
+
     it 'does not change db with invalid data' do
       perform_login(buyer)
 
@@ -116,6 +136,16 @@ describe OrderProductsController do
 
     end
 
+    it 'prevents a seller from buying their own products' do
+      perform_login(seller)
+
+      expect {
+            post order_products_path, params: mock_params
+          }.wont_change 'OrderProduct.count'
+
+      must_respond_with :redirect
+      expect(flash[:warning]).must_equal "Mamma Mia! You can't purchase your own products.  Just steal some from the supply closet!"
+    end
   end
 
 
