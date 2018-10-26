@@ -10,23 +10,12 @@
 
       <%= form_with model: @login_user, method: :patch, id: 'guest_checkout', local: true do |f| %>
         <%= f.label :full_name, form: 'guest_checkout' %>
-
-        <!-- <# if @login_user.full_name == 'Guest user' %> -->
-          <!-- <#= f.text_field :full_name, value: nil, form: 'guest_checkout' %> -->
-        <!-- <# else%> -->
-          <%= f.text_field :full_name, form: 'guest_checkout' %>
-        <!-- <# end %> -->
-
+        <%= f.text_field :full_name, form: 'guest_checkout' %>
         <%= f.label :email, form: 'guest_checkout' %>
-
-        <!-- <# if @login_user.email == 'example@example.com' %> -->
-          <!-- <#= f.text_field :email, value: nil, form: 'guest_checkout' %> -->
-        <!-- <# else %> -->
-          <%= f.text_field :email, form: 'guest_checkout' %>
-        <!-- <# end %> -->
+        <%= f.text_field :email, form: 'guest_checkout' %>
         <%= f.submit "Update Personal Info", form: 'guest_checkout', class: "btn bg-dark text-center" %>
-      </div>
       <% end %>
+    </div>
 
 
     <% else %>
@@ -54,8 +43,8 @@
               <% @login_user.addresses.each do |address| -%>
                 <%= content_tag(:option, address.street, value: address.id) %>
               <% end %>
-            </div>
             <% end %>
+            </div>
           <% end %>
 
           <%= link_to "Add an address", new_address_path %>
@@ -69,13 +58,13 @@
         <strong>Payment Method</strong>
         <div class="form-group">
           <% if @login_user.payments.any? %>
-          <div class="col-sm-5">
-            <%= f.select(:payment_id) do %>
-              <% @login_user.payments.each do |payment| -%>
-                <%= content_tag(:option, payment.card_number, value: payment.id) %>
+            <div class="col-sm-5">
+              <%= f.select(:payment_id) do %>
+                <% @login_user.payments.each do |payment| %>
+                  <%= content_tag(:option, payment.card_number, value: payment.id)%>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
           <% end %>
           <%= link_to "Add a payment method", new_payment_path %>
         </div>
@@ -97,8 +86,8 @@
                 <!-- <th scope="col" width="200" class="text-right">Action</th> -->
               </tr>
             </thead>
-            <% @shopping_cart.order_products.each do |order_product| %>
             <tbody>
+            <% @shopping_cart.order_products.each do |order_product| %>
                 <tr>
                 	<td>
                     <figure class="media">
@@ -173,7 +162,7 @@
         </div>
       </td>
     </tr>
-  </tbody>
+
 </table>
 <div class="btn-group">
   <%= link_to "Back to Shopping Cart", shopping_cart_path, class: "btn btn-products btn-space"%>
