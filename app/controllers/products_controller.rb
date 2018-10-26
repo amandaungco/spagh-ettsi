@@ -90,9 +90,7 @@ class ProductsController < ApplicationController
             flash[:warning] = "Product: #{@product.name.capitalize} is available again for purchase."
           end
           redirect_to merchant_my_products_path
-        else
-          flash.now[:warning] = "Product: #{@product.name.capitalize} could not be updated."
-          render :edit
+
         end
       end
     else

@@ -222,7 +222,41 @@ describe ProductsController do
 
       end
 
+      it 'allows a logged-in user to activate their own product' do
+        perform_login(seller)
+
+        lasagne.is_active = false
+        lasagne.save
+
+        patch deactivate_product_path(lasagne.id)
+
+        lasagne.reload
+
+        expect(lasagne.is_active).must_equal true
+
+        must_redirect_to merchant_my_products_path
+
+      end
+
       it 'redirects to root if someone tries to deactivate someone elses product' do
+        buyer.is_a_seller = true
+
+        buyer.save
+
+        perform_login(buyer)
+
+        expect(lasagne.is_active).must_equal true
+
+        patch deactivate_product_path(lasagne.id)
+
+        lasagne.reload
+
+        expect(lasagne.is_active).must_equal true
+
+        must_redirect_to root_path
+      end
+
+      it 'redirects to root if a non-seller tries to deactivate' do
         perform_login(buyer)
 
         expect(lasagne.is_active).must_equal true
