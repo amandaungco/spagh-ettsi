@@ -12,7 +12,7 @@ spaghetti:
   category: long
   description: this is a box of spaghetti
   is_active: true
-
+  image_url: http
 
 lasagne:
   name: lasagne
@@ -21,7 +21,8 @@ lasagne:
   quantity: 25
   category: sheet
   description: these are lasagne noodles
-  
+  image_url: http
+
 
 fusilli:
   name: fusilli
@@ -30,7 +31,8 @@ fusilli:
   quantity: 20
   category: short
   description: fusilli jerry, because you're silly
-
+  image_url: http
+  
 inactive_ravioli:
   name: ravioli
   user: seller
@@ -39,3 +41,4 @@ inactive_ravioli:
   category: filled
   description: roly poly ravioli
   is_active: false
+  image_url: http

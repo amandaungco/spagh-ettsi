@@ -14,7 +14,8 @@ describe ProductsController do
         price_in_cents: 3.49,
         category: 'short',
         quantity: 100,
-        description: 'these ones are ziti'
+        description: 'these ones are ziti',
+        image_url: http
       }
     }
   }
@@ -195,6 +196,17 @@ describe ProductsController do
         expect(lasagne.price_in_cents).must_equal 499
       end
     end
+
+    describe 'deactivate products' do
+      it 'prevents a guest user from deactivating a product' do
+
+        patch deactivate_product_path(lasagne.id)
+
+        must_redirect_to root_path
+        expect(flash[:warning]).must_equal "You don't have permission to see that."
+      end
+    end
+
 
   end
 end

@@ -61,7 +61,6 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
         flash[:success] = "Successfully updated #{@product.name}"
-        #binding.pry
         redirect_to product_path(@product.id)
     else
         flash.now[:warning] = "A problem occurred: Could not update #{@product.name}"
