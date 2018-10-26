@@ -62,7 +62,7 @@ before_action :check_login_user, except: [:shopping_cart]  # repeated in Applica
         else
           flash[:warning] = "Unable to place order"
           flash[:validation_errors] = @shopping_cart.errors.full_messages
-          render :checkout, status: :bad_request
+          redirect_back(fallback_location: checkout_path)
         end
       end
 
