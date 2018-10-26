@@ -1,16 +1,18 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :deactivate]
   before_action :find_categories, only: [:new, :edit, :update, :create]
-  #before_action :find_seller, only: [:new, :edit, :update, :create]
+  before_action :find_products_index, only: [:index, :index_by_merchant]
+
+
 
   def index
-    @products = Product.active_products
-    @order_product = OrderProduct.new()
+    # @products = Product.active_products
+    # @order_product = OrderProduct.new()
   end
 
   def index_by_merchant
-    @products = Product.active_products
-    @order_product = OrderProduct.new()
+    # @products = Product.active_products
+    # @order_product = OrderProduct.new()
     @merchants = User.merchants
   end
 
@@ -59,6 +61,7 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
         flash[:success] = "Successfully updated #{@product.name}"
+        #binding.pry
         redirect_to product_path(@product.id)
     else
         flash.now[:warning] = "A problem occurred: Could not update #{@product.name}"
@@ -120,9 +123,9 @@ class ProductsController < ApplicationController
     return product_params
   end
 
-  # def find_seller
-  #   if @login_user.is_a_seller?
-  #     return @seller = @login_user #this might nto be necessary but for explicitness rn
-  #   end
-  # end
+  def find_products_index
+    @products = Product.active_products
+    @order_product = OrderProduct.new()
+  end
+
 end
