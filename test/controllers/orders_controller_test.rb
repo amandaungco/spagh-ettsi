@@ -9,11 +9,12 @@ describe OrdersController do
 
   let(:order_params) {
     {
-      order: {
+        full_name: 'Ron Howard',
+        email: 'happy@days.com',
         payment_id: payments(:amex).id,
         address_id: addresses(:school).id,
         status: :paid
-      }
+
     }
   }
 
@@ -141,13 +142,24 @@ describe OrdersController do
       must_redirect_to order_path(order_one.id)
     end
 
-    it 'responds with bad request with logged-in user given invalid data' do
+    it 'redirects back with a flash warning with logged-in user given invalid data' do
       perform_login(buyer)
-      order_params[:order][:payment_id] = nil
+      order_params[:payment_id] = nil
 
       patch order_path(order_one.id), params: order_params
 
-      must_respond_with :bad_request
+      must_respond_with :redirect
+      expect(flash[:warning]).must_equal "Unable to place order"
+    end
+
+    it 'redirects back with a flash warning with logged-in user (guest mock login) using invalid name or email' do
+      perform_login(buyer)
+      order_params[:full_name] = nil
+
+      patch order_path(order_one.id), params: order_params
+
+      must_respond_with :redirect
+      expect(flash[:warning]).must_equal "An error occurred.  Please try again."
     end
 
     it 'redirects to root path with no login user' do
