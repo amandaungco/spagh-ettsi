@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_orders_info, only: [:dashboard, :orders_index]
+  before_action :find_products, only: [:dashboard, :products_index]
 
   def create(guest_params)
     return guest_user = User.new(guest_params)
@@ -50,11 +51,11 @@ class UsersController < ApplicationController
       # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
       # @completed_orders = @login_user.sort_orders_by_status('complete')
 
-      @total_active_products = @login_user.product_status(true).count
-      @active_products = @login_user.product_status(true)
+      @total_active_products = @active_products.count
+      #@active_products = @login_user.product_status(true)
 
-      @total_inactive_products = @login_user.product_status(false).count
-      @inactive_products = @login_user.product_status(false)
+      @total_inactive_products = @inactive_products.count
+      # @inactive_products = @login_user.product_status(false)
 
       @total_products = @login_user.products.count
     end
@@ -82,8 +83,8 @@ class UsersController < ApplicationController
 
   def products_index
     @products = @login_user.products
-    @active_products = @login_user.product_status(true)
-    @inactive_products = @login_user.product_status(false)
+    # @active_products = @login_user.product_status(true)
+    # @inactive_products = @login_user.product_status(false)
   end
 
 
@@ -113,6 +114,12 @@ class UsersController < ApplicationController
     @completed_orders = @login_user.sort_orders_by_status('complete')
     @total_completed_orders = @completed_orders.count
   end
+
+  def find_products
+    @active_products = @login_user.product_status(true)
+    @inactive_products = @login_user.product_status(false)
+  end
+
 
 
 end
