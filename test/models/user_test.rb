@@ -150,6 +150,17 @@ class UserTest < ActiveSupport::TestCase
 
   describe "custom methods" do
     let(:seller) {users(:seller)}
+    let(:buyer) {users(:buyer)}
+
+    describe 'self.merchants' do
+      it 'returns a list of all active merchants' do
+        merchant_list = User.merchants
+
+        expect(merchant_list).must_include seller
+        expect(merchant_list).wont_include buyer
+      end
+    end
+
     describe ' total_revenue' do
       it 'should return the total revenue for all products sold by a given merchant' do
         expect(seller.total_revenue).must_equal 699
