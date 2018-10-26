@@ -221,6 +221,20 @@ describe ProductsController do
         must_redirect_to merchant_my_products_path
 
       end
+
+      it 'redirects to root if someone tries to deactivate someone elses product' do
+        perform_login(buyer)
+
+        expect(lasagne.is_active).must_equal true
+
+        patch deactivate_product_path(lasagne.id)
+
+        lasagne.reload
+
+        expect(lasagne.is_active).must_equal true
+
+        must_redirect_to root_path
+      end
     end
 
     describe 'index by merchant' do
