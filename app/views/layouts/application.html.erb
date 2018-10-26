@@ -37,8 +37,6 @@
     </div>
     <div class="mx-auto order-0">
       <%= link_to image_tag("spaghettsi-logo.png", alt: "spaghettsi logo", id: "spaghettsi-logo"), root_path %>
-
-      <!-- <a class="navbar-brand mx-auto" href="#">Navbar 2</a> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -80,7 +78,6 @@
     <% if name == 'warning' || name == 'success' %>
     <div class="alert alert-<%= name %> text-center">
       <span><%= message %></span>
-
       <% if flash[:validation_errors] %>
       <ul>
         <% flash[:validation_errors].each do |message|%>
@@ -90,7 +87,6 @@
         <%end%>
       </ul>
       <% end %>
-
     </div>
     <% end %>
     <%end%>

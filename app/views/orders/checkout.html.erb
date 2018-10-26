@@ -20,28 +20,28 @@
             </thead>
             <% @shopping_cart.order_products.each do |order_product| %>
             <tbody>
-                <tr>
-                  <td>
-                    <figure class="media">
-                      <div class="img-wrap"><%= image_tag(order_product.product.image_url, alt: "small product icon", class: "img-thumbnail img-sm") %></div>
-                      <figcaption class="media-body">
-                        <h3 class="title text-truncate"><%= order_product.product.name %></h3>
-                      </figcaption>
-                    </figure>
-                  </td>
-                  <td class="quantity-field">
-                    <%= order_product.quantity %>
-                  </td>
-                  <td>
-                    <div class="price-wrap">
-                      <var class="price"><%= readable_price(order_product.product.price_in_cents)%></var>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="price-wrap">
-                      <var class="price"><%= readable_price(order_product.item_subtotal)%></var>
-                    </div>
-                  </td>
+              <tr>
+                <td>
+                  <figure class="media">
+                    <div class="img-wrap"><%= image_tag(order_product.product.image_url, alt: "small product icon", class: "img-thumbnail img-sm") %></div>
+                    <figcaption class="media-body">
+                      <h3 class="title text-truncate"><%= order_product.product.name %></h3>
+                    </figcaption>
+                  </figure>
+                </td>
+                <td class="quantity-field">
+                  <%= order_product.quantity %>
+                </td>
+                <td>
+                  <div class="price-wrap">
+                    <var class="price"><%= readable_price(order_product.product.price_in_cents)%></var>
+                  </div>
+                </td>
+                <td>
+                  <div class="price-wrap">
+                    <var class="price"><%= readable_price(order_product.item_subtotal)%></var>
+                  </div>
+                </td>
               </tr>
               <% end %>
             </tbody>
@@ -95,62 +95,56 @@
       </td>
     </tr>
 
-      <th scope="row">2</th>
-      <td>
-        <strong>Shipping Address</strong>
-        <div class="form-group">
-          <% if @login_user.addresses.any? %>
-            <div class="col-sm-5">
-              <%= select_tag 'address_id', options_from_collection_for_select(@login_user.addresses, "id", "street"), form: 'checkout_form' %>
-
-            </div>
-
-          <% end %>
-
-          <%= link_to "Add an address", new_address_path %>
+    <th scope="row">2</th>
+    <td>
+      <strong>Shipping Address</strong>
+      <div class="form-group">
+        <% if @login_user.addresses.any? %>
+        <div class="col-sm-5">
+          <%= select_tag 'address_id', options_from_collection_for_select(@login_user.addresses, "id", "street"), form: 'checkout_form' %>
         </div>
+        <% end %>
+        <%= link_to "Add an address", new_address_path %>
+      </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">3</th>
+    <td>
+      <strong>Payment Method</strong>
+      <div class="form-group">
+        <% if @login_user.payments.any? %>
+        <div class="col-sm-5">
+          <%= select_tag 'payment_id', options_from_collection_for_select(@login_user.payments, "id", "card_type"), form: 'checkout_form' %>
+
+        </div>
+        <% end %>
+        <%= link_to "Add a payment method", new_payment_path %>
+      </div>
+    </td>
+
+    <% if @login_user.full_name == 'Guest user' || @login_user.email == 'example@example.com' %>
+    <tr>
+      <th scope="row">4</th>
+      <td>
+        <%= label_tag 'full_name', 'Full Name', form: 'checkout_form' %>
+        <%= text_field_tag 'full_name', @login_user.full_name, form: 'checkout_form' %>
+        <%= label_tag 'email', 'Email Address', form: 'checkout_form' %>
+        <%= text_field_tag 'email', @login_user.email, form: 'checkout_form' %>
       </td>
       <td></td>
     </tr>
+    <% else %>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row">4</th>
       <td>
-        <strong>Payment Method</strong>
-        <div class="form-group">
-          <% if @login_user.payments.any? %>
-          <div class="col-sm-5">
-            <%= select_tag 'payment_id', options_from_collection_for_select(@login_user.payments, "id", "card_type"), form: 'checkout_form' %>
-
-          </div>
-          <% end %>
-          <%= link_to "Add a payment method", new_payment_path %>
-        </div>
+        <div><strong>Name:</strong> <%= @login_user.full_name %></div>
+        <div><strong>Email:</strong> <%= @login_user.email %></div>
       </td>
-
-      <% if @login_user.full_name == 'Guest user' || @login_user.email == 'example@example.com' %>
-            <tr>
-              <th scope="row">4</th>
-              <td>
-                  <%= label_tag 'full_name', 'Full Name', form: 'checkout_form' %>
-                  <%= text_field_tag 'full_name', @login_user.full_name, form: 'checkout_form' %>
-                  <%= label_tag 'email', 'Email Address', form: 'checkout_form' %>
-                  <%= text_field_tag 'email', @login_user.email, form: 'checkout_form' %>
-              </td>
-              <td></td>
-            </tr>
-
-      <% else %>
-
-      <tr>
-        <th scope="row">4</th>
-        <td>
-          <div><strong>Name:</strong> <%= @login_user.full_name %></div>
-          <div><strong>Email:</strong> <%= @login_user.email %></div>
-        </td>
-        <td></td>
-      </tr>
-      <% end %>
-
+      <td></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
 <div class="btn-group">
