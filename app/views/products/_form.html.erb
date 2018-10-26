@@ -1,13 +1,11 @@
 <div class="container address-container border col-lg-7">
   <div class="col-sm-9 mx-auto text-center top-info">
-        <h1 class="wv-heading--title">
-           <%= form_intro %>
-        </h1>
-        <br></br>
-        <h2 class="wv-heading--subtitle">
-           <%= quote %>
-        </h2>
-        <h6><%= quoteauthor %></h6>
+    <h1 class="wv-heading--title">
+      <%= form_intro %>
+    </h1>
+    <br></br>
+    <h2 class="wv-heading--subtitle"><%= quote %></h2>
+    <h6><%= quoteauthor %></h6>
   </div>
 
   <%= form_with model: @product, local: true do |f| %>
@@ -55,10 +53,10 @@
       </div>
     </div>
     <div class="col-md-12 ">
-       <div class="login-or">
-          <hr class="hr-or">
-          <span class="span-or">or</span>
-       </div>
+      <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">or</span>
+      </div>
     </div>
     <div class="col-sm-9 offset-sm-4">
       <%=link_to "Return to Products", products_path, class: 'btn btn-products'%>

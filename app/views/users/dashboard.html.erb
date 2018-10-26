@@ -1,4 +1,3 @@
-
 <!-- Side navigation -->
 <div class="sidenav">
   <h6 class="text-center">Welcome</h6>
@@ -17,9 +16,6 @@
       <div class="card-body">
         <h5 class="card-title"><strong>Total Orders</strong></h5>
         <h6 class="large-print card-subtitle mb-2 text-center"><%= @total_orders %></h6>
-        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-        <!-- <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a> -->
       </div>
     </div>
     <div class="card card-dashboard shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
@@ -56,10 +52,8 @@
           <th scope="col" width="120">Products</th>
           <th scope="col" width="120">Order Total</th>
           <th scope="col" width="120">Shipping Status</th>
-          <!-- <th scope="col" width="200" class="text-right">Action</th> -->
         </tr>
       </thead>
-      <%# @shopping_cart.order_products.each do |order_product| %>
       <tbody>
         <% @paid_orders.each do |order| %>
         <tr>
@@ -97,62 +91,3 @@
   </div> <!-- card.// -->
 
 </main>
-
-
-
-
-
-
-<!-- change/remove these however you like-->
-
-
-<!-- <section>
-  <p> Total Orders: <%#= @total_orders %></p>
-
-  <%#= link_to "My Order Page", merchant_orders_path %>
-
-</section>
-
-<section>
-  <p> Total Revenue: <%#= readable_price(@login_user.total_revenue) %></p>
-  <p> Total Revenue for paid orders: <%#= readable_price(@login_user.total_revenue_by_paid) %></p>
-  <p> Total Revenue for completed orders: <%#= readable_price(@login_user.total_revenue_by_completed) %></p>
-</section>
-
-<section>
-  <p> Orders Awaiting Fulfillment: <%#= @total_paid_orders %> </p>
-
-  <%# @paid_orders.each do |order| %>
-    <%#= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <%# end %>
-</section>
-
-<section>
-  <p> Completed Orders: <%#= @total_completed_orders %> </p>
-
-  <#% @completed_orders.each do |order| %>
-    <%#= link_to "Order ##{order.id}", merchant_order_path(order.id) %>
-  <#% end %>
-</section>
-
-<section>
-  <p> Total: <%#= @total_products %> Products </p>
-</section>
-
-<section>
-  <p> <%#= @total_active_products %> Active Products </p>
-
-  <%# @active_products.each do |product| %>
-    <%#= link_to "#{product.name}", product_path(product.id) %>
-  <%# end %>
-
-</section>
-
-<section>
-  <p> <%#= @total_inactive_products %> Inactive Products </p>
-
-  <%# @inactive_products.each do |product| %>
-    <%#= link_to "#{product.name}", product_path(product.id) %>
-  <%# end %>
-
-</section> -->

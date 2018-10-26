@@ -3,14 +3,14 @@
     <h1>Payment</h1>
     <h3>Please fill out all fields</h3>
     <div class="panel panel-default credit-card-box offset-sm-4">
-        <div class="panel-heading display-table" >
-            <div class="row display-tr" >
-                <div class="display-td" >
-                    <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-                </div>
-            </div>
+      <div class="panel-heading display-table" >
+        <div class="row display-tr" >
+          <div class="display-td" >
+            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png" alt="cards accepted">
+          </div>
         </div>
       </div>
+    </div>
   </div>
 
   <%= form_with model: @payment, local: true do |f| %>
@@ -20,13 +20,13 @@
       <%= f.label "Billing Address", class: "col-sm-3 offset-sm-1 col-form-label" %>
 
       <% if @login_user.addresses.any? %>
-        <div class="col-sm-7">
-          <%= f.select(:address_id, [], {}, class: "form-control") do %>
-          <% @login_user.addresses.each do |address| -%>
-            <%= content_tag(:option, address.street, value: address.id) %>
-          <% end %>
+      <div class="col-sm-7">
+        <%= f.select(:address_id, [], {}, class: "form-control") do %>
+        <% @login_user.addresses.each do |address| -%>
+        <%= content_tag(:option, address.street, value: address.id) %>
         <% end %>
-      <% end %>
+        <% end %>
+        <% end %>
       </div>
       <div class="offset-sm-7">
         <%= link_to "Add an address", new_address_path %>
@@ -62,11 +62,9 @@
     </div>
 
     <div class="row offset-sm-5">
-      <!-- <div class="col-sm-9 offset-sm-4" -->
-        <%= f.submit "Save Payment", class: 'btn btn-products'%>
-      <!-- </div> -->
+      <%= f.submit "Save Payment", class: 'btn btn-products'%>
     </div>
 
-  <% end %>
- </form>
+    <% end %>
+  </form>
 </div>

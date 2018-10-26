@@ -4,26 +4,24 @@
     <h1 class="wv-heading--title">New <%= @product.name %> Review</h1>
     <h2 class="wv-heading--subtitle">A penne for your thoughts:</h2>
   </div>
-    <%= f.hidden_field :product_id, value: @product.id %>
-    <!-- <p>How many </p><i class="em em-spaghetti"></i><p>do you give this product?
-      1 is bad, 5 is excellent!  </p> -->
-    <form>
-      <div class="form-group row">
-        <%= f.label :rating, class: "col-sm-3 offset-sm-1 col-form-label" %>
-        <div class="col-sm-6">
-          <%= f.select :rating, [1,2,3,4,5], {}, class: 'form-control' %>
-        </div>
+  <%= f.hidden_field :product_id, value: @product.id %>
+  <form>
+    <div class="form-group row">
+      <%= f.label :rating, class: "col-sm-3 offset-sm-1 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.select :rating, [1,2,3,4,5], {}, class: 'form-control' %>
       </div>
-      <div class="form-group row">
-        <%= f.label :review, class: "col-sm-3 offset-sm-1 col-form-label" %>
-        <div class="col-sm-6">
-          <%= f.text_area :review, class: 'form-control' %>
-        </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :review, class: "col-sm-3 offset-sm-1 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.text_area :review, class: 'form-control' %>
       </div>
-      <div class="col-sm-9 offset-sm-4">
-        <%= f.submit "Save review", class: "review-button btn btn-products" %>
-      </div>
+    </div>
+    <div class="col-sm-9 offset-sm-4">
+      <%= f.submit "Save review", class: "review-button btn btn-products" %>
+    </div>
     <% end %>
-    </form>
-  </div>
+  </form>
+</div>
 </div>
