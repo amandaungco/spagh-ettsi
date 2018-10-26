@@ -1,70 +1,68 @@
-   <!-- <a href="#"><li class="list-inline-item"><small><i class="fa fa-user"></i>  My Account</small></li></a> -->
-
 <div class="banner slider">
-    <div id="demo" class="carousel slide" data-ride="carousel"  data-interval="false">
+  <div id="demo" class="carousel slide" data-ride="carousel"  data-interval="false">
 
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
 
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= image_tag("pg7.jpg", alt: "plate of pasta") %>
-      <div class="carousel-caption">
-        <div class="col-md-7">
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("pg7.jpg", alt: "plate of pasta") %>
+        <div class="carousel-caption">
+          <div class="col-md-7">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag("bg9.jpg", alt: "making fettuccine") %>
-      <div class="carousel-caption">
-        <div class="col-md-7">
+      <div class="carousel-item">
+        <%= image_tag("bg9.jpg", alt: "making fettuccine") %>
+        <div class="carousel-caption">
+          <div class="col-md-7">
             <h1 class="pb-2"><strong>Made with the freshest ingredients. </strong> </h1>
             <h4>Our pasta is hand-picked from only the best producers in the world.</h4>
             <div class="btn-group">
               <%= link_to "See our products", products_path, class: "btn btn-products mt-4 btn-space" %>
               <%= link_to "Become a Seller", account_path, class: "btn btn-dark mt-4" %>
             </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="carousel-item">
-      <%= image_tag("bg8.jpg", alt: "fork of fettuccine") %>
-      <div class="carousel-caption">
-        <div class="col-md-7">
+      <div class="carousel-item">
+        <%= image_tag("bg8.jpg", alt: "fork of fettuccine") %>
+        <div class="carousel-caption">
+          <div class="col-md-7">
             <h1 class="pb-2"><strong>Your tummy is rumbling. </strong> </h1>
             <h4>Pick the perfect gift for you loved ones.</h4>
             <div class="btn-group">
               <%= link_to "See our products", products_path, class: "btn btn-products mt-4 btn-space" %>
               <%= link_to "Become a Seller", account_path, class: "btn btn-dark mt-4" %>
             </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
   </div>
-
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
-</div>
 </div>
 
 <div class="upcoming py-5">
   <div class="container">
     <div class="row pb-4 text-center">
-        <div class="col-md-12">
-            <h1>Featured Pastas</h1>
-            <h4>"Eat pasta to run fasta."</h4>
-        </div>
+      <div class="col-md-12">
+        <h1>Featured Pastas</h1>
+        <h4>"Eat pasta to run fasta."</h4>
+      </div>
     </div>
 
     <div class="card-deck">
@@ -104,116 +102,64 @@
       </div>
     </div>
     <div class="row text-center pt-4">
-        <div class="col-md-12">
-            <%=link_to "View All Pasta", products_path, class: "btn btn-danger"%>
-        </div>
+      <div class="col-md-12">
+        <%=link_to "View All Pasta", products_path, class: "btn btn-danger"%>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="help py-5 bg-secondary twhite">
-<div class="container py-5">
-	<div class="row text-center">
-		<div class="col-md-12">
-		    <i class="fa fa-headphones fa-3x"></i>
-		    <h3>How can we help you?</h3>
-		    <p>
+  <div class="container py-5">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <i class="fa fa-headphones fa-3x"></i>
+        <h3>How can we help you?</h3>
+        <p>
           The pastabilities are endless! We want to hear from you so we can make
           all your pasta dreams come true.
         </p>
         <%=link_to "Ask a Question", contact_us_path, class: "btn btn-danger" %>
-		</div>
-	</div>
-</div>
-</div>
-<!--
-<div class="brand-search py-5">
-  <div class="container">
-    <div class="row pb-4 text-center">
-        <div class="col-md-12">
-            <h2>Get Inspired with Some Recipes</h2>
-            <p>
-              Novice or advanced, all chefs are welcome to try out amazing and
-              tasty recipes inspired by customers!
-            </p>
-        </div>
-    </div>
-    <div class="card-deck">
-      <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card col-md-4 box border py-4">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
       </div>
     </div>
-  	<div class="row text-center pt-4">
-  	    <div class="col-md-12">
-  	        <button type="button" class="btn btn-danger">More Recipes Here</button>
-  	    </div>
-  	</div>
   </div>
-</div> -->
-
+</div>
 <div class="offer my-5">
-    <div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 py-3 border">
         <div class="row">
-            <div class="col-md-4 py-3 border">
-                <div class="row">
-                    <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/tablet.png", class="img-icon">
-                    </div>
-                    <div class="col-md-9">
-                        <h5>Shop with ease</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-3 border">
-                <div class="row">
-                    <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/online-shop-6.png", class="img-icon">
-                    </div>
-                    <div class="col-md-9">
-                        <h5>Makes Great Gifts</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-3 border">
-                <div class="row">
-                    <div class="col-md-3 mt-2">
-                        <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/money.png", class="img-icon">
-                    </div>
-                    <div class="col-md-9">
-                        <h5>Save Money</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
-                    </div>
-                </div>
-            </div>
+          <div class="col-md-3 mt-2">
+            <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/tablet.png" alt="tablet clipart" class="img-icon">
+          </div>
+          <div class="col-md-9">
+            <h5>Shop with ease</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4 py-3 border">
+        <div class="row">
+          <div class="col-md-3 mt-2">
+            <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/online-shop-6.png" alt="online shopping cart clipart" class="img-icon">
+          </div>
+          <div class="col-md-9">
+            <h5>Makes Great Gifts</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 py-3 border">
+        <div class="row">
+          <div class="col-md-3 mt-2">
+            <img src="http://klbtheme.com/froday/wp-content/uploads/2018/02/money.png" alt="money clipart" class="img-icon">
+          </div>
+          <div class="col-md-9">
+            <h5>Save Money</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure aspernatur</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

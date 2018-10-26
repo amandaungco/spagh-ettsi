@@ -1,7 +1,18 @@
 require "test_helper"
 
-
 describe ReviewsController do
+  let(:spaghetti) {products(:spaghetti)}
+  let(:seller) {users(:seller)}
+  let(:review_hash) do
+    {
+      review: {
+        review: 'relieves anxiety',
+        rating: 5,
+
+        product_id: spaghetti.id
+      }
+    }
+  end
   it 'succeeds' do
     get reviews_path
 
@@ -24,35 +35,38 @@ describe ReviewsController do
       expect(Review.all.count).must_equal 0
     end
   end
+
+
   describe "new" do
+
     it "succeeds" do
 
-      get reviews_path
+      get new_product_review_path(spaghetti.id)
 
       must_respond_with :success
     end
+
+    it "checks the owner cannot review their own product" do
+      perform_login(seller)
+      get new_product_review_path(spaghetti.id)
+
+      must_redirect_to product_path(spaghetti.id)
+    end
+
+      it "responds with not_found with a bad id" do
+        get new_product_review_path(-1)
+
+        must_respond_with :not_found
+      end
   end
 
   describe "create" do
-    let(:product) { products(:spaghetti) }
-
-    let(:review_hash) do
-      {
-        review: {
-          review: 'relieves anxiety',
-          rating: 5,
-          product_id: product.id
-        }
-      }
-    end
-
     it "creates a review if valid data is provided" do
-  
       expect {
-        post reviews_path, params: review_hash
+        post create_review_path(spaghetti.id), params: review_hash
       }.must_change 'Review.count', 1
 
-      must_redirect_to product_path(@product.id)
+      must_redirect_to product_path(spaghetti.id)
     end
 
     it "renders not_found when invalid data is provided" do
@@ -62,10 +76,21 @@ describe ReviewsController do
 
       # Act-Assert
       expect {
-        post reviews_path, params: review_hash
+        post create_review_path(spaghetti.id), params: review_hash
       }.wont_change 'Review.count'
+
+      get product_path(-1)
 
       must_respond_with :not_found
     end
+    it "checks the owner cannot review their own product" do
+      perform_login(seller)
+      expect {
+        post create_review_path(spaghetti.id), params: review_hash
+      }.wont_change 'Review.count'
+
+      must_redirect_to product_path(spaghetti.id)
+    end
   end
+
 end

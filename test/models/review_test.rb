@@ -33,15 +33,15 @@ describe Review do
   end
 
   describe 'validations' do
-    it 'must have a user' do
+    it 'does not reqire a user' do
       review = reviews(:one)
       review.user = nil
       review.save
 
       valid = review.valid?
 
-      expect(valid).must_equal false
-      expect(review.errors.messages[:user]).must_equal ["must exist"]
+      expect(valid).must_equal true
+  
     end
 
     it 'must have a product' do

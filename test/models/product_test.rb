@@ -25,6 +25,10 @@ describe Product do
     expect(product.average_rating).must_equal 3
   end
 
+  it "returns not yet rated if there are no ratings" do
+    expect(products(:fusilli).average_rating).must_equal 'Not yet rated'
+  end
+
   it "must be valid" do
     value(product).must_be :valid?
   end
