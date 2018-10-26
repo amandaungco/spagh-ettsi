@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
          redirect_to product_path(@product.id), status: :bad_request
       end
     end
-  end 
+  end
 
   def edit
   end
