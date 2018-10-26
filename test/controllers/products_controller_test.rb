@@ -11,7 +11,7 @@ describe ProductsController do
       {
         name: 'ziti',
         user_id: seller.id,
-        price_in_cents: 349,
+        price_in_cents: 3.49,
         category: 'short',
         quantity: 100,
         description: 'these ones are ziti'
@@ -86,7 +86,7 @@ describe ProductsController do
 
           expect(product.name).must_equal mock_params[:product][:name]
           expect(product.user_id).must_equal seller.id
-          expect(product.price_in_cents).must_equal mock_params[:product][:price_in_cents]
+          expect(product.price_in_cents).must_equal 349
           expect(product.category).must_equal mock_params[:product][:category]
           expect(product.quantity).must_equal mock_params[:product][:quantity]
           expect(product.description).must_equal mock_params[:product][:description]
@@ -97,6 +97,8 @@ describe ProductsController do
 
         it "renders bad_request and does not update the DB for bogus data" do
           mock_params[:product][:price_in_cents] = 'words'
+          perform_login(seller)
+
 
           expect {
             post products_path, params: mock_params
