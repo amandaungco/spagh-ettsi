@@ -44,7 +44,11 @@
     <div class="form-group row">
       <%= f.label "Paste the web address of this product's photo", class: "col-sm-3 offset-sm-1 col-form-label"  %>
       <div class="col-sm-6">
-        <%= f.text_field :image_url, class: 'form-control', value: 'https://png.pngtree.com/element_origin_min_pic/17/02/28/7597f1929358e13efe92f4a20a212c94.jpg' %>
+        <% if origin == 'new' %>
+          <%= f.text_field :image_url, class: 'form-control', value: 'https://png.pngtree.com/element_origin_min_pic/17/02/28/7597f1929358e13efe92f4a20a212c94.jpg' %>
+        <% else %>
+          <%= f.text_field :image_url, class: 'form-control' %>
+        <% end %>
       </div>
     </div>
     <div class="row">
