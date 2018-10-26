@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_orders_info, only: [:dashboard, :orders_index]
 
   def create(guest_params)
     return guest_user = User.new(guest_params)
@@ -40,14 +41,14 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:warning] = "You don't have permission to view that page"
     else
-      @total_orders = @login_user.all_orders_for_merchant.count
-      @orders = @login_user.all_orders_for_merchant
+      # @total_orders = @login_user.all_orders_for_merchant.count
+      # @orders = @login_user.all_orders_for_merchant
 
-      @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-      @paid_orders = @login_user.sort_orders_by_status('paid')
+      # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+      # @paid_orders = @login_user.sort_orders_by_status('paid')
 
-      @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-      @completed_orders = @login_user.sort_orders_by_status('complete')
+      # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+      # @completed_orders = @login_user.sort_orders_by_status('complete')
 
       @total_active_products = @login_user.product_status(true).count
       @active_products = @login_user.product_status(true)
@@ -60,14 +61,14 @@ class UsersController < ApplicationController
   end
 
   def orders_index
-    @total_orders = @login_user.all_orders_for_merchant.count
-    @orders = @login_user.all_orders_for_merchant
-
-    @total_paid_orders = @login_user.sort_orders_by_status('paid').count
-    @paid_orders = @login_user.sort_orders_by_status('paid')
-
-    @total_completed_orders = @login_user.sort_orders_by_status('complete').count
-    @completed_orders = @login_user.sort_orders_by_status('complete')
+    # @total_orders = @login_user.all_orders_for_merchant.count
+    # @orders = @login_user.all_orders_for_merchant
+    #
+    # @total_paid_orders = @login_user.sort_orders_by_status('paid').count
+    # @paid_orders = @login_user.sort_orders_by_status('paid')
+    #
+    # @total_completed_orders = @login_user.sort_orders_by_status('complete').count
+    # # @completed_orders = @login_user.sort_orders_by_status('complete')
   end
 
   def order_show
@@ -102,7 +103,16 @@ class UsersController < ApplicationController
       product.save
     end
   end
+  private
 
+  def find_orders_info
+    @orders = @login_user.all_orders_for_merchant
+    @total_orders = @orders.count
+    @paid_orders = @login_user.sort_orders_by_status('paid')
+    @total_paid_orders = @paid_orders.count
+    @completed_orders = @login_user.sort_orders_by_status('complete')
+    @total_completed_orders = @completed_orders.count
+  end
 
 
 end
