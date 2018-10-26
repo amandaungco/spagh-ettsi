@@ -128,13 +128,20 @@ describe UsersController do
   #     # product.name
   #   end
   #
-  #   it 'renders not found for orders that havent been placed/are in shopping cart' do
-  #
-  #   end
-  #
-  #   it 'renders not found for orders that do not exist' do
-  #
-  #   end
+    it 'renders not found for orders that havent been placed/are in shopping cart' do
+      perform_login(users(:buyer))
+      get merchant_order_path(orders(:order_one).id)
+
+      must_respond_with :not_found
+    end
+
+    it 'renders not found for orders that do not exist' do
+      perform_login(users(:buyer))
+
+      get merchant_order_path(-1)
+
+      must_respond_with :not_found
+    end
   #
   #   it 'shows the order_product row specific to the merhcnat for an order' do
   #

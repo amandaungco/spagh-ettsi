@@ -43,9 +43,6 @@ class UsersController < ApplicationController
 
         flash[:success] = "Account settings updated!"
         redirect_to account_path
-      else
-        flash[:warning] = "Oops, there was a problem updating your account."
-        flash[:validation_errors] = @login_user.errors.full_messages
       end
     # end
 
@@ -67,12 +64,13 @@ class UsersController < ApplicationController
 
   def order_show
     @order = Order.find_by(id: params[:id])
-    if !@order || @order.status == :pending
-      binding.pry
+
+    if !@order || @order.status == "pending"
       render 'layouts/not_found', status: :not_found
-    end
+    else
     @order_products = @order.order_products_by_merchant(@login_user)
     @order_subtotal = @order.order_subtotal_by_merchant(@login_user)
+    end
   end
 
   def products_index
