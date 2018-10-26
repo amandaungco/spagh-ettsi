@@ -41,7 +41,7 @@ describe ReviewsController do
 
     it "succeeds" do
 
-      get reviews_path
+      get new_product_review_path(spaghetti.id)
 
       must_respond_with :success
     end
@@ -52,6 +52,12 @@ describe ReviewsController do
 
       must_redirect_to product_path(spaghetti.id)
     end
+
+      it "responds with not_found with a bad id" do
+        get new_product_review_path(-1)
+
+        must_respond_with :not_found
+      end
   end
 
   describe "create" do
@@ -70,12 +76,20 @@ describe ReviewsController do
 
       # Act-Assert
       expect {
-        post reviews_path, params: review_hash
+        post create_review_path(spaghetti.id), params: review_hash
       }.wont_change 'Review.count'
 
       get product_path(-1)
 
       must_respond_with :not_found
+    end
+    it "checks the owner cannot review their own product" do
+      perform_login(seller)
+      expect {
+        post create_review_path(spaghetti.id), params: review_hash
+      }.wont_change 'Review.count'
+
+      must_redirect_to product_path(spaghetti.id)
     end
   end
 
