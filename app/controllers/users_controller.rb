@@ -19,17 +19,17 @@ class UsersController < ApplicationController
 
   def update
 
-    if params[:commit] == "Update Personal Info"
-      @login_user.full_name = params[:user][:full_name]
-      @login_user.email = params[:user][:email]
-      if @login_user.save
-        flash[:success] = "User updated."
-      else
-        flash[:warning] = "There was an error."
-        flash[:validation_errors] = @login_user.errors.full_messages
-      end
-      redirect_to checkout_path
-    else
+    # if params[:commit] == "Update Personal Info"
+    #   @login_user.full_name = params[:user][:full_name]
+    #   @login_user.email = params[:user][:email]
+    #   if @login_user.save
+    #     flash[:success] = "User updated."
+    #   else
+    #     flash[:warning] = "There was an error."
+    #     flash[:validation_errors] = @login_user.errors.full_messages
+    #   end
+    #   redirect_to checkout_path
+    # else
       @login_user.is_a_seller = params[:user][:is_a_seller]
       if @login_user.save
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
         flash[:warning] = "Oops, there was a problem updating your account."
         flash[:validation_errors] = @login_user.errors.full_messages
       end
-    end
+    # end
 
   end
 
@@ -68,6 +68,7 @@ class UsersController < ApplicationController
   def order_show
     @order = Order.find_by(id: params[:id])
     if !@order || @order.status == :pending
+      binding.pry
       render 'layouts/not_found', status: :not_found
     end
     @order_products = @order.order_products_by_merchant(@login_user)

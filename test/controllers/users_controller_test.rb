@@ -103,25 +103,13 @@ describe UsersController do
   end
 
   describe 'merchant dashboard' do
-  #   it 'shows all the merchants orders' do
-  #     # total orders - count
-  #     # total orders.order[0] instance of oreder
-  #   end
-  #
-  #   it 'shows all the merhcnats orders by status' do
-  #     # order by paid count
-  #     # order - instane of order
-  #     # order.status but be paid
-  #     #
-  #     # orders by complete count
-  #     # order - instane of order
-  #     # order.status but be complete
-  #   end
-  #
-  #   it 'shows all the merchants products' do
-  #     # products
-  #   end
-  #
+    it 'shows all the merchants products' do
+      seller = users(:seller)
+      perform_login(seller)
+      get merchant_my_products_path
+      must_respond_with :success
+    end
+  end
   #   it 'shows all the merchants products by status' do
   #     # active. count
   #     # instance of
@@ -150,29 +138,54 @@ describe UsersController do
   #
   # end
 
-  # describe "it can update user status as seller" do
-  #   it 'can change a users status to seller and active their products accordingly' do
-  #     seller = users(:seller)
-  #     perform_login(seller)
-  #     patch update_user_path(seller.id), params: {
-  #       user: {
-  #         is_a_seller: false
-  #       }
-  #     }
-  #     # expect login user to be a seller
-  #     # expect login users products to become activate
-  #     # flashes success
-  #     # redirects to account point
-  #   end
-  #
-  #   it 'can turn off a users selling status' do
-  #
-  #     # chane login user to turn of selling
-  #     # change users products to dactivated
-  #     #
-  #     # it shoudl flash success account s
-  #   end
-  #
+  describe "it can update user status as seller" do
+
+    it 'can turn off seller status and deactive their products accordingly' do
+      seller = users(:seller)
+      perform_login(seller)
+      patch update_user_path(seller.id), params: {
+        user: {
+          is_a_seller: false
+        }
+      }
+      expect(seller.products[1].is_active).must_equal false
+
+      must_redirect_to account_path
+      expect(flash[:success]).must_equal "Account settings updated!"
+    end
+
+    it 'can turn on a users selling status and reactivate products' do
+      seller = users(:seller)
+      perform_login(seller)
+      patch update_user_path(seller.id), params: {
+        user: {
+          is_a_seller: true
+        }
+      }
+      expect(seller.products[0].is_active).must_equal true
+
+      must_redirect_to account_path
+      expect(flash[:success]).must_equal "Account settings updated!"
+    end
+
   end
 
+  describe "it shows orders that merchants need to fulfill" do
+
+    it 'finds an order a merchant needs to fulfill' do
+      seller = users(:seller)
+      order = orders(:order_two)
+      perform_login(seller)
+      get merchant_order_path(order.id)
+      must_respond_with :success
+    end
+
+    # it 'renders not found for a merchants products that are still in the shopping ' do
+    #   seller = users(:seller)
+    #   order = orders(:order_one)
+    #   perform_login(seller)
+    #   get merchant_order_path(order.id)
+    #   must_respond_with :not_found
+    # end
+  end
 end

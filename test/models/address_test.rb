@@ -106,7 +106,7 @@ describe Address do
       valid = address.valid?
 
       expect(valid).must_equal false
-      expect(address.errors.messages[:zip]).must_equal ["can't be blank", "is not a number"]
+      expect(address.errors.messages[:zip]).must_equal ["can't be blank", "is not a number", "is too short (minimum is 5 characters)"]
     end
 
     it 'must have a zip that is numerical' do
@@ -117,7 +117,7 @@ describe Address do
       valid = address.valid?
 
       expect(valid).must_equal false
-      expect(address.errors.messages[:zip]).must_equal ["is not a number"]
+      expect(address.errors.messages[:zip]).must_equal ["is not a number", "is too short (minimum is 5 characters)"]
     end
   end
 end

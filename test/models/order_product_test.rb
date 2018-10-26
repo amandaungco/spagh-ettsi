@@ -46,7 +46,7 @@ describe OrderProduct do
      order_product.save
       valid = order_product.valid?
       expect(valid).must_equal false
-     expect(order_product.errors.messages[:quantity]).must_equal ["can't be blank", "is not a number"]
+     expect(order_product.errors.messages[:quantity]).must_equal ["can't be blank", "Must add atleast a quantity of one.", "Can't order that quantity."]
    end
  end
 
